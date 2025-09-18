@@ -1,4 +1,4 @@
-# @hanzo/ui
+# @lux/ui
 
 Accessible and customizable components that you can copy and paste into your apps. Free. Open Source. **Use this to build your own component library**.
 
@@ -6,7 +6,7 @@ Accessible and customizable components that you can copy and paste into your app
 
 ## Documentation
 
-Visit http://ui.hanzo.ai/docs to view the documentation.
+Visit http://ui.lux.ai/docs to view the documentation.
 
 ## Contributing
 
@@ -14,4 +14,4 @@ Please read the [contributing guide](/CONTRIBUTING.md).
 
 ## License
 
-Licensed under the [MIT license](https://github.com/@hanzo/ui/blob/main/LICENSE.md).
+Licensed under the [MIT license](https://github.com/@lux/ui/blob/main/LICENSE.md).
