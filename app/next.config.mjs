@@ -6,7 +6,7 @@ const nextConfig = {
   output: process.env.GITHUB_ACTIONS ? "export" : undefined,
   
   // Base path for GitHub Pages (when deployed to github.io subdirectory)
-  basePath: process.env.GITHUB_PAGES ? "/react-sdk" : "",
+  basePath: process.env.GITHUB_ACTIONS ? "/ui" : "",
   
   // Asset prefix for proper loading on custom domain
   assetPrefix: process.env.NEXT_PUBLIC_APP_URL || "",
