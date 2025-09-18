@@ -1,17 +1,17 @@
 {
-  "name": "@hanzo/ui",
+  "name": "@lux/ui",
   "version": "4.5.6",
   "description": "Library that contains shared UI primitives, support for a common design system, and other boilerplate support.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
-    "scope": "@hanzo"
+    "scope": "@lux"
   },
-  "author": "Hanzo AI, Inc.",
+  "author": "Lux AI, Inc.",
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hanzoai/react-sdk.git",
+    "url": "git+https://github.com/luxai/react-sdk.git",
     "directory": "pkg/ui"
   },
   "keywords": [
@@ -20,16 +20,16 @@
     "analytics",
     "ai",
     "chat",
-    "hanzo",
-    "hanzo-ai",
-    "hanzoai",
+    "lux",
+    "lux-ai",
+    "luxai",
     "radix-ui",
     "react",
     "sdk",
     "ui"
   ],
   "scripts": {
-    "lat": "npm show @hanzo/ui version",
+    "lat": "npm show @lux/ui version",
     "pub": "npm publish",
     "tc": "tsc",
     "build": "tsc -p tsconfig.json",
@@ -38,8 +38,8 @@
     "registry:mcp:http": "node ./bin/cli.js registry:mcp --http"
   },
   "bin": {
-    "@hanzo/ui": "./bin/cli.js",
-    "hanzo-ui": "./bin/cli.js"
+    "@lux/ui": "./bin/cli.js",
+    "lux-ui": "./bin/cli.js"
   },
   "exports": {
     ".": "./components/index.ts",
@@ -63,7 +63,7 @@
     }
   },
   "dependencies": {
-    "@hanzo/react-drawer": "^0.1.8",
+    "@lux/react-drawer": "^0.1.8",
     "@modelcontextprotocol/sdk": "^1.10.2",
     "@next/third-parties": "^15.0.1",
     "@radix-ui/react-accordion": "^1.1.2",
