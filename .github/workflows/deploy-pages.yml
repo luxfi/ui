@@ -66,7 +66,7 @@ jobs:
           # Skip registry build in CI and run Next.js build directly
           npx next build
         env:
-          NEXT_PUBLIC_APP_URL: https://ui.hanzo.ai
+          NEXT_PUBLIC_APP_URL: https://luxfi.github.io/ui
           GITHUB_ACTIONS: true
           NODE_ENV: production
           
