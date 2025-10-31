@@ -73,7 +73,7 @@ import {
 export const description =
   "A product edit page. The product edit page has a form to edit the product details, stock, product category, product status, and product images. The product edit page has a sidebar navigation and a main content area. The main content area has a form to edit the product details, stock, product category, product status, and product images. The sidebar navigation has links to product details, stock, product category, product status, and product images."
 
-export const iframeHeight = "1100px"
+export const iframeHeight = "1200px"
 
 export const containerClassName = "w-full h-full"
 
@@ -81,7 +81,7 @@ export default function Dashboard() {
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
-        <nav className="flex flex-col items-center gap-4 px-2 py-4">
+        <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
           <Link
             href="#"
             className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
@@ -105,7 +105,7 @@ export default function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <ShoppingCart className="h-5 w-5" />
                 <span className="sr-only">Orders</span>
@@ -117,7 +117,7 @@ export default function Dashboard() {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Package className="h-5 w-5" />
                 <span className="sr-only">Products</span>
@@ -150,7 +150,7 @@ export default function Dashboard() {
             <TooltipContent side="right">Analytics</TooltipContent>
           </Tooltip>
         </nav>
-        <nav className="mt-auto flex flex-col items-center gap-4 px-2 py-4">
+        <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
@@ -245,7 +245,7 @@ export default function Dashboard() {
             <Input
               type="search"
               placeholder="Search..."
-              className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
+              className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
             />
           </div>
           <DropdownMenu>
@@ -296,7 +296,7 @@ export default function Dashboard() {
             </div>
             <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
               <div className="grid auto-rows-max items-start gap-4 lg:col-span-2 lg:gap-8">
-                <Card x-chunk="A card with a form to edit the product details">
+                <Card x-chunk="dashboard-07-chunk-0">
                   <CardHeader>
                     <CardTitle>Product Details</CardTitle>
                     <CardDescription>
@@ -325,7 +325,7 @@ export default function Dashboard() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card x-chunk="A card with a form to edit the product stock and variants">
+                <Card x-chunk="dashboard-07-chunk-1">
                   <CardHeader>
                     <CardTitle>Stock</CardTitle>
                     <CardDescription>
@@ -461,7 +461,7 @@ export default function Dashboard() {
                     </Button>
                   </CardFooter>
                 </Card>
-                <Card x-chunk="A card with a form to edit the product category and subcategory">
+                <Card x-chunk="dashboard-07-chunk-2">
                   <CardHeader>
                     <CardTitle>Product Category</CardTitle>
                   </CardHeader>
@@ -512,7 +512,7 @@ export default function Dashboard() {
                 </Card>
               </div>
               <div className="grid auto-rows-max items-start gap-4 lg:gap-8">
-                <Card x-chunk="A card with a form to edit the product status">
+                <Card x-chunk="dashboard-07-chunk-3">
                   <CardHeader>
                     <CardTitle>Product Status</CardTitle>
                   </CardHeader>
@@ -536,7 +536,7 @@ export default function Dashboard() {
                 </Card>
                 <Card
                   className="overflow-hidden"
-                  x-chunk="A card with a form to upload product images"
+                  x-chunk="dashboard-07-chunk-4"
                 >
                   <CardHeader>
                     <CardTitle>Product Images</CardTitle>
@@ -580,7 +580,7 @@ export default function Dashboard() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card x-chunk="A card with a call to action to archive the product">
+                <Card x-chunk="dashboard-07-chunk-5">
                   <CardHeader>
                     <CardTitle>Archive Product</CardTitle>
                     <CardDescription>

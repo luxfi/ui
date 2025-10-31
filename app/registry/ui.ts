@@ -65,7 +65,7 @@ export const ui: Registry = [
     type: "components:ui",
     files: ["ui/carousel.tsx"],
     registryDependencies: ["button"],
-    dependencies: ["embla-carousel-react"],
+    dependencies: ["embla-carousel-react", "lucide-react"],
   },
   {
     name: "checkbox",
@@ -122,6 +122,12 @@ export const ui: Registry = [
     ],
     registryDependencies: ["button", "label"],
     files: ["ui/form.tsx"],
+  },
+  {
+    name: "field",
+    type: "components:ui",
+    registryDependencies: ["label", "separator"],
+    files: ["ui/field.tsx"],
   },
   {
     name: "hover-card",
@@ -250,6 +256,12 @@ export const ui: Registry = [
     name: "textarea",
     type: "components:ui",
     files: ["ui/textarea.tsx"],
+  },
+  {
+    name: "terminal",
+    type: "components:ui",
+    dependencies: ["lucide-react"],
+    files: ["ui/terminal.tsx"],
   },
   {
     name: "toast",

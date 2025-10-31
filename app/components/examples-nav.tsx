@@ -9,6 +9,11 @@ import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
 
 const examples = [
   {
+    name: "Examples",
+    href: "/examples",
+    code: "https://github.com/hanzo/ui/tree/main/apps/web/app/(app)/examples",
+  },
+  {
     name: "Mail",
     href: "/examples/mail",
     code: "https://github.com/hanzo/ui/tree/main/apps/web/app/(app)/examples/mail",
@@ -65,10 +70,12 @@ export function ExamplesNav({ className, ...props }: ExamplesNavProps) {
               key={example.href}
               className={cn(
                 "flex h-7 items-center justify-center rounded-full px-4 text-center text-sm transition-colors hover:text-primary",
-                pathname?.startsWith(example.href) ||
-                  (index === 0 && pathname === "/")
+                // For base "/examples" route, use exact match to avoid highlighting when on sub-routes
+                index === 0 && (pathname === "/examples" || pathname === "/")
                   ? "bg-muted font-medium text-primary"
-                  : "text-muted-foreground"
+                  : index !== 0 && pathname?.startsWith(example.href)
+                    ? "bg-muted font-medium text-primary"
+                    : "text-muted-foreground"
               )}
             >
               {example.name}

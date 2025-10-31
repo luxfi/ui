@@ -1,13 +1,13 @@
 {
-  "name": "@luxfi/ui",
+  "name": "@hanzo/ui",
   "version": "5.1.1",
-  "description": "UI library for Lux ecosystem with React support. Based on shadcn/ui with comprehensive component coverage.",
+  "description": "Multi-framework UI library with React, Vue, Svelte, and React Native support. Based on shadcn/ui with comprehensive framework coverage.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
-    "scope": "@luxfi"
+    "scope": "@hanzo"
   },
-  "author": "Lux AI, Inc.",
+  "author": "Hanzo AI, Inc.",
   "license": "BSD-3-Clause",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luxai/react-sdk.git",
+    "url": "git+https://github.com/hanzoai/react-sdk.git",
     "directory": "pkg/ui"
   },
   "keywords": [
@@ -31,21 +31,22 @@
     "analytics",
     "ai",
     "chat",
-    "lux",
-    "lux-ai",
-    "luxai",
+    "hanzo",
+    "hanzo-ai",
+    "hanzoai",
     "radix-ui",
     "react",
     "sdk",
     "ui"
   ],
   "scripts": {
-    "lat": "npm show @lux/ui version",
+    "lat": "npm show @hanzo/ui version",
     "pub": "npm publish",
     "tc": "tsc --project tsconfig.build.json",
     "build": "npm run clean && npm run build:tsup",
     "build:tsup": "tsup --config tsup.config.minimal.ts",
     "build:full": "tsup --config tsup.config.production.ts",
+    "build:frameworks": "npm run build",
     "build:watch": "tsup --watch",
     "build:check": "tsc --project tsconfig.build.json --noEmit",
     "clean": "rm -rf dist",
@@ -53,13 +54,16 @@
     "update-registry": "node ./bin/update-registry.js",
     "registry:mcp": "node ./bin/cli.js registry:mcp",
     "registry:mcp:http": "node ./bin/cli.js registry:mcp --http",
+    "analyze:frameworks": "node analyze-frameworks.js",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "test:jest": "jest test/multi-framework.test.js",
+    "test:frameworks": "jest test/multi-framework.test.js --verbose"
   },
   "bin": {
-    "@lux/ui": "./bin/cli.js",
-    "lux-ui": "./bin/cli.js"
+    "@hanzo/ui": "./bin/cli.js",
+    "hanzo-ui": "./bin/cli.js"
   },
   "exports": {
     "./package.json": "./package.json",
@@ -212,6 +216,27 @@
       "types": "./dist/src/mcp/index.d.ts",
       "import": "./dist/src/mcp/index.mjs",
       "require": "./dist/src/mcp/index.js"
+    },
+    "./react": {
+      "types": "./dist/frameworks/react/index.d.ts",
+      "import": "./dist/frameworks/react/index.mjs",
+      "require": "./dist/frameworks/react/index.js"
+    },
+    "./vue": {
+      "types": "./dist/frameworks/vue/index.d.ts",
+      "import": "./dist/frameworks/vue/index.mjs",
+      "require": "./dist/frameworks/vue/index.js"
+    },
+    "./svelte": {
+      "svelte": "./frameworks/svelte/index.ts",
+      "types": "./dist/frameworks/svelte/index.d.ts",
+      "import": "./dist/frameworks/svelte/index.mjs",
+      "require": "./dist/frameworks/svelte/index.js"
+    },
+    "./react-native": {
+      "types": "./dist/frameworks/react-native/index.d.ts",
+      "import": "./dist/frameworks/react-native/index.mjs",
+      "require": "./dist/frameworks/react-native/index.js"
     }
   },
   "dependencies": {
@@ -219,7 +244,7 @@
     "@dnd-kit/modifiers": "^9.0.0",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
-    "@lux/react-drawer": "^0.1.8",
+    "@hanzo/react-drawer": "^0.1.8",
     "@modelcontextprotocol/sdk": "^1.10.2",
     "@next/third-parties": "^15.0.1",
     "@radix-ui/react-accordion": "^1.2.11",
@@ -273,7 +298,7 @@
     "react-resizable-panels": "^1.0.5",
     "recharts": "^2.10.0",
     "sonner": "^1.3.1",
-    "svg-pan-luxm": "^3.6.2",
+    "svg-pan-zoom": "^3.6.2",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-interaction-media": "^0.1.0",

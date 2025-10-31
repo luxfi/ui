@@ -40,6 +40,17 @@ export function MainNav() {
           Components
         </Link>
         <Link
+          href="/ai"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname === "/ai" || pathname?.startsWith("/docs/ai")
+              ? "text-foreground"
+              : "text-foreground/80"
+          )}
+        >
+          AI
+        </Link>
+        <Link
           href="/blocks"
           className={cn(
             "transition-colors hover:text-foreground/80",
@@ -83,6 +94,15 @@ export function MainNav() {
           )}
         >
           Colors
+        </Link>
+        <Link
+          href="/mcp"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname === "/mcp" ? "text-foreground" : "text-foreground/80"
+          )}
+        >
+          MCP
         </Link>
       </nav>
     </div>

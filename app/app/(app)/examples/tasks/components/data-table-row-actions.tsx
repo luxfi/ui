@@ -1,7 +1,7 @@
 "use client"
 
-import { DotsHorizontalIcon } from "@radix-ui/react-icons"
 import { Row } from "@tanstack/react-table"
+import { MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/registry/new-york/ui/button"
 import {
@@ -35,9 +35,10 @@ export function DataTableRowActions<TData>({
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
+          size="icon"
+          className="data-[state=open]:bg-muted size-8"
         >
-          <DotsHorizontalIcon className="h-4 w-4" />
+          <MoreHorizontal />
           <span className="sr-only">Open menu</span>
         </Button>
       </DropdownMenuTrigger>
@@ -59,7 +60,7 @@ export function DataTableRowActions<TData>({
           </DropdownMenuSubContent>
         </DropdownMenuSub>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem variant="destructive">
           Delete
           <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
         </DropdownMenuItem>

@@ -67,10 +67,10 @@ export const Index: Record<string, any> = {
           }
         >()
         sourceFile.getImportDeclarations().forEach((node) => {
-          const module = node.getModuleSpecifier().getLiteralValue()
+          const modulePath = node.getModuleSpecifier().getLiteralValue()
           node.getNamedImports().forEach((item) => {
             imports.set(item.getText(), {
-              module,
+              module: modulePath,
               text: node.getText(),
             })
           })
@@ -78,7 +78,7 @@ export const Index: Record<string, any> = {
           const defaultImport = node.getDefaultImport()
           if (defaultImport) {
             imports.set(defaultImport.getText(), {
-              module,
+              module: modulePath,
               text: defaultImport.getText(),
               isDefault: true,
             })
@@ -253,7 +253,9 @@ export const Index: Record<string, any> = {
   // ----------------------------------------------------------------------------
   // Build registry/index.json.
   // ----------------------------------------------------------------------------
-  const names = registry.filter((item) => item.type === "components:ui")
+  const names = registry.filter((item) =>
+    item.type?.startsWith("components:")
+  )
   const registryJson = JSON.stringify(names, null, 2)
   rimraf.sync(path.join(REGISTRY_PATH, "index.json"))
   await fs.writeFile(
@@ -280,21 +282,31 @@ async function buildStyles(registry: Registry) {
     }
 
     for (const item of registry) {
-      if (item.type !== "components:ui") {
+      // Include all component types (ui, ai, 3d, animation, code, etc.)
+      if (!item.type?.startsWith("components:")) {
         continue
       }
 
       const files = item.files?.map((file) => {
-        const content = readFileSync(
-          path.join(process.cwd(), "registry", style.name, file),
-          "utf8"
-        )
+        const filePath = path.join(process.cwd(), "registry", style.name, file)
+
+        // Check if file exists for this style variant
+        if (!existsSync(filePath)) {
+          return null
+        }
+
+        const content = readFileSync(filePath, "utf8")
 
         return {
           name: basename(file),
           content,
         }
-      })
+      }).filter(Boolean)
+
+      // Skip if no files exist for this style variant
+      if (!files || files.length === 0) {
+        continue
+      }
 
       const payload = {
         ...item,
