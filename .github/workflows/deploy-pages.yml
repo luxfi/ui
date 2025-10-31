@@ -66,10 +66,15 @@ jobs:
           # Skip registry build in CI and run Next.js build directly
           npx next build
         env:
-          NEXT_PUBLIC_APP_URL: https://luxfi.github.io/ui
+          NEXT_PUBLIC_APP_URL: https://ui.lux.finance
           GITHUB_ACTIONS: true
           NODE_ENV: production
-          
+
+      - name: Copy CNAME to output
+        run: |
+          cd app
+          echo "ui.lux.finance" > out/CNAME
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
