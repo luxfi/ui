@@ -1,11 +1,11 @@
 {
-  "name": "@lux/ui",
+  "name": "@luxfi/ui",
   "version": "5.1.1",
   "description": "UI library for Lux ecosystem with React support. Based on shadcn/ui with comprehensive component coverage.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
-    "scope": "@lux"
+    "scope": "@luxfi"
   },
   "author": "Lux AI, Inc.",
   "license": "BSD-3-Clause",
