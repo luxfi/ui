@@ -1,6 +1,11 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { IconArrowLeft, IconArrowRight, IconArrowUpRight } from "@tabler/icons-react"
+import { mdxComponents } from "@/mdx-components"
+import {
+  IconArrowLeft,
+  IconArrowRight,
+  IconArrowUpRight,
+} from "@tabler/icons-react"
 import { findNeighbour } from "fumadocs-core/server"
 
 import { source } from "@/lib/source"
@@ -8,7 +13,6 @@ import { absoluteUrl } from "@/lib/utils"
 import { DocsTableOfContents } from "@/components/toc"
 import { Badge } from "@/registry/new-york/ui/badge"
 import { Button } from "@/registry/new-york/ui/button"
-import { mdxComponents } from "@/mdx-components"
 
 export const revalidate = false
 // For static export, we cannot use dynamicParams
@@ -35,7 +39,8 @@ export async function generateMetadata(props: {
 
   return {
     title: page.data.title || "Documentation",
-    description: page.data.description || `Documentation for ${page.data.title}`,
+    description:
+      page.data.description || `Documentation for ${page.data.title}`,
     openGraph: {
       title: page.data.title,
       description: page.data.description,
@@ -56,7 +61,7 @@ export default async function Page(props: {
 }) {
   const params = await props.params
   const page = source.getPage(params.slug)
-  
+
   if (!page) {
     notFound()
   }
@@ -74,7 +79,7 @@ export default async function Page(props: {
     >
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
-        <div className="mx-auto flex w-full max-w-2xl min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:px-0 lg:py-8 dark:text-neutral-300">
+        <div className="mx-auto flex w-full max-w-2xl min-w-0 flex-1 flex-col gap-8 px-4 py-6 text-neutral-800 md:px-6 lg:px-8 lg:py-8 dark:text-neutral-300">
           <div className="flex flex-col gap-2">
             <div className="flex flex-col gap-2">
               <div className="flex items-start justify-between">
@@ -120,14 +125,22 @@ export default async function Page(props: {
               <div className="flex items-center space-x-2 pt-4">
                 {page.data.links?.doc && (
                   <Badge asChild variant="secondary">
-                    <Link href={page.data.links.doc} target="_blank" rel="noreferrer">
+                    <Link
+                      href={page.data.links.doc}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       Docs <IconArrowUpRight />
                     </Link>
                   </Badge>
                 )}
                 {page.data.links?.api && (
                   <Badge asChild variant="secondary">
-                    <Link href={page.data.links.api} target="_blank" rel="noreferrer">
+                    <Link
+                      href={page.data.links.api}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       API Reference <IconArrowUpRight />
                     </Link>
                   </Badge>
@@ -139,7 +152,7 @@ export default async function Page(props: {
             <MDXContent components={mdxComponents} />
           </div>
         </div>
-        <div className="mx-auto hidden h-16 w-full max-w-2xl items-center gap-2 px-4 sm:flex md:px-0">
+        <div className="mx-auto hidden h-16 w-full max-w-2xl items-center gap-2 px-4 sm:flex md:px-6 lg:px-8">
           {neighbours.previous && (
             <Button
               variant="secondary"

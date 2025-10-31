@@ -1,78 +1,94 @@
-import { compiler as mdCompiler } from 'markdown-to-jsx'
+// Export all utilities
+export * from './date';
+export * from './file';
+export * from './create-shadow-root';
+export * from './timing';
+export * from './blob';
+export * from './copy-to-clipboard';
+export * from './format-text';
+export * from './toasts';
+export * from './debounce';
+export { default as spreadToTransform } from './spread-to-transform';
+export * from './specifier';
+export * from './number-abbreviate';
+export * from './format-to-max-char';
+export * from './format-and-abbreviate-as-currency';
+export * from './two-way-map';
+export * from './use-mobile';
 
-import { clsx, type ClassValue } from 'clsx'
-import { twMerge } from 'tailwind-merge'
-export { cva, type VariantProps } from 'class-variance-authority'
+// Export cn utility and other common functions from src/utils
+export { cn, formatDate, absoluteUrl } from '../src/utils';
 
-import type { Dimensions } from '../types'
+// Export VariantProps type from class-variance-authority
+export type { VariantProps } from 'class-variance-authority';
 
-import { default as _merge }  from 'lodash.merge'
-
-export const cn = (...inputs: ClassValue[]) => (
-  twMerge(clsx(inputs))  
-) 
-
-export const markdown = (s: string, options?: any): JSX.Element => (
-  mdCompiler(s, {
-    wrapper: null,
-    ...options
-  })
-)
-
-export const round = (num: number): string  => (
-  num
-    .toFixed(7)
-    .replace(/(\.[0-9]+?)0+$/, '$1')
-    .replace(/\.0$/, '')
-)
-
-export const pxToRem = (px: number, base: number): string => (`${round(px / base)}rem`)
-
-export const pxToEm = (px: number, base: number): string  => (`${round(px / base)}em`)
-
-export const hexToRgb = (hex: string): string => {
-  hex = hex.replace('#', '')
-  hex = hex.length === 3 ? hex.replace(/./g, '$&$&') : hex
-  const r = parseInt(hex.substring(0, 2), 16)
-  const g = parseInt(hex.substring(2, 4), 16)
-  const b = parseInt(hex.substring(4, 6), 16)
-  return `${r} ${g} ${b}`
-}
-
-
-export const asNum = (n: number | `${number}`): number => (
-  (typeof n === 'number') ? n : parseInt(n, 10)  
-)
-
-  // https://stackoverflow.com/questions/3971841/how-to-resize-images-proportionally-keeping-the-aspect-ratio
-export const constrain = (d: Dimensions, c: Dimensions): Dimensions => {
-
-  const ratio = Math.min(c.w / d.w, c.h / d.h)
-  return {
-    w: Math.round(d.w * ratio),
-    h: Math.round(d.h * ratio)
+// For backward compatibility with components importing from util
+export function constrain(value: number, min: number, max: number): number;
+export function constrain(dim: { w: number; h: number }, constrainTo: { w: number; h: number }): { w: number; h: number };
+export function constrain(
+  value: number | { w: number; h: number },
+  minOrConstrainTo: number | { w: number; h: number },
+  max?: number
+): number | { w: number; h: number } {
+  if (typeof value === 'number' && typeof minOrConstrainTo === 'number' && typeof max === 'number') {
+    return Math.min(Math.max(value, minOrConstrainTo), max);
   }
+
+  if (typeof value === 'object' && typeof minOrConstrainTo === 'object') {
+    const dim = value;
+    const constrainTo = minOrConstrainTo;
+    const aspectRatio = dim.w / dim.h;
+    const constrainAspectRatio = constrainTo.w / constrainTo.h;
+
+    if (aspectRatio > constrainAspectRatio) {
+      // constrain by width
+      return {
+        w: constrainTo.w,
+        h: constrainTo.w / aspectRatio
+      };
+    } else {
+      // constrain by height
+      return {
+        w: constrainTo.h * aspectRatio,
+        h: constrainTo.h
+      };
+    }
+  }
+
+  throw new Error('Invalid parameters for constrain function');
 }
 
-export const containsToken = (s: string | undefined, toFind: string): boolean => (s ? s.split(' ').includes(toFind) : false)
+// Export round, pxToRem, pxToEm for tailwind plugin
+export function round(value: number): number {
+  return Math.round(value * 100) / 100;
+}
 
-export const ldMerge = (
-  result: any,
-  ...sources: any[]
-): any => (_merge(result, ...sources))
+export function pxToRem(px: number, base = 16): string {
+  return `${px / base}rem`;
+}
 
-export const capitalize = (str: string): string => (
-  str.charAt(0).toUpperCase() + str.slice(1)
-)
+export function pxToEm(px: number, base = 16): string {
+  return `${px / base}em`;
+}
 
-export { default as spreadToTransform } from './spread-to-transform'
-export { default as formatToMaxChar } from './format-to-max-char'
-export { 
-  default as formatAndAbbreviateAsCurrency, 
-  type FormatThreshold,   
-  type QuantityAbbrSymbol
-} from './format-and-abbreviate-as-currency'
+// Missing utility functions
+export function containsToken(text: string | undefined, token: string): boolean {
+  if (!text) return false;
+  return text.toLowerCase().includes(token.toLowerCase());
+}
 
-// Must be imported from 'use client', so can't include this...
-// export * from './step-animation'
+export function ldMerge(...objects: any[]): any {
+  // Simple merge function for lodash compatibility
+  const result = {};
+  for (const obj of objects) {
+    if (obj && typeof obj === 'object') {
+      Object.assign(result, obj);
+    }
+  }
+  return result;
+}
 
+export function asNum(value: any, defaultValue = 0): number {
+  const num = Number(value);
+  return isNaN(num) ? defaultValue : num;
+}

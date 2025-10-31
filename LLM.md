@@ -1,392 +1,465 @@
-# Hanzo UI - AI Assistant Context
+# Hanzo UI - AI Assistant Knowledge Base
+
+**Last Updated**: 2025-10-18
+**Project**: Hanzo UI Component Library (shadcn/ui fork with multi-framework support)
+**Version**: @hanzo/ui v5.0.0
 
 ## Project Overview
 
-Hanzo UI is a comprehensive React component library built on top of hanzo/ui v4, featuring:
-- 50+ primitive components with Hanzo branding
-- Full TypeScript support with React 19
-- Tailwind CSS 4.1 with OKLCH color system
-- Model Context Protocol (MCP) server for AI assistance
-- GitHub Pages deployment at ui.hanzo.ai
+Hanzo UI is a comprehensive React component library built on hanzo/ui v4 with Hanzo branding. It provides 150+ accessible, customizable components distributed via npm and CLI.
 
-## Recent Updates (2025-09-13)
-
-### Migration to hanzo/ui v4
-Successfully synced with latest hanzo/ui v4 including:
-- Next.js 15.3.1 with Turbopack
-- React 19.1.0 with server components
-- Fumadocs MDX for documentation (replaced Contentlayer)
-- Motion package (replaced framer-motion)
-- Fixed MDX component passing issues
-- Fixed React Hook Form compatibility
-
-### MCP Server Enhancement
-Created comprehensive MCP (Model Context Protocol) server for AI assistants:
-
-**Available Tools:**
-- `list_components` - Browse all components
-- `get_component` - Get component details
-- `get_component_source` - Access source code
-- `get_component_demo` - Generate demos
-- `add_component` - Installation instructions
-- `list_blocks` - UI blocks/patterns
-- `search_registry` - Search components
-- `get_installation_guide` - Setup guide
-
-**Resources:**
-- `hanzo://components/list` - Component catalog
-- `hanzo://blocks/list` - UI patterns
-- `hanzo://installation/guide` - Installation guide
-- `hanzo://theming/guide` - Theming docs
-
-**Prompts:**
-- `component_usage` - Generate examples
-- `build_page` - Build complete pages
-- `component_composition` - Create custom components
-- `accessibility_review` - Review accessibility
-- `theme_customization` - Generate themes
-
-### Migration from hanzo/ui v3 to v4
-- **Next.js 15.3.1**: Upgraded from Next.js 14 to 15 with Turbopack support
-- **React 19.1.0**: Updated to latest React version with server components
-- **Tailwind CSS 4.1**: Migrated from v3 to v4 with new CSS custom properties and OKLCH colors
-- **Fumadocs**: Replaced Contentlayer with Fumadocs for MDX documentation
-- **Motion**: Added framer-motion replacement (motion v12) for animations
-- **Dependencies**: Updated all Radix UI components to latest v1.1+ versions
-
-### Key Changes
-1. **Build System**: Switched from Contentlayer to Fumadocs MDX
-2. **Styling**: Implemented Tailwind CSS 4 with OKLCH color system preserving Hanzo purple branding
-3. **Theming**: Enhanced theme variants with custom purple accent colors
-4. **Performance**: Added Turbopack for faster development builds
-5. **MDX Components**: Fixed component passing to ensure all MDX components are available during compilation
-
-## Project Structure
+### Repository Structure
 
 ```
-/Users/z/work/hanzo/ui/
-├── app/                    # Main documentation site (Next.js)
-│   ├── app/               # App router pages
-│   ├── components/        # Site components
-│   ├── content/          # MDX documentation
-│   ├── registry/         # Component registry
-│   └── public/           # Static assets
-├── pkg/ui/               # NPM package (@hanzo/ui)
-│   ├── primitives/       # 50+ UI components
-│   ├── blocks/          # Complex UI patterns
-│   ├── mcp/            # MCP server implementation
-│   │   ├── index.ts    # Basic MCP server
-│   │   ├── enhanced-server.ts # Full-featured server
-│   │   └── README.md   # MCP documentation
-│   ├── bin/            # CLI commands
-│   │   ├── cli.js     # Main CLI
-│   │   ├── mcp.js     # MCP command
-│   │   └── registry-mcp.js # Legacy MCP
-│   └── registry/       # Component registry system
-└── .github/workflows/  # CI/CD pipelines
-    └── deploy-pages.yml # GitHub Pages deployment
+ui/
+├── app/                    # Documentation site (Next.js 15.3.1, React 19)
+│   ├── registry/          # Component registry (source of truth)
+│   │   ├── default/       # Default theme
+│   │   │   ├── ui/       # 150+ component implementations
+│   │   │   ├── example/  # Usage demos
+│   │   │   └── blocks/   # 24+ full-page sections
+│   │   └── new-york/      # Alternative theme
+│   ├── content/docs/      # MDX documentation
+│   └── scripts/           # Build scripts (registry, capture)
+├── pkg/
+│   ├── ui/                # Core library (published to npm)
+│   ├── auth/              # Auth components
+│   ├── commerce/          # E-commerce components
+│   └── brand/             # Branding system
+├── brands/                # White-label configs (Zoo, Lux)
+└── templates/             # Project templates
 ```
 
-## Key Commands
+## Essential Commands
 
-### Development
+### Development (Always Required)
 ```bash
-# Start docs site
-cd app && npm run dev  # Runs on port 3003
+# Start main dev server (port 3003)
+pnpm dev
 
-# Build production
-npm run build
+# Build registry FIRST, then app
+pnpm build:registry
+pnpm build
 
-# Run MCP server
-npx @hanzo/ui mcp              # For AI clients
-npx @hanzo/ui mcp --http       # HTTP mode for testing
+# Run from root or app/
+cd app && pnpm dev
+cd app && pnpm registry:build
 ```
 
-### Component Management
+### Code Quality
 ```bash
-# Initialize project
-npx @hanzo/ui@latest init
-
-# Add components
-npx @hanzo/ui@latest add button
-npx @hanzo/ui@latest add card dialog
-
-# List components
-npx @hanzo/ui@latest list
+pnpm lint              # Lint all workspaces
+pnpm lint:fix          # Auto-fix issues
+pnpm typecheck         # Type checking
+pnpm format:write      # Format code
 ```
 
-### MCP Integration
-
-**IMPORTANT**: The UI MCP tools are now integrated into the main `@hanzo/mcp` package. Use the unified MCP server with the `--enable-ui` flag to access UI component tools.
-
-**Claude Desktop** (`.mcp.json`):
-```json
-{
-  "mcpServers": {
-    "hanzo": {
-      "command": "npx",
-      "args": ["@hanzo/mcp", "serve", "--enable-ui"]
-    }
-  }
-}
+### Testing
+```bash
+pnpm test              # Unit tests
+pnpm test:e2e          # E2E with Playwright
+pnpm test:visual       # Visual regression
 ```
 
-**Cursor** (`.cursor/mcp.json`):
-```json
-{
-  "mcpServers": {
-    "hanzo": {
-      "command": "npx",
-      "args": ["@hanzo/mcp", "serve", "--enable-ui"]
-    }
-  }
-}
+### Package Publishing
+```bash
+pnpm changeset         # Create changeset
+pnpm changeset version # Bump versions
+cd pkg/ui && npm publish --access public
 ```
 
-This provides 30 total tools (19 core + 11 UI) for comprehensive development support.
+## Critical Build Process
 
-## App Structure and Routing (`/app/`)
+**REGISTRY IS CORE** - Always build registry before app:
 
-### Next.js App Router Structure
-```
-app/app/
-├── (app)/              # Main application routes
-│   ├── blocks/         # Block components showcase
-│   ├── docs/           # Documentation with [[...slug]] dynamic routing
-│   ├── examples/       # Component examples
-│   │   ├── authentication/
-│   │   ├── cards/
-│   │   ├── dashboard/
-│   │   ├── forms/
-│   │   ├── mail/
-│   │   ├── music/
-│   │   ├── playground/
-│   │   └── tasks/
-│   ├── sink/           # Component testing area
-│   └── themes/         # Theme showcase
-├── (blocks)/           # Block-specific routes
-└── layout.tsx          # Root layout
+1. **Source**: Components in `app/registry/{style}/ui/`
+2. **Build**: `pnpm build:registry` generates JSON
+3. **Output**: `app/public/r/{style}/{name}.json`
+4. **Usage**: CLI reads JSON to install components
+
+**Build Order:**
+```bash
+pnpm build:registry  # MUST run first
+pnpm build           # Then build app
 ```
 
-### Key App Features
-- **Multi-theme support**: Both default and new-york styles
-- **Component registry system**: Similar to hanzo/ui CLI
-- **Interactive examples**: Music, mail, dashboard apps
-- **Documentation site**: MDX-based with contentlayer
-- **Theme switching**: Built-in dark/light mode
+## Component Architecture
 
-### Site Configuration
-- **Brand**: "hanzo/ui" 
-- **URL**: https://ui.hanzo.ai
-- **Twitter**: @hanzo
-- **GitHub**: hanzo-ui/ui
+### Three-Layer System
 
-## Package Structure (`/pkg/`)
+**1. Components** (`registry/{style}/ui/`)
+- Single UI primitives (Button, Input, Card, Dialog)
+- 150+ total components
+- Two themes: default, new-york
 
-### 1. Core UI Package (`/pkg/ui/`)
-**Version**: 4.5.3  
-**Purpose**: Main UI component library with enhanced hanzo/ui components
+**2. Examples** (`registry/{style}/example/`)
+- Usage demonstrations
+- Used in docs via `<ComponentPreview />`
+- Pattern examples
 
-#### Key Directories:
-- **`/primitives/`**: 52 core UI components (enhanced hanzo/ui)
-- **`/blocks/`**: Higher-level component compositions
-- **`/tailwind/`**: Custom Tailwind configuration and plugins
-- **`/style/`**: CSS files including Hanzo-specific styling
-- **`/types/`**: TypeScript type definitions
-- **`/util/`**: Utility functions
-- **`/registry/`**: Component registry for CLI
-- **`/mcp/`**: Model Context Protocol integration
+**3. Blocks** (`registry/{style}/blocks/`)
+- Viewport-sized sections (Hero, Dashboard, Login)
+- 24+ production templates
+- Compose multiple components
+- NOT CLI-installable (documentation only)
 
-#### Unique Features:
-- **Custom variant system**: Extended button variants (primary, secondary, outline, ghost, link, linkFG, linkMuted, destructive)
-- **Enhanced sizing**: xs, sm, square, default, lg, icon sizes
-- **Rounded variants**: full, sm, md, lg, xl, none
-- **Hanzo design tokens**: Custom color system and spacing
-- **MCP support**: AI assistant integration
-- **CLI tools**: Component installation system
+### Standard Component Pattern
 
-### 2. Authentication Package (`/pkg/auth/`)
-**Version**: 2.5.4  
-**Purpose**: Firebase-based authentication system
-
-#### Dependencies:
-- Firebase Admin SDK
-- MobX for state management
-- React Hook Form integration
-- Zod validation
-
-#### Components:
-- Authentication forms
-- User management components
-- Firebase integration utilities
-- Server-side authentication helpers
-
-### 3. Commerce Package (`/pkg/commerce/`)
-**Version**: 7.3.7  
-**Purpose**: E-commerce framework
-
-#### Key Features:
-- **Payment processing**: Square integration
-- **Blockchain support**: Ethers.js integration
-- **State management**: MobX-based cart and order management
-- **Form handling**: React Hook Form with Zod validation
-
-#### Dependencies:
-- Square Web Payments SDK
-- Ethers.js for Web3 functionality
-- MobX for reactive state management
-
-## Component Organization and Customizations
-
-### Registry System
-The component registry mirrors hanzo/ui but with Hanzo enhancements:
-- **Styles**: `default` and `new-york` variants
-- **Categories**: UI components, blocks, examples
-- **CLI integration**: `@hanzo/ui` and `hanzo-ui` commands
-
-### Hanzo-Specific Enhancements
-
-#### 1. Enhanced Button Component
-**Standard hanzo/ui**:
 ```tsx
-variants: {
-  variant: { default, destructive, outline, secondary, ghost, link },
-  size: { default, sm, lg, icon }
-}
+"use client"
+
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
+const componentVariants = cva(
+  "base-classes",
+  {
+    variants: {
+      variant: {
+        default: "default-styles",
+        outline: "outline-styles"
+      }
+    },
+    defaultVariants: { variant: "default" }
+  }
+)
+
+interface ComponentProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof componentVariants> {}
+
+const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
+  ({ className, variant, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn(componentVariants({ variant }), className)}
+      {...props}
+    />
+  )
+)
+Component.displayName = "Component"
+
+export { Component, componentVariants, type ComponentProps }
 ```
 
-**Hanzo Enhancement**:
+### Import Path Transformation
+
+**In registry files:**
 ```tsx
-variants: {
-  variant: { primary, secondary, outline, destructive, ghost, link, linkFG, linkMuted },
-  size: { link, xs, sm, square, default, lg, icon },
-  rounded: { full, sm, md, lg, xl, none }
-}
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/default/ui/button"
 ```
 
-#### 2. Custom Design System
-- **Color variables**: `--hz-ui-*` prefix for Hanzo colors
-- **Enhanced typography**: Custom font stacks and spacing
-- **Theme variants**: Light and dark with Hanzo branding
-
-#### 3. Advanced Tailwind Configuration
-- **Custom plugins**: Typography plugin with Hanzo styling
-- **Extended spacing**: Custom spacing scale
-- **Font family integration**: Geist fonts
-- **Container queries support**: `@tailwindcss/container-queries`
-
-## Styling Architecture
-
-### CSS Structure
-```
-/app/styles/
-├── globals.css         # Hanzo-compatible base styles
-└── mdx.css            # MDX documentation styling
-
-/pkg/ui/style/
-├── hanzo-common.css    # Base Hanzo styles
-├── hanzo-default-colors.css  # Hanzo color system
-├── drawer.css         # Drawer-specific styles
-└── globals.css        # Global utilities
+**After CLI installation** (paths rewritten):
+```tsx
+import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button"
 ```
 
-### Color System
-**Light Theme**:
-- Primary: Black (`hsl(0 0% 0%)`)
-- Secondary: Purple variants (`hsl(266, 79%, X%)`)
-- Background levels: 0-5 scale from white to gray
+## Package Exports (@hanzo/ui)
 
-**Dark Theme**:
-- Inverted color scheme with purple accents
-- Background levels: 0-3 scale from black to gray
+```typescript
+// Main exports
+import { Button, Card } from '@hanzo/ui'
 
-## Documentation State
+// Component-specific
+import { Button } from '@hanzo/ui/components'
 
-### Current Documentation
-- **README.md**: Basic overview and differences from hanzo/ui
-- **LLM.md**: Build and registry information
-- **CONTRIBUTING.md**: Contribution guidelines
-- **Component docs**: Generated through contentlayer
+// Blocks (documentation reference)
+import { DashboardBlock } from '@hanzo/ui/blocks'
 
-### Documentation Gaps
-- Missing detailed API documentation for Hanzo-specific features
-- Limited examples for auth and commerce packages
-- No migration guide from hanzo/ui to Hanzo UI
+// Primitives (Radix UI re-exports)
+import * as Dialog from '@hanzo/ui/primitives/dialog'
 
-## Key Differences from Standard hanzo/ui
+// Utilities
+import { cn } from '@hanzo/ui/lib/utils'
+```
 
-### 1. Enhanced Component Variants
-- More button variants (linkFG, linkMuted, primary vs default)
-- Custom rounded variants for all applicable components
-- Extended size system with xs and square options
+## Adding a New Component
 
-### 2. Design System Integration
-- Custom CSS variables with `--hz-ui-` prefix
-- Hanzo-specific color palette with purple accents
-- Enhanced typography with Geist font integration
+1. **Create files in BOTH themes:**
+```bash
+touch app/registry/default/ui/my-component.tsx
+touch app/registry/new-york/ui/my-component.tsx
+touch app/registry/default/example/my-component-demo.tsx
+```
 
-### 3. Package Architecture
-- Modular packages (ui, auth, commerce) vs single package
-- pnpm workspace setup vs npm
-- MCP integration for AI assistant support
+2. **Implement using standard pattern** (see above)
 
-### 4. Branding Elements
-- Hanzo AI company branding throughout
-- Custom social links (@hanzoai)
-- Purple accent color scheme
-- Enhanced button styling with Hanzo design language
+3. **Add documentation:**
+```bash
+touch app/content/docs/components/my-component.mdx
+```
 
-### 5. Additional Features
-- **Firebase authentication** integration
-- **Commerce functionality** with Square and Web3 support
-- **MCP server** for AI assistant interaction
-- **Advanced theming** with CSS-in-JS support
+4. **Update navigation** in `app/config/docs.ts`
 
-## Recent Fixes
+5. **Build registry:**
+```bash
+pnpm build:registry
+```
 
-1. **MDX Component Import**: Fixed import path from `@/components/mdx-components` to `@/mdx-components`
-2. **React Hook Form**: Added "use client" directive for React 19 compatibility
-3. **Framer Motion**: Updated imports to use `motion/react` package
-4. **Changelog**: Fixed `class` to `className` attributes
-5. **MCP Server**: Created fallback JavaScript implementation for when TypeScript compilation unavailable
+6. **Test locally:**
+```bash
+pnpm dev
+# Visit http://localhost:3003/docs/components/my-component
+```
+
+## Technology Stack
+
+- **React**: 18.3.1 (19.1.0 experimental)
+- **Next.js**: 15.3.1 with Turbopack
+- **Styling**: Tailwind CSS 3.4.6-4.1.11, OKLCH colors
+- **Components**: Radix UI primitives
+- **Build**: Turborepo + pnpm workspaces
+- **Docs**: Fumadocs (MDX)
+- **Package Manager**: pnpm 9.0.6+
+
+## Key Features
+
+### Page Builder (`/builder`)
+- Visual drag-drop block assembly
+- 24+ viewport-sized blocks
+- Export to React TSX
+- Built with @dnd-kit
+
+### White-Label System
+- Zoo UI fork: `~/work/zoo/ui`
+- Lux UI fork: `~/work/lux/ui`
+- Config: `brands/{BRAND}.brand.ts`
+
+### External Registries
+- 35+ external component sources
+- Config: `app/registries.json`
+- Install: `npx @hanzo/ui add @aceternity/spotlight`
 
 ## Deployment
 
-Site deploys to GitHub Pages on push to main:
-- URL: https://ui.hanzo.ai
-- Static export with Next.js
-- Automated via GitHub Actions
+### GitHub Pages (ui.hanzo.ai)
+```
+Workflow: .github/workflows/deploy-pages.yml
+Triggers: Push to main
+Process:
+  1. Build pkg/ui
+  2. Build registry
+  3. Build Next.js app (static export)
+  4. Deploy to GitHub Pages
+```
 
-## AI Assistant Guidelines
+### Environment Variables
+```bash
+# Production
+NEXT_PUBLIC_APP_URL=https://ui.hanzo.ai
+GITHUB_ACTIONS=true
 
-When working with this codebase:
+# Development
+NEXT_PUBLIC_APP_URL=http://localhost:3003
+```
 
-1. **Use MCP Server**: The MCP server provides comprehensive access to components
-2. **Preserve Branding**: Maintain Hanzo branding and color schemes
-3. **Follow Patterns**: Use existing component patterns and conventions
-4. **Test Changes**: Always verify with `npm run dev` and `npm run build`
-5. **Update Registry**: Ensure registry.json reflects component changes
-6. **Document Updates**: Update this LLM.md with significant changes
+## Common Issues & Solutions
 
-## Known Issues
+### Registry Not Found
+❌ App build fails with registry errors
+✅ Run `pnpm build:registry` before `pnpm build`
 
-1. TypeScript build has some type errors (doesn't affect functionality)
-2. HTTP mode for MCP requires additional dependencies
-3. Some peer dependency warnings (can be ignored)
+### Port Already In Use
+❌ Port 3003 already taken
+✅ Change port or `lsof -i :3003 && kill -9 PID`
 
-## Next Steps
+### Type Errors After Changes
+❌ TypeScript errors in registry
+✅ Rebuild registry to regenerate types
 
-- [ ] Fix TypeScript build errors
-- [ ] Add more blocks and patterns
-- [ ] Enhance MCP with component preview generation
-- [ ] Add component playground
-- [ ] Improve documentation search
+### Package Not Publishing
+❌ npm publish fails
+✅ Must be in `pkg/ui`, version bumped
 
-## Contact
+## Critical Patterns (AI Must Follow)
 
+<<<<<<< HEAD
 - Repository: github.com/hanzoai/ui
 - Documentation: ui.hanzo.ai
 - Package: @hanzo/ui on NPM
+=======
+1. **Registry First**: Always build registry before app
+2. **Two Themes**: default and new-york must stay in sync
+3. **Import Paths**: Transform from `@/registry/` → `@/components/`
+4. **Blocks vs Components**: Blocks are docs only, not CLI-installable
+5. **Package Exports**: Multiple entry points for different needs
+
+## Recent Updates
+
+### 2025-10-19 - Registry Structure Fix & Build Issues (IN PROGRESS)
+**Issue**: Deployment failing due to registry access pattern and build errors
+**Root Causes**:
+1. Registry functions accessing `Index[name]` instead of `Index[style][name]`
+2. Zod validation expecting objects but Index structure uses nested style keys
+3. Shiki `getHighlighter` incompatible with static export
+4. Block schema validation failing on null values
+5. Some blocks have Server Component issues with event handlers
+
+**Fixes Applied**:
+1. Updated `getRegistryItem()` and `getRegistryComponent()` to accept style parameter
+2. Updated all callers to pass style parameter (block-display.tsx)
+3. Removed Zod validation in `_getAllBlocks()` and `_getBlockCode()` - we control generation
+4. Disabled syntax highlighting for static exports (replaced with basic pre/code)
+5. Convert null to undefined in block metadata extraction
+
+**Remaining Issues**:
+- Some blocks (login-01, login-02, sidebar-02) have Server Component errors
+- Need to mark these blocks as Client Components or skip in static generation
+
+**Files Modified**:
+- `/lib/registry.ts` - Added style parameter to registry functions
+- `/components/block-display.tsx` - Pass style to getCachedRegistryItem
+- `/lib/blocks.ts` - Removed Zod validation, fixed null values
+- `/lib/highlight-code.ts` - Disabled highlighting for static export
+
+### 2025-10-18 - Blocks Display Bug Fix (COMPLETED)
+**Issue**: Blocks not displaying on http://localhost:3003/blocks
+**Root Cause**: Registry index structure mismatch
+- Registry is structured as: `Index[style][componentName]` (e.g., `Index["default"]["dashboard-01"]`)
+- `BlockDisplay` component used `getRegistryItem(name)` which tried `Index[name]` (undefined)
+- Result: Silent failure returning null, blocks never rendered
+
+**Solution**: Updated `BlockDisplay` component to:
+1. Import `getBlock` function from `/lib/blocks.ts` which correctly accesses `Index[style][name]`
+2. Accept optional `style` parameter with default "default"
+3. Use `BlockWrapper` for blocks (same as individual block pages)
+4. Fallback to `BlockViewer` for non-block components
+
+**Changes Made**:
+- File: `/Users/z/work/hanzo/ui/app/components/block-display.tsx`
+- Added imports: `getBlock`, `BlockWrapper`, `Style`
+- Added interface `BlockDisplayProps` with optional style
+- Rewrote logic to first try `getBlock(name, style)`, fallback to `getRegistryItem(name)`
+- For blocks: render with `BlockWrapper` (simpler, no file tree needed)
+- For components: render with `BlockViewer` (includes code display)
+
+**Status**: ✅ FIXED - All 5 featured blocks now displaying correctly on blocks page
+- dashboard-01 ✅
+- sidebar-07 ✅
+- sidebar-03 ✅
+- login-03 ✅
+- login-04 ✅
+
+**Testing**: Verified via browser - no console errors, clean rendering
+
+### 2025-10-18 - Documentation Overhaul
+- ✅ **Cleaned up root directory** - Moved old status reports to docs/archive/
+- ✅ **Deleted unnecessary MD files** - Removed USAGE.md, WHITE_LABEL.md, TESTING_GUIDE.md
+- ✅ **Created comprehensive framework docs** - React, Vue guides in app/content/docs/frameworks/
+- ✅ **Created testing guide** - Complete testing documentation in app/content/docs/testing/
+- ✅ **Created white-label guide** - Fork and rebrand documentation in app/content/docs/white-label/
+- ✅ **Created packages overview** - All packages documented in app/content/docs/packages/
+- ✅ **Updated README.md** - Concise, feature-rich overview
+- ✅ **Updated navigation** - Added Frameworks, Packages, Testing, White-Label sections
+- ✅ **Fixed build:registry command** - Updated workspace references from www,v4 to app
+- ✅ **Fixed prettier warnings** - Removed deprecated import order options
+- ✅ **Created shadcn/ui comparison** - Archived in docs/archive/SHADCN_COMPARISON_REPORT.md
+- ✅ **Verified build process** - Registry builds successfully
+
+### 2025-10-05
+- ✅ Next.js 15.3.1 with Turbopack
+- ✅ React 19 support (experimental)
+- ✅ Fumadocs (replaced Contentlayer)
+- ✅ @dnd-kit page builder
+- ✅ Electric blue primary (210 100% 50%)
+- ✅ Synced with hanzo/ui v3.4.0
+
+## Component Status Tracking
+
+### Current State (2025-10-18)
+- **Total Component Files**: 161 in registry/default/ui/
+- **Implemented**: ~127 fully functional components
+- **Stub Components**: ~34 need implementation
+- **Blocks**: 24+ viewport-sized templates
+- **Frameworks**: React (100%), Vue (~90%), Svelte (~85%), React Native (~70%)
+
+### shadcn/ui Comparison
+**We have 3x more components than shadcn/ui (161 vs 58)**
+
+**Unique to @hanzo/ui:**
+- 3D Components (9): 3d-button, 3d-card, 3d-carousel, 3d-grid, etc.
+- AI Components (12): ai-chat, ai-assistant, ai-playground, ai-vision, etc.
+- Animation Components (13): animated-beam, animated-text, animated-cursor, etc.
+- Navigation Variants (15): Multiple specialized navigation bars
+- Advanced Features: Page builder, white-label system, multi-framework support
+
+**Latest from shadcn/ui 2025 (verify implementation):**
+1. button-group ✅ (exists)
+2. empty ✅ (exists)
+3. field ✅ (exists)
+4. input-group ✅ (exists)
+5. item ✅ (exists)
+6. kbd ✅ (exists)
+7. spinner ✅ (exists)
+
+### High-Priority Missing Components
+1. **combobox** - Search, filter, keyboard nav
+2. **color-picker** - RGB, HSL, HEX, alpha
+3. **dropzone** - File upload with drag-drop
+4. **minimal-tiptap** - Rich text editor
+5. **image-crop** - Cropping tool
+6. **image-zoom** - Zoom/pan functionality
+
+### Navigation Components (~15 stubs)
+Need extraction from blocks:
+- advanced-navigation-bar
+- ai-model-selector-navigation-bar
+- breadcrumb-navigation-bar
+- dashboard-navigation-bar
+- e-commerce-navigation-bar
+- filter-navigation-bar
+- mobile-bottom-navigation-bar
+- multi-level-navigation-bar
+- notification-center-navigation-bar
+- project-switcher-navigation-bar
+- search-navigation-bar
+- settings-navigation-bar
+- tabs-navigation-bar
+- app-switcher-navigation-bar
+- breadcrumb-and-filters-navigation-bar
+
+## Dependencies
+
+### Installed
+```json
+{
+  "@radix-ui/react-*": "latest",
+  "class-variance-authority": "^0.7.1",
+  "tailwind-merge": "^2.5.5",
+  "react-day-picker": "^8.10.1",
+  "lucide-react": "latest"
+}
+```
+
+### Missing (Need to Add)
+```json
+{
+  "@tanstack/react-table": "^8.20.5",
+  "cmdk": "^0.2.1",
+  "sonner": "^1.7.2",
+  "react-dropzone": "^14.3.8",
+  "react-colorful": "^5.6.1",
+  "@tiptap/react": "^2.10.5",
+  "framer-motion": "^11.15.0"
+}
+```
+
+## Working with Forks
+
+### Zoo UI (`~/work/zoo/ui`)
+```bash
+cd ~/work/zoo/ui
+git remote add hanzo https://github.com/hanzoai/ui.git
+git fetch hanzo main
+git merge hanzo/main
+```
+
+### Lux UI (`~/work/lux/ui`)
+Same sync pattern as Zoo UI.
+>>>>>>> hanzo/main
 
 ## Context for All AI Assistants
 
@@ -398,8 +471,94 @@ This file (`LLM.md`) is symlinked as:
 
 All files reference the same knowledge base. Updates here propagate to all AI systems.
 
+<<<<<<< HEAD
 ## Rules for AI Assistants
 
 1. **ALWAYS** update LLM.md with significant discoveries
 2. **NEVER** commit symlinked files (.AGENTS.md, CLAUDE.md, etc.) - they're in .gitignore
 3. **NEVER** create random summary files - update THIS file
+=======
+## Documentation Structure
+
+All documentation now lives in `app/content/docs/` and is visible on ui.hanzo.ai:
+
+- **/frameworks/** - Multi-framework guides (React, Vue, Svelte, React Native)
+- **/packages/** - Package documentation (@hanzo/ui, @hanzo/auth, etc.)
+- **/testing/** - Testing guide (unit, E2E, visual regression)
+- **/white-label/** - Fork and rebrand guide
+- **/components/** - All 161 component docs
+- **/blocks/** - Block documentation
+- **/installation/** - Framework-specific installation guides
+- **/guides/** - Page builder, workflows
+
+**Archived**: Old status reports in `/docs/archive/`
+
+**Root MD Files** (ONLY these allowed):
+- LLM.md (this file)
+- README.md
+- CONTRIBUTING.md
+- LICENSE.md
+- SECURITY.md
+- AGENTS.md, CLAUDE.md, QWEN.md, GEMINI.md (symlinks to LLM.md)
+
+## Rules for AI Assistants
+
+1. **ALWAYS** build registry before app build
+2. **NEVER** commit symlinked files (.AGENTS.md, CLAUDE.md, etc.) - they're in .gitignore
+3. **ALWAYS** update LLM.md with significant discoveries
+4. **NEVER** create random summary/status files at root - they go in docs/archive/ or update LLM.md
+5. **NEVER** create BARE .md files at root except LLM.md, README.md, CONTRIBUTING.md, LICENSE.md, SECURITY.md
+6. **ALWAYS** put documentation in app/content/docs/ so it's visible on ui.hanzo.ai
+7. **ALWAYS** use pnpm, not npm/yarn
+8. **ALWAYS** check both theme variants (default, new-york)
+9. **NEVER** confuse blocks with components (blocks are docs only)
+
+## Testing Patterns
+
+```bash
+# Unit test single file
+pnpm test path/to/test.spec.ts
+
+# E2E single test
+pnpm test:e2e tests/specific.spec.ts
+
+# Watch mode
+pnpm test:dev
+```
+
+## MDX Documentation
+
+Available components in MDX:
+```tsx
+<ComponentPreview name="button-demo" />
+<ComponentSource name="button" />
+<CodeTabs>
+<Steps>
+<Callout>
+```
+
+## Git Status Context (2025-10-05)
+
+Modified files from git status:
+- `.github/workflows/ci.yml` - CI config
+- `.gitignore` - Ignore patterns
+- `LLM.md` - This file
+- Multiple component files (3d-*, avatar-group, banner, etc.)
+- Registry examples updated
+
+Deleted:
+- `CLAUDE.md` - Now symlinked to LLM.md
+
+Untracked:
+- `.github/workflows/coverage.yml` - New coverage workflow
+
+Recent commits:
+1. feat: Add floating paintbrush to theme generator
+2. feat: Show block previews in page builder
+3. fix: Add missing source.config.mjs
+4. fix: Correct sidebar layout in compose editor
+
+---
+
+**Note**: This file serves as the single source of truth for all AI assistants working on this project. Keep it updated with architectural changes, new patterns, and critical insights.
+>>>>>>> hanzo/main

@@ -83,7 +83,7 @@ export default defineConfig({
     'vaul',
     'zod',
     'zod-to-json-schema',
-    '@lux/react-drawer',
+    '@hanzo/react-drawer',
 
     // Optional/missing dependencies
     'rehype-katex',

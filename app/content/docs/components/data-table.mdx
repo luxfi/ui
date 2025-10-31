@@ -42,7 +42,7 @@ This guide will show you how to use [TanStack Table](https://tanstack.com/table)
 1. Add the `<Table />` component to your project:
 
 ```bash
-npx hanzo-ui@latest add table
+npx @hanzo/ui@latest add table
 ```
 
 2. Add `tanstack/react-table` dependency:
@@ -246,7 +246,7 @@ export function DataTable<TData, TValue>({
 Finally, we'll render our table in our page component.
 
 ```tsx showLineNumbers title="app/payments/page.tsx" {22}
-import { Payment, columns } from "./columns"
+import { columns, Payment } from "./columns"
 import { DataTable } from "./data-table"
 
 async function getData(): Promise<Payment[]> {

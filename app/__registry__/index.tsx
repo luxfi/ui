@@ -214,6 +214,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "field": {
+      name: "field",
+      type: "components:ui",
+      registryDependencies: ["label","separator"],
+      component: React.lazy(() => import("@/registry/default/ui/field")),
+      source: "",
+      files: ["registry/default/ui/field.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "hover-card": {
       name: "hover-card",
       type: "components:ui",
@@ -456,6 +467,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "terminal": {
+      name: "terminal",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/terminal")),
+      source: "",
+      files: ["registry/default/ui/terminal.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "toast": {
       name: "toast",
       type: "components:ui",
@@ -496,6 +518,1073 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/default/ui/tooltip")),
       source: "",
       files: ["registry/default/ui/tooltip.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-playground": {
+      name: "ai-playground",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ai/ai-playground")),
+      source: "",
+      files: ["registry/default/ui/ai-playground.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-chat": {
+      name: "ai-chat",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ai/ai-chat")),
+      source: "",
+      files: ["registry/default/ui/ai-chat.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-agents": {
+      name: "ai-agents",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ai/ai-agents")),
+      source: "",
+      files: ["registry/default/ui/ai-agents.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-vision": {
+      name: "ai-vision",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ai/ai-vision")),
+      source: "",
+      files: ["registry/default/ui/ai-vision.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-voice": {
+      name: "ai-voice",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ai/ai-voice")),
+      source: "",
+      files: ["registry/default/ui/ai-voice.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-code": {
+      name: "ai-code",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ai/ai-code")),
+      source: "",
+      files: ["registry/default/ui/ai-code.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-assistant": {
+      name: "ai-assistant",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ai/ai-assistant")),
+      source: "",
+      files: ["registry/default/ui/ai-assistant.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-tools": {
+      name: "ai-tools",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ai/ai-tools")),
+      source: "",
+      files: ["registry/default/ui/ai-tools.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-block": {
+      name: "code-block",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/code/code-block")),
+      source: "",
+      files: ["registry/default/ui/code-block.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-editor": {
+      name: "code-editor",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/code/code-editor")),
+      source: "",
+      files: ["registry/default/ui/code-editor.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-compare": {
+      name: "code-compare",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/code/code-compare")),
+      source: "",
+      files: ["registry/default/ui/code-compare.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-diff": {
+      name: "code-diff",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/code/code-diff")),
+      source: "",
+      files: ["registry/default/ui/code-diff.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-explorer": {
+      name: "code-explorer",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/code/code-explorer")),
+      source: "",
+      files: ["registry/default/ui/code-explorer.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-preview": {
+      name: "code-preview",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/code/code-preview")),
+      source: "",
+      files: ["registry/default/ui/code-preview.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-snippet": {
+      name: "code-snippet",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/code/code-snippet")),
+      source: "",
+      files: ["registry/default/ui/code-snippet.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-terminal": {
+      name: "code-terminal",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/code/code-terminal")),
+      source: "",
+      files: ["registry/default/ui/code-terminal.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "kanban": {
+      name: "kanban",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/kanban")),
+      source: "",
+      files: ["registry/default/ui/kanban.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "list": {
+      name: "list",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/list")),
+      source: "",
+      files: ["registry/default/ui/list.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "table": {
+      name: "table",
+      type: "components:ui",
+      registryDependencies: ["checkbox"],
+      component: React.lazy(() => import("@/registry/default/ui/table")),
+      source: "",
+      files: ["registry/default/ui/table.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "android": {
+      name: "android",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/android")),
+      source: "",
+      files: ["registry/default/ui/android.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "iphone-15-pro": {
+      name: "iphone-15-pro",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/iphone-15-pro")),
+      source: "",
+      files: ["registry/default/ui/iphone-15-pro.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "safari": {
+      name: "safari",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/safari")),
+      source: "",
+      files: ["registry/default/ui/safari.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "dock": {
+      name: "dock",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/dock")),
+      source: "",
+      files: ["registry/default/ui/dock.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "limelight-nav": {
+      name: "limelight-nav",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/limelight-nav")),
+      source: "",
+      files: ["registry/default/ui/limelight-nav.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "macos-dock": {
+      name: "macos-dock",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/macos-dock")),
+      source: "",
+      files: ["registry/default/ui/macos-dock.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "menu-dock": {
+      name: "menu-dock",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/menu-dock")),
+      source: "",
+      files: ["registry/default/ui/menu-dock.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "message-dock": {
+      name: "message-dock",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/message-dock")),
+      source: "",
+      files: ["registry/default/ui/message-dock.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "credit-card": {
+      name: "credit-card",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/credit-card")),
+      source: "",
+      files: ["registry/default/ui/credit-card.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ticker": {
+      name: "ticker",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/ticker")),
+      source: "",
+      files: ["registry/default/ui/ticker.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "choicebox": {
+      name: "choicebox",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/choicebox")),
+      source: "",
+      files: ["registry/default/ui/choicebox.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "color-picker": {
+      name: "color-picker",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/color-picker")),
+      source: "",
+      files: ["registry/default/ui/color-picker.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "combobox": {
+      name: "combobox",
+      type: "components:ui",
+      registryDependencies: ["command"],
+      component: React.lazy(() => import("@/registry/default/ui/combobox")),
+      source: "",
+      files: ["registry/default/ui/combobox.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "dropzone": {
+      name: "dropzone",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/dropzone")),
+      source: "",
+      files: ["registry/default/ui/dropzone.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "editor": {
+      name: "editor",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/editor")),
+      source: "",
+      files: ["registry/default/ui/editor.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "minimal-tiptap": {
+      name: "minimal-tiptap",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/minimal-tiptap")),
+      source: "",
+      files: ["registry/default/ui/minimal-tiptap.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "image-crop": {
+      name: "image-crop",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/image-crop")),
+      source: "",
+      files: ["registry/default/ui/image-crop.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "image-zoom": {
+      name: "image-zoom",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/image-zoom")),
+      source: "",
+      files: ["registry/default/ui/image-zoom.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-button": {
+      name: "3d-button",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/3d/3d-button")),
+      source: "",
+      files: ["registry/default/ui/3d-button.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-card": {
+      name: "3d-card",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/3d/3d-card")),
+      source: "",
+      files: ["registry/default/ui/3d-card.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-carousel": {
+      name: "3d-carousel",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/3d/3d-carousel")),
+      source: "",
+      files: ["registry/default/ui/3d-carousel.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-grid": {
+      name: "3d-grid",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/3d/3d-grid")),
+      source: "",
+      files: ["registry/default/ui/3d-grid.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-model-viewer": {
+      name: "3d-model-viewer",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/3d/3d-model-viewer")),
+      source: "",
+      files: ["registry/default/ui/3d-model-viewer.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-scene": {
+      name: "3d-scene",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/3d/3d-scene")),
+      source: "",
+      files: ["registry/default/ui/3d-scene.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-text": {
+      name: "3d-text",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/3d/3d-text")),
+      source: "",
+      files: ["registry/default/ui/3d-text.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-background": {
+      name: "animated-background",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/animation/animated-background")),
+      source: "",
+      files: ["registry/default/ui/animated-background.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-cursor": {
+      name: "animated-cursor",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/animation/animated-cursor")),
+      source: "",
+      files: ["registry/default/ui/animated-cursor.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-icon": {
+      name: "animated-icon",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/animation/animated-icon")),
+      source: "",
+      files: ["registry/default/ui/animated-icon.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-list": {
+      name: "animated-list",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/animation/animated-list")),
+      source: "",
+      files: ["registry/default/ui/animated-list.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-number": {
+      name: "animated-number",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/animation/animated-number")),
+      source: "",
+      files: ["registry/default/ui/animated-number.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-text": {
+      name: "animated-text",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/animation/animated-text")),
+      source: "",
+      files: ["registry/default/ui/animated-text.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "apple-cards-carousel": {
+      name: "apple-cards-carousel",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/animation/apple-cards-carousel")),
+      source: "",
+      files: ["registry/default/ui/apple-cards-carousel.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "grid-pattern": {
+      name: "grid-pattern",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/animation/grid-pattern")),
+      source: "",
+      files: ["registry/default/ui/grid-pattern.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "particles-background": {
+      name: "particles-background",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/animation/particles-background")),
+      source: "",
+      files: ["registry/default/ui/particles-background.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "pulse-animation": {
+      name: "pulse-animation",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/animation/pulse-animation")),
+      source: "",
+      files: ["registry/default/ui/pulse-animation.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "reveal-animation": {
+      name: "reveal-animation",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/animation/reveal-animation")),
+      source: "",
+      files: ["registry/default/ui/reveal-animation.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "timeline": {
+      name: "timeline",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/animation/timeline")),
+      source: "",
+      files: ["registry/default/ui/timeline.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "announcement": {
+      name: "announcement",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/announcement")),
+      source: "",
+      files: ["registry/default/ui/announcement.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "banner": {
+      name: "banner",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/banner")),
+      source: "",
+      files: ["registry/default/ui/banner.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "cursor": {
+      name: "cursor",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/cursor")),
+      source: "",
+      files: ["registry/default/ui/cursor.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "dialog-stack": {
+      name: "dialog-stack",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/dialog-stack")),
+      source: "",
+      files: ["registry/default/ui/dialog-stack.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "marquee": {
+      name: "marquee",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/marquee")),
+      source: "",
+      files: ["registry/default/ui/marquee.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "avatar-group": {
+      name: "avatar-group",
+      type: "components:ui",
+      registryDependencies: ["avatar"],
+      component: React.lazy(() => import("@/registry/default/ui/avatar-group")),
+      source: "",
+      files: ["registry/default/ui/avatar-group.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "pill": {
+      name: "pill",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/pill")),
+      source: "",
+      files: ["registry/default/ui/pill.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "tags": {
+      name: "tags",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/tags")),
+      source: "",
+      files: ["registry/default/ui/tags.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "simple-navigation-bar": {
+      name: "simple-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/simple-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/simple-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "advanced-navigation-bar": {
+      name: "advanced-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/advanced-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/advanced-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "underline-navigation-bar": {
+      name: "underline-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/underline-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/underline-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "e-commerce-navigation-bar": {
+      name: "e-commerce-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/e-commerce-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/e-commerce-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "dashboard-navigation-bar": {
+      name: "dashboard-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/dashboard-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/dashboard-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "icon-navigation-bar": {
+      name: "icon-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/icon-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/icon-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "breadcrumb-navigation-bar": {
+      name: "breadcrumb-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/breadcrumb-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/breadcrumb-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "two-tier-navigation-bar": {
+      name: "two-tier-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/two-tier-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/two-tier-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "communication-navigation-bar": {
+      name: "communication-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/communication-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/communication-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "centered-logo-navigation-bar": {
+      name: "centered-logo-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/centered-logo-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/centered-logo-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "context-switcher-navigation-bar": {
+      name: "context-switcher-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/context-switcher-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/context-switcher-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "team-switcher-navigation-bar": {
+      name: "team-switcher-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/team-switcher-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/team-switcher-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-model-selector-navigation-bar": {
+      name: "ai-model-selector-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/ai-model-selector-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/ai-model-selector-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "search-and-toggle-navigation-bar": {
+      name: "search-and-toggle-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/search-and-toggle-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/search-and-toggle-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "breadcrumb-and-filters-navigation-bar": {
+      name: "breadcrumb-and-filters-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/breadcrumb-and-filters-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/breadcrumb-and-filters-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "app-switcher-navigation-bar": {
+      name: "app-switcher-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/app-switcher-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/app-switcher-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "collaboration-navigation-bar": {
+      name: "collaboration-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/collaboration-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/collaboration-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "status-dashboard-navigation-bar": {
+      name: "status-dashboard-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/status-dashboard-navigation-bar")),
+      source: "",
+      files: ["registry/default/ui/navigation/status-dashboard-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-beam": {
+      name: "animated-beam",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/animated-beam")),
+      source: "",
+      files: ["registry/default/ui/animated-beam.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "magnetic": {
+      name: "magnetic",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/magnetic")),
+      source: "",
+      files: ["registry/default/ui/magnetic.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "motion-highlight": {
+      name: "motion-highlight",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/motion-highlight")),
+      source: "",
+      files: ["registry/default/ui/motion-highlight.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "pixel-image": {
+      name: "pixel-image",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/pixel-image")),
+      source: "",
+      files: ["registry/default/ui/pixel-image.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "calendar": {
+      name: "calendar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/calendar")),
+      source: "",
+      files: ["registry/default/ui/calendar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "mini-calendar": {
+      name: "mini-calendar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/mini-calendar")),
+      source: "",
+      files: ["registry/default/ui/mini-calendar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "relative-time": {
+      name: "relative-time",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/relative-time")),
+      source: "",
+      files: ["registry/default/ui/relative-time.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "comparison": {
+      name: "comparison",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/comparison")),
+      source: "",
+      files: ["registry/default/ui/comparison.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "kbd": {
+      name: "kbd",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/kbd")),
+      source: "",
+      files: ["registry/default/ui/kbd.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "qr-code": {
+      name: "qr-code",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/qr-code")),
+      source: "",
+      files: ["registry/default/ui/qr-code.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "status": {
+      name: "status",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/status")),
+      source: "",
+      files: ["registry/default/ui/status.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "terminal": {
+      name: "terminal",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/terminal")),
+      source: "",
+      files: ["registry/default/ui/terminal.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "video-player": {
+      name: "video-player",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/video-player")),
+      source: "",
+      files: ["registry/default/ui/video-player.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "music-player": {
+      name: "music-player",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/music-player")),
+      source: "",
+      files: ["registry/default/ui/music-player.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "dock": {
+      name: "dock",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/default/ui/dock")),
+      source: "",
+      files: ["registry/default/ui/dock.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -1699,6 +2788,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "terminal-demo": {
+      name: "terminal-demo",
+      type: "components:example",
+      registryDependencies: ["terminal"],
+      component: React.lazy(() => import("@/registry/default/example/terminal-demo")),
+      source: "",
+      files: ["registry/default/example/terminal-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "toast-demo": {
       name: "toast-demo",
       type: "components:example",
@@ -2073,6 +3173,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "3d-card-demo": {
+      name: "3d-card-demo",
+      type: "components:example",
+      registryDependencies: ["3d-card"],
+      component: React.lazy(() => import("@/registry/default/example/3d-card-demo")),
+      source: "",
+      files: ["registry/default/example/3d-card-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "dashboard-05": {
       name: "dashboard-05",
       type: "components:block",
@@ -2084,7 +3195,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-05-chunk-0",
-        description: "A card for an orders dashboard with a description and a button to create a new order.",
+        description: "dashboard-05-chunk-0",
         component: React.lazy(() => import("@/registry/default/block/dashboard-05-chunk-0")),
         file: "registry/default/block/dashboard-05-chunk-0.tsx",
         container: {
@@ -2092,7 +3203,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-05-chunk-1",
-        description: "A stats card showing this week's total sales in USD, the percentage difference from last week, and a progress bar.",
+        description: "dashboard-05-chunk-1",
         component: React.lazy(() => import("@/registry/default/block/dashboard-05-chunk-1")),
         file: "registry/default/block/dashboard-05-chunk-1.tsx",
         container: {
@@ -2100,7 +3211,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-05-chunk-2",
-        description: "A stats card showing this month's total sales in USD, the percentage difference from last month, and a progress bar.",
+        description: "dashboard-05-chunk-2",
         component: React.lazy(() => import("@/registry/default/block/dashboard-05-chunk-2")),
         file: "registry/default/block/dashboard-05-chunk-2.tsx",
         container: {
@@ -2108,7 +3219,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-05-chunk-3",
-        description: "A table of recent orders showing the following columns: Customer, Type, Status, Date, and Amount.",
+        description: "dashboard-05-chunk-3",
         component: React.lazy(() => import("@/registry/default/block/dashboard-05-chunk-3")),
         file: "registry/default/block/dashboard-05-chunk-3.tsx",
         container: {
@@ -2116,7 +3227,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-05-chunk-4",
-        description: "An order details card with order details, shipping information, customer information and payment information.",
+        description: "dashboard-05-chunk-4",
         component: React.lazy(() => import("@/registry/default/block/dashboard-05-chunk-4")),
         file: "registry/default/block/dashboard-05-chunk-4.tsx",
         container: {
@@ -2135,7 +3246,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-06-chunk-0",
-        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
+        description: "dashboard-06-chunk-0",
         component: React.lazy(() => import("@/registry/default/block/dashboard-06-chunk-0")),
         file: "registry/default/block/dashboard-06-chunk-0.tsx",
         container: {
@@ -2154,7 +3265,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-07-chunk-0",
-        description: "A card with a form to edit the product details",
+        description: "dashboard-07-chunk-0",
         component: React.lazy(() => import("@/registry/default/block/dashboard-07-chunk-0")),
         file: "registry/default/block/dashboard-07-chunk-0.tsx",
         container: {
@@ -2162,7 +3273,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-07-chunk-1",
-        description: "A card with a form to edit the product stock and variants",
+        description: "dashboard-07-chunk-1",
         component: React.lazy(() => import("@/registry/default/block/dashboard-07-chunk-1")),
         file: "registry/default/block/dashboard-07-chunk-1.tsx",
         container: {
@@ -2170,7 +3281,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-07-chunk-2",
-        description: "A card with a form to edit the product category and subcategory",
+        description: "dashboard-07-chunk-2",
         component: React.lazy(() => import("@/registry/default/block/dashboard-07-chunk-2")),
         file: "registry/default/block/dashboard-07-chunk-2.tsx",
         container: {
@@ -2178,7 +3289,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-07-chunk-3",
-        description: "A card with a form to edit the product status",
+        description: "dashboard-07-chunk-3",
         component: React.lazy(() => import("@/registry/default/block/dashboard-07-chunk-3")),
         file: "registry/default/block/dashboard-07-chunk-3.tsx",
         container: {
@@ -2186,7 +3297,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-07-chunk-4",
-        description: "A card with a form to upload product images",
+        description: "dashboard-07-chunk-4",
         component: React.lazy(() => import("@/registry/default/block/dashboard-07-chunk-4")),
         file: "registry/default/block/dashboard-07-chunk-4.tsx",
         container: {
@@ -2194,7 +3305,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-07-chunk-5",
-        description: "A card with a call to action to archive the product",
+        description: "dashboard-07-chunk-5",
         component: React.lazy(() => import("@/registry/default/block/dashboard-07-chunk-5")),
         file: "registry/default/block/dashboard-07-chunk-5.tsx",
         container: {
@@ -2213,15 +3324,15 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-04-chunk-0",
-        description: "A sidebar navigation with links to general, security, integrations, support, organizations, and advanced settings.",
+        description: "dashboard-04-chunk-0",
         component: React.lazy(() => import("@/registry/default/block/dashboard-04-chunk-0")),
         file: "registry/default/block/dashboard-04-chunk-0.tsx",
         container: {
-          className: "chunk-container after:right-0"
+          className: "undefined"
         }
       },{
         name: "dashboard-04-chunk-1",
-        description: "A form to update the store name.",
+        description: "dashboard-04-chunk-1",
         component: React.lazy(() => import("@/registry/default/block/dashboard-04-chunk-1")),
         file: "registry/default/block/dashboard-04-chunk-1.tsx",
         container: {
@@ -2229,7 +3340,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-04-chunk-2",
-        description: "A form to update the plugins directory with a checkbox to allow administrators to change the directory.",
+        description: "dashboard-04-chunk-2",
         component: React.lazy(() => import("@/registry/default/block/dashboard-04-chunk-2")),
         file: "registry/default/block/dashboard-04-chunk-2.tsx",
         container: {
@@ -2248,7 +3359,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-03-chunk-0",
-        description: "A settings form a configuring an AI model and messages.",
+        description: "dashboard-03-chunk-0",
         component: React.lazy(() => import("@/registry/default/block/dashboard-03-chunk-0")),
         file: "registry/default/block/dashboard-03-chunk-0.tsx",
         container: {
@@ -2256,7 +3367,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-03-chunk-1",
-        description: "A form for sending a message to an AI chatbot. The form has a textarea and buttons to upload files and record audio.",
+        description: "dashboard-03-chunk-1",
         component: React.lazy(() => import("@/registry/default/block/dashboard-03-chunk-1")),
         file: "registry/default/block/dashboard-03-chunk-1.tsx",
         container: {
@@ -2275,7 +3386,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-02-chunk-0",
-        description: "A card with a call to action",
+        description: "dashboard-02-chunk-0",
         component: React.lazy(() => import("@/registry/default/block/dashboard-02-chunk-0")),
         file: "registry/default/block/dashboard-02-chunk-0.tsx",
         container: {
@@ -2283,7 +3394,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-02-chunk-1",
-        description: "An empty state showing no products with a heading, description and a call to action to add a product.",
+        description: "dashboard-02-chunk-1",
         component: React.lazy(() => import("@/registry/default/block/dashboard-02-chunk-1")),
         file: "registry/default/block/dashboard-02-chunk-1.tsx",
         container: {
@@ -2302,7 +3413,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-01-chunk-0",
-        description: "A card showing the total revenue in USD and the percentage difference from last month.",
+        description: "dashboard-01-chunk-0",
         component: React.lazy(() => import("@/registry/default/block/dashboard-01-chunk-0")),
         file: "registry/default/block/dashboard-01-chunk-0.tsx",
         container: {
@@ -2310,7 +3421,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-01-chunk-1",
-        description: "A card showing the total subscriptions and the percentage difference from last month.",
+        description: "dashboard-01-chunk-1",
         component: React.lazy(() => import("@/registry/default/block/dashboard-01-chunk-1")),
         file: "registry/default/block/dashboard-01-chunk-1.tsx",
         container: {
@@ -2318,7 +3429,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-01-chunk-2",
-        description: "A card showing the total sales and the percentage difference from last month.",
+        description: "dashboard-01-chunk-2",
         component: React.lazy(() => import("@/registry/default/block/dashboard-01-chunk-2")),
         file: "registry/default/block/dashboard-01-chunk-2.tsx",
         container: {
@@ -2326,7 +3437,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-01-chunk-3",
-        description: "A card showing the total active users and the percentage difference from last hour.",
+        description: "dashboard-01-chunk-3",
         component: React.lazy(() => import("@/registry/default/block/dashboard-01-chunk-3")),
         file: "registry/default/block/dashboard-01-chunk-3.tsx",
         container: {
@@ -2334,7 +3445,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-01-chunk-4",
-        description: "A card showing a table of recent transactions with a link to view all transactions.",
+        description: "dashboard-01-chunk-4",
         component: React.lazy(() => import("@/registry/default/block/dashboard-01-chunk-4")),
         file: "registry/default/block/dashboard-01-chunk-4.tsx",
         container: {
@@ -2342,7 +3453,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-01-chunk-5",
-        description: "A card showing a list of recent sales with customer names and email addresses.",
+        description: "dashboard-01-chunk-5",
         component: React.lazy(() => import("@/registry/default/block/dashboard-01-chunk-5")),
         file: "registry/default/block/dashboard-01-chunk-5.tsx",
         container: {
@@ -2392,6 +3503,710 @@ export const Index: Record<string, any> = {
       files: ["registry/default/block/authentication-04.tsx"],
       category: "Authentication",
       subcategory: "Login",
+      chunks: []
+    },
+    "pricing-01": {
+      name: "pricing-01",
+      type: "components:block",
+      registryDependencies: ["badge","button","card"],
+      component: React.lazy(() => import("@/registry/default/block/pricing-01")),
+      source: "__registry__/default/block/pricing-01.tsx",
+      files: ["registry/default/block/pricing-01.tsx"],
+      category: "Marketing",
+      subcategory: "Pricing",
+      chunks: []
+    },
+    "sidebar-01": {
+      name: "sidebar-01",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-01")),
+      source: "__registry__/default/block/sidebar-01.tsx",
+      files: ["registry/default/block/sidebar-01.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-02": {
+      name: "sidebar-02",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-02")),
+      source: "__registry__/default/block/sidebar-02.tsx",
+      files: ["registry/default/block/sidebar-02.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-03": {
+      name: "sidebar-03",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-03")),
+      source: "__registry__/default/block/sidebar-03.tsx",
+      files: ["registry/default/block/sidebar-03.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-04": {
+      name: "sidebar-04",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-04")),
+      source: "__registry__/default/block/sidebar-04.tsx",
+      files: ["registry/default/block/sidebar-04.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-05": {
+      name: "sidebar-05",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-05")),
+      source: "__registry__/default/block/sidebar-05.tsx",
+      files: ["registry/default/block/sidebar-05.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-06": {
+      name: "sidebar-06",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-06")),
+      source: "__registry__/default/block/sidebar-06.tsx",
+      files: ["registry/default/block/sidebar-06.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-07": {
+      name: "sidebar-07",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-07")),
+      source: "__registry__/default/block/sidebar-07.tsx",
+      files: ["registry/default/block/sidebar-07.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-08": {
+      name: "sidebar-08",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-08")),
+      source: "__registry__/default/block/sidebar-08.tsx",
+      files: ["registry/default/block/sidebar-08.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-09": {
+      name: "sidebar-09",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-09")),
+      source: "__registry__/default/block/sidebar-09.tsx",
+      files: ["registry/default/block/sidebar-09.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-10": {
+      name: "sidebar-10",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-10")),
+      source: "__registry__/default/block/sidebar-10.tsx",
+      files: ["registry/default/block/sidebar-10.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-11": {
+      name: "sidebar-11",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-11")),
+      source: "__registry__/default/block/sidebar-11.tsx",
+      files: ["registry/default/block/sidebar-11.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-12": {
+      name: "sidebar-12",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-12")),
+      source: "__registry__/default/block/sidebar-12.tsx",
+      files: ["registry/default/block/sidebar-12.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-13": {
+      name: "sidebar-13",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-13")),
+      source: "__registry__/default/block/sidebar-13.tsx",
+      files: ["registry/default/block/sidebar-13.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-14": {
+      name: "sidebar-14",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-14")),
+      source: "__registry__/default/block/sidebar-14.tsx",
+      files: ["registry/default/block/sidebar-14.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-15": {
+      name: "sidebar-15",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-15")),
+      source: "__registry__/default/block/sidebar-15.tsx",
+      files: ["registry/default/block/sidebar-15.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-16": {
+      name: "sidebar-16",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/default/block/sidebar-16")),
+      source: "__registry__/default/block/sidebar-16.tsx",
+      files: ["registry/default/block/sidebar-16.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "calendar-01": {
+      name: "calendar-01",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-01")),
+      source: "__registry__/default/block/calendar-01.tsx",
+      files: ["registry/default/block/calendar-01.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-02": {
+      name: "calendar-02",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-02")),
+      source: "__registry__/default/block/calendar-02.tsx",
+      files: ["registry/default/block/calendar-02.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-03": {
+      name: "calendar-03",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-03")),
+      source: "__registry__/default/block/calendar-03.tsx",
+      files: ["registry/default/block/calendar-03.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-04": {
+      name: "calendar-04",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-04")),
+      source: "__registry__/default/block/calendar-04.tsx",
+      files: ["registry/default/block/calendar-04.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-05": {
+      name: "calendar-05",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-05")),
+      source: "__registry__/default/block/calendar-05.tsx",
+      files: ["registry/default/block/calendar-05.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-06": {
+      name: "calendar-06",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-06")),
+      source: "__registry__/default/block/calendar-06.tsx",
+      files: ["registry/default/block/calendar-06.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-07": {
+      name: "calendar-07",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-07")),
+      source: "__registry__/default/block/calendar-07.tsx",
+      files: ["registry/default/block/calendar-07.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-08": {
+      name: "calendar-08",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-08")),
+      source: "__registry__/default/block/calendar-08.tsx",
+      files: ["registry/default/block/calendar-08.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-09": {
+      name: "calendar-09",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-09")),
+      source: "__registry__/default/block/calendar-09.tsx",
+      files: ["registry/default/block/calendar-09.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-10": {
+      name: "calendar-10",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-10")),
+      source: "__registry__/default/block/calendar-10.tsx",
+      files: ["registry/default/block/calendar-10.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-11": {
+      name: "calendar-11",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-11")),
+      source: "__registry__/default/block/calendar-11.tsx",
+      files: ["registry/default/block/calendar-11.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-12": {
+      name: "calendar-12",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-12")),
+      source: "__registry__/default/block/calendar-12.tsx",
+      files: ["registry/default/block/calendar-12.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-13": {
+      name: "calendar-13",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-13")),
+      source: "__registry__/default/block/calendar-13.tsx",
+      files: ["registry/default/block/calendar-13.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-14": {
+      name: "calendar-14",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-14")),
+      source: "__registry__/default/block/calendar-14.tsx",
+      files: ["registry/default/block/calendar-14.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-15": {
+      name: "calendar-15",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-15")),
+      source: "__registry__/default/block/calendar-15.tsx",
+      files: ["registry/default/block/calendar-15.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-16": {
+      name: "calendar-16",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-16")),
+      source: "__registry__/default/block/calendar-16.tsx",
+      files: ["registry/default/block/calendar-16.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-17": {
+      name: "calendar-17",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-17")),
+      source: "__registry__/default/block/calendar-17.tsx",
+      files: ["registry/default/block/calendar-17.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-18": {
+      name: "calendar-18",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-18")),
+      source: "__registry__/default/block/calendar-18.tsx",
+      files: ["registry/default/block/calendar-18.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-19": {
+      name: "calendar-19",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-19")),
+      source: "__registry__/default/block/calendar-19.tsx",
+      files: ["registry/default/block/calendar-19.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-20": {
+      name: "calendar-20",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-20")),
+      source: "__registry__/default/block/calendar-20.tsx",
+      files: ["registry/default/block/calendar-20.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-21": {
+      name: "calendar-21",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-21")),
+      source: "__registry__/default/block/calendar-21.tsx",
+      files: ["registry/default/block/calendar-21.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-22": {
+      name: "calendar-22",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-22")),
+      source: "__registry__/default/block/calendar-22.tsx",
+      files: ["registry/default/block/calendar-22.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-23": {
+      name: "calendar-23",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-23")),
+      source: "__registry__/default/block/calendar-23.tsx",
+      files: ["registry/default/block/calendar-23.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-24": {
+      name: "calendar-24",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-24")),
+      source: "__registry__/default/block/calendar-24.tsx",
+      files: ["registry/default/block/calendar-24.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-25": {
+      name: "calendar-25",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-25")),
+      source: "__registry__/default/block/calendar-25.tsx",
+      files: ["registry/default/block/calendar-25.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-26": {
+      name: "calendar-26",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-26")),
+      source: "__registry__/default/block/calendar-26.tsx",
+      files: ["registry/default/block/calendar-26.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-27": {
+      name: "calendar-27",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-27")),
+      source: "__registry__/default/block/calendar-27.tsx",
+      files: ["registry/default/block/calendar-27.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-28": {
+      name: "calendar-28",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-28")),
+      source: "__registry__/default/block/calendar-28.tsx",
+      files: ["registry/default/block/calendar-28.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-29": {
+      name: "calendar-29",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-29")),
+      source: "__registry__/default/block/calendar-29.tsx",
+      files: ["registry/default/block/calendar-29.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-30": {
+      name: "calendar-30",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-30")),
+      source: "__registry__/default/block/calendar-30.tsx",
+      files: ["registry/default/block/calendar-30.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-31": {
+      name: "calendar-31",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-31")),
+      source: "__registry__/default/block/calendar-31.tsx",
+      files: ["registry/default/block/calendar-31.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-32": {
+      name: "calendar-32",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/default/block/calendar-32")),
+      source: "__registry__/default/block/calendar-32.tsx",
+      files: ["registry/default/block/calendar-32.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "login-01": {
+      name: "login-01",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/login-01")),
+      source: "__registry__/default/block/login-01.tsx",
+      files: ["registry/default/block/login-01.tsx"],
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-02": {
+      name: "login-02",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/login-02")),
+      source: "__registry__/default/block/login-02.tsx",
+      files: ["registry/default/block/login-02.tsx"],
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-03": {
+      name: "login-03",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/login-03")),
+      source: "__registry__/default/block/login-03.tsx",
+      files: ["registry/default/block/login-03.tsx"],
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-04": {
+      name: "login-04",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/login-04")),
+      source: "__registry__/default/block/login-04.tsx",
+      files: ["registry/default/block/login-04.tsx"],
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-05": {
+      name: "login-05",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/login-05")),
+      source: "__registry__/default/block/login-05.tsx",
+      files: ["registry/default/block/login-05.tsx"],
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "signup-01": {
+      name: "signup-01",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/signup-01")),
+      source: "__registry__/default/block/signup-01.tsx",
+      files: ["registry/default/block/signup-01.tsx"],
+      category: "Authentication",
+      subcategory: "Signup",
+      chunks: []
+    },
+    "signup-02": {
+      name: "signup-02",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/signup-02")),
+      source: "__registry__/default/block/signup-02.tsx",
+      files: ["registry/default/block/signup-02.tsx"],
+      category: "Authentication",
+      subcategory: "Signup",
+      chunks: []
+    },
+    "signup-03": {
+      name: "signup-03",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/signup-03")),
+      source: "__registry__/default/block/signup-03.tsx",
+      files: ["registry/default/block/signup-03.tsx"],
+      category: "Authentication",
+      subcategory: "Signup",
+      chunks: []
+    },
+    "signup-04": {
+      name: "signup-04",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/signup-04")),
+      source: "__registry__/default/block/signup-04.tsx",
+      files: ["registry/default/block/signup-04.tsx"],
+      category: "Authentication",
+      subcategory: "Signup",
+      chunks: []
+    },
+    "signup-05": {
+      name: "signup-05",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/signup-05")),
+      source: "__registry__/default/block/signup-05.tsx",
+      files: ["registry/default/block/signup-05.tsx"],
+      category: "Authentication",
+      subcategory: "Signup",
+      chunks: []
+    },
+    "otp-01": {
+      name: "otp-01",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/otp-01")),
+      source: "__registry__/default/block/otp-01.tsx",
+      files: ["registry/default/block/otp-01.tsx"],
+      category: "Authentication",
+      subcategory: "OTP",
+      chunks: []
+    },
+    "otp-02": {
+      name: "otp-02",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/otp-02")),
+      source: "__registry__/default/block/otp-02.tsx",
+      files: ["registry/default/block/otp-02.tsx"],
+      category: "Authentication",
+      subcategory: "OTP",
+      chunks: []
+    },
+    "otp-03": {
+      name: "otp-03",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/otp-03")),
+      source: "__registry__/default/block/otp-03.tsx",
+      files: ["registry/default/block/otp-03.tsx"],
+      category: "Authentication",
+      subcategory: "OTP",
+      chunks: []
+    },
+    "otp-04": {
+      name: "otp-04",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/otp-04")),
+      source: "__registry__/default/block/otp-04.tsx",
+      files: ["registry/default/block/otp-04.tsx"],
+      category: "Authentication",
+      subcategory: "OTP",
+      chunks: []
+    },
+    "otp-05": {
+      name: "otp-05",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/default/block/otp-05")),
+      source: "__registry__/default/block/otp-05.tsx",
+      files: ["registry/default/block/otp-05.tsx"],
+      category: "Authentication",
+      subcategory: "OTP",
       chunks: []
     },
   },  "new-york": {
@@ -2600,6 +4415,17 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/ui/form")),
       source: "",
       files: ["registry/new-york/ui/form.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "field": {
+      name: "field",
+      type: "components:ui",
+      registryDependencies: ["label","separator"],
+      component: React.lazy(() => import("@/registry/new-york/ui/field")),
+      source: "",
+      files: ["registry/new-york/ui/field.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -2846,6 +4672,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "terminal": {
+      name: "terminal",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/terminal")),
+      source: "",
+      files: ["registry/new-york/ui/terminal.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "toast": {
       name: "toast",
       type: "components:ui",
@@ -2886,6 +4723,1073 @@ export const Index: Record<string, any> = {
       component: React.lazy(() => import("@/registry/new-york/ui/tooltip")),
       source: "",
       files: ["registry/new-york/ui/tooltip.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-playground": {
+      name: "ai-playground",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ai/ai-playground")),
+      source: "",
+      files: ["registry/new-york/ui/ai-playground.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-chat": {
+      name: "ai-chat",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ai/ai-chat")),
+      source: "",
+      files: ["registry/new-york/ui/ai-chat.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-agents": {
+      name: "ai-agents",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ai/ai-agents")),
+      source: "",
+      files: ["registry/new-york/ui/ai-agents.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-vision": {
+      name: "ai-vision",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ai/ai-vision")),
+      source: "",
+      files: ["registry/new-york/ui/ai-vision.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-voice": {
+      name: "ai-voice",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ai/ai-voice")),
+      source: "",
+      files: ["registry/new-york/ui/ai-voice.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-code": {
+      name: "ai-code",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ai/ai-code")),
+      source: "",
+      files: ["registry/new-york/ui/ai-code.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-assistant": {
+      name: "ai-assistant",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ai/ai-assistant")),
+      source: "",
+      files: ["registry/new-york/ui/ai-assistant.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-tools": {
+      name: "ai-tools",
+      type: "components:ai",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ai/ai-tools")),
+      source: "",
+      files: ["registry/new-york/ui/ai-tools.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-block": {
+      name: "code-block",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/code/code-block")),
+      source: "",
+      files: ["registry/new-york/ui/code-block.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-editor": {
+      name: "code-editor",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/code/code-editor")),
+      source: "",
+      files: ["registry/new-york/ui/code-editor.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-compare": {
+      name: "code-compare",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/code/code-compare")),
+      source: "",
+      files: ["registry/new-york/ui/code-compare.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-diff": {
+      name: "code-diff",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/code/code-diff")),
+      source: "",
+      files: ["registry/new-york/ui/code-diff.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-explorer": {
+      name: "code-explorer",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/code/code-explorer")),
+      source: "",
+      files: ["registry/new-york/ui/code-explorer.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-preview": {
+      name: "code-preview",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/code/code-preview")),
+      source: "",
+      files: ["registry/new-york/ui/code-preview.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-snippet": {
+      name: "code-snippet",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/code/code-snippet")),
+      source: "",
+      files: ["registry/new-york/ui/code-snippet.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "code-terminal": {
+      name: "code-terminal",
+      type: "components:code",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/code/code-terminal")),
+      source: "",
+      files: ["registry/new-york/ui/code-terminal.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "kanban": {
+      name: "kanban",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/kanban")),
+      source: "",
+      files: ["registry/new-york/ui/kanban.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "list": {
+      name: "list",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/list")),
+      source: "",
+      files: ["registry/new-york/ui/list.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "table": {
+      name: "table",
+      type: "components:ui",
+      registryDependencies: ["checkbox"],
+      component: React.lazy(() => import("@/registry/new-york/ui/table")),
+      source: "",
+      files: ["registry/new-york/ui/table.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "android": {
+      name: "android",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/android")),
+      source: "",
+      files: ["registry/new-york/ui/android.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "iphone-15-pro": {
+      name: "iphone-15-pro",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/iphone-15-pro")),
+      source: "",
+      files: ["registry/new-york/ui/iphone-15-pro.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "safari": {
+      name: "safari",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/safari")),
+      source: "",
+      files: ["registry/new-york/ui/safari.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "dock": {
+      name: "dock",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/dock")),
+      source: "",
+      files: ["registry/new-york/ui/dock.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "limelight-nav": {
+      name: "limelight-nav",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/limelight-nav")),
+      source: "",
+      files: ["registry/new-york/ui/limelight-nav.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "macos-dock": {
+      name: "macos-dock",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/macos-dock")),
+      source: "",
+      files: ["registry/new-york/ui/macos-dock.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "menu-dock": {
+      name: "menu-dock",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/menu-dock")),
+      source: "",
+      files: ["registry/new-york/ui/menu-dock.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "message-dock": {
+      name: "message-dock",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/message-dock")),
+      source: "",
+      files: ["registry/new-york/ui/message-dock.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "credit-card": {
+      name: "credit-card",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/credit-card")),
+      source: "",
+      files: ["registry/new-york/ui/credit-card.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ticker": {
+      name: "ticker",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/ticker")),
+      source: "",
+      files: ["registry/new-york/ui/ticker.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "choicebox": {
+      name: "choicebox",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/choicebox")),
+      source: "",
+      files: ["registry/new-york/ui/choicebox.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "color-picker": {
+      name: "color-picker",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/color-picker")),
+      source: "",
+      files: ["registry/new-york/ui/color-picker.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "combobox": {
+      name: "combobox",
+      type: "components:ui",
+      registryDependencies: ["command"],
+      component: React.lazy(() => import("@/registry/new-york/ui/combobox")),
+      source: "",
+      files: ["registry/new-york/ui/combobox.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "dropzone": {
+      name: "dropzone",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/dropzone")),
+      source: "",
+      files: ["registry/new-york/ui/dropzone.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "editor": {
+      name: "editor",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/editor")),
+      source: "",
+      files: ["registry/new-york/ui/editor.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "minimal-tiptap": {
+      name: "minimal-tiptap",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/minimal-tiptap")),
+      source: "",
+      files: ["registry/new-york/ui/minimal-tiptap.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "image-crop": {
+      name: "image-crop",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/image-crop")),
+      source: "",
+      files: ["registry/new-york/ui/image-crop.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "image-zoom": {
+      name: "image-zoom",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/image-zoom")),
+      source: "",
+      files: ["registry/new-york/ui/image-zoom.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-button": {
+      name: "3d-button",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/3d/3d-button")),
+      source: "",
+      files: ["registry/new-york/ui/3d-button.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-card": {
+      name: "3d-card",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/3d/3d-card")),
+      source: "",
+      files: ["registry/new-york/ui/3d-card.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-carousel": {
+      name: "3d-carousel",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/3d/3d-carousel")),
+      source: "",
+      files: ["registry/new-york/ui/3d-carousel.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-grid": {
+      name: "3d-grid",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/3d/3d-grid")),
+      source: "",
+      files: ["registry/new-york/ui/3d-grid.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-model-viewer": {
+      name: "3d-model-viewer",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/3d/3d-model-viewer")),
+      source: "",
+      files: ["registry/new-york/ui/3d-model-viewer.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-scene": {
+      name: "3d-scene",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/3d/3d-scene")),
+      source: "",
+      files: ["registry/new-york/ui/3d-scene.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "3d-text": {
+      name: "3d-text",
+      type: "components:3d",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/3d/3d-text")),
+      source: "",
+      files: ["registry/new-york/ui/3d-text.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-background": {
+      name: "animated-background",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/animation/animated-background")),
+      source: "",
+      files: ["registry/new-york/ui/animated-background.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-cursor": {
+      name: "animated-cursor",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/animation/animated-cursor")),
+      source: "",
+      files: ["registry/new-york/ui/animated-cursor.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-icon": {
+      name: "animated-icon",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/animation/animated-icon")),
+      source: "",
+      files: ["registry/new-york/ui/animated-icon.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-list": {
+      name: "animated-list",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/animation/animated-list")),
+      source: "",
+      files: ["registry/new-york/ui/animated-list.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-number": {
+      name: "animated-number",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/animation/animated-number")),
+      source: "",
+      files: ["registry/new-york/ui/animated-number.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-text": {
+      name: "animated-text",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/animation/animated-text")),
+      source: "",
+      files: ["registry/new-york/ui/animated-text.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "apple-cards-carousel": {
+      name: "apple-cards-carousel",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/animation/apple-cards-carousel")),
+      source: "",
+      files: ["registry/new-york/ui/apple-cards-carousel.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "grid-pattern": {
+      name: "grid-pattern",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/animation/grid-pattern")),
+      source: "",
+      files: ["registry/new-york/ui/grid-pattern.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "particles-background": {
+      name: "particles-background",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/animation/particles-background")),
+      source: "",
+      files: ["registry/new-york/ui/particles-background.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "pulse-animation": {
+      name: "pulse-animation",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/animation/pulse-animation")),
+      source: "",
+      files: ["registry/new-york/ui/pulse-animation.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "reveal-animation": {
+      name: "reveal-animation",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/animation/reveal-animation")),
+      source: "",
+      files: ["registry/new-york/ui/reveal-animation.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "timeline": {
+      name: "timeline",
+      type: "components:animation",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/animation/timeline")),
+      source: "",
+      files: ["registry/new-york/ui/timeline.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "announcement": {
+      name: "announcement",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/announcement")),
+      source: "",
+      files: ["registry/new-york/ui/announcement.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "banner": {
+      name: "banner",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/banner")),
+      source: "",
+      files: ["registry/new-york/ui/banner.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "cursor": {
+      name: "cursor",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/cursor")),
+      source: "",
+      files: ["registry/new-york/ui/cursor.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "dialog-stack": {
+      name: "dialog-stack",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/dialog-stack")),
+      source: "",
+      files: ["registry/new-york/ui/dialog-stack.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "marquee": {
+      name: "marquee",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/marquee")),
+      source: "",
+      files: ["registry/new-york/ui/marquee.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "avatar-group": {
+      name: "avatar-group",
+      type: "components:ui",
+      registryDependencies: ["avatar"],
+      component: React.lazy(() => import("@/registry/new-york/ui/avatar-group")),
+      source: "",
+      files: ["registry/new-york/ui/avatar-group.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "pill": {
+      name: "pill",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/pill")),
+      source: "",
+      files: ["registry/new-york/ui/pill.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "tags": {
+      name: "tags",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/tags")),
+      source: "",
+      files: ["registry/new-york/ui/tags.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "simple-navigation-bar": {
+      name: "simple-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/simple-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/simple-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "advanced-navigation-bar": {
+      name: "advanced-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/advanced-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/advanced-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "underline-navigation-bar": {
+      name: "underline-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/underline-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/underline-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "e-commerce-navigation-bar": {
+      name: "e-commerce-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/e-commerce-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/e-commerce-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "dashboard-navigation-bar": {
+      name: "dashboard-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/dashboard-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/dashboard-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "icon-navigation-bar": {
+      name: "icon-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/icon-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/icon-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "breadcrumb-navigation-bar": {
+      name: "breadcrumb-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/breadcrumb-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/breadcrumb-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "two-tier-navigation-bar": {
+      name: "two-tier-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/two-tier-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/two-tier-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "communication-navigation-bar": {
+      name: "communication-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/communication-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/communication-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "centered-logo-navigation-bar": {
+      name: "centered-logo-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/centered-logo-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/centered-logo-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "context-switcher-navigation-bar": {
+      name: "context-switcher-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/context-switcher-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/context-switcher-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "team-switcher-navigation-bar": {
+      name: "team-switcher-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/team-switcher-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/team-switcher-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "ai-model-selector-navigation-bar": {
+      name: "ai-model-selector-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/ai-model-selector-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/ai-model-selector-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "search-and-toggle-navigation-bar": {
+      name: "search-and-toggle-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/search-and-toggle-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/search-and-toggle-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "breadcrumb-and-filters-navigation-bar": {
+      name: "breadcrumb-and-filters-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/breadcrumb-and-filters-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/breadcrumb-and-filters-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "app-switcher-navigation-bar": {
+      name: "app-switcher-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/app-switcher-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/app-switcher-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "collaboration-navigation-bar": {
+      name: "collaboration-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/collaboration-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/collaboration-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "status-dashboard-navigation-bar": {
+      name: "status-dashboard-navigation-bar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/status-dashboard-navigation-bar")),
+      source: "",
+      files: ["registry/new-york/ui/navigation/status-dashboard-navigation-bar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "animated-beam": {
+      name: "animated-beam",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/animated-beam")),
+      source: "",
+      files: ["registry/new-york/ui/animated-beam.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "magnetic": {
+      name: "magnetic",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/magnetic")),
+      source: "",
+      files: ["registry/new-york/ui/magnetic.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "motion-highlight": {
+      name: "motion-highlight",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/motion-highlight")),
+      source: "",
+      files: ["registry/new-york/ui/motion-highlight.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "pixel-image": {
+      name: "pixel-image",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/pixel-image")),
+      source: "",
+      files: ["registry/new-york/ui/pixel-image.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "calendar": {
+      name: "calendar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/calendar")),
+      source: "",
+      files: ["registry/new-york/ui/calendar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "mini-calendar": {
+      name: "mini-calendar",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/mini-calendar")),
+      source: "",
+      files: ["registry/new-york/ui/mini-calendar.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "relative-time": {
+      name: "relative-time",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/relative-time")),
+      source: "",
+      files: ["registry/new-york/ui/relative-time.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "comparison": {
+      name: "comparison",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/comparison")),
+      source: "",
+      files: ["registry/new-york/ui/comparison.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "kbd": {
+      name: "kbd",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/kbd")),
+      source: "",
+      files: ["registry/new-york/ui/kbd.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "qr-code": {
+      name: "qr-code",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/qr-code")),
+      source: "",
+      files: ["registry/new-york/ui/qr-code.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "status": {
+      name: "status",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/status")),
+      source: "",
+      files: ["registry/new-york/ui/status.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "terminal": {
+      name: "terminal",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/terminal")),
+      source: "",
+      files: ["registry/new-york/ui/terminal.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "video-player": {
+      name: "video-player",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/video-player")),
+      source: "",
+      files: ["registry/new-york/ui/video-player.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "music-player": {
+      name: "music-player",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/music-player")),
+      source: "",
+      files: ["registry/new-york/ui/music-player.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
+    "dock": {
+      name: "dock",
+      type: "components:ui",
+      registryDependencies: undefined,
+      component: React.lazy(() => import("@/registry/new-york/ui/dock")),
+      source: "",
+      files: ["registry/new-york/ui/dock.tsx"],
       category: "undefined",
       subcategory: "undefined",
       chunks: []
@@ -4089,6 +6993,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "terminal-demo": {
+      name: "terminal-demo",
+      type: "components:example",
+      registryDependencies: ["terminal"],
+      component: React.lazy(() => import("@/registry/new-york/example/terminal-demo")),
+      source: "",
+      files: ["registry/new-york/example/terminal-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "toast-demo": {
       name: "toast-demo",
       type: "components:example",
@@ -4463,6 +7378,17 @@ export const Index: Record<string, any> = {
       subcategory: "undefined",
       chunks: []
     },
+    "3d-card-demo": {
+      name: "3d-card-demo",
+      type: "components:example",
+      registryDependencies: ["3d-card"],
+      component: React.lazy(() => import("@/registry/new-york/example/3d-card-demo")),
+      source: "",
+      files: ["registry/new-york/example/3d-card-demo.tsx"],
+      category: "undefined",
+      subcategory: "undefined",
+      chunks: []
+    },
     "dashboard-05": {
       name: "dashboard-05",
       type: "components:block",
@@ -4474,7 +7400,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-05-chunk-0",
-        description: "A card for an orders dashboard with a description and a button to create a new order.",
+        description: "dashboard-05-chunk-0",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-0")),
         file: "registry/new-york/block/dashboard-05-chunk-0.tsx",
         container: {
@@ -4482,7 +7408,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-05-chunk-1",
-        description: "A stats card showing this week's total sales in USD, the percentage difference from last week, and a progress bar.",
+        description: "dashboard-05-chunk-1",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-1")),
         file: "registry/new-york/block/dashboard-05-chunk-1.tsx",
         container: {
@@ -4490,7 +7416,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-05-chunk-2",
-        description: "A stats card showing this month's total sales in USD, the percentage difference from last month, and a progress bar.",
+        description: "dashboard-05-chunk-2",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-2")),
         file: "registry/new-york/block/dashboard-05-chunk-2.tsx",
         container: {
@@ -4498,7 +7424,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-05-chunk-3",
-        description: "A table of recent orders showing the following columns: Customer, Type, Status, Date, and Amount.",
+        description: "dashboard-05-chunk-3",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-3")),
         file: "registry/new-york/block/dashboard-05-chunk-3.tsx",
         container: {
@@ -4506,7 +7432,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-05-chunk-4",
-        description: "An order details card with order details, shipping information, customer information and payment information.",
+        description: "dashboard-05-chunk-4",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-05-chunk-4")),
         file: "registry/new-york/block/dashboard-05-chunk-4.tsx",
         container: {
@@ -4525,7 +7451,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-06-chunk-0",
-        description: "A list of products in a table with actions. Each row has an image, name, status, price, total sales, created at and actions.",
+        description: "dashboard-06-chunk-0",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-06-chunk-0")),
         file: "registry/new-york/block/dashboard-06-chunk-0.tsx",
         container: {
@@ -4544,7 +7470,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-07-chunk-0",
-        description: "A card with a form to edit the product details",
+        description: "dashboard-07-chunk-0",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-07-chunk-0")),
         file: "registry/new-york/block/dashboard-07-chunk-0.tsx",
         container: {
@@ -4552,7 +7478,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-07-chunk-1",
-        description: "A card with a form to edit the product stock and variants",
+        description: "dashboard-07-chunk-1",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-07-chunk-1")),
         file: "registry/new-york/block/dashboard-07-chunk-1.tsx",
         container: {
@@ -4560,7 +7486,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-07-chunk-2",
-        description: "A card with a form to edit the product category and subcategory",
+        description: "dashboard-07-chunk-2",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-07-chunk-2")),
         file: "registry/new-york/block/dashboard-07-chunk-2.tsx",
         container: {
@@ -4568,7 +7494,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-07-chunk-3",
-        description: "A card with a form to edit the product status",
+        description: "dashboard-07-chunk-3",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-07-chunk-3")),
         file: "registry/new-york/block/dashboard-07-chunk-3.tsx",
         container: {
@@ -4576,7 +7502,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-07-chunk-4",
-        description: "A card with a form to upload product images",
+        description: "dashboard-07-chunk-4",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-07-chunk-4")),
         file: "registry/new-york/block/dashboard-07-chunk-4.tsx",
         container: {
@@ -4584,7 +7510,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-07-chunk-5",
-        description: "A card with a call to action to archive the product",
+        description: "dashboard-07-chunk-5",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-07-chunk-5")),
         file: "registry/new-york/block/dashboard-07-chunk-5.tsx",
         container: {
@@ -4603,15 +7529,15 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-04-chunk-0",
-        description: "A sidebar navigation with links to general, security, integrations, support, organizations, and advanced settings.",
+        description: "dashboard-04-chunk-0",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-04-chunk-0")),
         file: "registry/new-york/block/dashboard-04-chunk-0.tsx",
         container: {
-          className: "chunk-container after:right-0"
+          className: "undefined"
         }
       },{
         name: "dashboard-04-chunk-1",
-        description: "A form to update the store name.",
+        description: "dashboard-04-chunk-1",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-04-chunk-1")),
         file: "registry/new-york/block/dashboard-04-chunk-1.tsx",
         container: {
@@ -4619,7 +7545,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-04-chunk-2",
-        description: "A form to update the plugins directory with a checkbox to allow administrators to change the directory.",
+        description: "dashboard-04-chunk-2",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-04-chunk-2")),
         file: "registry/new-york/block/dashboard-04-chunk-2.tsx",
         container: {
@@ -4638,7 +7564,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-03-chunk-0",
-        description: "A settings form a configuring an AI model and messages.",
+        description: "dashboard-03-chunk-0",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-03-chunk-0")),
         file: "registry/new-york/block/dashboard-03-chunk-0.tsx",
         container: {
@@ -4646,7 +7572,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-03-chunk-1",
-        description: "A form for sending a message to an AI chatbot. The form has a textarea and buttons to upload files and record audio.",
+        description: "dashboard-03-chunk-1",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-03-chunk-1")),
         file: "registry/new-york/block/dashboard-03-chunk-1.tsx",
         container: {
@@ -4665,7 +7591,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-02-chunk-0",
-        description: "A card with a call to action",
+        description: "dashboard-02-chunk-0",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-02-chunk-0")),
         file: "registry/new-york/block/dashboard-02-chunk-0.tsx",
         container: {
@@ -4673,7 +7599,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-02-chunk-1",
-        description: "An empty state showing no products with a heading, description and a call to action to add a product.",
+        description: "dashboard-02-chunk-1",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-02-chunk-1")),
         file: "registry/new-york/block/dashboard-02-chunk-1.tsx",
         container: {
@@ -4692,7 +7618,7 @@ export const Index: Record<string, any> = {
       subcategory: "Dashboard",
       chunks: [{
         name: "dashboard-01-chunk-0",
-        description: "A card showing the total revenue in USD and the percentage difference from last month.",
+        description: "dashboard-01-chunk-0",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-01-chunk-0")),
         file: "registry/new-york/block/dashboard-01-chunk-0.tsx",
         container: {
@@ -4700,7 +7626,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-01-chunk-1",
-        description: "A card showing the total subscriptions and the percentage difference from last month.",
+        description: "dashboard-01-chunk-1",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-01-chunk-1")),
         file: "registry/new-york/block/dashboard-01-chunk-1.tsx",
         container: {
@@ -4708,7 +7634,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-01-chunk-2",
-        description: "A card showing the total sales and the percentage difference from last month.",
+        description: "dashboard-01-chunk-2",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-01-chunk-2")),
         file: "registry/new-york/block/dashboard-01-chunk-2.tsx",
         container: {
@@ -4716,7 +7642,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-01-chunk-3",
-        description: "A card showing the total active users and the percentage difference from last hour.",
+        description: "dashboard-01-chunk-3",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-01-chunk-3")),
         file: "registry/new-york/block/dashboard-01-chunk-3.tsx",
         container: {
@@ -4724,7 +7650,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-01-chunk-4",
-        description: "A card showing a table of recent transactions with a link to view all transactions.",
+        description: "dashboard-01-chunk-4",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-01-chunk-4")),
         file: "registry/new-york/block/dashboard-01-chunk-4.tsx",
         container: {
@@ -4732,7 +7658,7 @@ export const Index: Record<string, any> = {
         }
       },{
         name: "dashboard-01-chunk-5",
-        description: "A card showing a list of recent sales with customer names and email addresses.",
+        description: "dashboard-01-chunk-5",
         component: React.lazy(() => import("@/registry/new-york/block/dashboard-01-chunk-5")),
         file: "registry/new-york/block/dashboard-01-chunk-5.tsx",
         container: {
@@ -4782,6 +7708,710 @@ export const Index: Record<string, any> = {
       files: ["registry/new-york/block/authentication-04.tsx"],
       category: "Authentication",
       subcategory: "Login",
+      chunks: []
+    },
+    "pricing-01": {
+      name: "pricing-01",
+      type: "components:block",
+      registryDependencies: ["badge","button","card"],
+      component: React.lazy(() => import("@/registry/new-york/block/pricing-01")),
+      source: "__registry__/new-york/block/pricing-01.tsx",
+      files: ["registry/new-york/block/pricing-01.tsx"],
+      category: "Marketing",
+      subcategory: "Pricing",
+      chunks: []
+    },
+    "sidebar-01": {
+      name: "sidebar-01",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-01")),
+      source: "__registry__/new-york/block/sidebar-01.tsx",
+      files: ["registry/new-york/block/sidebar-01.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-02": {
+      name: "sidebar-02",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-02")),
+      source: "__registry__/new-york/block/sidebar-02.tsx",
+      files: ["registry/new-york/block/sidebar-02.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-03": {
+      name: "sidebar-03",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-03")),
+      source: "__registry__/new-york/block/sidebar-03.tsx",
+      files: ["registry/new-york/block/sidebar-03.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-04": {
+      name: "sidebar-04",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-04")),
+      source: "__registry__/new-york/block/sidebar-04.tsx",
+      files: ["registry/new-york/block/sidebar-04.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-05": {
+      name: "sidebar-05",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-05")),
+      source: "__registry__/new-york/block/sidebar-05.tsx",
+      files: ["registry/new-york/block/sidebar-05.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-06": {
+      name: "sidebar-06",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-06")),
+      source: "__registry__/new-york/block/sidebar-06.tsx",
+      files: ["registry/new-york/block/sidebar-06.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-07": {
+      name: "sidebar-07",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-07")),
+      source: "__registry__/new-york/block/sidebar-07.tsx",
+      files: ["registry/new-york/block/sidebar-07.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-08": {
+      name: "sidebar-08",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-08")),
+      source: "__registry__/new-york/block/sidebar-08.tsx",
+      files: ["registry/new-york/block/sidebar-08.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-09": {
+      name: "sidebar-09",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-09")),
+      source: "__registry__/new-york/block/sidebar-09.tsx",
+      files: ["registry/new-york/block/sidebar-09.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-10": {
+      name: "sidebar-10",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-10")),
+      source: "__registry__/new-york/block/sidebar-10.tsx",
+      files: ["registry/new-york/block/sidebar-10.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-11": {
+      name: "sidebar-11",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-11")),
+      source: "__registry__/new-york/block/sidebar-11.tsx",
+      files: ["registry/new-york/block/sidebar-11.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-12": {
+      name: "sidebar-12",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-12")),
+      source: "__registry__/new-york/block/sidebar-12.tsx",
+      files: ["registry/new-york/block/sidebar-12.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-13": {
+      name: "sidebar-13",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-13")),
+      source: "__registry__/new-york/block/sidebar-13.tsx",
+      files: ["registry/new-york/block/sidebar-13.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-14": {
+      name: "sidebar-14",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-14")),
+      source: "__registry__/new-york/block/sidebar-14.tsx",
+      files: ["registry/new-york/block/sidebar-14.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-15": {
+      name: "sidebar-15",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-15")),
+      source: "__registry__/new-york/block/sidebar-15.tsx",
+      files: ["registry/new-york/block/sidebar-15.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "sidebar-16": {
+      name: "sidebar-16",
+      type: "components:block",
+      registryDependencies: ["sidebar","breadcrumb","separator"],
+      component: React.lazy(() => import("@/registry/new-york/block/sidebar-16")),
+      source: "__registry__/new-york/block/sidebar-16.tsx",
+      files: ["registry/new-york/block/sidebar-16.tsx"],
+      category: "Application",
+      subcategory: "Sidebar",
+      chunks: []
+    },
+    "calendar-01": {
+      name: "calendar-01",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-01")),
+      source: "__registry__/new-york/block/calendar-01.tsx",
+      files: ["registry/new-york/block/calendar-01.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-02": {
+      name: "calendar-02",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-02")),
+      source: "__registry__/new-york/block/calendar-02.tsx",
+      files: ["registry/new-york/block/calendar-02.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-03": {
+      name: "calendar-03",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-03")),
+      source: "__registry__/new-york/block/calendar-03.tsx",
+      files: ["registry/new-york/block/calendar-03.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-04": {
+      name: "calendar-04",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-04")),
+      source: "__registry__/new-york/block/calendar-04.tsx",
+      files: ["registry/new-york/block/calendar-04.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-05": {
+      name: "calendar-05",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-05")),
+      source: "__registry__/new-york/block/calendar-05.tsx",
+      files: ["registry/new-york/block/calendar-05.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-06": {
+      name: "calendar-06",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-06")),
+      source: "__registry__/new-york/block/calendar-06.tsx",
+      files: ["registry/new-york/block/calendar-06.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-07": {
+      name: "calendar-07",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-07")),
+      source: "__registry__/new-york/block/calendar-07.tsx",
+      files: ["registry/new-york/block/calendar-07.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-08": {
+      name: "calendar-08",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-08")),
+      source: "__registry__/new-york/block/calendar-08.tsx",
+      files: ["registry/new-york/block/calendar-08.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-09": {
+      name: "calendar-09",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-09")),
+      source: "__registry__/new-york/block/calendar-09.tsx",
+      files: ["registry/new-york/block/calendar-09.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-10": {
+      name: "calendar-10",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-10")),
+      source: "__registry__/new-york/block/calendar-10.tsx",
+      files: ["registry/new-york/block/calendar-10.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-11": {
+      name: "calendar-11",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-11")),
+      source: "__registry__/new-york/block/calendar-11.tsx",
+      files: ["registry/new-york/block/calendar-11.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-12": {
+      name: "calendar-12",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-12")),
+      source: "__registry__/new-york/block/calendar-12.tsx",
+      files: ["registry/new-york/block/calendar-12.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-13": {
+      name: "calendar-13",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-13")),
+      source: "__registry__/new-york/block/calendar-13.tsx",
+      files: ["registry/new-york/block/calendar-13.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-14": {
+      name: "calendar-14",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-14")),
+      source: "__registry__/new-york/block/calendar-14.tsx",
+      files: ["registry/new-york/block/calendar-14.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-15": {
+      name: "calendar-15",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-15")),
+      source: "__registry__/new-york/block/calendar-15.tsx",
+      files: ["registry/new-york/block/calendar-15.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-16": {
+      name: "calendar-16",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-16")),
+      source: "__registry__/new-york/block/calendar-16.tsx",
+      files: ["registry/new-york/block/calendar-16.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-17": {
+      name: "calendar-17",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-17")),
+      source: "__registry__/new-york/block/calendar-17.tsx",
+      files: ["registry/new-york/block/calendar-17.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-18": {
+      name: "calendar-18",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-18")),
+      source: "__registry__/new-york/block/calendar-18.tsx",
+      files: ["registry/new-york/block/calendar-18.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-19": {
+      name: "calendar-19",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-19")),
+      source: "__registry__/new-york/block/calendar-19.tsx",
+      files: ["registry/new-york/block/calendar-19.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-20": {
+      name: "calendar-20",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-20")),
+      source: "__registry__/new-york/block/calendar-20.tsx",
+      files: ["registry/new-york/block/calendar-20.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-21": {
+      name: "calendar-21",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-21")),
+      source: "__registry__/new-york/block/calendar-21.tsx",
+      files: ["registry/new-york/block/calendar-21.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-22": {
+      name: "calendar-22",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-22")),
+      source: "__registry__/new-york/block/calendar-22.tsx",
+      files: ["registry/new-york/block/calendar-22.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-23": {
+      name: "calendar-23",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-23")),
+      source: "__registry__/new-york/block/calendar-23.tsx",
+      files: ["registry/new-york/block/calendar-23.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-24": {
+      name: "calendar-24",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-24")),
+      source: "__registry__/new-york/block/calendar-24.tsx",
+      files: ["registry/new-york/block/calendar-24.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-25": {
+      name: "calendar-25",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-25")),
+      source: "__registry__/new-york/block/calendar-25.tsx",
+      files: ["registry/new-york/block/calendar-25.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-26": {
+      name: "calendar-26",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-26")),
+      source: "__registry__/new-york/block/calendar-26.tsx",
+      files: ["registry/new-york/block/calendar-26.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-27": {
+      name: "calendar-27",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-27")),
+      source: "__registry__/new-york/block/calendar-27.tsx",
+      files: ["registry/new-york/block/calendar-27.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-28": {
+      name: "calendar-28",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-28")),
+      source: "__registry__/new-york/block/calendar-28.tsx",
+      files: ["registry/new-york/block/calendar-28.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-29": {
+      name: "calendar-29",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-29")),
+      source: "__registry__/new-york/block/calendar-29.tsx",
+      files: ["registry/new-york/block/calendar-29.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-30": {
+      name: "calendar-30",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-30")),
+      source: "__registry__/new-york/block/calendar-30.tsx",
+      files: ["registry/new-york/block/calendar-30.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-31": {
+      name: "calendar-31",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-31")),
+      source: "__registry__/new-york/block/calendar-31.tsx",
+      files: ["registry/new-york/block/calendar-31.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "calendar-32": {
+      name: "calendar-32",
+      type: "components:block",
+      registryDependencies: ["calendar"],
+      component: React.lazy(() => import("@/registry/new-york/block/calendar-32")),
+      source: "__registry__/new-york/block/calendar-32.tsx",
+      files: ["registry/new-york/block/calendar-32.tsx"],
+      category: "Application",
+      subcategory: "Calendar",
+      chunks: []
+    },
+    "login-01": {
+      name: "login-01",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/login-01")),
+      source: "__registry__/new-york/block/login-01.tsx",
+      files: ["registry/new-york/block/login-01.tsx"],
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-02": {
+      name: "login-02",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/login-02")),
+      source: "__registry__/new-york/block/login-02.tsx",
+      files: ["registry/new-york/block/login-02.tsx"],
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-03": {
+      name: "login-03",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/login-03")),
+      source: "__registry__/new-york/block/login-03.tsx",
+      files: ["registry/new-york/block/login-03.tsx"],
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-04": {
+      name: "login-04",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/login-04")),
+      source: "__registry__/new-york/block/login-04.tsx",
+      files: ["registry/new-york/block/login-04.tsx"],
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "login-05": {
+      name: "login-05",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/login-05")),
+      source: "__registry__/new-york/block/login-05.tsx",
+      files: ["registry/new-york/block/login-05.tsx"],
+      category: "Authentication",
+      subcategory: "Login",
+      chunks: []
+    },
+    "signup-01": {
+      name: "signup-01",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/signup-01")),
+      source: "__registry__/new-york/block/signup-01.tsx",
+      files: ["registry/new-york/block/signup-01.tsx"],
+      category: "Authentication",
+      subcategory: "Signup",
+      chunks: []
+    },
+    "signup-02": {
+      name: "signup-02",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/signup-02")),
+      source: "__registry__/new-york/block/signup-02.tsx",
+      files: ["registry/new-york/block/signup-02.tsx"],
+      category: "Authentication",
+      subcategory: "Signup",
+      chunks: []
+    },
+    "signup-03": {
+      name: "signup-03",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/signup-03")),
+      source: "__registry__/new-york/block/signup-03.tsx",
+      files: ["registry/new-york/block/signup-03.tsx"],
+      category: "Authentication",
+      subcategory: "Signup",
+      chunks: []
+    },
+    "signup-04": {
+      name: "signup-04",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/signup-04")),
+      source: "__registry__/new-york/block/signup-04.tsx",
+      files: ["registry/new-york/block/signup-04.tsx"],
+      category: "Authentication",
+      subcategory: "Signup",
+      chunks: []
+    },
+    "signup-05": {
+      name: "signup-05",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/signup-05")),
+      source: "__registry__/new-york/block/signup-05.tsx",
+      files: ["registry/new-york/block/signup-05.tsx"],
+      category: "Authentication",
+      subcategory: "Signup",
+      chunks: []
+    },
+    "otp-01": {
+      name: "otp-01",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/otp-01")),
+      source: "__registry__/new-york/block/otp-01.tsx",
+      files: ["registry/new-york/block/otp-01.tsx"],
+      category: "Authentication",
+      subcategory: "OTP",
+      chunks: []
+    },
+    "otp-02": {
+      name: "otp-02",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/otp-02")),
+      source: "__registry__/new-york/block/otp-02.tsx",
+      files: ["registry/new-york/block/otp-02.tsx"],
+      category: "Authentication",
+      subcategory: "OTP",
+      chunks: []
+    },
+    "otp-03": {
+      name: "otp-03",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/otp-03")),
+      source: "__registry__/new-york/block/otp-03.tsx",
+      files: ["registry/new-york/block/otp-03.tsx"],
+      category: "Authentication",
+      subcategory: "OTP",
+      chunks: []
+    },
+    "otp-04": {
+      name: "otp-04",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/otp-04")),
+      source: "__registry__/new-york/block/otp-04.tsx",
+      files: ["registry/new-york/block/otp-04.tsx"],
+      category: "Authentication",
+      subcategory: "OTP",
+      chunks: []
+    },
+    "otp-05": {
+      name: "otp-05",
+      type: "components:block",
+      registryDependencies: ["button","card","input","label"],
+      component: React.lazy(() => import("@/registry/new-york/block/otp-05")),
+      source: "__registry__/new-york/block/otp-05.tsx",
+      files: ["registry/new-york/block/otp-05.tsx"],
+      category: "Authentication",
+      subcategory: "OTP",
       chunks: []
     },
   },
