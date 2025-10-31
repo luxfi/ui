@@ -54,23 +54,17 @@ jobs:
           pnpm build
           touch out/.nojekyll
         env:
-<<<<<<< HEAD:.github/workflows/deploy-pages.yml
           NEXT_PUBLIC_APP_URL: https://ui.lux.finance
-          GITHUB_ACTIONS: true
           NODE_ENV: production
+          GITHUB_ACTIONS: true
 
       - name: Copy CNAME to output
         run: |
           cd app
           echo "ui.lux.finance" > out/CNAME
-=======
-          NODE_ENV: production
-          GITHUB_ACTIONS: true
-          NEXT_PUBLIC_APP_URL: https://ui.hanzo.ai
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
->>>>>>> hanzo/main:.github/workflows/deploy-gh-pages.yml
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
