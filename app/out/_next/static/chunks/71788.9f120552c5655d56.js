@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[71788],{71788:(n,e,r)=>{r.r(e),r.d(e,{default:()=>l});var s=r(95155),u=r(6874),h=r.n(u),i=r(61818);function l(){return(0,s.jsx)(i.Button,{asChild:!0,children:(0,s.jsx)(h(),{href:"/login",children:"Login"})})}}}]);

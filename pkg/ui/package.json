@@ -1,7 +1,7 @@
 {
   "name": "@lux/ui",
-  "version": "4.5.6",
-  "description": "Library that contains shared UI primitives, support for a common design system, and other boilerplate support.",
+  "version": "5.1.1",
+  "description": "UI library for Lux ecosystem with React support. Based on shadcn/ui with comprehensive component coverage.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
@@ -9,6 +9,17 @@
   },
   "author": "Lux AI, Inc.",
   "license": "BSD-3-Clause",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "style",
+    "bin",
+    "README.md",
+    "LICENSE"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/luxai/react-sdk.git",
@@ -31,49 +42,199 @@
   "scripts": {
     "lat": "npm show @lux/ui version",
     "pub": "npm publish",
-    "tc": "tsc",
-    "build": "tsc -p tsconfig.json",
+    "tc": "tsc --project tsconfig.build.json",
+    "build": "npm run clean && npm run build:tsup",
+    "build:tsup": "tsup --config tsup.config.minimal.ts",
+    "build:full": "tsup --config tsup.config.production.ts",
+    "build:watch": "tsup --watch",
+    "build:check": "tsc --project tsconfig.build.json --noEmit",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "npm run build",
     "update-registry": "node ./bin/update-registry.js",
     "registry:mcp": "node ./bin/cli.js registry:mcp",
-    "registry:mcp:http": "node ./bin/cli.js registry:mcp --http"
+    "registry:mcp:http": "node ./bin/cli.js registry:mcp --http",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage"
   },
   "bin": {
     "@lux/ui": "./bin/cli.js",
     "lux-ui": "./bin/cli.js"
   },
   "exports": {
-    ".": "./components/index.ts",
-    "./blocks": "./blocks/index.ts",
-    "./components": "./components/index.ts",
-    "./primitives": "./primitives/index-next.ts",
-    "./primitives-common": "./primitives/index-common.ts",
-    "./registry": {
-      "types": "./dist/registry/index.d.ts",
-      "default": "./dist/registry/index.js"
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
-    "./style/": "./style/*",
-    "./tailwind": "./tailwind/index.ts",
-    "./types": "./types/index.ts",
-    "./util": "./util/index.ts",
-    "./util-client": "./util/index-client.ts",
-    "./lib/utils": "./src/utils.ts",
+    "./calendar": {
+      "types": "./dist/calendar.d.ts",
+      "import": "./dist/calendar.mjs",
+      "require": "./dist/calendar.js"
+    },
+    "./command": {
+      "types": "./dist/command.d.ts",
+      "import": "./dist/command.mjs",
+      "require": "./dist/command.js"
+    },
+    "./carousel": {
+      "types": "./dist/carousel.d.ts",
+      "import": "./dist/carousel.mjs",
+      "require": "./dist/carousel.js"
+    },
+    "./form": {
+      "types": "./dist/form.d.ts",
+      "import": "./dist/form.mjs",
+      "require": "./dist/form.js"
+    },
+    "./drawer": {
+      "types": "./dist/drawer.d.ts",
+      "import": "./dist/drawer.mjs",
+      "require": "./dist/drawer.js"
+    },
+    "./billing": {
+      "types": "./src/billing/index.ts",
+      "import": "./src/billing/index.ts"
+    },
+    "./sonner": {
+      "types": "./dist/sonner.d.ts",
+      "import": "./dist/sonner.mjs",
+      "require": "./dist/sonner.js"
+    },
+    "./input-otp": {
+      "types": "./dist/input-otp.d.ts",
+      "import": "./dist/input-otp.mjs",
+      "require": "./dist/input-otp.js"
+    },
+    "./resizable": {
+      "types": "./dist/resizable.d.ts",
+      "import": "./dist/resizable.mjs",
+      "require": "./dist/resizable.js"
+    },
+    "./assets": {
+      "types": "./dist/assets/index.d.ts",
+      "import": "./dist/assets/index.mjs",
+      "require": "./dist/assets/index.js"
+    },
+    "./assets/*": {
+      "types": "./dist/assets/*.d.ts",
+      "import": "./dist/assets/*.mjs",
+      "require": "./dist/assets/*.js"
+    },
+    "./blocks": {
+      "types": "./dist/blocks/index.d.ts",
+      "import": "./dist/blocks/index.mjs",
+      "require": "./dist/blocks/index.js"
+    },
+    "./blocks/*": {
+      "types": "./dist/blocks/*.d.ts",
+      "import": "./dist/blocks/*.mjs",
+      "require": "./dist/blocks/*.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.mjs",
+      "require": "./dist/components/index.js"
+    },
+    "./components/*": {
+      "types": "./dist/components/*.d.ts",
+      "import": "./dist/components/*.mjs",
+      "require": "./dist/components/*.js"
+    },
+    "./primitives": {
+      "types": "./dist/primitives-export.d.ts",
+      "import": "./dist/primitives-export.mjs",
+      "require": "./dist/primitives-export.js"
+    },
+    "./primitives/*": {
+      "types": "./dist/primitives/*.d.ts",
+      "import": "./dist/primitives/*.mjs",
+      "require": "./dist/primitives/*.js"
+    },
+    "./primitives-common": {
+      "types": "./dist/primitives/index-common.d.ts",
+      "import": "./dist/primitives/index-common.mjs",
+      "require": "./dist/primitives/index-common.js"
+    },
+    "./registry": {
+      "types": "./dist/src/registry/index.d.ts",
+      "import": "./dist/src/registry/index.mjs",
+      "require": "./dist/src/registry/index.js"
+    },
+    "./style/*": "./style/*",
+    "./tailwind": {
+      "types": "./dist/tailwind/index.d.ts",
+      "import": "./dist/tailwind/index.mjs",
+      "require": "./dist/tailwind/index.js"
+    },
+    "./tailwind/*": {
+      "types": "./dist/tailwind/*.d.ts",
+      "import": "./dist/tailwind/*.mjs",
+      "require": "./dist/tailwind/*.js"
+    },
+    "./types": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/types/index.mjs",
+      "require": "./dist/types/index.js"
+    },
+    "./types/*": {
+      "types": "./dist/types/*.d.ts",
+      "import": "./dist/types/*.mjs",
+      "require": "./dist/types/*.js"
+    },
+    "./util": {
+      "types": "./dist/util/index.d.ts",
+      "import": "./dist/util/index.mjs",
+      "require": "./dist/util/index.js"
+    },
+    "./util/*": {
+      "types": "./dist/util/*.d.ts",
+      "import": "./dist/util/*.mjs",
+      "require": "./dist/util/*.js"
+    },
+    "./util-client": {
+      "types": "./dist/util/index-client.d.ts",
+      "import": "./dist/util/index-client.mjs",
+      "require": "./dist/util/index-client.js"
+    },
+    "./utils": {
+      "types": "./dist/src/utils.d.ts",
+      "import": "./dist/src/utils.mjs",
+      "require": "./dist/src/utils.js"
+    },
+    "./lib/utils": {
+      "types": "./dist/src/utils.d.ts",
+      "import": "./dist/src/utils.mjs",
+      "require": "./dist/src/utils.js"
+    },
     "./mcp": {
-      "types": "./dist/mcp/index.d.ts",
-      "default": "./dist/mcp/index.js"
+      "types": "./dist/src/mcp/index.d.ts",
+      "import": "./dist/src/mcp/index.mjs",
+      "require": "./dist/src/mcp/index.js"
     }
   },
   "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/modifiers": "^9.0.0",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
     "@lux/react-drawer": "^0.1.8",
     "@modelcontextprotocol/sdk": "^1.10.2",
     "@next/third-parties": "^15.0.1",
-    "@radix-ui/react-accordion": "^1.1.2",
+    "@radix-ui/react-accordion": "^1.2.11",
+    "@radix-ui/react-alert-dialog": "^1.1.15",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
     "@radix-ui/react-avatar": "^1.0.3",
     "@radix-ui/react-checkbox": "^1.0.4",
+    "@radix-ui/react-collapsible": "^1.1.12",
     "@radix-ui/react-context-menu": "^2.2.2",
-    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-hover-card": "^1.1.15",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-menubar": "1.1.16",
     "@radix-ui/react-navigation-menu": "^1.1.3",
     "@radix-ui/react-popover": "^1.0.6",
     "@radix-ui/react-progress": "^1.0.3",
@@ -82,52 +243,96 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slider": "^1.1.2",
-    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "^1.1.5",
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-toggle-group": "^1.0.4",
     "@radix-ui/react-tooltip": "^1.0.6",
-    "@splinetool/react-spline": "^4.0.0",
-    "@splinetool/runtime": "^1.9.35",
+    "@radix-ui/react-use-callback-ref": "^1.1.1",
     "@tailwindcss/container-queries": "^0.1.1",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.0",
+    "@tanstack/react-table": "^8.21.3",
+    "buffer": "^6.0.3",
+    "chrono-node": "^2.7.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "cmdk": "^0.2.0",
     "commander": "^12.1.0",
-    "embla-carousel-react": "8.5.1",
-    "input-otp": "^1.0.1",
+    "date-fns": "^3.0.0",
+    "embla-carousel-react": "^8.0.0",
+    "input-otp": "^1.2.4",
+    "little-date": "^1.0.0",
     "lodash.castarray": "^4.4.0",
     "lodash.isplainobject": "^4.0.6",
     "lodash.merge": "^4.6.2",
-    "markdown-to-jsx": "^7.4.7",
     "postcss-selector-parser": "^6.0.16",
-    "react-day-picker": "^8.10.1",
+    "react-day-picker": "^9.0.0",
+    "react-hook-form": "^7.49.0",
     "react-intersection-observer": "^9.8.2",
-    "sonner": "^1.4.41",
-    "tailwind-merge": "^2.3.0",
+    "react-resizable-panels": "^1.0.5",
+    "recharts": "^2.10.0",
+    "sonner": "^1.3.1",
+    "svg-pan-luxm": "^3.6.2",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-interaction-media": "^0.1.0",
-    "zod": "^3.23.8",
+    "vaul": "^0.9.0",
+    "zod": "^3.25.76",
     "zod-to-json-schema": "^3.23.2"
   },
   "peerDependencies": {
     "@hookform/resolvers": "^3.3.2",
-    "embla-carousel": "^8.1.6",
     "lucide-react": "0.456.0",
     "mobx": "^6.12.3",
     "next": "14.2.16",
     "next-themes": "^0.2.1",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-hook-form": "7.51.4",
     "validator": "^13.11.0"
+  },
+  "peerDependenciesMeta": {
+    "cmdk": {
+      "optional": true
+    },
+    "date-fns": {
+      "optional": true
+    },
+    "embla-carousel": {
+      "optional": true
+    },
+    "embla-carousel-react": {
+      "optional": true
+    },
+    "input-otp": {
+      "optional": true
+    },
+    "react-day-picker": {
+      "optional": true
+    },
+    "react-hook-form": {
+      "optional": true
+    },
+    "react-resizable-panels": {
+      "optional": true
+    },
+    "recharts": {
+      "optional": true
+    },
+    "sonner": {
+      "optional": true
+    },
+    "vaul": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@radix-ui/react-primitive": "^2.0.1",
+    "@splinetool/react-spline": "^4.1.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
     "@types/facebook-pixel": "^0.0.30",
     "@types/gtag.js": "^0.0.19",
     "@types/lodash.merge": "^4.6.9",
@@ -135,8 +340,23 @@
     "@types/node": "20.14.15",
     "@types/react": "18.3.1",
     "@types/react-dom": "18.3.1",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "@vitejs/plugin-react": "^5.0.4",
+    "@vitest/coverage-v8": "^2.1.9",
+    "@vitest/ui": "^2.1.9",
+    "embla-carousel": "^8.6.0",
+    "filesize": "^11.0.13",
     "glob": "^11.0.2",
+    "jest": "^30.1.3",
+    "jsdom": "^27.0.0",
+    "react-dropzone": "^14.3.8",
+    "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^15.6.6",
+    "rehype-katex": "^7.0.1",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
     "tailwindcss": "3.4.14",
+    "tsup": "^8.5.0",
     "typescript": "5.6.3"
   }
 }

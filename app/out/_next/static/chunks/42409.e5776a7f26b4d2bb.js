@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[42409],{42409:(n,e,t)=>{t.r(e),t.d(e,{default:()=>a});var u=t(95155),r=t(61818);function a(){return(0,u.jsx)(r.Button,{variant:"link",children:"Link"})}}}]);

@@ -1,12 +1,14 @@
 export const siteConfig = {
-  name: "luxfi/ui",
-  url: "https://luxfi.github.io/ui",
-  ogImage: "https://luxfi.github.io/ui/og.jpg",
+  name: "lux/ui",
+  url: "https://ui.lux.finance",
+  ogImage: "https://ui.lux.finance/og.jpg",
   description:
-    "Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.",
+    "Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source. Built by Lux.",
+  version: "5.1.1",
   links: {
-    twitter: "https://twitter.com/luxfi",
+    twitter: "https://x.com/luxdefi",
     github: "https://github.com/luxfi/ui",
+    discord: "https://discord.gg/lux"
   },
 }
 

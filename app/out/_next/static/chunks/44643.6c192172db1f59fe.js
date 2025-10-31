@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[44643],{44643:(e,s,a)=>{a.r(s),a.d(s,{default:()=>i});var n=a(95155),t=a(33096),u=a(61818);function i(){return(0,n.jsxs)(u.Button,{disabled:!0,children:[(0,n.jsx)(t.jfu,{className:"mr-2 h-4 w-4 animate-spin"}),"Please wait"]})}}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[38393],{38393:(e,l,s)=>{s.r(l),s.d(l,{Collapsible:()=>b,CollapsibleContent:()=>C,CollapsibleTrigger:()=>p});var a=s(88106);let b=a.bL,p=a.R6,C=a.Ke}}]);

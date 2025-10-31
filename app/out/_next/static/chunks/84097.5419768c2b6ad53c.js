@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[84097],{84097:(e,s,t)=>{t.r(s),t.d(s,{AspectRatio:()=>c});let c=t(55414).b}}]);
