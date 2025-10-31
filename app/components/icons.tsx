@@ -2,34 +2,17 @@ type IconProps = React.HTMLAttributes<SVGElement>
 
 export const Icons = {
   logo: (props: IconProps) => (
-<<<<<<< HEAD
     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" {...props}>
-      {/* Lux Network Logo - Purple gradient background with L shape */}
-      <defs>
-        <linearGradient id="luxGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#8b5cf6" />
-          <stop offset="100%" stopColor="#7c3aed" />
-        </linearGradient>
-      </defs>
-      <rect width="200" height="200" rx="20" fill="url(#luxGradient)" />
+      {/* Lux Network Logo - L shape with theme support */}
+      <rect width="200" height="200" rx="20" fill="currentColor" opacity="0.1" />
       <path
         d="M60 60L60 140L140 140"
-        stroke="#ffffff"
+        stroke="currentColor"
         strokeWidth="20"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
       />
-=======
-    <svg viewBox="0 0 67 67" xmlns="http://www.w3.org/2000/svg" {...props}>
-      <path d="M22.21 67V44.6369H0V67H22.21Z" fill="currentColor"/>
-      <path d="M0 44.6369L22.21 46.8285V44.6369H0Z" fill="currentColor" opacity="0.7"/>
-      <path d="M66.7038 22.3184H22.2534L0.0878906 44.6367H44.4634L66.7038 22.3184Z" fill="currentColor"/>
-      <path d="M22.21 0H0V22.3184H22.21V0Z" fill="currentColor"/>
-      <path d="M66.7198 0H44.5098V22.3184H66.7198V0Z" fill="currentColor"/>
-      <path d="M66.6753 22.3185L44.5098 20.0822V22.3185H66.6753Z" fill="currentColor" opacity="0.7"/>
-      <path d="M66.7198 67V44.6369H44.5098V67H66.7198Z" fill="currentColor"/>
->>>>>>> hanzo/main
     </svg>
   ),
   twitter: (props: IconProps) => (
