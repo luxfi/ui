@@ -12,13 +12,8 @@ const nextConfig = {
   trailingSlash: true,
 
   // Base path for GitHub Pages (when deployed to github.io subdirectory)
-<<<<<<< HEAD
-  basePath: process.env.GITHUB_ACTIONS ? "/ui" : "",
-  
-=======
-  basePath: process.env.GITHUB_PAGES ? "/react-sdk" : "",
+  basePath: "",
 
->>>>>>> hanzo/main
   // Asset prefix for proper loading on custom domain
   assetPrefix: process.env.NEXT_PUBLIC_APP_URL || "",
 
