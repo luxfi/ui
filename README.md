@@ -24,15 +24,15 @@ Accessible and customizable components for React, Vue, Svelte, and React Native.
 ### Installation
 
 ```bash
-npm install @hanzo/ui
+npm install @luxfi/ui
 # or
-pnpm add @hanzo/ui
+pnpm add @luxfi/ui
 ```
 
 ### Usage
 
 ```tsx
-import { Button, Card, Input } from '@hanzo/ui'
+import { Button, Card, Input } from '@luxfi/ui'
 
 export function App() {
   return (
@@ -55,44 +55,41 @@ export function App() {
 
 ```tsx
 // React (default)
-import { Button } from '@hanzo/ui'
+import { Button } from '@luxfi/ui'
 
 // Vue
-import { Button } from '@hanzo/ui/vue'
+import { Button } from '@luxfi/ui/vue'
 
 // Svelte
-import { Button } from '@hanzo/ui/svelte'
+import { Button } from '@luxfi/ui/svelte'
 
 // React Native
-import { Button } from '@hanzo/ui/react-native'
+import { Button } from '@luxfi/ui/react-native'
 ```
 
 ## Documentation
 
-<<<<<<< HEAD
-Visit http://ui.lux.ai/docs to view the documentation.
-=======
-📚 Visit **[ui.hanzo.ai](https://ui.hanzo.ai)** for:
+📚 Visit **[ui.lux.finance](https://ui.lux.finance)** for:
 
-- [Component Documentation](https://ui.hanzo.ai/docs/components)
-- [Framework Guides](https://ui.hanzo.ai/docs/frameworks)
-- [Installation Guide](https://ui.hanzo.ai/docs/installation)
-- [Examples](https://ui.hanzo.ai/examples)
-- [Page Builder](https://ui.hanzo.ai/builder)
-- [Theme Generator](https://ui.hanzo.ai/theme-generator)
+- [Component Documentation](https://ui.lux.finance/docs/components)
+- [Framework Guides](https://ui.lux.finance/docs/frameworks)
+- [Installation Guide](https://ui.lux.finance/docs/installation)
+- [Examples](https://ui.lux.finance/examples)
+- [Page Builder](https://ui.lux.finance/builder)
+- [Theme Generator](https://ui.lux.finance/theme-generator)
 
 ## CLI
 
 Install components individually:
 
 ```bash
-npx @hanzo/ui add button
-npx @hanzo/ui add card dialog
+npx @luxfi/ui add button
+npx @luxfi/ui add card dialog
 ```
 
 ## What's Different from shadcn/ui?
 
-| Feature | shadcn/ui | @hanzo/ui |
+| Feature | shadcn/ui | @luxfi/ui |
 |---------|-----------|-----------|
 | Components | 58 | **161** |
 | Frameworks | React only | React, Vue, Svelte, React Native |
@@ -104,29 +101,29 @@ npx @hanzo/ui add card dialog
 
 ## Packages
 
-- `@hanzo/ui` - Main UI library (161 components)
-- `@hanzo/auth` - Authentication components
-- `@hanzo/commerce` - E-commerce components
-- `@hanzo/brand` - Branding system
+- `@luxfi/ui` - Main UI library (161 components)
+- `@luxfi/auth` - Authentication components
+- `@luxfi/commerce` - E-commerce components
+- `@luxfi/brand` - Branding system
 
 ## Examples
 
 ```tsx
 // 3D Components
-import { ThreeDButton, ThreeDCard } from '@hanzo/ui'
+import { ThreeDButton, ThreeDCard } from '@luxfi/ui'
 
 // AI Components
-import { AIChat, AIAssistant } from '@hanzo/ui'
+import { AIChat, AIAssistant } from '@luxfi/ui'
 
 // Animations
-import { AnimatedBeam, AnimatedText } from '@hanzo/ui'
+import { AnimatedBeam, AnimatedText } from '@luxfi/ui'
 ```
 
 ## Development
 
 ```bash
 # Clone repository
-git clone https://github.com/hanzoai/ui.git
+git clone https://github.com/luxfi/ui.git
 cd ui
 
 # Install dependencies
@@ -141,7 +138,6 @@ pnpm build
 # Run tests
 pnpm test
 ```
->>>>>>> hanzo/main
 
 ## Contributing
 
@@ -149,20 +145,16 @@ We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md)
 
 ## License
 
-<<<<<<< HEAD
-Licensed under the [MIT license](https://github.com/@lux/ui/blob/main/LICENSE.md).
-=======
 MIT - See [LICENSE.md](./LICENSE.md) for details.
 
 ## Links
 
-- [Documentation](https://ui.hanzo.ai)
-- [GitHub](https://github.com/hanzoai/ui)
-- [npm](https://www.npmjs.com/package/@hanzo/ui)
-- [Discord](https://discord.gg/hanzo)
-- [Twitter](https://twitter.com/hanzoai)
+- [Documentation](https://ui.lux.finance)
+- [GitHub](https://github.com/luxfi/ui)
+- [npm](https://www.npmjs.com/package/@luxfi/ui)
+- [Discord](https://discord.gg/lux)
+- [Twitter](https://twitter.com/luxfi)
 
 ---
 
-Built with ❤️ by [Hanzo](https://hanzo.ai)
->>>>>>> hanzo/main
+Built with ❤️ by [Lux Network](https://lux.network)
