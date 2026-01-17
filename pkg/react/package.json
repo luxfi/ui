@@ -78,7 +78,7 @@
     "openai": "^4.0.0",
     "swr": "^2.3.0",
     "tailwind-merge": "^3.3.1",
-    "zod": "^3.25.0",
+    "zod": "^3.25.76",
     "zustand": "^5.0.0"
   },
   "peerDependencies": {
