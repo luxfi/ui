@@ -1,17 +1,143 @@
-# @hanzo/ui
+# @luxfi/ui
 
-A comprehensive UI component library for Hanzo applications, built with React and TypeScript.
+Unified Tamagui UI library for Lux - web and mobile. Cross-platform components with shadcn patterns and React Native support.
 
-## Version 4.5.6
+## Version 0.1.0
+
+## Features
+
+- **Tamagui-powered** - Cross-platform styling for web and React Native
+- **161+ Components** - Comprehensive component library
+- **Multi-Framework** - React, Vue, Svelte, React Native support
+- **Monochrome Design** - Clean, professional shadcn-style theming
+- **Type-safe** - Full TypeScript support
 
 ## Installation
 
 ```bash
-npm install @hanzo/ui
+npm install @luxfi/ui
 # or
-pnpm add @hanzo/ui
+pnpm add @luxfi/ui
 # or
-yarn add @hanzo/ui
+yarn add @luxfi/ui
+```
+
+## Quick Start
+
+### Web (React)
+
+```tsx
+import { Button, Card, Input } from '@luxfi/ui'
+
+function App() {
+  return (
+    <Card>
+      <Input placeholder="Enter text..." />
+      <Button>Submit</Button>
+    </Card>
+  )
+}
+```
+
+### React Native
+
+```tsx
+import { Button, Card, Text } from '@luxfi/ui/react-native'
+import { TamaguiProvider } from 'tamagui'
+import { config } from '@luxfi/ui/tamagui/config'
+
+function App() {
+  return (
+    <TamaguiProvider config={config}>
+      <Card>
+        <Text>Hello Lux</Text>
+        <Button>Press me</Button>
+      </Card>
+    </TamaguiProvider>
+  )
+}
+```
+
+## Tamagui Configuration
+
+@luxfi/ui includes a complete Tamagui configuration with tokens, themes, and animations.
+
+```tsx
+// Import the config
+import { config } from '@luxfi/ui/tamagui/config'
+
+// Or import individual pieces
+import { tokens } from '@luxfi/ui/tamagui/tokens'
+import { themes } from '@luxfi/ui/tamagui/themes'
+import { colors } from '@luxfi/ui/tamagui/colors'
+import { fonts } from '@luxfi/ui/tamagui/fonts'
+import { animations } from '@luxfi/ui/tamagui/animations'
+```
+
+### Using with TamaguiProvider
+
+```tsx
+import { TamaguiProvider } from 'tamagui'
+import { config } from '@luxfi/ui/tamagui/config'
+
+function Root() {
+  return (
+    <TamaguiProvider config={config} defaultTheme="dark">
+      <App />
+    </TamaguiProvider>
+  )
+}
+```
+
+## Design System
+
+### Colors
+
+Monochrome design with semantic accents:
+
+```tsx
+// Base colors
+colors.black    // #000000
+colors.white    // #FFFFFF
+
+// Gray scale
+colors.gray100  // #F4F4F5
+colors.gray500  // #71717A
+colors.gray900  // #18181B
+
+// Semantic
+colors.success  // #22C55E
+colors.error    // #EF4444
+colors.warning  // #F59E0B
+colors.info     // #3B82F6
+```
+
+### Themes
+
+Dark-first design with light theme support:
+
+```tsx
+// Dark theme (default)
+themes.dark.background   // black
+themes.dark.color        // white
+themes.dark.card         // gray900
+
+// Light theme
+themes.light.background  // white
+themes.light.color       // black
+themes.light.card        // white
+```
+
+### Spacing Tokens
+
+```tsx
+// Available spacing tokens
+spacing.spacing4   // 4px
+spacing.spacing8   // 8px
+spacing.spacing16  // 16px
+spacing.spacing24  // 24px
+spacing.spacing32  // 32px
+// ... and more
 ```
 
 ## Components
@@ -20,210 +146,77 @@ yarn add @hanzo/ui
 
 Core UI components based on Radix UI primitives:
 
-- **Accordion** - Collapsible content panels
-- **Alert** - Informative alert messages
-- **AlertDialog** - Modal dialogs for important alerts
-- **Avatar** - User avatar display
-- **Badge** - Status and label badges
-- **Breadcrumb** - Navigation breadcrumbs
-- **Button** - Interactive buttons with variants
-- **Calendar** - Date picker calendar
-- **Card** - Container cards for content
-- **Carousel** - Image/content carousel
-- **Checkbox** - Checkbox input
-- **Collapsible** - Collapsible content sections
-- **Combobox** - Searchable select dropdown
-- **Command** - Command palette component
-- **ContextMenu** - Right-click context menus
-- **Dialog** - Modal dialogs
-- **Drawer** - Slide-out drawer panels
-- **DropdownMenu** - Dropdown menu component
-- **Form** - Form components with validation
-- **HoverCard** - Hover-triggered info cards
-- **Input** - Text input field
-- **InputOTP** - One-time password input
-- **Label** - Form labels
-- **NavigationMenu** - Navigation menu bar
-- **Popover** - Popover overlays
-- **Progress** - Progress indicators
-- **RadioGroup** - Radio button groups
-- **ResizablePanel** - Resizable panel layouts
-- **ScrollArea** - Custom scrollable areas
-- **SearchInput** - Search input with icon
-- **Select** - Select dropdown
-- **Separator** - Visual separator line
-- **Sheet** - Side sheet panels
-- **Skeleton** - Loading skeleton screens
-- **Slider** - Range slider input
-- **Switch** - Toggle switch
-- **Table** - Data tables
-- **Tabs** - Tabbed interfaces
-- **TextArea** - Multi-line text input
-- **TextField** - Enhanced text input
-- **Toast** - Toast notifications (via Sonner)
-- **Toggle** - Toggle buttons
-- **ToggleGroup** - Grouped toggle buttons
-- **Tooltip** - Hover tooltips
-- **VideoPlayer** - Video playback component
+- Accordion, Alert, AlertDialog, Avatar, Badge
+- Button, Calendar, Card, Carousel, Checkbox
+- Dialog, Drawer, DropdownMenu, Form
+- Input, InputOTP, Label, Popover, Progress
+- RadioGroup, ScrollArea, Select, Sheet
+- Skeleton, Slider, Switch, Table, Tabs
+- TextArea, Toast, Toggle, Tooltip
+
+### Blocks
+
+Production-ready templates:
+
+- Sidebar layouts (16 variants)
+- Calendar views (32 variants)
+- Dashboard layouts
+- Auth flows (Login, Signup, OTP)
 
 ### Assets
 
-Icon components and visual assets:
+Icon components for AI providers, file types, and more.
 
-#### AI Provider Icons
-- **AnthropicIcon** - Anthropic AI logo
-- **OpenAIIcon** - OpenAI logo
-- **GeminiIcon** - Google Gemini logo
-- **DeepSeekIcon** - DeepSeek logo
-- **MistralIcon** - Mistral AI logo
-- **MetaIcon** - Meta AI logo
-- **GroqIcon** - Groq logo
-- **OllamaIcon** - Ollama logo
-- **HanzoIcon** - Hanzo AI logo
-- **TogetherAI** - Together AI logo
-- **ExoIcon** - Exo logo
-- **GrokIcon** - Grok logo
-- **LmStudioIcon** - LM Studio logo
-- **OpenRouterIcon** - OpenRouter logo
-- **PerplexityIcon** - Perplexity logo
-- **QwenIcon** - Qwen logo
-- **AyaCohereIcon** - Aya/Cohere logo
+## Multi-Framework Support
 
-#### Feature Icons
-- **AIAgentIcon** - AI agent indicator
-- **AisIcon** - AI services icon
-- **ReactJsIcon** - React.js logo
-- **ReasoningIcon** - AI reasoning indicator
-- **ToolsIcon** - Tools/utilities icon
-- **TracingIcon** - Tracing/monitoring icon
-- **ScheduledTasksIcon** - Scheduled tasks icon
-- **SendIcon** - Send/submit icon
+```tsx
+// React (default)
+import { Button } from '@luxfi/ui'
 
-#### File Type Icons
-- **FileTypeIcon** - Dynamic file type icon based on extension
-- **DirectoryTypeIcon** - Folder/directory icon
+// Vue
+import { Button } from '@luxfi/ui/vue'
 
-### Utilities
+// Svelte
+import { Button } from '@luxfi/ui/svelte'
 
-Helper functions and hooks:
+// React Native
+import { Button } from '@luxfi/ui/react-native'
+```
 
-- **cn()** - Class name utility (clsx + tailwind-merge)
-- **markdown()** - Markdown to JSX converter
-- **formatText()** - Text formatting utilities
-- **useDebounce()** - Debounce hook
-- **useMap()** - Map state management hook
-- **formatDateToLocaleStringWithTime()** - Date formatting
-- **getFileExt()** - File extension extraction
-- **hexToRgb()** - Color conversion utilities
+## CLI
 
-### Custom Components
+Install components individually:
 
-Additional enhanced components:
+```bash
+npx @luxfi/ui add button
+npx @luxfi/ui add card dialog
+```
 
-- **ChatInput** - Chat message input
-- **ChatInputArea** - Multi-line chat input
-- **ChatSettingsIcon** - Chat settings icon
-- **CopyToClipboardIcon** - Copy to clipboard button
-- **DotsLoader** - Loading dots animation
-- **FileList** - File list display
-- **FileUploader** - File upload component
-- **JsonForm** - JSON-based dynamic forms
-- **MarkdownText** - Markdown renderer
-- **PrettyJsonPrint** - Formatted JSON display
+## Migration from @hanzo/ui
 
-## Styling
+@luxfi/ui is a migration target from @hanzo/ui. To migrate:
 
-The library uses Tailwind CSS for styling. Make sure your application includes Tailwind CSS configuration.
+1. Update imports from `@hanzo/ui` to `@luxfi/ui`
+2. Update theme colors to monochrome palette
+3. Add TamaguiProvider for cross-platform support
 
 ## Dependencies
 
 Key peer dependencies:
 - React 18.3.1+
 - React DOM 18.3.1+
-- @hookform/resolvers ^3.3.2
-- react-hook-form 7.51.4
+- tamagui ^1.141.5 (for cross-platform)
 - lucide-react 0.456.0
 - next-themes ^0.2.1
-- embla-carousel ^8.1.6
-
-## Usage Examples
-
-### Basic Button
-
-```tsx
-import { Button } from '@hanzo/ui';
-
-function App() {
-  return (
-    <Button variant="primary" onClick={() => console.log('clicked')}>
-      Click me
-    </Button>
-  );
-}
-```
-
-### Alert Dialog
-
-```tsx
-import {
-  AlertDialog,
-  AlertDialogTrigger,
-  AlertDialogContent,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogAction,
-  AlertDialogCancel
-} from '@hanzo/ui';
-
-function ConfirmDialog() {
-  return (
-    <AlertDialog>
-      <AlertDialogTrigger>
-        <Button>Open Dialog</Button>
-      </AlertDialogTrigger>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
-  );
-}
-```
-
-### AI Provider Icons
-
-```tsx
-import { OpenAIIcon, AnthropicIcon, GeminiIcon } from '@hanzo/ui/assets';
-
-function AIProviders() {
-  return (
-    <div className="flex gap-4">
-      <OpenAIIcon className="h-6 w-6" />
-      <AnthropicIcon className="h-6 w-6" />
-      <GeminiIcon className="h-6 w-6" />
-    </div>
-  );
-}
-```
 
 ## License
 
-BSD-3-Clause
+MIT
 
 ## Author
 
-Hanzo AI, Inc.
+Lux Partners
 
 ## Repository
 
-https://github.com/hanzoai/react-sdk
+https://github.com/luxfi/ui

@@ -1,7 +1,7 @@
 {
-  "name": "@hanzo/brand",
-  "version": "1.0.0",
-  "description": "Brand assets and configuration for Hanzo UI",
+  "name": "@luxfi/brand",
+  "version": "0.1.0",
+  "description": "Brand assets and configuration for Lux UI",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -15,12 +15,12 @@
     "clean": "rm -rf dist"
   },
   "keywords": [
-    "hanzo",
+    "lux",
     "brand",
     "ui",
     "design-system"
   ],
-  "author": "Hanzo AI",
+  "author": "Lux Partners",
   "license": "MIT",
   "devDependencies": {
     "tsup": "^8.0.0",
