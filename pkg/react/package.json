@@ -1,14 +1,14 @@
 {
-  "name": "@hanzo/react",
-  "version": "1.0.0",
+  "name": "@luxfi/react",
+  "version": "0.1.0",
   "description": "React package for building AI-powered applications with generative UI",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
-    "scope": "@hanzo"
+    "scope": "@luxfi"
   },
-  "author": "Hanzo AI, Inc.",
-  "license": "BSD-3-Clause",
+  "author": "Lux Partners",
+  "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hanzoai/ui.git",
+    "url": "git+https://github.com/luxfi/ui.git",
     "directory": "pkg/react"
   },
   "keywords": [
@@ -30,8 +30,7 @@
     "generative-ui",
     "llm",
     "chat",
-    "copilot",
-    "hanzo",
+    "lux",
     "mcp",
     "model-context-protocol"
   ],

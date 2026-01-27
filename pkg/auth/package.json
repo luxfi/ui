@@ -1,27 +1,27 @@
 {
-  "name": "@hanzo/auth",
-  "version": "2.5.4",
-  "description": "Library with Firebase authentication.",
+  "name": "@luxfi/auth",
+  "version": "0.1.0",
+  "description": "Authentication library for Lux applications.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
-    "scope": "@hanzo"
+    "scope": "@luxfi"
   },
-  "author": "Hanzo AI, Inc.",
-  "license": "BSD-3-Clause",
+  "author": "Lux Partners",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hanzoai/react-sdk.git",
+    "url": "git+https://github.com/luxfi/ui.git",
     "directory": "pkg/auth"
   },
   "keywords": [
     "auth",
-    "hanzoai",
-    "hanzo"
+    "lux",
+    "authentication"
   ],
   "main": "index.ts",
   "scripts": {
-    "lat": "npm show @hanzo/auth version",
+    "lat": "npm show @luxfi/auth version",
     "pub": "npm publish",
     "tc": "tsc",
     "build": "tsc --outDir dist --declaration --emitDeclarationOnly false --module ESNext --esModuleInterop true --skipLibCheck true --sourceMap true"
@@ -30,7 +30,7 @@
     "firebase-admin": "^12.1.0"
   },
   "peerDependencies": {
-    "@hanzo/ui": "4.5.0",
+    "@luxfi/ui": "^0.1.0",
     "@hookform/resolvers": "^3.3.4",
     "firebase": "^10.8.0",
     "lucide-react": "0.456.0",
