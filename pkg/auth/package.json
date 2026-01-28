@@ -30,7 +30,7 @@
     "firebase-admin": "^12.1.0"
   },
   "peerDependencies": {
-    "@luxfi/ui": "^0.1.0",
+    "@luxfi/ui": "workspace:*",
     "@hookform/resolvers": "^3.3.4",
     "firebase": "^10.8.0",
     "lucide-react": "0.456.0",
