@@ -1,14 +1,23 @@
 /**
  * @luxfi/ui Tamagui Configuration
  *
- * Unified Tamagui-based UI library for Lux - web and mobile.
- * Based on lux/exchange patterns with shadcn-style theming.
+ * Exports Lux-customized Tamagui config based on @hanzo/ui system.
+ *
+ * Usage:
+ *   import { tamaguiConfig } from '@luxfi/ui/tamagui'
+ *
+ *   // In your app
+ *   export default createTamagui(tamaguiConfig)
  */
 
-export { config, default as tamaguiConfig } from './config'
-export type { TamaguiGroupNames } from './config'
-export * from './tokens'
-export * from './themes'
-export * from './fonts'
-export * from './animations'
-export * from './colors'
+import { luxTamaguiConfig } from '../system'
+
+// Export the Lux Tamagui config
+export const config = luxTamaguiConfig
+export const tamaguiConfig = luxTamaguiConfig
+
+// Re-export type
+export type { TamaguiConfig } from '@hanzo/ui/system/generators/tamagui'
+
+// Export individual parts for customization
+export const { tokens, fonts, animations, media, themes } = luxTamaguiConfig
