@@ -1,7 +1,7 @@
 {
   "name": "@luxfi/ui",
-  "version": "0.1.0",
-  "description": "Unified Tamagui UI library for Lux - web and mobile. Cross-platform components with shadcn patterns and React Native support.",
+  "version": "6.0.0",
+  "description": "Unified UI library for Lux - web and mobile. Radix/shadcn components with Tamagui support for React Native cross-platform.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
@@ -272,9 +272,31 @@
       "types": "./dist/tamagui/animations.d.ts",
       "import": "./dist/tamagui/animations.mjs",
       "require": "./dist/tamagui/animations.js"
-    }
+    },
+    "./system": {
+      "types": "./dist/system/index.d.ts",
+      "import": "./dist/system/index.mjs",
+      "require": "./dist/system/index.js"
+    },
+    "./tailwind.config.lux": {
+      "types": "./dist/tailwind.config.lux.d.ts",
+      "import": "./dist/tailwind.config.lux.mjs",
+      "require": "./dist/tailwind.config.lux.js"
+    },
+    "./commerce": "./commerce/ui/context.tsx",
+    "./root-layout": "./root-layout/index.tsx",
+    "./next": "./next/index.ts",
+    "./site-def": "./site-def/index.ts"
   },
   "dependencies": {
+    "cookies-next": "^4.1.1",
+    "embla-carousel-autoplay": "^8.1.6",
+    "firebase": "10.12.0",
+    "framer-motion": "^11.2.12",
+    "react-device-detect": "^2.2.3",
+    "react-social-icons": "^6.4.0",
+    "react-tooltip": "^5.26.4",
+    "usehooks-ts": "^3.1.0",
     "@tamagui/adapt": "^1.141.5",
     "@tamagui/animations-css": "^1.141.5",
     "@tamagui/animations-react-native": "^1.141.5",
@@ -352,13 +374,18 @@
     "zod-to-json-schema": "^3.23.2"
   },
   "peerDependencies": {
+    "@hanzo/auth": ">=2.5.0",
+    "@hanzo/commerce": ">=7.3.0",
+    "@hanzo/ui": ">=5.3.0",
+    "@luxfi/menu-icons": ">=1.0.0",
     "@hookform/resolvers": "^3.3.2",
-    "lucide-react": "0.456.0",
+    "lucide-react": ">=0.456.0",
     "mobx": "^6.12.3",
-    "next": "14.2.16",
-    "next-themes": "^0.2.1",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "mobx-react-lite": "^4.0.7",
+    "next": ">=14.2.0",
+    "next-themes": ">=0.2.1",
+    "react": ">=18.3.0",
+    "react-dom": ">=18.3.0",
     "validator": "^13.11.0"
   },
   "peerDependenciesMeta": {
