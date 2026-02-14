@@ -1,0 +1,144 @@
+/**
+ * Lux Brand Color Palette
+ *
+ * Unified CSS variables using --ui-* prefix.
+ * These values are Lux-specific (monochrome, dark-first, trading-focused).
+ */
+
+@tailwind base;
+
+@layer base {
+  /* ============================================================
+   * DARK THEME (default for Lux - trading/finance focused)
+   * ============================================================ */
+  :root,
+  .dark,
+  [data-theme='dark'] {
+    /* Foreground (text) - light on dark */
+    --ui-fg-0: hsl(0 0% 100%);
+    --ui-fg-body: hsl(0 0% 97%);
+    --ui-fg-1: hsl(0 0% 85%);
+    --ui-fg-2: hsl(0 0% 70%);
+    --ui-fg-3: hsl(0 0% 55%);
+    --ui-fg-muted: hsl(0 0% 40%);
+
+    /* Background - true black for OLED/trading screens */
+    --ui-bg-0: hsl(0 0% 0%);
+    --ui-bg-1: hsl(0 0% 7%);
+    --ui-bg-2: hsl(0 0% 12%);
+    --ui-bg-3: hsl(0 0% 18%);
+
+    /* Overlay */
+    --ui-bg-overlay: hsla(0 0% 0% / 0.6);
+
+    /* Primary - white on dark (high contrast for actions) */
+    --ui-primary: hsl(0 0% 100%);
+    --ui-primary-hover: hsl(0 0% 90%);
+    --ui-primary-fg: hsl(0 0% 0%);
+
+    /* Secondary - subtle gray */
+    --ui-secondary: hsl(0 0% 18%);
+    --ui-secondary-hover: hsl(0 0% 25%);
+    --ui-secondary-fg: hsl(0 0% 100%);
+
+    /* Accent - Lux uses monochrome, so accent = primary */
+    --ui-accent: hsl(0 0% 100%);
+    --ui-accent-hover: hsl(0 0% 90%);
+    --ui-accent-fg: hsl(0 0% 0%);
+
+    /* Destructive - red for errors/delete */
+    --ui-destructive: hsl(0 62% 45%);
+    --ui-destructive-hover: hsl(0 62% 35%);
+    --ui-destructive-fg: hsl(0 0% 100%);
+
+    /* Success - green for positive/gains */
+    --ui-success: hsl(142 76% 36%);
+    --ui-success-hover: hsl(142 76% 30%);
+    --ui-success-fg: hsl(0 0% 100%);
+
+    /* Warning - amber */
+    --ui-warning: hsl(38 92% 50%);
+    --ui-warning-hover: hsl(38 92% 40%);
+    --ui-warning-fg: hsl(0 0% 0%);
+
+    /* Border */
+    --ui-border: hsl(0 0% 18%);
+    --ui-border-muted: hsl(0 0% 12%);
+
+    /* Ring (focus) */
+    --ui-ring: hsl(0 0% 70%);
+
+    /* Radius */
+    --ui-radius: 0.5rem;
+
+    /* Navigation */
+    --ui-nav: hsl(0 0% 55%);
+    --ui-nav-hover: hsl(0 0% 100%);
+    --ui-nav-current: hsl(0 0% 100%);
+  }
+
+  /* ============================================================
+   * LIGHT THEME
+   * ============================================================ */
+  .light,
+  [data-theme='light'] {
+    /* Foreground (text) - dark on light */
+    --ui-fg-0: hsl(0 0% 0%);
+    --ui-fg-body: hsl(0 0% 10%);
+    --ui-fg-1: hsl(0 0% 20%);
+    --ui-fg-2: hsl(0 0% 35%);
+    --ui-fg-3: hsl(0 0% 50%);
+    --ui-fg-muted: hsl(0 0% 60%);
+
+    /* Background - light levels */
+    --ui-bg-0: hsl(0 0% 100%);
+    --ui-bg-1: hsl(0 0% 98%);
+    --ui-bg-2: hsl(0 0% 94%);
+    --ui-bg-3: hsl(0 0% 88%);
+
+    /* Overlay */
+    --ui-bg-overlay: hsla(0 0% 100% / 0.6);
+
+    /* Primary - black on light */
+    --ui-primary: hsl(0 0% 0%);
+    --ui-primary-hover: hsl(0 0% 15%);
+    --ui-primary-fg: hsl(0 0% 100%);
+
+    /* Secondary */
+    --ui-secondary: hsl(0 0% 94%);
+    --ui-secondary-hover: hsl(0 0% 88%);
+    --ui-secondary-fg: hsl(0 0% 0%);
+
+    /* Accent */
+    --ui-accent: hsl(0 0% 0%);
+    --ui-accent-hover: hsl(0 0% 15%);
+    --ui-accent-fg: hsl(0 0% 100%);
+
+    /* Destructive */
+    --ui-destructive: hsl(0 62% 45%);
+    --ui-destructive-hover: hsl(0 62% 35%);
+    --ui-destructive-fg: hsl(0 0% 100%);
+
+    /* Success */
+    --ui-success: hsl(142 76% 36%);
+    --ui-success-hover: hsl(142 76% 30%);
+    --ui-success-fg: hsl(0 0% 100%);
+
+    /* Warning */
+    --ui-warning: hsl(38 92% 50%);
+    --ui-warning-hover: hsl(38 92% 40%);
+    --ui-warning-fg: hsl(0 0% 0%);
+
+    /* Border */
+    --ui-border: hsl(0 0% 88%);
+    --ui-border-muted: hsl(0 0% 94%);
+
+    /* Ring */
+    --ui-ring: hsl(0 0% 35%);
+
+    /* Navigation */
+    --ui-nav: hsl(0 0% 50%);
+    --ui-nav-hover: hsl(0 0% 0%);
+    --ui-nav-current: hsl(0 0% 0%);
+  }
+}

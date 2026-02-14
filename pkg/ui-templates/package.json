@@ -1,0 +1,28 @@
+{
+  "name": "@luxfi/ui-templates",
+  "version": "1.0.0",
+  "description": "Brand UI templates for creating @brand/brand and @brand/ui packages",
+  "author": "Lux Partners Limited <hello@lux.partners>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luxfi/ui.git",
+    "directory": "pkg/ui-templates"
+  },
+  "files": [
+    "brand-brand",
+    "brand-ui",
+    "README.md"
+  ],
+  "scripts": {
+    "prepublishOnly": "echo 'Templates package - no build needed'"
+  },
+  "keywords": [
+    "ui",
+    "templates",
+    "brand",
+    "design-system",
+    "tailwind",
+    "react"
+  ]
+}
