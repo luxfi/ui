@@ -62,6 +62,17 @@ export function MainNav() {
           Blocks
         </Link>
         <Link
+          href="/builder"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/builder")
+              ? "text-foreground"
+              : "text-foreground/80"
+          )}
+        >
+          Builder
+        </Link>
+        <Link
           href="/charts"
           className={cn(
             "transition-colors hover:text-foreground/80",

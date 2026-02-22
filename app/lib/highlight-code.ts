@@ -1,10 +1,45 @@
 // Removed "use server" for static export compatibility
 import { promises as fs } from "fs"
 import path from "path"
+import type { Highlighter } from "shiki"
 
-// Highlighting is disabled for static exports due to Shiki compatibility issues
-// Return plain code wrapped in pre/code tags for static builds
-const highlightCodeEnabled = false
+// Enable syntax highlighting in development
+// For static exports, we can use client-side highlighting instead
+const highlightCodeEnabled =
+  process.env.NODE_ENV === "development" || !process.env.GITHUB_ACTIONS
+
+// Singleton highlighter instance to prevent memory leaks
+let highlighterInstance: Highlighter | null = null
+let highlighterPromise: Promise<Highlighter> | null = null
+
+async function getHighlighter(): Promise<Highlighter> {
+  if (highlighterInstance) {
+    return highlighterInstance
+  }
+
+  if (highlighterPromise) {
+    return highlighterPromise
+  }
+
+  highlighterPromise = (async () => {
+    const { createHighlighter } = await import("shiki")
+
+    const editorTheme = await fs.readFile(
+      path.join(process.cwd(), "lib/themes/dark.json"),
+      "utf-8"
+    )
+
+    const highlighter = await createHighlighter({
+      langs: ["typescript"],
+      themes: [JSON.parse(editorTheme)],
+    })
+
+    highlighterInstance = highlighter
+    return highlighter
+  })()
+
+  return highlighterPromise
+}
 
 export async function highlightCode(code: string) {
   if (!highlightCodeEnabled) {
@@ -13,19 +48,7 @@ export async function highlightCode(code: string) {
   }
 
   try {
-    const { getHighlighter } = await import("shiki")
-
-    const editorTheme = await fs.readFile(
-      path.join(process.cwd(), "lib/themes/dark.json"),
-      "utf-8"
-    )
-
-    const highlighter = await getHighlighter({
-      langs: ["typescript"],
-      themes: [],
-    })
-
-    await highlighter.loadTheme(JSON.parse(editorTheme))
+    const highlighter = await getHighlighter()
 
     const html = await highlighter.codeToHtml(code, {
       lang: "typescript",
@@ -37,6 +60,16 @@ export async function highlightCode(code: string) {
     console.error("Syntax highlighting failed:", error)
     return `<pre><code class="language-typescript">${escapeHtml(code)}</code></pre>`
   }
+}
+
+// Clean up highlighter on process exit (for server)
+if (typeof process !== "undefined") {
+  process.on("exit", () => {
+    if (highlighterInstance) {
+      highlighterInstance.dispose()
+      highlighterInstance = null
+    }
+  })
 }
 
 function escapeHtml(unsafe: string): string {

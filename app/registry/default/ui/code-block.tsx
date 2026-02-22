@@ -149,10 +149,13 @@ const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
                     (child) =>
                       child.type === "element" && child.tagName === "code"
                   )
-                  if (codeElement) {
-                    return codeElement.children
+                  if (
+                    codeElement &&
+                    "children" in codeElement &&
+                    codeElement.children
+                  ) {
+                    node.children = codeElement.children
                   }
-                  return node.children
                 },
               },
             ],
@@ -184,13 +187,12 @@ const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
       }
     }, [code])
 
-    const lines = highlightedCode
-      .split("\n")
-      .filter((line) => line.trim() !== "")
+    const lines = highlightedCode.split("\n")
 
     return (
       <div
         ref={ref}
+        data-testid="code-block"
         className={cn(codeBlockVariants({ theme, size, className }))}
         {...props}
       >
@@ -236,8 +238,10 @@ const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
             <div className="p-4 space-y-2">
               {Array.from({ length: 10 }).map((_, i) => (
                 <div key={i} className="flex items-center gap-4">
-                  {showLineNumbers && <Skeleton className="h-4 w-8" />}
-                  <Skeleton className="h-4 flex-1" />
+                  {showLineNumbers && (
+                    <Skeleton data-testid="skeleton" className="h-4 w-8" />
+                  )}
+                  <Skeleton data-testid="skeleton" className="h-4 flex-1" />
                 </div>
               ))}
             </div>

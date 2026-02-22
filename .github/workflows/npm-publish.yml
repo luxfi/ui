@@ -1,5 +1,9 @@
 name: NPM Publish
 
+permissions:
+  contents: write
+  id-token: write
+
 on:
   workflow_dispatch:
     inputs:
@@ -12,6 +16,9 @@ on:
           - ui-mcp
           - auth
           - commerce
+          - checkout
+          - brand
+          - react
           - all
       version_bump:
         description: 'Version bump type'
@@ -40,26 +47,97 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Build packages
         run: |
           if [ "${{ github.event.inputs.package }}" = "all" ] || [ "${{ github.event.inputs.package }}" = "ui" ]; then
-            cd pkg/ui && npm run build || true
+            cd pkg/ui && pnpm build
+            cd ../..
+          fi
+          if [ "${{ github.event.inputs.package }}" = "all" ] || [ "${{ github.event.inputs.package }}" = "ui-mcp" ]; then
+            cd pkg/ui-mcp && pnpm build
+            cd ../..
+          fi
+          if [ "${{ github.event.inputs.package }}" = "all" ] || [ "${{ github.event.inputs.package }}" = "auth" ]; then
+            cd pkg/auth && pnpm build
+            cd ../..
+          fi
+          if [ "${{ github.event.inputs.package }}" = "all" ] || [ "${{ github.event.inputs.package }}" = "commerce" ]; then
+            cd pkg/commerce && pnpm build
+            cd ../..
+          fi
+          if [ "${{ github.event.inputs.package }}" = "all" ] || [ "${{ github.event.inputs.package }}" = "checkout" ]; then
+            cd pkg/checkout && pnpm build
+            cd ../..
+          fi
+          if [ "${{ github.event.inputs.package }}" = "all" ] || [ "${{ github.event.inputs.package }}" = "brand" ]; then
+            cd pkg/brand && pnpm build
+            cd ../..
+          fi
+          if [ "${{ github.event.inputs.package }}" = "all" ] || [ "${{ github.event.inputs.package }}" = "react" ]; then
+            cd pkg/react && pnpm build
+            cd ../..
           fi
 
       - name: Bump version and publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true
         run: |
+          # Set up npm and pnpm auth
           npm config set //registry.npmjs.org/:_authToken $NODE_AUTH_TOKEN
-          
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
+
           publish_package() {
             local pkg_dir=$1
-            cd $pkg_dir
-            npm version ${{ github.event.inputs.version_bump }}
-            npm publish --access public
+            local pkg_name=$(cd $pkg_dir && node -p "require('./package.json').name")
+            local pkg_version=$(cd $pkg_dir && node -p "require('./package.json').version")
+            echo "=== Publishing $pkg_name@$pkg_version from $pkg_dir ==="
+
+            # Change to package directory
+            pushd "$pkg_dir"
+
+            # Bump version manually using node to avoid any pnpm/npm hooks
+            echo "Bumping version (${{ github.event.inputs.version_bump }})..."
+            node -e "
+              const fs = require('fs');
+              const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+              const [major, minor, patch] = pkg.version.split('.').map(Number);
+              const bump = '${{ github.event.inputs.version_bump }}';
+              if (bump === 'major') pkg.version = (major + 1) + '.0.0';
+              else if (bump === 'minor') pkg.version = major + '.' + (minor + 1) + '.0';
+              else pkg.version = major + '.' + minor + '.' + (patch + 1);
+              fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+              console.log('New version:', pkg.version);
+            "
+
+            local new_version=$(node -p "require('./package.json').version")
+            echo "Version is now: $new_version"
+
+            # Pack the tarball
+            echo "Running pnpm pack..."
+            pnpm pack --pack-gzip-level 9
+            local tarball=$(ls -t *.tgz | head -1)
+            echo "Created tarball: $tarball"
+
+            # Verify tarball contents
+            echo "Tarball package.json:"
+            tar -xzf "$tarball" -O package/package.json
+
+            # Copy to temp dir and publish
+            local temp_dir="/tmp/publish-$$"
+            mkdir -p "$temp_dir"
+            cp "$tarball" "$temp_dir/"
+            echo "Publishing from $temp_dir..."
+            cd "$temp_dir"
+            npm publish "$tarball" --access public
             cd -
+
+            # Cleanup
+            rm -rf "$temp_dir"
+            rm -f "$tarball"
+            popd
           }
           
           case "${{ github.event.inputs.package }}" in
@@ -75,11 +153,23 @@ jobs:
             commerce)
               publish_package "pkg/commerce"
               ;;
+            checkout)
+              publish_package "pkg/checkout"
+              ;;
+            brand)
+              publish_package "pkg/brand"
+              ;;
+            react)
+              publish_package "pkg/react"
+              ;;
             all)
               publish_package "pkg/ui"
               publish_package "pkg/ui-mcp"
               publish_package "pkg/auth"
               publish_package "pkg/commerce"
+              publish_package "pkg/checkout"
+              publish_package "pkg/brand"
+              publish_package "pkg/react"
               ;;
           esac
 

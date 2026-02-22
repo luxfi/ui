@@ -1,5 +1,6 @@
 "use client"
 
+import { useToast } from "@/registry/default/ui/use-toast"
 import {
   Toast,
   ToastClose,
@@ -8,14 +9,13 @@ import {
   ToastTitle,
   ToastViewport,
 } from "@/registry/default/ui/toast"
-import { useToast } from "@/registry/default/ui/use-toast"
 
 export function Toaster() {
   const { toasts } = useToast()
 
   return (
     <ToastProvider>
-      {toasts.map(function ({ id, title, description, action, ...props }) {
+      {toasts.map(function ({ id, title, description, action, ...props }: any) {
         return (
           <Toast key={id} {...props}>
             <div className="grid gap-1">
@@ -29,7 +29,6 @@ export function Toaster() {
           </Toast>
         )
       })}
-      {/* @ts-expect-error - React 19 types issue with Radix UI */}
       <ToastViewport />
     </ToastProvider>
   )

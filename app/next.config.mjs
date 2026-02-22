@@ -1,12 +1,12 @@
-import { createMDX } from "fumadocs-mdx/next"
+import { createMDX } from "@hanzo/docs-mdx/next"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Transpile packages that might have issues with pnpm symlinks
-  transpilePackages: ["chrono-node"],
+  transpilePackages: ["chrono-node", "@hanzo/ui"],
 
-  // Enable static export for GitHub Pages deployment
-  output: process.env.GITHUB_ACTIONS ? "export" : undefined,
+  // Enable static export for GitHub Pages deployment (but not for E2E tests)
+  output: process.env.GITHUB_ACTIONS && !process.env.E2E_TEST ? "export" : undefined,
 
   // Use trailing slashes for GitHub Pages compatibility
   trailingSlash: true,
@@ -105,6 +105,19 @@ const nextConfig = {
   },
 }
 
-const withMDX = createMDX({})
+const withMDX = createMDX({
+  configPath: "source.config.ts",
+  outDir: ".source",
+  mdxOptions: {
+    rehypeCodeOptions: {
+      themes: {
+        light: "github-light",
+        dark: "github-dark",
+      },
+      // Keep background color from theme
+      keepBackground: false,
+    },
+  },
+})
 
 export default withMDX(nextConfig)

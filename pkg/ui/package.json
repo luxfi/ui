@@ -1,7 +1,7 @@
 {
-  "name": "@luxfi/ui",
-  "version": "6.0.0",
-  "description": "Unified UI library for Lux - web and mobile. Radix/shadcn components with Tamagui support for React Native cross-platform.",
+  "name": "@hanzo/ui",
+  "version": "5.3.34",
+  "description": "Multi-framework UI library with React, Vue, Svelte, and React Native support. Based on shadcn/ui with comprehensive framework coverage.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
@@ -15,8 +15,11 @@
   "sideEffects": false,
   "files": [
     "dist",
+    "docs",
+    "content",
     "style",
     "bin",
+    "finance",
     "README.md",
     "LICENSE"
   ],
@@ -30,7 +33,16 @@
     "lux",
     "tamagui",
     "components",
-    "design-system",
+    "ecommerce",
+    "analytics",
+    "ai",
+    "chat",
+    "finance",
+    "trading",
+    "tradingview",
+    "hanzo",
+    "hanzo-ai",
+    "hanzoai",
     "radix-ui",
     "react",
     "react-native",
@@ -42,8 +54,9 @@
     "lat": "npm show @luxfi/ui version",
     "pub": "npm publish",
     "tc": "tsc --project tsconfig.build.json",
-    "build": "npm run clean && npm run build:tsup",
-    "build:tsup": "tsup --config tsup.config.minimal.ts",
+    "build": "npm run clean && npm run build:minimal",
+    "build:minimal": "tsup --config tsup.config.minimal.ts",
+    "build:namespaces": "tsup --config tsup.config.namespaces.ts",
     "build:full": "tsup --config tsup.config.production.ts",
     "build:frameworks": "npm run build",
     "build:watch": "tsup --watch",
@@ -61,9 +74,7 @@
     "test:frameworks": "jest test/multi-framework.test.js --verbose"
   },
   "bin": {
-    "@luxfi/ui": "./bin/cli.js",
-    "luxfi-ui": "./bin/cli.js",
-    "lux-ui": "./bin/cli.js"
+    "hanzo-ui": "./bin/cli.js"
   },
   "exports": {
     "./package.json": "./package.json",
@@ -71,6 +82,36 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
+    },
+    "./system": {
+      "types": "./dist/system/index.d.ts",
+      "import": "./dist/system/index.mjs",
+      "require": "./dist/system/index.js"
+    },
+    "./system/*": {
+      "types": "./dist/system/*.d.ts",
+      "import": "./dist/system/*.mjs",
+      "require": "./dist/system/*.js"
+    },
+    "./registry": {
+      "types": "./dist/registry/index.d.ts",
+      "import": "./dist/registry/index.mjs",
+      "require": "./dist/registry/index.js"
+    },
+    "./registry/*": {
+      "types": "./dist/registry/*.d.ts",
+      "import": "./dist/registry/*.mjs",
+      "require": "./dist/registry/*.js"
+    },
+    "./primitives/bases/tamagui": {
+      "types": "./dist/primitives/bases/tamagui/index.d.ts",
+      "import": "./dist/primitives/bases/tamagui/index.mjs",
+      "require": "./dist/primitives/bases/tamagui/index.js"
+    },
+    "./primitives/bases/tamagui/*": {
+      "types": "./dist/primitives/bases/tamagui/*.d.ts",
+      "import": "./dist/primitives/bases/tamagui/*.mjs",
+      "require": "./dist/primitives/bases/tamagui/*.js"
     },
     "./calendar": {
       "types": "./dist/calendar.d.ts",
@@ -82,15 +123,160 @@
       "import": "./dist/command.mjs",
       "require": "./dist/command.js"
     },
+    "./accordion": {
+      "types": "./dist/accordion.d.ts",
+      "import": "./dist/accordion.mjs",
+      "require": "./dist/accordion.js"
+    },
+    "./alert": {
+      "types": "./dist/alert.d.ts",
+      "import": "./dist/alert.mjs",
+      "require": "./dist/alert.js"
+    },
+    "./alert-dialog": {
+      "types": "./dist/alert-dialog.d.ts",
+      "import": "./dist/alert-dialog.mjs",
+      "require": "./dist/alert-dialog.js"
+    },
+    "./avatar": {
+      "types": "./dist/avatar.d.ts",
+      "import": "./dist/avatar.mjs",
+      "require": "./dist/avatar.js"
+    },
+    "./badge": {
+      "types": "./dist/badge.d.ts",
+      "import": "./dist/badge.mjs",
+      "require": "./dist/badge.js"
+    },
+    "./breadcrumb": {
+      "types": "./dist/breadcrumb.d.ts",
+      "import": "./dist/breadcrumb.mjs",
+      "require": "./dist/breadcrumb.js"
+    },
+    "./checkbox": {
+      "types": "./dist/checkbox.d.ts",
+      "import": "./dist/checkbox.mjs",
+      "require": "./dist/checkbox.js"
+    },
+    "./collapsible": {
+      "types": "./dist/collapsible.d.ts",
+      "import": "./dist/collapsible.mjs",
+      "require": "./dist/collapsible.js"
+    },
+    "./context-menu": {
+      "types": "./dist/context-menu.d.ts",
+      "import": "./dist/context-menu.mjs",
+      "require": "./dist/context-menu.js"
+    },
+    "./dialog": {
+      "types": "./dist/dialog.d.ts",
+      "import": "./dist/dialog.mjs",
+      "require": "./dist/dialog.js"
+    },
+    "./dropdown-menu": {
+      "types": "./dist/dropdown-menu.d.ts",
+      "import": "./dist/dropdown-menu.mjs",
+      "require": "./dist/dropdown-menu.js"
+    },
+    "./hover-card": {
+      "types": "./dist/hover-card.d.ts",
+      "import": "./dist/hover-card.mjs",
+      "require": "./dist/hover-card.js"
+    },
+    "./navigation-menu": {
+      "types": "./dist/navigation-menu.d.ts",
+      "import": "./dist/navigation-menu.mjs",
+      "require": "./dist/navigation-menu.js"
+    },
+    "./popover": {
+      "types": "./dist/popover.d.ts",
+      "import": "./dist/popover.mjs",
+      "require": "./dist/popover.js"
+    },
+    "./progress": {
+      "types": "./dist/progress.d.ts",
+      "import": "./dist/progress.mjs",
+      "require": "./dist/progress.js"
+    },
+    "./radio-group": {
+      "types": "./dist/radio-group.d.ts",
+      "import": "./dist/radio-group.mjs",
+      "require": "./dist/radio-group.js"
+    },
+    "./scroll-area": {
+      "types": "./dist/scroll-area.d.ts",
+      "import": "./dist/scroll-area.mjs",
+      "require": "./dist/scroll-area.js"
+    },
+    "./select": {
+      "types": "./dist/select.d.ts",
+      "import": "./dist/select.mjs",
+      "require": "./dist/select.js"
+    },
+    "./separator": {
+      "types": "./dist/separator.d.ts",
+      "import": "./dist/separator.mjs",
+      "require": "./dist/separator.js"
+    },
+    "./sheet": {
+      "types": "./dist/sheet.d.ts",
+      "import": "./dist/sheet.mjs",
+      "require": "./dist/sheet.js"
+    },
+    "./skeleton": {
+      "types": "./dist/skeleton.d.ts",
+      "import": "./dist/skeleton.mjs",
+      "require": "./dist/skeleton.js"
+    },
+    "./slider": {
+      "types": "./dist/slider.d.ts",
+      "import": "./dist/slider.mjs",
+      "require": "./dist/slider.js"
+    },
+    "./switch": {
+      "types": "./dist/switch.d.ts",
+      "import": "./dist/switch.mjs",
+      "require": "./dist/switch.js"
+    },
+    "./table": {
+      "types": "./dist/table.d.ts",
+      "import": "./dist/table.mjs",
+      "require": "./dist/table.js"
+    },
+    "./tabs": {
+      "types": "./dist/tabs.d.ts",
+      "import": "./dist/tabs.mjs",
+      "require": "./dist/tabs.js"
+    },
+    "./textarea": {
+      "types": "./dist/textarea.d.ts",
+      "import": "./dist/textarea.mjs",
+      "require": "./dist/textarea.js"
+    },
+    "./toggle": {
+      "types": "./dist/toggle.d.ts",
+      "import": "./dist/toggle.mjs",
+      "require": "./dist/toggle.js"
+    },
+    "./toggle-group": {
+      "types": "./dist/toggle-group.d.ts",
+      "import": "./dist/toggle-group.mjs",
+      "require": "./dist/toggle-group.js"
+    },
+    "./tooltip": {
+      "types": "./dist/tooltip.d.ts",
+      "import": "./dist/tooltip.mjs",
+      "require": "./dist/tooltip.js"
+    },
     "./carousel": {
       "types": "./dist/carousel.d.ts",
       "import": "./dist/carousel.mjs",
       "require": "./dist/carousel.js"
     },
     "./form": {
-      "types": "./dist/form.d.ts",
-      "import": "./dist/form.mjs",
-      "require": "./dist/form.js"
+      "types": "./dist/form/index.d.ts",
+      "import": "./dist/form/index.mjs",
+      "require": "./dist/form/index.js"
     },
     "./drawer": {
       "types": "./dist/drawer.d.ts",
@@ -100,6 +286,27 @@
     "./billing": {
       "types": "./src/billing/index.ts",
       "import": "./src/billing/index.ts"
+    },
+    "./finance": {
+      "types": "./dist/finance/index.d.ts",
+      "import": "./dist/finance/index.mjs",
+      "require": "./dist/finance/index.js"
+    },
+    "./finance/components": {
+      "types": "./finance/components/index.ts",
+      "import": "./finance/components/index.ts"
+    },
+    "./finance/AdvancedChart": {
+      "types": "./finance/components/AdvancedChart.tsx",
+      "import": "./finance/components/AdvancedChart.tsx"
+    },
+    "./finance/TickerTape": {
+      "types": "./finance/components/TickerTape.tsx",
+      "import": "./finance/components/TickerTape.tsx"
+    },
+    "./finance/*": {
+      "types": "./finance/components/*.tsx",
+      "import": "./finance/components/*.tsx"
     },
     "./sonner": {
       "types": "./dist/sonner.d.ts",
@@ -238,120 +445,241 @@
       "import": "./dist/frameworks/react-native/index.mjs",
       "require": "./dist/frameworks/react-native/index.js"
     },
-    "./tamagui": {
-      "types": "./dist/tamagui/index.d.ts",
-      "import": "./dist/tamagui/index.mjs",
-      "require": "./dist/tamagui/index.js"
+    "./content": {
+      "types": "./content/index.ts",
+      "import": "./content/index.ts"
     },
-    "./tamagui/config": {
-      "types": "./dist/tamagui/config.d.ts",
-      "import": "./dist/tamagui/config.mjs",
-      "require": "./dist/tamagui/config.js"
+    "./code": {
+      "types": "./dist/code/index.d.ts",
+      "import": "./dist/code/index.mjs",
+      "require": "./dist/code/index.js"
     },
-    "./tamagui/tokens": {
-      "types": "./dist/tamagui/tokens.d.ts",
-      "import": "./dist/tamagui/tokens.mjs",
-      "require": "./dist/tamagui/tokens.js"
+    "./code/*": {
+      "types": "./dist/code/*.d.ts",
+      "import": "./dist/code/*.mjs",
+      "require": "./dist/code/*.js"
     },
-    "./tamagui/themes": {
-      "types": "./dist/tamagui/themes.d.ts",
-      "import": "./dist/tamagui/themes.mjs",
-      "require": "./dist/tamagui/themes.js"
+    "./spline": {
+      "types": "./dist/spline/index.d.ts",
+      "import": "./dist/spline/index.mjs",
+      "require": "./dist/spline/index.js"
     },
-    "./tamagui/colors": {
-      "types": "./dist/tamagui/colors.d.ts",
-      "import": "./dist/tamagui/colors.mjs",
-      "require": "./dist/tamagui/colors.js"
+    "./spline/*": {
+      "types": "./dist/spline/*.d.ts",
+      "import": "./dist/spline/*.mjs",
+      "require": "./dist/spline/*.js"
     },
-    "./tamagui/fonts": {
-      "types": "./dist/tamagui/fonts.d.ts",
-      "import": "./dist/tamagui/fonts.mjs",
-      "require": "./dist/tamagui/fonts.js"
+    "./charts": {
+      "types": "./dist/charts/index.d.ts",
+      "import": "./dist/charts/index.mjs",
+      "require": "./dist/charts/index.js"
     },
-    "./tamagui/animations": {
-      "types": "./dist/tamagui/animations.d.ts",
-      "import": "./dist/tamagui/animations.mjs",
-      "require": "./dist/tamagui/animations.js"
+    "./kanban": {
+      "types": "./dist/kanban/index.d.ts",
+      "import": "./dist/kanban/index.mjs",
+      "require": "./dist/kanban/index.js"
     },
-    "./system": {
-      "types": "./dist/system/index.d.ts",
-      "import": "./dist/system/index.mjs",
-      "require": "./dist/system/index.js"
+    "./mermaid": {
+      "types": "./dist/mermaid/index.d.ts",
+      "import": "./dist/mermaid/index.mjs",
+      "require": "./dist/mermaid/index.js"
     },
-    "./tailwind.config.lux": {
-      "types": "./dist/tailwind.config.lux.d.ts",
-      "import": "./dist/tailwind.config.lux.mjs",
-      "require": "./dist/tailwind.config.lux.js"
+    "./calendar-ext": {
+      "types": "./dist/calendar-ext/index.d.ts",
+      "import": "./dist/calendar-ext/index.mjs",
+      "require": "./dist/calendar-ext/index.js"
     },
-    "./commerce": "./commerce/ui/context.tsx",
-    "./root-layout": "./root-layout/index.tsx",
-    "./next": "./next/index.ts",
-    "./site-def": "./site-def/index.ts"
+    "./3d": {
+      "types": "./dist/3d/index.d.ts",
+      "import": "./dist/3d/index.mjs",
+      "require": "./dist/3d/index.js"
+    },
+    "./3d/*": {
+      "types": "./dist/3d/*.d.ts",
+      "import": "./dist/3d/*.mjs",
+      "require": "./dist/3d/*.js"
+    },
+    "./animation": {
+      "types": "./dist/animation/index.d.ts",
+      "import": "./dist/animation/index.mjs",
+      "require": "./dist/animation/index.js"
+    },
+    "./animation/*": {
+      "types": "./dist/animation/*.d.ts",
+      "import": "./dist/animation/*.mjs",
+      "require": "./dist/animation/*.js"
+    },
+    "./pattern": {
+      "types": "./dist/pattern/index.d.ts",
+      "import": "./dist/pattern/index.mjs",
+      "require": "./dist/pattern/index.js"
+    },
+    "./pattern/*": {
+      "types": "./dist/pattern/*.d.ts",
+      "import": "./dist/pattern/*.mjs",
+      "require": "./dist/pattern/*.js"
+    },
+    "./navigation": {
+      "types": "./dist/navigation/index.d.ts",
+      "import": "./dist/navigation/index.mjs",
+      "require": "./dist/navigation/index.js"
+    },
+    "./navigation/*": {
+      "types": "./dist/navigation/*.d.ts",
+      "import": "./dist/navigation/*.mjs",
+      "require": "./dist/navigation/*.js"
+    },
+    "./form/*": {
+      "types": "./dist/form/*.d.ts",
+      "import": "./dist/form/*.mjs",
+      "require": "./dist/form/*.js"
+    },
+    "./device": {
+      "types": "./dist/device/index.d.ts",
+      "import": "./dist/device/index.mjs",
+      "require": "./dist/device/index.js"
+    },
+    "./device/*": {
+      "types": "./dist/device/*.d.ts",
+      "import": "./dist/device/*.mjs",
+      "require": "./dist/device/*.js"
+    },
+    "./dock": {
+      "types": "./dist/dock/index.d.ts",
+      "import": "./dist/dock/index.mjs",
+      "require": "./dist/dock/index.js"
+    },
+    "./dock/*": {
+      "types": "./dist/dock/*.d.ts",
+      "import": "./dist/dock/*.mjs",
+      "require": "./dist/dock/*.js"
+    },
+    "./desktop": {
+      "types": "./dist/desktop/index.d.ts",
+      "import": "./dist/desktop/index.mjs",
+      "require": "./dist/desktop/index.js"
+    },
+    "./desktop/*": {
+      "types": "./dist/desktop/*.d.ts",
+      "import": "./dist/desktop/*.mjs",
+      "require": "./dist/desktop/*.js"
+    },
+    "./project": {
+      "types": "./dist/project/index.d.ts",
+      "import": "./dist/project/index.mjs",
+      "require": "./dist/project/index.js"
+    },
+    "./project/*": {
+      "types": "./dist/project/*.d.ts",
+      "import": "./dist/project/*.mjs",
+      "require": "./dist/project/*.js"
+    },
+    "./ui": {
+      "types": "./dist/ui/index.d.ts",
+      "import": "./dist/ui/index.mjs",
+      "require": "./dist/ui/index.js"
+    },
+    "./ui/*": {
+      "types": "./dist/ui/*.d.ts",
+      "import": "./dist/ui/*.mjs",
+      "require": "./dist/ui/*.js"
+    },
+    "./docs/style.css": "./docs/css/style.css",
+    "./docs/css/*": "./docs/css/*",
+    "./docs/page": {
+      "types": "./docs/page.tsx",
+      "import": "./docs/page.tsx"
+    },
+    "./docs/mdx": {
+      "types": "./docs/mdx.tsx",
+      "import": "./docs/mdx.tsx"
+    },
+    "./docs/og": {
+      "types": "./docs/og.tsx",
+      "import": "./docs/og.tsx"
+    },
+    "./docs/i18n": {
+      "types": "./docs/i18n.tsx",
+      "import": "./docs/i18n.tsx"
+    },
+    "./docs/layouts/docs": {
+      "types": "./docs/layouts/docs/index.tsx",
+      "import": "./docs/layouts/docs/index.tsx"
+    },
+    "./docs/layouts/home": {
+      "types": "./docs/layouts/home/index.tsx",
+      "import": "./docs/layouts/home/index.tsx"
+    },
+    "./docs/layouts/notebook": {
+      "types": "./docs/layouts/notebook/index.tsx",
+      "import": "./docs/layouts/notebook/index.tsx"
+    },
+    "./docs/provider/next": {
+      "types": "./docs/provider/next.tsx",
+      "import": "./docs/provider/next.tsx"
+    },
+    "./docs/provider/*": {
+      "types": "./docs/provider/*.tsx",
+      "import": "./docs/provider/*.tsx"
+    },
+    "./docs/components": {
+      "types": "./docs/components/index.ts",
+      "import": "./docs/components/index.ts"
+    },
+    "./docs/components/*": {
+      "types": "./docs/components/*.tsx",
+      "import": "./docs/components/*.tsx"
+    },
+    "./docs/contexts/*": {
+      "types": "./docs/contexts/*.tsx",
+      "import": "./docs/contexts/*.tsx"
+    },
+    "./docs/utils/*": {
+      "types": "./docs/utils/*.ts",
+      "import": "./docs/utils/*.ts"
+    },
+    "./docs/source": {
+      "types": "./docs/source.ts",
+      "import": "./docs/source.ts"
+    }
   },
   "dependencies": {
-    "cookies-next": "^4.1.1",
-    "embla-carousel-autoplay": "^8.1.6",
-    "firebase": "10.12.0",
-    "framer-motion": "^11.2.12",
-    "react-device-detect": "^2.2.3",
-    "react-social-icons": "^6.4.0",
-    "react-tooltip": "^5.26.4",
-    "usehooks-ts": "^3.1.0",
-    "@tamagui/adapt": "^1.141.5",
-    "@tamagui/animations-css": "^1.141.5",
-    "@tamagui/animations-react-native": "^1.141.5",
-    "@tamagui/core": "^1.141.5",
-    "@tamagui/font-inter": "^1.141.5",
-    "@tamagui/helpers-icon": "^1.141.5",
-    "@tamagui/portal": "^1.141.5",
-    "@tamagui/remove-scroll": "^1.141.5",
-    "@tamagui/theme-base": "^1.141.5",
-    "tamagui": "^1.141.5",
-    "@dnd-kit/core": "^6.3.1",
-    "@dnd-kit/modifiers": "^9.0.0",
-    "@dnd-kit/sortable": "^10.0.0",
-    "@dnd-kit/utilities": "^3.2.2",
-    "@hanzo/react-drawer": "^0.1.8",
-    "@modelcontextprotocol/sdk": "^1.10.2",
-    "@next/third-parties": "^15.0.1",
-    "@radix-ui/react-accordion": "^1.2.11",
+    "@next/third-parties": "^15.3.3",
+    "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
-    "@radix-ui/react-aspect-ratio": "^1.0.3",
-    "@radix-ui/react-avatar": "^1.0.3",
-    "@radix-ui/react-checkbox": "^1.0.4",
+    "@radix-ui/react-aspect-ratio": "^1.1.7",
+    "@radix-ui/react-avatar": "^1.1.10",
+    "@radix-ui/react-checkbox": "^1.3.3",
     "@radix-ui/react-collapsible": "^1.1.12",
-    "@radix-ui/react-context-menu": "^2.2.2",
+    "@radix-ui/react-context-menu": "^2.2.16",
     "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-hover-card": "^1.1.15",
-    "@radix-ui/react-icons": "^1.3.0",
-    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-icons": "^1.3.2",
+    "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-menubar": "1.1.16",
-    "@radix-ui/react-navigation-menu": "^1.1.3",
-    "@radix-ui/react-popover": "^1.0.6",
-    "@radix-ui/react-progress": "^1.0.3",
-    "@radix-ui/react-radio-group": "^1.1.3",
-    "@radix-ui/react-scroll-area": "^1.0.5",
-    "@radix-ui/react-select": "^2.0.0",
-    "@radix-ui/react-separator": "^1.0.3",
-    "@radix-ui/react-slider": "^1.1.2",
+    "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@radix-ui/react-popover": "^1.1.15",
+    "@radix-ui/react-progress": "^1.1.7",
+    "@radix-ui/react-radio-group": "^1.3.8",
+    "@radix-ui/react-scroll-area": "^1.2.10",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slider": "^1.3.6",
     "@radix-ui/react-slot": "^1.2.3",
-    "@radix-ui/react-switch": "^1.0.3",
-    "@radix-ui/react-tabs": "^1.0.4",
-    "@radix-ui/react-toast": "^1.1.5",
-    "@radix-ui/react-toggle": "^1.0.3",
-    "@radix-ui/react-toggle-group": "^1.0.4",
-    "@radix-ui/react-tooltip": "^1.0.6",
+    "@radix-ui/react-switch": "^1.2.6",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@radix-ui/react-toast": "^1.2.15",
+    "@radix-ui/react-toggle": "^1.1.10",
+    "@radix-ui/react-toggle-group": "^1.1.11",
+    "@radix-ui/react-tooltip": "^1.2.8",
     "@radix-ui/react-use-callback-ref": "^1.1.1",
     "@tailwindcss/container-queries": "^0.1.1",
-    "@tanstack/react-table": "^8.21.3",
     "buffer": "^6.0.3",
-    "chrono-node": "^2.7.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "cmdk": "^0.2.0",
+    "cmdk": "^1.1.1",
     "commander": "^12.1.0",
-    "date-fns": "^3.0.0",
     "embla-carousel-react": "^8.0.0",
     "input-otp": "^1.2.4",
     "little-date": "^1.0.0",
@@ -359,36 +687,76 @@
     "lodash.isplainobject": "^4.0.6",
     "lodash.merge": "^4.6.2",
     "postcss-selector-parser": "^6.0.16",
-    "react-day-picker": "^9.0.0",
-    "react-hook-form": "^7.49.0",
     "react-intersection-observer": "^9.8.2",
-    "react-resizable-panels": "^1.0.5",
-    "recharts": "^2.10.0",
     "sonner": "^1.3.1",
     "svg-pan-zoom": "^3.6.2",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-interaction-media": "^0.1.0",
-    "vaul": "^0.9.0",
+    "vaul": "^1.1.2",
     "zod": "^3.25.76",
     "zod-to-json-schema": "^3.23.2"
   },
   "peerDependencies": {
-    "@hanzo/auth": ">=2.5.0",
-    "@hanzo/commerce": ">=7.3.0",
-    "@hanzo/ui": ">=5.3.0",
-    "@luxfi/menu-icons": ">=1.0.0",
+    "@dnd-kit/core": "^6.0.0",
+    "@dnd-kit/modifiers": "^9.0.0",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.0",
+    "@hanzo/docs-core": "^16.0.0",
     "@hookform/resolvers": "^3.3.2",
-    "lucide-react": ">=0.456.0",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@tanstack/react-query": "^5.0.0",
+    "@tanstack/react-table": "^8.0.0",
+    "chrono-node": "^2.0.0",
+    "date-fns": "^3.0.0",
+    "framer-motion": "^11.0.0",
+    "lucide-react": "0.456.0",
+    "mermaid": "^10.0.0",
     "mobx": "^6.12.3",
-    "mobx-react-lite": "^4.0.7",
-    "next": ">=14.2.0",
-    "next-themes": ">=0.2.1",
-    "react": ">=18.3.0",
-    "react-dom": ">=18.3.0",
+    "next": ">=14.2.16",
+    "next-themes": "^0.2.1 || ^0.3.0 || ^0.4.0",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-day-picker": "^9.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0",
+    "react-hook-form": "^7.0.0",
+    "react-qrcode-logo": "^2.0.0",
+    "react-resizable-panels": "^1.0.0",
+    "recharts": "^2.0.0",
+    "sql.js": "^1.0.0",
+    "styled-components": "^6.0.0",
     "validator": "^13.11.0"
   },
   "peerDependenciesMeta": {
+    "styled-components": {
+      "optional": true
+    },
+    "@dnd-kit/core": {
+      "optional": true
+    },
+    "@dnd-kit/modifiers": {
+      "optional": true
+    },
+    "@dnd-kit/sortable": {
+      "optional": true
+    },
+    "@dnd-kit/utilities": {
+      "optional": true
+    },
+    "@hanzo/docs-core": {
+      "optional": true
+    },
+    "@modelcontextprotocol/sdk": {
+      "optional": true
+    },
+    "@tanstack/react-query": {
+      "optional": true
+    },
+    "@tanstack/react-table": {
+      "optional": true
+    },
+    "chrono-node": {
+      "optional": true
+    },
     "cmdk": {
       "optional": true
     },
@@ -401,13 +769,22 @@
     "embla-carousel-react": {
       "optional": true
     },
+    "framer-motion": {
+      "optional": true
+    },
     "input-otp": {
+      "optional": true
+    },
+    "mermaid": {
       "optional": true
     },
     "react-day-picker": {
       "optional": true
     },
     "react-hook-form": {
+      "optional": true
+    },
+    "react-qrcode-logo": {
       "optional": true
     },
     "react-resizable-panels": {
@@ -419,6 +796,9 @@
     "sonner": {
       "optional": true
     },
+    "sql.js": {
+      "optional": true
+    },
     "vaul": {
       "optional": true
     }
@@ -426,8 +806,9 @@
   "devDependencies": {
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
-    "@radix-ui/react-primitive": "^2.0.1",
-    "@splinetool/react-spline": "^4.1.0",
+    "@radix-ui/react-primitive": "^2.1.3",
+    "@splinetool/react-spline": "^4.0.0",
+    "@tailwindcss/postcss": "^4.1.16",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@types/facebook-pixel": "^0.0.30",
@@ -435,12 +816,13 @@
     "@types/lodash.merge": "^4.6.9",
     "@types/mdx": "^2.0.13",
     "@types/node": "20.14.15",
-    "@types/react": "18.3.1",
-    "@types/react-dom": "18.3.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "@types/styled-components": "^5.1.36",
     "@vitejs/plugin-react": "^5.0.4",
-    "@vitest/coverage-v8": "^2.1.9",
-    "@vitest/ui": "^2.1.9",
+    "@vitest/coverage-v8": "^4.0.6",
+    "@vitest/ui": "^4.0.6",
     "embla-carousel": "^8.6.0",
     "filesize": "^11.0.13",
     "glob": "^11.0.2",
@@ -452,8 +834,11 @@
     "rehype-katex": "^7.0.1",
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
-    "tailwindcss": "3.4.14",
+    "styled-components": "^6.3.8",
+    "tailwindcss": "^4.1.16",
     "tsup": "^8.5.0",
-    "typescript": "5.6.3"
+    "tw-animate-css": "^1.2.9",
+    "typescript": "5.6.3",
+    "vitest": "4.0.6"
   }
 }

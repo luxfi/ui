@@ -2,17 +2,26 @@ import "@/styles/globals.css"
 
 import { Metadata, Viewport } from "next"
 
+const META_THEME_COLORS = {
+  light: "white",
+  dark: "black",
+}
+
 import { siteConfig } from "@/config/site"
 import { fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { ActiveThemeProvider } from "@/components/active-theme"
 import { Analytics } from "@/components/analytics"
 import { ThemeProvider } from "@/components/providers"
+import { SkipLinks } from "@/components/skip-links"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeSwitcher } from "@/components/theme-switcher"
-import { Toaster as DefaultToaster } from "@/registry/default/ui/toaster"
-import { Toaster as NewYorkSonner } from "@/registry/new-york/ui/sonner"
-import { Toaster as NewYorkToaster } from "@/registry/new-york/ui/toaster"
+import { Web3Provider } from "@/components/web3-provider"
+import { Toaster as NewYorkSonner } from "@/registry/default/ui/sonner"
+import {
+  Toaster as DefaultToaster,
+  Toaster as NewYorkToaster,
+} from "@/registry/default/ui/toaster"
 
 export const metadata: Metadata = {
   title: {
@@ -84,7 +93,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
-        <head />
+        <head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              try {
+                if (localStorage.theme === 'dark' || ((!('theme' in localStorage) || localStorage.theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.querySelector('meta[name="theme-color"]').setAttribute('content', '${META_THEME_COLORS.dark}')
+                }
+              } catch (_) {}
+            `,
+            }}
+          />
+        </head>
         <body
           className={cn(
             "min-h-svh bg-background font-sans antialiased",
@@ -97,20 +118,24 @@ export default function RootLayout({ children }: RootLayoutProps) {
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
+            enableColorScheme
           >
-            <ActiveThemeProvider initialTheme="blue">
-              <div vaul-drawer-wrapper="">
-                <div className="relative flex min-h-svh flex-col bg-background">
-                  {children}
+            <Web3Provider>
+              <ActiveThemeProvider initialTheme="neutral">
+                <SkipLinks />
+                <div vaul-drawer-wrapper="">
+                  <div className="relative flex min-h-svh flex-col bg-background">
+                    {children}
+                  </div>
                 </div>
-              </div>
-              <TailwindIndicator />
-              <ThemeSwitcher />
-              <Analytics />
-              <NewYorkToaster />
-              <DefaultToaster />
-              <NewYorkSonner />
-            </ActiveThemeProvider>
+                <TailwindIndicator />
+                <ThemeSwitcher />
+                <Analytics />
+                <NewYorkToaster />
+                <DefaultToaster />
+                <NewYorkSonner />
+              </ActiveThemeProvider>
+            </Web3Provider>
           </ThemeProvider>
         </body>
       </html>

@@ -36,6 +36,7 @@ export const registryEntrySchema = z.object({
     "components:special-effects",
     "components:text-effects",
     "components:visualization",
+    "components:finance",
   ]),
   category: z.string().optional(),
   subcategory: z.string().optional(),
@@ -50,7 +51,7 @@ export type Registry = z.infer<typeof registrySchema>
 
 export const blockSchema = registryEntrySchema.extend({
   type: z.literal("components:block"),
-  style: z.enum(["default", "new-york"]),
+  style: z.literal("default"),
   component: z.any(),
   container: z
     .object({

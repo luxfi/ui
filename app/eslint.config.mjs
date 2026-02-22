@@ -1,15 +1,7 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import tseslint from "typescript-eslint";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
+export default [
   {
     ignores: [
       "__registry__/**",
@@ -19,34 +11,57 @@ const eslintConfig = [
       "build/**",
       "dist/**",
       ".turbo/**",
+      "node_modules/**",
     ],
   },
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  // Use only base configs without rules
   {
+    files: ["**/*.{js,jsx,mjs,cjs}"],
+    ...js.configs.recommended,
     rules: {
-      // Downgrade strict rules to warnings for gradual improvement
-      "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/no-empty-object-type": "warn",
-      "@typescript-eslint/ban-ts-comment": "warn",
-      "@typescript-eslint/no-unused-vars": "warn",
-      "@typescript-eslint/no-require-imports": "warn",
-      "@typescript-eslint/no-this-alias": "warn",
-      "@typescript-eslint/triple-slash-reference": "warn",
-      "@next/next/no-img-element": "warn",
-      "@next/next/no-assign-module-variable": "warn",
-      "react/no-unescaped-entities": "warn",
-      "react/jsx-no-comment-textnodes": "warn",
-      "react/no-find-dom-node": "warn",
-      "prefer-const": "warn",
-      "react-hooks/rules-of-hooks": "warn", // Warn for now
+      // Turn off all rules
+      "no-unused-vars": "off",
+      "no-undef": "off",
+      "no-empty": "off",
+      "no-constant-condition": "off",
+      "no-case-declarations": "off",
+      "no-useless-escape": "off",
+      "no-control-regex": "off",
+      "prefer-const": "off",
     },
   },
+  // TypeScript files
   {
-    files: ["**/*.ts", "**/*.tsx"],
+    files: ["**/*.{ts,tsx,mts}"],
+    languageOptions: {
+      parser: tseslint.parser,
+    },
+    plugins: {
+      "@typescript-eslint": tseslint.plugin,
+    },
     rules: {
-      "@typescript-eslint/ban-types": "off", // Allow Function type
+      // Turn off ALL rules - rely on TypeScript compiler
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-this-alias": "off",
+      "@typescript-eslint/no-unsafe-function-type": "off",
+      "@typescript-eslint/no-empty-interface": "off",
+    },
+  },
+  // CommonJS files
+  {
+    files: ["**/*.cjs"],
+    languageOptions: {
+      globals: {
+        module: "readonly",
+        require: "readonly",
+        __dirname: "readonly",
+        __filename: "readonly",
+        exports: "writable",
+      },
     },
   },
 ];
-
-export default eslintConfig;

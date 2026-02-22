@@ -1,6 +1,8 @@
 import * as React from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { CodeBlock, Pre } from "@hanzo/docs-ui/components/codeblock"
+import defaultComponents from "@hanzo/docs-ui/mdx"
 import type { MDXComponents } from "mdx/types"
 
 import { cn } from "@/lib/utils"
@@ -8,6 +10,7 @@ import { Callout } from "@/components/callout"
 import { CodeBlockWrapper } from "@/components/code-block-wrapper"
 import { CodeTabs } from "@/components/code-tabs"
 import { ComponentExample } from "@/components/component-example"
+import { ComponentGrid } from "@/components/component-grid"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button"
@@ -18,22 +21,23 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/registry/new-york/ui/accordion"
+} from "@/registry/default/ui/accordion"
 import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@/registry/new-york/ui/alert"
-import { AspectRatio } from "@/registry/new-york/ui/aspect-ratio"
-import { Kbd } from "@/registry/new-york/ui/kbd"
+} from "@/registry/default/ui/alert"
+import { AspectRatio } from "@/registry/default/ui/aspect-ratio"
+import { Kbd } from "@/registry/default/ui/kbd"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/new-york/ui/tabs"
+} from "@/registry/default/ui/tabs"
 
 export const mdxComponents: MDXComponents = {
+  ...defaultComponents,
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -129,8 +133,12 @@ export const mdxComponents: MDXComponents = {
     alt,
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img className={cn("rounded-md", className)} alt={alt} {...props} />
+    <img
+      className={cn("rounded-md", className)}
+      alt={alt}
+      loading="lazy"
+      {...props}
+    />
   ),
   hr: ({ ...props }: React.HTMLAttributes<HTMLHRElement>) => (
     <hr className="my-4 md:my-8" {...props} />
@@ -164,17 +172,11 @@ export const mdxComponents: MDXComponents = {
       {...props}
     />
   ),
-  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => {
-    return (
-      <pre
-        className={cn(
-          "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900",
-          className
-        )}
-        {...props}
-      />
-    )
-  },
+  pre: (props: React.ComponentPropsWithoutRef<"pre">) => (
+    <CodeBlock {...props}>
+      <Pre>{props.children}</Pre>
+    </CodeBlock>
+  ),
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
@@ -186,6 +188,7 @@ export const mdxComponents: MDXComponents = {
   ),
   Image,
   Callout,
+  ComponentGrid,
   ComponentPreview,
   ComponentExample,
   ComponentSource,
@@ -217,7 +220,7 @@ export const mdxComponents: MDXComponents = {
   }: React.ComponentProps<typeof TabsList>) => (
     <TabsList
       className={cn(
-        "w-full justify-start rounded-none border-b bg-transparent p-0",
+        "h-10 w-full justify-start rounded-none border-b bg-transparent p-0",
         className
       )}
       {...props}
@@ -229,7 +232,7 @@ export const mdxComponents: MDXComponents = {
   }: React.ComponentProps<typeof TabsTrigger>) => (
     <TabsTrigger
       className={cn(
-        "relative h-9 rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-none data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none",
+        "relative rounded-none border-b-2 border-b-transparent bg-transparent px-4 pb-3 pt-2 font-semibold text-muted-foreground shadow-none transition-colors data-[state=active]:border-b-primary data-[state=active]:text-foreground data-[state=active]:shadow-none",
         className
       )}
       {...props}
@@ -241,7 +244,7 @@ export const mdxComponents: MDXComponents = {
   }: React.ComponentProps<typeof TabsContent>) => (
     <TabsContent
       className={cn(
-        "relative [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold",
+        "relative mt-2 [&_h3.font-heading]:text-base [&_h3.font-heading]:font-semibold",
         className
       )}
       {...props}

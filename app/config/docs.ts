@@ -1,6 +1,6 @@
 import { MainNavItem, SidebarNavItem } from "types/nav"
 
-interface DocsConfig {
+export interface DocsConfig {
   mainNav: MainNavItem[]
   sidebarNav: SidebarNavItem[]
 }
@@ -96,12 +96,6 @@ export const docsConfig: DocsConfig = {
           title: "Changelog",
           href: "/docs/changelog",
           items: [],
-        },
-        {
-          title: "hanzo Compatibility",
-          href: "/docs/hanzo-compatibility",
-          items: [],
-          label: "New",
         },
       ],
     },
@@ -883,6 +877,101 @@ export const docsConfig: DocsConfig = {
         {
           title: "Video Player",
           href: "/docs/components/video-player",
+          items: [],
+          label: "New",
+        },
+      ],
+    },
+    {
+      title: "Finance Components",
+      items: [
+        {
+          title: "Advanced Chart",
+          href: "/docs/components/advanced-chart",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Stock Market",
+          href: "/docs/components/stock-market",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Crypto Market",
+          href: "/docs/components/crypto-market",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Forex Market",
+          href: "/docs/components/forex-market",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Stock Screener",
+          href: "/docs/components/stock-screener",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Crypto Screener",
+          href: "/docs/components/crypto-screener",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Forex Screener",
+          href: "/docs/components/forex-screener",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Symbol Info",
+          href: "/docs/components/symbol-info",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Company Profile",
+          href: "/docs/components/company-profile",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Financials",
+          href: "/docs/components/financials",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Technical Analysis",
+          href: "/docs/components/technical-analysis",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "News Timeline",
+          href: "/docs/components/news-timeline",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Order Entry",
+          href: "/docs/components/order-entry",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Positions List",
+          href: "/docs/components/positions-list",
+          items: [],
+          label: "New",
+        },
+        {
+          title: "Orders History",
+          href: "/docs/components/orders-history",
           items: [],
           label: "New",
         },

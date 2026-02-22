@@ -6,13 +6,13 @@ import {
   IconArrowRight,
   IconArrowUpRight,
 } from "@tabler/icons-react"
-import { findNeighbour } from "fumadocs-core/server"
+import { findNeighbour } from "@hanzo/docs-core/page-tree"
 
 import { source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/utils"
 import { DocsTableOfContents } from "@/components/toc"
-import { Badge } from "@/registry/new-york/ui/badge"
-import { Button } from "@/registry/new-york/ui/button"
+import { Badge } from "@/registry/default/ui/badge"
+import { Button } from "@/registry/default/ui/button"
 
 export const revalidate = false
 // For static export, we cannot use dynamicParams
@@ -69,7 +69,6 @@ export default async function Page(props: {
   const neighbours = await findNeighbour(source.pageTree, page.url)
 
   // Get the MDX content - Fumadocs exports the component directly as body
-  // @ts-expect-error - revisit fumadocs types.
   const MDXContent = page.data.body
 
   return (
@@ -181,10 +180,8 @@ export default async function Page(props: {
       </div>
       <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[calc(100svh-var(--footer-height)+2rem)] w-72 flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0" />
-        {/* @ts-expect-error - revisit fumadocs types. */}
         {page.data.toc?.length ? (
           <div className="no-scrollbar overflow-y-auto px-8">
-            {/* @ts-expect-error - revisit fumadocs types. */}
             <DocsTableOfContents toc={page.data.toc} />
             <div className="h-12" />
           </div>

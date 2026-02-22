@@ -1,18 +1,19 @@
 import { useAtom } from "jotai"
 import { atomWithStorage } from "jotai/utils"
 
-import { Style } from "@/registry/styles"
-import { Theme } from "@/registry/themes"
+import type { Style } from "@/registry/styles"
+import type { Theme } from "@/registry/themes"
 
 type Config = {
   style: Style["name"]
   theme: Theme["name"]
   radius: number
+  installationType?: "cli" | "manual"
 }
 
 const configAtom = atomWithStorage<Config>("config", {
   style: "default",
-  theme: "zinc",
+  theme: "neutral",
   radius: 0.5,
 })
 

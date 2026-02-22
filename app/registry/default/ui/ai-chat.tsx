@@ -12,6 +12,7 @@ import {
   Send,
   User,
 } from "lucide-react"
+import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"
 import {
@@ -113,7 +114,7 @@ const ChatMessageComponent = React.forwardRef<
   HTMLDivElement,
   {
     message: ChatMessage
-    onCopy?: (content: string) => void
+    onCopy?: (content: string) => void | Promise<void>
     onRegenerate?: (messageId: string) => void
     showTimestamp?: boolean
     showAvatar?: boolean
@@ -121,7 +122,7 @@ const ChatMessageComponent = React.forwardRef<
     assistantAvatar?: string
     userName?: string
     assistantName?: string
-  } & React.HTMLAttributes<HTMLDivElement>
+  } & Omit<React.HTMLAttributes<HTMLDivElement>, "onCopy">
 >(
   (
     {
@@ -412,8 +413,10 @@ const AIChat = React.forwardRef<HTMLDivElement, AIChatProps>(
       try {
         await navigator.clipboard.writeText(content)
         onCopyMessage?.(content)
+        toast.success("Message copied to clipboard")
       } catch (err) {
         console.error("Failed to copy message:", err)
+        toast.error("Failed to copy message")
       }
     }
 
@@ -553,6 +556,4 @@ export {
   TypingIndicator,
   AttachmentPreview,
   type ChatMessage as ChatMessageType,
-  type ChatAttachment,
-  type AIChatProps,
 }
