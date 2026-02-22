@@ -1,5 +1,5 @@
 {
-  "name": "@hanzo/checkout",
+  "name": "@luxfi/checkout",
   "version": "1.0.0",
   "description": "Embeddable checkout widget for Hanzo Commerce - Stripe-like checkout experience",
   "publishConfig": {

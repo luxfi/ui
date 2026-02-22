@@ -1,5 +1,5 @@
 {
-  "name": "@hanzo/agent-ui",
+  "name": "@luxfi/agent-ui",
   "version": "0.1.0",
   "description": "Hanzo Agent Cloud UI components — dashboard, nodes, workflows, executions, identity, compute",
   "publishConfig": {
