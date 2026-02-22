@@ -1,5 +1,5 @@
 {
-  "name": "@hanzo/auth",
+  "name": "@luxfi/auth",
   "version": "2.7.0",
   "description": "Pluggable authentication library. Firebase support via @hanzo/auth-firebase (optional).",
   "publishConfig": {

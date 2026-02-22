@@ -1,10 +1,10 @@
-# Hanzo UI - LLM Context
+# Lux UI - LLM Context
 
 ## Overview
 
-React component library (shadcn/ui fork). 161 components, 24+ blocks, two themes, multi-framework. Published as `@hanzo/ui` on npm.
+React component library (shadcn/ui fork). 161 components, 24+ blocks, two themes, multi-framework. Published as `@luxfi/ui` on npm.
 
-**Docs**: https://ui.hanzo.ai | **Dev port**: 3003
+**Docs**: https://ui.lux.finance | **Dev port**: 3003
 
 ## Repository Structure
 
@@ -62,10 +62,10 @@ Registry files use `@/registry/default/ui/button`. After CLI install, rewritten 
 ## Package Exports
 
 ```typescript
-import { Button, Card } from '@hanzo/ui'
-import { Button } from '@hanzo/ui/components'
-import * as Dialog from '@hanzo/ui/primitives/dialog'
-import { cn } from '@hanzo/ui/lib/utils'
+import { Button, Card } from '@luxfi/ui'
+import { Button } from '@luxfi/ui/components'
+import * as Dialog from '@luxfi/ui/primitives/dialog'
+import { cn } from '@luxfi/ui/lib/utils'
 ```
 
 ## Adding a Component
@@ -84,7 +84,7 @@ React 18.3.1 (19 experimental), Next.js 15.3.1, Tailwind CSS (OKLCH colors), Rad
 
 - **Page Builder** (`/builder`): Drag-drop block assembly with @dnd-kit, export to TSX
 - **White-Label**: Zoo/Lux forks via `brands/{BRAND}.brand.ts`
-- **External Registries**: 35+ sources in `app/registries.json`, install via `npx @hanzo/ui add @aceternity/spotlight`
+- **External Registries**: 35+ sources in `app/registries.json`, install via `npx @luxfi/ui add @aceternity/spotlight`
 
 ## Gotchas
 
@@ -92,8 +92,8 @@ React 18.3.1 (19 experimental), Next.js 15.3.1, Tailwind CSS (OKLCH colors), Rad
 - Shiki `getHighlighter` incompatible with static export -- replaced with basic pre/code
 - Some blocks (login-01, login-02, sidebar-02) have Server Component issues with event handlers
 - Zod validation removed from `_getAllBlocks()`/`_getBlockCode()` -- we control generation
-- Firebase split to optional `@hanzo/auth-firebase` package (Jan 2025)
-- `@hanzo/auth` v2.6.0 uses pluggable provider registry: `registerAuthProvider('firebase', FirebaseAuthService)`
+- Firebase split to optional `@luxfi/auth-firebase` package (Jan 2025)
+- `@luxfi/auth` v2.6.0 uses pluggable provider registry: `registerAuthProvider('firebase', FirebaseAuthService)`
 
 ## Component Stats (2025-10-18)
 
