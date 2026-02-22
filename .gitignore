@@ -47,15 +47,34 @@ package-lock.json
 # pnpm-lock.yaml - needed for CI/CD, do not ignore
 yarn.lock
 
-
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> hanzo/main
+# AI cruft
 AGENTS.md
 CLAUDE.md
 GEMINI.md
 GROK.md
 QWEN.md
+
+.playwright-mcp
+app/out
+app/.source
+
+# test artifacts
+tests/reports/
+tests/artifacts/
+
+# Note: Block screenshots are pre-generated and committed
+# They cannot be generated in CI (requires display/browser)
+# app/public/r/styles/*/ -- REMOVED to allow committing screenshots
+
+
+# Test artifacts
+test-results/
+playwright-report/
+*BADGE_INSPECTION*.md
+*BADGE_INSPECTION*.txt
+
+# ide
+.idea
+.fleet
+
+.notes

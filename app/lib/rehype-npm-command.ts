@@ -1,9 +1,10 @@
 import { UnistNode, UnistTree } from "types/unist"
+import type { Node as UnistBaseNode } from "unist"
 import { visit } from "unist-util-visit"
 
 export function rehypeNpmCommand() {
   return (tree: UnistTree) => {
-    visit(tree, (node: UnistNode) => {
+    visit(tree as unknown as UnistBaseNode, (node: UnistNode) => {
       if (node.type !== "element" || node?.tagName !== "pre") {
         return
       }
@@ -26,7 +27,7 @@ export function rehypeNpmCommand() {
         )
       }
 
-      // npx create.
+      // npx create-.
       if (node.properties?.["__rawString__"]?.startsWith("npx create-")) {
         const npmCommand = node.properties?.["__rawString__"]
         node.properties["__npmCommand__"] = npmCommand

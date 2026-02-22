@@ -1,15 +1,16 @@
 import fs from "fs"
 import path from "path"
 import { UnistNode, UnistTree } from "types/unist"
+import type { Node as UnistBaseNode } from "unist"
 import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
 import { Index } from "../__registry__"
-import { styles } from "../registry/styles"
+import { styles } from "../registry/registry-styles"
 
 export function rehypeComponent() {
   return async (tree: UnistTree) => {
-    visit(tree, (node: UnistNode) => {
+    visit(tree as unknown as UnistBaseNode, (node: UnistNode) => {
       // src prop overrides both name and fileName.
       const { value: srcPath } =
         (getNodeAttributeByName(node, "src") as {
@@ -47,7 +48,7 @@ export function rehypeComponent() {
             }
 
             // Read the source file.
-            const filePath = path.join(process.cwd(), src)
+            const filePath = src
             let source = fs.readFileSync(filePath, "utf8")
 
             // Replace imports.
@@ -106,10 +107,10 @@ export function rehypeComponent() {
         try {
           for (const style of styles) {
             const component = Index[style.name][name]
-            const src = component.files[0]
+            const src = component.files[0]?.path
 
             // Read the source file.
-            const filePath = path.join(process.cwd(), src)
+            const filePath = src
             let source = fs.readFileSync(filePath, "utf8")
 
             // Replace imports.

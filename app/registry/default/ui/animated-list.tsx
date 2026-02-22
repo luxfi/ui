@@ -32,6 +32,8 @@ export interface AnimatedListItem {
   id: string | number
   content: React.ReactNode
   data?: any
+  virtualIndex?: number
+  style?: React.CSSProperties
 }
 
 export interface AnimatedListProps {
@@ -330,7 +332,7 @@ export function AnimatedList({
     return {
       ...variants,
       visible: (i: number) => {
-        // eslint-disable-next-line
+         
         const original = variants.visible as (i: number) => any
         const originalResult = original(i)
         return {

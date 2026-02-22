@@ -1,8 +1,8 @@
 "use client"
 
 import { Suspense } from "react"
-import { useSearchParams } from "next/navigation"
 import Link from "next/link"
+import { useSearchParams } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import { Announcement } from "@/components/announcement"
@@ -13,7 +13,9 @@ import {
   PageHeaderDescription,
   PageHeaderHeading,
 } from "@/components/page-header"
-import { buttonVariants } from "@/registry/new-york/ui/button"
+import { PageNav } from "@/components/page-nav"
+import { ThemeSelector } from "@/components/theme-selector"
+import { buttonVariants } from "@/registry/default/ui/button"
 
 interface ExamplesLayoutProps {
   children: React.ReactNode
@@ -21,7 +23,7 @@ interface ExamplesLayoutProps {
 
 function ExamplesLayoutContent({ children }: ExamplesLayoutProps) {
   const searchParams = useSearchParams()
-  const isEmbedded = searchParams.get("embedded") === "true"
+  const isEmbedded = searchParams?.get("embedded") === "true"
 
   // If embedded, just show the content without header
   if (isEmbedded) {
@@ -61,7 +63,10 @@ function ExamplesLayoutContent({ children }: ExamplesLayoutProps) {
           </PageActions>
         </PageHeader>
         <section>
-          <ExamplesNav />
+          <PageNav id="examples" className="hidden md:flex">
+            <ExamplesNav className="[&>a:first-child]:text-primary flex-1 overflow-hidden" />
+            <ThemeSelector className="mr-4 hidden md:flex" />
+          </PageNav>
           <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow-md md:shadow-xl">
             {children}
           </div>

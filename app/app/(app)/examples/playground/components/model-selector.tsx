@@ -1,12 +1,12 @@
 "use client"
 
 import * as React from "react"
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
 import { PopoverProps } from "@radix-ui/react-popover"
+import { Check, ChevronsUpDown } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { useMutationObserver } from "@/hooks/use-mutation-observer"
-import { Button } from "@/registry/new-york/ui/button"
+import { Button } from "@/registry/default/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -14,18 +14,18 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/new-york/ui/command"
+} from "@/registry/default/ui/command"
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
-} from "@/registry/new-york/ui/hover-card"
-import { Label } from "@/registry/new-york/ui/label"
+} from "@/registry/default/ui/hover-card"
+import { Label } from "@/registry/default/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/new-york/ui/popover"
+} from "@/registry/default/ui/popover"
 
 import { Model, ModelType } from "../data/models"
 
@@ -64,7 +64,7 @@ export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
             className="w-full justify-between"
           >
             {selectedModel ? selectedModel.name : "Select a model..."}
-            <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+            <ChevronsUpDown className="opacity-50" />
           </Button>
         </PopoverTrigger>
         <PopoverContent align="end" className="w-[250px] p-0">
@@ -135,29 +135,32 @@ function ModelItem({ model, isSelected, onSelect, onPeek }: ModelItemProps) {
   const ref = React.useRef<HTMLDivElement>(null)
 
   useMutationObserver(ref, (mutations) => {
-    for (const mutation of mutations) {
-      if (mutation.type === "attributes") {
-        if (mutation.attributeName === "aria-selected") {
-          onPeek(model)
-        }
+    mutations.forEach((mutation) => {
+      if (
+        mutation.type === "attributes" &&
+        mutation.attributeName === "aria-selected" &&
+        ref.current?.getAttribute("aria-selected") === "true"
+      ) {
+        onPeek(model)
       }
-    }
+    })
   })
 
   return (
-    <CommandItem
-      key={model.id}
-      onSelect={onSelect}
-      ref={ref}
-      className="aria-selected:bg-primary aria-selected:text-primary-foreground"
-    >
-      {model.name}
-      <CheckIcon
-        className={cn(
-          "ml-auto h-4 w-4",
-          isSelected ? "opacity-100" : "opacity-0"
-        )}
-      />
-    </CommandItem>
+    <div ref={ref}>
+      <CommandItem
+        key={model.id}
+        onSelect={onSelect}
+        className="aria-selected:bg-primary aria-selected:text-primary-foreground"
+      >
+        {model.name}
+        <Check
+          className={cn(
+            "ml-auto h-4 w-4",
+            isSelected ? "opacity-100" : "opacity-0"
+          )}
+        />
+      </CommandItem>
+    </div>
   )
 }

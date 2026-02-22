@@ -6,6 +6,8 @@ import { defineConfig, devices } from '@playwright/test'
  */
 export default defineConfig({
   testDir: './tests',
+  // Exclude vitest unit tests - they're run separately with vitest
+  testIgnore: ['**/unit/**'],
   // Run tests in files in parallel
   fullyParallel: true,
   // Fail the build on CI if you accidentally left test.only in the source code
@@ -16,14 +18,14 @@ export default defineConfig({
   workers: process.env.CI ? 2 : undefined,
   // Reporter to use
   reporter: [
-    ['html'],
-    ['json', { outputFile: 'test-results.json' }],
+    ['html', { outputFolder: 'tests/reports/playwright-report' }],
+    ['json', { outputFile: 'tests/reports/test-results.json' }],
     ['list'],
   ],
   // Shared settings for all tests
   use: {
     // Base URL for the application
-    baseURL: 'http://localhost:3003',
+    baseURL: 'http://localhost:3333',
     // Collect trace when retrying the failed test
     trace: 'on-first-retry',
     // Take screenshot on failure
@@ -36,7 +38,16 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        launchOptions: {
+          args: [
+            '--disable-dev-shm-usage',
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+          ],
+        },
+      },
     },
     {
       name: 'firefox',
@@ -73,8 +84,8 @@ export default defineConfig({
 
   // Run local dev server before starting the tests
   webServer: {
-    command: 'cd app && pnpm dev',
-    port: 3003,
+    command: 'cd app && rm -rf .next && E2E_TEST=true pnpm dev',
+    port: 3333,
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },

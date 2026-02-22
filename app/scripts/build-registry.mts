@@ -3,7 +3,7 @@ import { existsSync, promises as fs, readFileSync } from "fs"
 import { tmpdir } from "os"
 import path, { basename } from "path"
 import { cwd } from "process"
-import template from "lodash.template"
+// Removed lodash.template - using functions instead
 import { rimraf } from "rimraf"
 import { Project, ScriptKind, SourceFile, SyntaxKind } from "ts-morph"
 
@@ -36,15 +36,27 @@ import * as React from "react"
 export const Index: Record<string, any> = {
 `
 
-  for (const style of styles) {
-    index += `  "${style.name}": {`
+  // Only build for "default" style (single theme system)
+  const style = { name: "default" }
 
-    // Build style index.
-    for (const item of registry) {
+  // Build component index
+  for (const item of registry) {
       const resolveFiles = item.files.map(
         (file) => `registry/${style.name}/${file}`
       )
-      const type = item.type.split(":")[1]
+
+      // Extract namespace from type (e.g., "components:3d" -> namespace="3d", type="ui")
+      // Standard types like "components:ui" have no namespace
+      const typeParts = item.type.split(":")
+      const baseType = typeParts[0] // "components"
+      const typeVariant = typeParts[1] // "ui", "3d", "ai", etc.
+
+      // Determine if this is a namespaced component type
+      const namespacedTypes = ["3d", "ai", "code", "animation", "layout", "marketing", "navigation", "special-effects", "text-effects", "visualization", "finance"]
+      const isNamespaced = namespacedTypes.includes(typeVariant)
+      const namespace = isNamespaced ? typeVariant : undefined
+      const type = isNamespaced ? "ui" : typeVariant
+
       let sourceFilename = ""
 
       let chunks: any = []
@@ -184,19 +196,24 @@ export const Index: Record<string, any> = {
             }`
 
             const targetFile = file.replace(item.name, `${chunkName}`)
+            const targetDir = namespace ? `${namespace}/${chunkName}` : `${type}/${chunkName}`
             const targetFilePath = path.join(
               cwd(),
-              `registry/${style.name}/${type}/${chunkName}.tsx`
+              `registry/${style.name}/${targetDir}.tsx`
             )
 
             // Write component file.
             rimraf.sync(targetFilePath)
             await fs.writeFile(targetFilePath, code, "utf8")
 
+            const componentPath = namespace
+              ? `@/registry/${style.name}/${namespace}/${chunkName}`
+              : `@/registry/${style.name}/${type}/${chunkName}`
+
             return {
               name: chunkName,
               description,
-              component: `React.lazy(() => import("@/registry/${style.name}/${type}/${chunkName}")),`,
+              component: `React.lazy(() => import("${componentPath}")),`,
               file: targetFile,
               container: {
                 className: containerClassName,
@@ -206,14 +223,34 @@ export const Index: Record<string, any> = {
         )
 
         // // Write the source file for blocks only.
-        sourceFilename = `__registry__/${style.name}/${type}/${item.name}.tsx`
+        const sourceDir = namespace ? `${namespace}/${item.name}` : `${type}/${item.name}`
+        sourceFilename = `__registry__/${style.name}/${sourceDir}.tsx`
         const sourcePath = path.join(process.cwd(), sourceFilename)
-        if (!existsSync(sourcePath)) {
-          await fs.mkdir(sourcePath, { recursive: true })
+        const sourceParentDir = path.dirname(sourcePath)
+        if (!existsSync(sourceParentDir)) {
+          await fs.mkdir(sourceParentDir, { recursive: true })
         }
 
         rimraf.sync(sourcePath)
         await fs.writeFile(sourcePath, sourceFile.getText())
+      }
+
+      // Construct import path based on namespace
+      const componentImportPath = namespace
+        ? `@/registry/${style.name}/${namespace}/${item.name}`
+        : `@/registry/${style.name}/${type}/${item.name}`
+
+      // Generate re-export file for namespaced components
+      if (namespace && item.type !== "components:block") {
+        const namespaceDir = path.join(process.cwd(), `registry/${style.name}/${namespace}`)
+        if (!existsSync(namespaceDir)) {
+          await fs.mkdir(namespaceDir, { recursive: true })
+        }
+
+        const reexportPath = path.join(namespaceDir, `${item.name}.tsx`)
+        const reexportContent = `export * from "../ui/${item.name}"\n`
+
+        await fs.writeFile(reexportPath, reexportContent, "utf8")
       }
 
       index += `
@@ -221,9 +258,7 @@ export const Index: Record<string, any> = {
       name: "${item.name}",
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
-      component: React.lazy(() => import("@/registry/${style.name}/${type}/${
-        item.name
-      }")),
+      component: React.lazy(() => import("${componentImportPath}")),
       source: "${sourceFilename}",
       files: [${resolveFiles.map((file) => `"${file}"`)}],
       category: "${item.category}",
@@ -240,10 +275,6 @@ export const Index: Record<string, any> = {
       }`
       )}]
     },`
-    }
-
-    index += `
-  },`
   }
 
   index += `
@@ -270,18 +301,19 @@ export const Index: Record<string, any> = {
 }
 
 // ----------------------------------------------------------------------------
-// Build registry/styles/[style]/[name].json.
+// Build registry/styles/default/[name].json.
 // ----------------------------------------------------------------------------
 async function buildStyles(registry: Registry) {
-  for (const style of styles) {
-    const targetPath = path.join(REGISTRY_PATH, "styles", style.name)
+  // Only build for "default" style (single theme system)
+  const style = { name: "default" }
+  const targetPath = path.join(REGISTRY_PATH, "styles", style.name)
 
-    // Create directory if it doesn't exist.
-    if (!existsSync(targetPath)) {
-      await fs.mkdir(targetPath, { recursive: true })
-    }
+  // Create directory if it doesn't exist.
+  if (!existsSync(targetPath)) {
+    await fs.mkdir(targetPath, { recursive: true })
+  }
 
-    for (const item of registry) {
+  for (const item of registry) {
       // Include all component types (ui, ai, 3d, animation, code, etc.)
       if (!item.type?.startsWith("components:")) {
         continue
@@ -318,7 +350,6 @@ async function buildStyles(registry: Registry) {
         JSON.stringify(payload, null, 2),
         "utf8"
       )
-    }
   }
 
   // ----------------------------------------------------------------------------
@@ -383,76 +414,77 @@ async function buildThemes() {
   // ----------------------------------------------------------------------------
   // Build registry/colors/[base].json.
   // ----------------------------------------------------------------------------
-  const BASE_STYLES = `@tailwind base;
+  // Template functions (replaced lodash.template)
+  const getBaseStyles = () => `@tailwind base;
   @tailwind components;
   @tailwind utilities;
   `
 
-  const BASE_STYLES_WITH_VARIABLES = `@tailwind base;
+  const getBaseStylesWithVariables = (colors: any) => `@tailwind base;
   @tailwind components;
   @tailwind utilities;
 
   @layer base {
     :root {
-      --background: <%- colors.light["background"] %>;
-      --foreground: <%- colors.light["foreground"] %>;
+      --background: ${colors.light["background"]};
+      --foreground: ${colors.light["foreground"]};
 
-      --card: <%- colors.light["card"] %>;
-      --card-foreground: <%- colors.light["card-foreground"] %>;
+      --card: ${colors.light["card"]};
+      --card-foreground: ${colors.light["card-foreground"]};
 
-      --popover: <%- colors.light["popover"] %>;
-      --popover-foreground: <%- colors.light["popover-foreground"] %>;
+      --popover: ${colors.light["popover"]};
+      --popover-foreground: ${colors.light["popover-foreground"]};
 
-      --primary: <%- colors.light["primary"] %>;
-      --primary-foreground: <%- colors.light["primary-foreground"] %>;
+      --primary: ${colors.light["primary"]};
+      --primary-foreground: ${colors.light["primary-foreground"]};
 
-      --secondary: <%- colors.light["secondary"] %>;
-      --secondary-foreground: <%- colors.light["secondary-foreground"] %>;
+      --secondary: ${colors.light["secondary"]};
+      --secondary-foreground: ${colors.light["secondary-foreground"]};
 
-      --muted: <%- colors.light["muted"] %>;
-      --muted-foreground: <%- colors.light["muted-foreground"] %>;
+      --muted: ${colors.light["muted"]};
+      --muted-foreground: ${colors.light["muted-foreground"]};
 
-      --accent: <%- colors.light["accent"] %>;
-      --accent-foreground: <%- colors.light["accent-foreground"] %>;
+      --accent: ${colors.light["accent"]};
+      --accent-foreground: ${colors.light["accent-foreground"]};
 
-      --destructive: <%- colors.light["destructive"] %>;
-      --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
+      --destructive: ${colors.light["destructive"]};
+      --destructive-foreground: ${colors.light["destructive-foreground"]};
 
-      --border: <%- colors.light["border"] %>;
-      --input: <%- colors.light["input"] %>;
-      --ring: <%- colors.light["ring"] %>;
+      --border: ${colors.light["border"]};
+      --input: ${colors.light["input"]};
+      --ring: ${colors.light["ring"]};
 
       --radius: 0.5rem;
     }
 
     .dark {
-      --background: <%- colors.dark["background"] %>;
-      --foreground: <%- colors.dark["foreground"] %>;
+      --background: ${colors.dark["background"]};
+      --foreground: ${colors.dark["foreground"]};
 
-      --card: <%- colors.dark["card"] %>;
-      --card-foreground: <%- colors.dark["card-foreground"] %>;
+      --card: ${colors.dark["card"]};
+      --card-foreground: ${colors.dark["card-foreground"]};
 
-      --popover: <%- colors.dark["popover"] %>;
-      --popover-foreground: <%- colors.dark["popover-foreground"] %>;
+      --popover: ${colors.dark["popover"]};
+      --popover-foreground: ${colors.dark["popover-foreground"]};
 
-      --primary: <%- colors.dark["primary"] %>;
-      --primary-foreground: <%- colors.dark["primary-foreground"] %>;
+      --primary: ${colors.dark["primary"]};
+      --primary-foreground: ${colors.dark["primary-foreground"]};
 
-      --secondary: <%- colors.dark["secondary"] %>;
-      --secondary-foreground: <%- colors.dark["secondary-foreground"] %>;
+      --secondary: ${colors.dark["secondary"]};
+      --secondary-foreground: ${colors.dark["secondary-foreground"]};
 
-      --muted: <%- colors.dark["muted"] %>;
-      --muted-foreground: <%- colors.dark["muted-foreground"] %>;
+      --muted: ${colors.dark["muted"]};
+      --muted-foreground: ${colors.dark["muted-foreground"]};
 
-      --accent: <%- colors.dark["accent"] %>;
-      --accent-foreground: <%- colors.dark["accent-foreground"] %>;
+      --accent: ${colors.dark["accent"]};
+      --accent-foreground: ${colors.dark["accent-foreground"]};
 
-      --destructive: <%- colors.dark["destructive"] %>;
-      --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
+      --destructive: ${colors.dark["destructive"]};
+      --destructive-foreground: ${colors.dark["destructive-foreground"]};
 
-      --border: <%- colors.dark["border"] %>;
-      --input: <%- colors.dark["input"] %>;
-      --ring: <%- colors.dark["ring"] %>;
+      --border: ${colors.dark["border"]};
+      --input: ${colors.dark["input"]};
+      --ring: ${colors.dark["ring"]};
     }
   }
 
@@ -492,10 +524,8 @@ async function buildThemes() {
     }
 
     // Build css vars.
-    base["inlineColorsTemplate"] = template(BASE_STYLES)({})
-    base["cssVarsTemplate"] = template(BASE_STYLES_WITH_VARIABLES)({
-      colors: base["cssVars"],
-    })
+    base["inlineColorsTemplate"] = getBaseStyles()
+    base["cssVarsTemplate"] = getBaseStylesWithVariables(base["cssVars"])
 
     await fs.writeFile(
       path.join(REGISTRY_PATH, `colors/${baseColor}.json`),
@@ -506,79 +536,75 @@ async function buildThemes() {
     // ----------------------------------------------------------------------------
     // Build registry/themes.css
     // ----------------------------------------------------------------------------
-    const THEME_STYLES_WITH_VARIABLES = `
-.theme-<%- theme %> {
-  --background: <%- colors.light["background"] %>;
-  --foreground: <%- colors.light["foreground"] %>;
+    const getThemeStylesWithVariables = (themeName: string, colors: any) => `
+.theme-${themeName} {
+  --background: ${colors.light["background"]};
+  --foreground: ${colors.light["foreground"]};
 
-  --muted: <%- colors.light["muted"] %>;
-  --muted-foreground: <%- colors.light["muted-foreground"] %>;
+  --muted: ${colors.light["muted"]};
+  --muted-foreground: ${colors.light["muted-foreground"]};
 
-  --popover: <%- colors.light["popover"] %>;
-  --popover-foreground: <%- colors.light["popover-foreground"] %>;
+  --popover: ${colors.light["popover"]};
+  --popover-foreground: ${colors.light["popover-foreground"]};
 
-  --card: <%- colors.light["card"] %>;
-  --card-foreground: <%- colors.light["card-foreground"] %>;
+  --card: ${colors.light["card"]};
+  --card-foreground: ${colors.light["card-foreground"]};
 
-  --border: <%- colors.light["border"] %>;
-  --input: <%- colors.light["input"] %>;
+  --border: ${colors.light["border"]};
+  --input: ${colors.light["input"]};
 
-  --primary: <%- colors.light["primary"] %>;
-  --primary-foreground: <%- colors.light["primary-foreground"] %>;
+  --primary: ${colors.light["primary"]};
+  --primary-foreground: ${colors.light["primary-foreground"]};
 
-  --secondary: <%- colors.light["secondary"] %>;
-  --secondary-foreground: <%- colors.light["secondary-foreground"] %>;
+  --secondary: ${colors.light["secondary"]};
+  --secondary-foreground: ${colors.light["secondary-foreground"]};
 
-  --accent: <%- colors.light["accent"] %>;
-  --accent-foreground: <%- colors.light["accent-foreground"] %>;
+  --accent: ${colors.light["accent"]};
+  --accent-foreground: ${colors.light["accent-foreground"]};
 
-  --destructive: <%- colors.light["destructive"] %>;
-  --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
+  --destructive: ${colors.light["destructive"]};
+  --destructive-foreground: ${colors.light["destructive-foreground"]};
 
-  --ring: <%- colors.light["ring"] %>;
+  --ring: ${colors.light["ring"]};
 
-  --radius: <%- colors.light["radius"] %>;
+  --radius: ${colors.light["radius"]};
 }
 
-.dark .theme-<%- theme %> {
-  --background: <%- colors.dark["background"] %>;
-  --foreground: <%- colors.dark["foreground"] %>;
+.dark .theme-${themeName} {
+  --background: ${colors.dark["background"]};
+  --foreground: ${colors.dark["foreground"]};
 
-  --muted: <%- colors.dark["muted"] %>;
-  --muted-foreground: <%- colors.dark["muted-foreground"] %>;
+  --muted: ${colors.dark["muted"]};
+  --muted-foreground: ${colors.dark["muted-foreground"]};
 
-  --popover: <%- colors.dark["popover"] %>;
-  --popover-foreground: <%- colors.dark["popover-foreground"] %>;
+  --popover: ${colors.dark["popover"]};
+  --popover-foreground: ${colors.dark["popover-foreground"]};
 
-  --card: <%- colors.dark["card"] %>;
-  --card-foreground: <%- colors.dark["card-foreground"] %>;
+  --card: ${colors.dark["card"]};
+  --card-foreground: ${colors.dark["card-foreground"]};
 
-  --border: <%- colors.dark["border"] %>;
-  --input: <%- colors.dark["input"] %>;
+  --border: ${colors.dark["border"]};
+  --input: ${colors.dark["input"]};
 
-  --primary: <%- colors.dark["primary"] %>;
-  --primary-foreground: <%- colors.dark["primary-foreground"] %>;
+  --primary: ${colors.dark["primary"]};
+  --primary-foreground: ${colors.dark["primary-foreground"]};
 
-  --secondary: <%- colors.dark["secondary"] %>;
-  --secondary-foreground: <%- colors.dark["secondary-foreground"] %>;
+  --secondary: ${colors.dark["secondary"]};
+  --secondary-foreground: ${colors.dark["secondary-foreground"]};
 
-  --accent: <%- colors.dark["accent"] %>;
-  --accent-foreground: <%- colors.dark["accent-foreground"] %>;
+  --accent: ${colors.dark["accent"]};
+  --accent-foreground: ${colors.dark["accent-foreground"]};
 
-  --destructive: <%- colors.dark["destructive"] %>;
-  --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
+  --destructive: ${colors.dark["destructive"]};
+  --destructive-foreground: ${colors.dark["destructive-foreground"]};
 
-  --ring: <%- colors.dark["ring"] %>;
+  --ring: ${colors.dark["ring"]};
 }`
 
     const themeCSS = []
     for (const theme of themes) {
       themeCSS.push(
-        // @ts-ignore
-        template(THEME_STYLES_WITH_VARIABLES)({
-          colors: theme.cssVars,
-          theme: theme.name,
-        })
+        getThemeStylesWithVariables(theme.name, theme.cssVars)
       )
     }
 

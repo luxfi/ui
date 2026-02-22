@@ -10,6 +10,13 @@
     "type": "components:ui"
   },
   {
+    "name": "android",
+    "files": [
+      "ui/android.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "alert",
     "files": [
       "ui/alert.tsx"
@@ -122,6 +129,29 @@
     "type": "components:ui"
   },
   {
+    "name": "code-block",
+    "dependencies": [
+      "shiki",
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "badge",
+      "button",
+      "skeleton"
+    ],
+    "files": [
+      "ui/code-block.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "code-tabs",
+    "files": [
+      "ui/code-tabs.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
     "name": "collapsible",
     "dependencies": [
       "@radix-ui/react-collapsible"
@@ -182,6 +212,26 @@
     ],
     "files": [
       "ui/dropdown-menu.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "empty-state",
+    "dependencies": [
+      "lucide-react"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
+    "files": [
+      "ui/empty-state.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "gantt",
+    "files": [
+      "ui/gantt.tsx"
     ],
     "type": "components:ui"
   },
@@ -318,6 +368,13 @@
     ],
     "files": [
       "ui/resizable.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "sandbox",
+    "files": [
+      "ui/sandbox.tsx"
     ],
     "type": "components:ui"
   },
@@ -565,6 +622,201 @@
       "ui/ai-tools.tsx"
     ],
     "type": "components:ai"
+  },
+  {
+    "name": "advanced-chart",
+    "description": "Full-featured TradingView chart with symbol switching and timeframes",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/advanced-chart.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "charts"
+  },
+  {
+    "name": "market-overview",
+    "description": "Multi-asset market overview with tabs for indices, futures, bonds, and forex",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/market-overview.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "charts"
+  },
+  {
+    "name": "ticker-tape",
+    "description": "Scrolling ticker tape with major market indices and stocks",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/ticker-tape.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "charts"
+  },
+  {
+    "name": "stock-screener",
+    "description": "Stock market screener with filtering and sorting capabilities",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/stock-screener.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "screeners"
+  },
+  {
+    "name": "crypto-screener",
+    "description": "Cryptocurrency market screener for digital assets",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/crypto-screener.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "screeners"
+  },
+  {
+    "name": "forex-screener",
+    "description": "Foreign exchange market screener for currency pairs",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/forex-screener.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "screeners"
+  },
+  {
+    "name": "symbol-info",
+    "description": "Real-time symbol information with price and basic details",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/symbol-info.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "analysis"
+  },
+  {
+    "name": "company-profile",
+    "description": "Company profile with business description and key information",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/company-profile.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "analysis"
+  },
+  {
+    "name": "financials",
+    "description": "Financial statements and fundamental data visualization",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/financials.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "analysis"
+  },
+  {
+    "name": "technical-analysis",
+    "description": "Technical indicator summary with configurable intervals",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/technical-analysis.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "analysis"
+  },
+  {
+    "name": "news-timeline",
+    "description": "Financial news timeline widget with real-time updates",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/news-timeline.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "news"
+  },
+  {
+    "name": "trading-panel",
+    "description": "Demo trading panel with buy/sell functionality and portfolio tracking",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/trading-panel.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "trading"
+  },
+  {
+    "name": "order-entry",
+    "description": "Order entry form with buy/sell toggle and market/limit orders",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/order-entry.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "trading"
+  },
+  {
+    "name": "positions-list",
+    "description": "Real-time positions list with P&L tracking and percentage changes",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/positions-list.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "trading"
+  },
+  {
+    "name": "orders-history",
+    "description": "Order history view with status badges and cancel functionality",
+    "dependencies": [
+      "@hanzo/ui"
+    ],
+    "files": [
+      "finance/orders-history.tsx"
+    ],
+    "type": "components:finance",
+    "category": "finance",
+    "subcategory": "trading"
   },
   {
     "name": "code-block",
@@ -1452,6 +1704,18 @@
     ],
     "files": [
       "ui/video-player.tsx"
+    ],
+    "type": "components:ui"
+  },
+  {
+    "name": "youtube-pip-player",
+    "description": "YouTube embed with scroll-based Picture-in-Picture, draggable window, and TV effects",
+    "dependencies": [
+      "lucide-react",
+      "class-variance-authority"
+    ],
+    "files": [
+      "ui/youtube-pip-player.tsx"
     ],
     "type": "components:ui"
   },
@@ -2923,7 +3187,7 @@
   {
     "name": "cards",
     "files": [
-      "example/cards/cards.tsx"
+      "example/cards.tsx"
     ],
     "type": "components:example"
   },
@@ -2936,6 +3200,767 @@
       "example/3d-card-demo.tsx"
     ],
     "type": "components:example"
+  },
+  {
+    "name": "ai-actions-demo",
+    "registryDependencies": [
+      "ai-actions"
+    ],
+    "files": [
+      "example/ai-actions-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ai-agents-demo",
+    "registryDependencies": [
+      "ai-agents"
+    ],
+    "files": [
+      "example/ai-agents-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ai-assistant-demo",
+    "registryDependencies": [
+      "ai-assistant"
+    ],
+    "files": [
+      "example/ai-assistant-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ai-chat-demo",
+    "registryDependencies": [
+      "ai-chat"
+    ],
+    "files": [
+      "example/ai-chat-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ai-code-demo",
+    "registryDependencies": [
+      "ai-code"
+    ],
+    "files": [
+      "example/ai-code-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ai-model-selector-navigation-bar-demo",
+    "registryDependencies": [
+      "ai-model-selector-navigation-bar"
+    ],
+    "files": [
+      "example/ai-model-selector-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ai-models-demo",
+    "registryDependencies": [
+      "ai-models"
+    ],
+    "files": [
+      "example/ai-models-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ai-playground-demo",
+    "registryDependencies": [
+      "ai-playground"
+    ],
+    "files": [
+      "example/ai-playground-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ai-playground-basic",
+    "registryDependencies": [
+      "ai-playground"
+    ],
+    "files": [
+      "example/ai-playground-basic.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ai-playground-custom",
+    "registryDependencies": [
+      "ai-playground"
+    ],
+    "files": [
+      "example/ai-playground-custom.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ai-tools-demo",
+    "registryDependencies": [
+      "ai-tools"
+    ],
+    "files": [
+      "example/ai-tools-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ai-vision-demo",
+    "registryDependencies": [
+      "ai-vision"
+    ],
+    "files": [
+      "example/ai-vision-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ai-voice-demo",
+    "registryDependencies": [
+      "ai-voice"
+    ],
+    "files": [
+      "example/ai-voice-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "apple-hello-effect-demo",
+    "files": [
+      "example/apple-hello-effect-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "avatar-group-demo",
+    "files": [
+      "example/avatar-group-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "banner-demo",
+    "files": [
+      "example/banner-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "breadcrumb-and-filters-navigation-bar-demo",
+    "files": [
+      "example/breadcrumb-and-filters-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "breadcrumb-navigation-bar-demo",
+    "files": [
+      "example/breadcrumb-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "button-group-demo",
+    "files": [
+      "example/button-group-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "centered-logo-navigation-bar-demo",
+    "files": [
+      "example/centered-logo-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "chart-demo",
+    "files": [
+      "example/chart-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "choicebox-demo",
+    "files": [
+      "example/choicebox-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "code-compare-demo",
+    "files": [
+      "example/code-compare-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "code-diff-demo",
+    "files": [
+      "example/code-diff-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "code-editor-demo",
+    "files": [
+      "example/code-editor-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "code-explorer-demo",
+    "files": [
+      "example/code-explorer-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "code-preview-demo",
+    "files": [
+      "example/code-preview-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "code-snippet-demo",
+    "files": [
+      "example/code-snippet-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "code-terminal-demo",
+    "files": [
+      "example/code-terminal-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "collaboration-navigation-bar-demo",
+    "files": [
+      "example/collaboration-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "color-picker-demo",
+    "files": [
+      "example/color-picker-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "communication-navigation-bar-demo",
+    "files": [
+      "example/communication-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "comparison-demo",
+    "files": [
+      "example/comparison-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "context-switcher-navigation-bar-demo",
+    "files": [
+      "example/context-switcher-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "credit-card-demo",
+    "files": [
+      "example/credit-card-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "cursor-demo",
+    "files": [
+      "example/cursor-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "dashboard-navigation-bar-demo",
+    "files": [
+      "example/dashboard-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "dialog-stack-demo",
+    "files": [
+      "example/dialog-stack-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "dropzone-demo",
+    "files": [
+      "example/dropzone-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "e-commerce-navigation-bar-demo",
+    "files": [
+      "example/e-commerce-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "editor-demo",
+    "files": [
+      "example/editor-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "empty-demo",
+    "files": [
+      "example/empty-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "field-demo",
+    "files": [
+      "example/field-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "form-demo",
+    "files": [
+      "example/form-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "icon-navigation-bar-demo",
+    "files": [
+      "example/icon-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "image-crop-demo",
+    "files": [
+      "example/image-crop-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "image-zoom-demo",
+    "files": [
+      "example/image-zoom-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "input-group-demo",
+    "files": [
+      "example/input-group-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "iphone-15-pro-demo",
+    "files": [
+      "example/iphone-15-pro-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "item-demo",
+    "files": [
+      "example/item-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "kanban-demo",
+    "files": [
+      "example/kanban-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "kbd-demo",
+    "files": [
+      "example/kbd-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "limelight-nav-demo",
+    "files": [
+      "example/limelight-nav-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "limelight-nav-navigation-bar-demo",
+    "files": [
+      "example/limelight-nav-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "list-demo",
+    "files": [
+      "example/list-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "macos-dock-demo",
+    "files": [
+      "example/macos-dock-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "magnetic-demo",
+    "files": [
+      "example/magnetic-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "marquee-demo",
+    "files": [
+      "example/marquee-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "menu-dock-demo",
+    "files": [
+      "example/menu-dock-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "message-dock-demo",
+    "files": [
+      "example/message-dock-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "mini-calendar-demo",
+    "files": [
+      "example/mini-calendar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "minimal-tiptap-demo",
+    "files": [
+      "example/minimal-tiptap-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "motion-highlight-demo",
+    "files": [
+      "example/motion-highlight-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "music-player-demo",
+    "files": [
+      "example/music-player-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "particles-background-demo",
+    "files": [
+      "example/particles-background-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "pill-demo",
+    "files": [
+      "example/pill-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "pixel-image-demo",
+    "files": [
+      "example/pixel-image-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "pulse-animation-demo",
+    "files": [
+      "example/pulse-animation-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "qr-code-demo",
+    "files": [
+      "example/qr-code-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "relative-time-demo",
+    "files": [
+      "example/relative-time-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "reveal-animation-demo",
+    "files": [
+      "example/reveal-animation-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "safari-demo",
+    "files": [
+      "example/safari-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "search-and-toggle-navigation-bar-demo",
+    "files": [
+      "example/search-and-toggle-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "sidebar-demo",
+    "files": [
+      "example/sidebar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "simple-navigation-bar-demo",
+    "files": [
+      "example/simple-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "spinner-demo",
+    "files": [
+      "example/spinner-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "status-dashboard-navigation-bar-demo",
+    "files": [
+      "example/status-dashboard-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "status-demo",
+    "files": [
+      "example/status-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "tags-demo",
+    "files": [
+      "example/tags-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "team-switcher-navigation-bar-demo",
+    "files": [
+      "example/team-switcher-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "ticker-demo",
+    "files": [
+      "example/ticker-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "toaster-demo",
+    "files": [
+      "example/toaster-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "two-tier-navigation-bar-demo",
+    "files": [
+      "example/two-tier-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "underline-navigation-bar-demo",
+    "files": [
+      "example/underline-navigation-bar-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "video-player-demo",
+    "files": [
+      "example/video-player-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "youtube-pip-player-demo",
+    "registryDependencies": [
+      "youtube-pip-player"
+    ],
+    "files": [
+      "example/youtube-pip-player-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "android-demo",
+    "registryDependencies": [
+      "android"
+    ],
+    "files": [
+      "example/android-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "gantt-demo",
+    "registryDependencies": [
+      "gantt"
+    ],
+    "files": [
+      "example/gantt-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "sandbox-demo",
+    "registryDependencies": [
+      "sandbox"
+    ],
+    "files": [
+      "example/sandbox-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "code-block-demo",
+    "registryDependencies": [
+      "code-block"
+    ],
+    "files": [
+      "example/code-block-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "code-tabs-demo",
+    "registryDependencies": [
+      "code-tabs"
+    ],
+    "files": [
+      "example/code-tabs-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "newsletter-01",
+    "registryDependencies": [
+      "button",
+      "card",
+      "input"
+    ],
+    "files": [
+      "block/newsletter-01.tsx"
+    ],
+    "type": "components:block",
+    "category": "Marketing",
+    "subcategory": "Newsletter"
+  },
+  {
+    "name": "newsletter-02",
+    "registryDependencies": [
+      "button",
+      "input"
+    ],
+    "files": [
+      "block/newsletter-02.tsx"
+    ],
+    "type": "components:block",
+    "category": "Marketing",
+    "subcategory": "Newsletter"
+  },
+  {
+    "name": "newsletter-03",
+    "registryDependencies": [
+      "button",
+      "card",
+      "input"
+    ],
+    "files": [
+      "block/newsletter-03.tsx"
+    ],
+    "type": "components:block",
+    "category": "Marketing",
+    "subcategory": "Newsletter"
+  },
+  {
+    "name": "newsletter-04",
+    "registryDependencies": [
+      "button",
+      "input"
+    ],
+    "files": [
+      "block/newsletter-04.tsx"
+    ],
+    "type": "components:block",
+    "category": "Marketing",
+    "subcategory": "Newsletter"
+  },
+  {
+    "name": "newsletter-05",
+    "registryDependencies": [
+      "button",
+      "input"
+    ],
+    "files": [
+      "block/newsletter-05.tsx"
+    ],
+    "type": "components:block",
+    "category": "Marketing",
+    "subcategory": "Newsletter"
   },
   {
     "name": "dashboard-05",

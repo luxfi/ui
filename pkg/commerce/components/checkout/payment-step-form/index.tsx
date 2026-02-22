@@ -35,7 +35,7 @@ const PaymentStepForm: React.FC<CheckoutStepComponentProps> = observer(({
   }
 
   const contactForm = useForm<z.infer<typeof contactFormSchema>>({
-    resolver: zodResolver(contactFormSchema),  
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: auth?.user?.displayName ?? '',
       email: auth?.user?.email ?? '',

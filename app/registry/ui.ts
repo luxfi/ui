@@ -8,6 +8,11 @@ export const ui: Registry = [
     files: ["ui/accordion.tsx"],
   },
   {
+    name: "android",
+    type: "components:ui",
+    files: ["ui/android.tsx"],
+  },
+  {
     name: "alert",
     type: "components:ui",
     files: ["ui/alert.tsx"],
@@ -74,6 +79,18 @@ export const ui: Registry = [
     files: ["ui/checkbox.tsx"],
   },
   {
+    name: "code-block",
+    type: "components:ui",
+    dependencies: ["shiki", "lucide-react"],
+    registryDependencies: ["badge", "button", "skeleton"],
+    files: ["ui/code-block.tsx"],
+  },
+  {
+    name: "code-tabs",
+    type: "components:ui",
+    files: ["ui/code-tabs.tsx"],
+  },
+  {
     name: "collapsible",
     type: "components:ui",
     dependencies: ["@radix-ui/react-collapsible"],
@@ -109,6 +126,18 @@ export const ui: Registry = [
     type: "components:ui",
     dependencies: ["@radix-ui/react-dropdown-menu"],
     files: ["ui/dropdown-menu.tsx"],
+  },
+  {
+    name: "empty-state",
+    type: "components:ui",
+    dependencies: ["lucide-react"],
+    registryDependencies: ["button"],
+    files: ["ui/empty-state.tsx"],
+  },
+  {
+    name: "gantt",
+    type: "components:ui",
+    files: ["ui/gantt.tsx"],
   },
   {
     name: "form",
@@ -193,6 +222,11 @@ export const ui: Registry = [
     type: "components:ui",
     dependencies: ["react-resizable-panels"],
     files: ["ui/resizable.tsx"],
+  },
+  {
+    name: "sandbox",
+    type: "components:ui",
+    files: ["ui/sandbox.tsx"],
   },
   {
     name: "scroll-area",

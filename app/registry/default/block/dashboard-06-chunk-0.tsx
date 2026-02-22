@@ -47,6 +47,7 @@ import {MoreHorizontal} from "lucide-react"
                             height="64"
                             src="/placeholder.svg"
                             width="64"
+                            loading="lazy"
                           />
                         </TableCell>
                         <TableCell className="font-medium">
@@ -92,6 +93,7 @@ import {MoreHorizontal} from "lucide-react"
                             height="64"
                             src="/placeholder.svg"
                             width="64"
+                            loading="lazy"
                           />
                         </TableCell>
                         <TableCell className="font-medium">
@@ -137,6 +139,7 @@ import {MoreHorizontal} from "lucide-react"
                             height="64"
                             src="/placeholder.svg"
                             width="64"
+                            loading="lazy"
                           />
                         </TableCell>
                         <TableCell className="font-medium">
@@ -182,6 +185,7 @@ import {MoreHorizontal} from "lucide-react"
                             height="64"
                             src="/placeholder.svg"
                             width="64"
+                            loading="lazy"
                           />
                         </TableCell>
                         <TableCell className="font-medium">
@@ -227,6 +231,7 @@ import {MoreHorizontal} from "lucide-react"
                             height="64"
                             src="/placeholder.svg"
                             width="64"
+                            loading="lazy"
                           />
                         </TableCell>
                         <TableCell className="font-medium">
@@ -272,6 +277,7 @@ import {MoreHorizontal} from "lucide-react"
                             height="64"
                             src="/placeholder.svg"
                             width="64"
+                            loading="lazy"
                           />
                         </TableCell>
                         <TableCell className="font-medium">

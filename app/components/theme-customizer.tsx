@@ -1,23 +1,15 @@
 "use client"
 
 import * as React from "react"
-import {
-  CheckIcon,
-  CopyIcon,
-  InfoCircledIcon,
-  MoonIcon,
-  ResetIcon,
-  SunIcon,
-} from "@radix-ui/react-icons"
-import template from "lodash.template"
-import { Paintbrush } from "lucide-react"
-import { useTheme } from "next-themes"
+import { IconCheck, IconCopy } from "@tabler/icons-react"
 
+import { THEMES } from "@/lib/themes"
 import { cn } from "@/lib/utils"
-import { useConfig } from "@/hooks/use-config"
+import { useThemeConfig } from "@/components/active-theme"
 import { copyToClipboardWithMeta } from "@/components/copy-button"
-import { ThemeWrapper } from "@/components/theme-wrapper"
-import { Button } from "@/registry/new-york/ui/button"
+import { Icons } from "@/components/icons"
+import { BaseColor, baseColors, baseColorsOKLCH } from "@/registry/base-colors"
+import { Button } from "@/registry/default/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -25,608 +17,723 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/new-york/ui/dialog"
+} from "@/registry/default/ui/dialog"
 import {
   Drawer,
   DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
   DrawerTrigger,
-} from "@/registry/new-york/ui/drawer"
-import { Label } from "@/registry/new-york/ui/label"
+} from "@/registry/default/ui/drawer"
+import { Label } from "@/registry/default/ui/label"
+import { ScrollArea, ScrollBar } from "@/registry/default/ui/scroll-area"
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/new-york/ui/popover"
-import { Skeleton } from "@/registry/new-york/ui/skeleton"
-import { Theme, themes } from "@/registry/themes"
-
-import "@/styles/mdx.css"
-
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/registry/default/ui/select"
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/new-york/ui/tooltip"
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/registry/default/ui/tabs"
 
-export function ThemeCustomizer() {
-  const [config, setConfig] = useConfig()
-  const { resolvedTheme: mode } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
+interface BaseColorOKLCH {
+  light: Record<string, string>
+  dark: Record<string, string>
+}
 
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
+export function ThemeCustomizer({ className }: React.ComponentProps<"div">) {
+  const { activeTheme = "zen", setActiveTheme } = useThemeConfig()
 
   return (
-    <div className="flex items-center space-x-2">
-      <Drawer>
-        <DrawerTrigger asChild>
-          <Button variant="outline" className="md:hidden">
-            <Paintbrush className="mr-2 h-4 w-4" />
-            Customize
-          </Button>
-        </DrawerTrigger>
-        <DrawerContent className="p-6 pt-0">
-          <Customizer />
-        </DrawerContent>
-      </Drawer>
-      <div className="hidden md:flex">
-        <div className="mr-2 hidden items-center space-x-0.5 lg:flex">
-          {mounted ? (
-            <>
-              {["zinc", "rose", "blue", "green", "orange"].map((color) => {
-                const theme = themes.find((theme) => theme.name === color)
-                const isActive = config.theme === color
-
-                if (!theme) {
-                  return null
-                }
-
-                return (
-                  <Tooltip key={theme.name}>
-                    <TooltipTrigger asChild>
-                      <button
-                        onClick={() =>
-                          setConfig({
-                            ...config,
-                            theme: theme.name,
-                          })
-                        }
-                        className={cn(
-                          "flex h-9 w-9 items-center justify-center rounded-full border-2 text-xs",
-                          isActive
-                            ? "border-[--theme-primary]"
-                            : "border-transparent"
-                        )}
-                        style={
-                          {
-                            "--theme-primary": `hsl(${
-                              theme?.activeColor[
-                                mode === "dark" ? "dark" : "light"
-                              ]
-                            })`,
-                          } as React.CSSProperties
-                        }
-                      >
-                        <span
-                          className={cn(
-                            "flex h-6 w-6 items-center justify-center rounded-full bg-[--theme-primary]"
-                          )}
-                        >
-                          {isActive && (
-                            <CheckIcon className="h-4 w-4 text-white" />
-                          )}
-                        </span>
-                        <span className="sr-only">{theme.label}</span>
-                      </button>
-                    </TooltipTrigger>
-                    <TooltipContent
-                      align="center"
-                      className="rounded-[0.5rem] bg-zinc-900 text-zinc-50"
-                    >
-                      {theme.label}
-                    </TooltipContent>
-                  </Tooltip>
-                )
-              })}
-            </>
-          ) : (
-            <div className="mr-1 flex items-center gap-4">
-              <Skeleton className="h-6 w-6 rounded-full" />
-              <Skeleton className="h-6 w-6 rounded-full" />
-              <Skeleton className="h-6 w-6 rounded-full" />
-              <Skeleton className="h-6 w-6 rounded-full" />
-              <Skeleton className="h-6 w-6 rounded-full" />
-            </div>
-          )}
-        </div>
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant="outline">
-              <Paintbrush className="mr-2 h-4 w-4" />
-              Customize
+    <div className={cn("flex w-full items-center gap-2", className)}>
+      <ScrollArea className="hidden max-w-[96%] md:max-w-[600px] lg:flex lg:max-w-none">
+        <div className="flex items-center">
+          {THEMES.map((theme) => (
+            <Button
+              key={theme.name}
+              variant="link"
+              size="sm"
+              data-active={activeTheme === theme.name}
+              className="text-muted-foreground hover:text-primary data-[active=true]:text-primary flex h-7 cursor-pointer items-center justify-center px-4 text-center text-base font-medium capitalize transition-colors hover:no-underline"
+              onClick={() => setActiveTheme(theme.name)}
+            >
+              {theme.name}
             </Button>
-          </PopoverTrigger>
-          <PopoverContent
-            align="center"
-            className="z-40 w-[340px] rounded-[0.5rem] bg-white p-6 dark:bg-zinc-950"
+          ))}
+        </div>
+        <ScrollBar orientation="horizontal" className="invisible" />
+      </ScrollArea>
+      <div className="flex items-center gap-2 lg:hidden">
+        <Label htmlFor="theme-selector" className="sr-only">
+          Theme
+        </Label>
+        <Select value={activeTheme} onValueChange={setActiveTheme}>
+          <SelectTrigger
+            id="theme-selector"
+            className="justify-start capitalize shadow-none *:data-[slot=select-value]:w-12 *:data-[slot=select-value]:capitalize"
           >
-            <Customizer />
-          </PopoverContent>
-        </Popover>
+            <span className="font-medium">Theme:</span>
+            <SelectValue placeholder="Select a theme" />
+          </SelectTrigger>
+          <SelectContent align="end">
+            <SelectGroup>
+              {THEMES.map((theme) => (
+                <SelectItem
+                  key={theme.name}
+                  value={theme.name}
+                  className="capitalize data-[state=checked]:opacity-50"
+                >
+                  {theme.name}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
-      <CopyCodeButton />
+      <CopyCodeButton variant="secondary" size="sm" className="ml-auto" />
     </div>
   )
 }
 
-function Customizer() {
-  const [mounted, setMounted] = React.useState(false)
-  const { setTheme: setMode, resolvedTheme: mode } = useTheme()
-  const [config, setConfig] = useConfig()
-
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  return (
-    <ThemeWrapper
-      defaultTheme="zinc"
-      className="flex flex-col space-y-4 md:space-y-6"
-    >
-      <div className="flex items-start pt-4 md:pt-0">
-        <div className="space-y-1 pr-2">
-          <div className="font-semibold leading-none tracking-tight">
-            Customize
-          </div>
-          <div className="text-xs text-muted-foreground">
-            Pick a style and color for your components.
-          </div>
-        </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="ml-auto rounded-[0.5rem]"
-          onClick={() => {
-            setConfig({
-              ...config,
-              theme: "zinc",
-              radius: 0.5,
-            })
-          }}
-        >
-          <ResetIcon />
-          <span className="sr-only">Reset</span>
-        </Button>
-      </div>
-      <div className="flex flex-1 flex-col space-y-4 md:space-y-6">
-        <div className="space-y-1.5">
-          <div className="flex w-full items-center">
-            <Label className="text-xs">Style</Label>
-            <Popover>
-              <PopoverTrigger>
-                <InfoCircledIcon className="ml-1 h-3 w-3" />
-                <span className="sr-only">About styles</span>
-              </PopoverTrigger>
-              <PopoverContent
-                className="space-y-3 rounded-[0.5rem] text-sm"
-                side="right"
-                align="start"
-                alignOffset={-20}
-              >
-                <p className="font-medium">
-                  What is the difference between the New York and Default style?
-                </p>
-                <p>
-                  A style comes with its own set of components, animations,
-                  icons and more.
-                </p>
-                <p>
-                  The <span className="font-medium">Default</span> style has
-                  larger inputs, uses lucide-react for icons and
-                  tailwindcss-animate for animations.
-                </p>
-                <p>
-                  The <span className="font-medium">New York</span> style ships
-                  with smaller buttons and cards with shadows. It uses icons
-                  from Radix Icons.
-                </p>
-              </PopoverContent>
-            </Popover>
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            <Button
-              variant={"outline"}
-              size="sm"
-              onClick={() => setConfig({ ...config, style: "default" })}
-              className={cn(
-                config.style === "default" && "border-2 border-primary"
-              )}
-            >
-              Default
-            </Button>
-            <Button
-              variant={"outline"}
-              size="sm"
-              onClick={() => setConfig({ ...config, style: "new-york" })}
-              className={cn(
-                config.style === "new-york" && "border-2 border-primary"
-              )}
-            >
-              New York
-            </Button>
-          </div>
-        </div>
-        <div className="space-y-1.5">
-          <Label className="text-xs">Color</Label>
-          <div className="grid grid-cols-3 gap-2">
-            {themes.map((theme) => {
-              const isActive = config.theme === theme.name
-
-              return mounted ? (
-                <Button
-                  variant={"outline"}
-                  size="sm"
-                  key={theme.name}
-                  onClick={() => {
-                    setConfig({
-                      ...config,
-                      theme: theme.name,
-                    })
-                  }}
-                  className={cn(
-                    "justify-start",
-                    isActive && "border-2 border-primary"
-                  )}
-                  style={
-                    {
-                      "--theme-primary": `hsl(${
-                        theme?.activeColor[mode === "dark" ? "dark" : "light"]
-                      })`,
-                    } as React.CSSProperties
-                  }
-                >
-                  <span
-                    className={cn(
-                      "mr-1 flex h-5 w-5 shrink-0 -translate-x-1 items-center justify-center rounded-full bg-[--theme-primary]"
-                    )}
-                  >
-                    {isActive && <CheckIcon className="h-4 w-4 text-white" />}
-                  </span>
-                  {theme.label}
-                </Button>
-              ) : (
-                <Skeleton className="h-8 w-full" key={theme.name} />
-              )
-            })}
-          </div>
-        </div>
-        <div className="space-y-1.5">
-          <Label className="text-xs">Radius</Label>
-          <div className="grid grid-cols-5 gap-2">
-            {["0", "0.3", "0.5", "0.75", "1.0"].map((value) => {
-              return (
-                <Button
-                  variant={"outline"}
-                  size="sm"
-                  key={value}
-                  onClick={() => {
-                    setConfig({
-                      ...config,
-                      radius: parseFloat(value),
-                    })
-                  }}
-                  className={cn(
-                    config.radius === parseFloat(value) &&
-                      "border-2 border-primary"
-                  )}
-                >
-                  {value}
-                </Button>
-              )
-            })}
-          </div>
-        </div>
-        <div className="space-y-1.5">
-          <Label className="text-xs">Mode</Label>
-          <div className="grid grid-cols-3 gap-2">
-            {mounted ? (
-              <>
-                <Button
-                  variant={"outline"}
-                  size="sm"
-                  onClick={() => setMode("light")}
-                  className={cn(mode === "light" && "border-2 border-primary")}
-                >
-                  <SunIcon className="mr-1 -translate-x-1" />
-                  Light
-                </Button>
-                <Button
-                  variant={"outline"}
-                  size="sm"
-                  onClick={() => setMode("dark")}
-                  className={cn(mode === "dark" && "border-2 border-primary")}
-                >
-                  <MoonIcon className="mr-1 -translate-x-1" />
-                  Dark
-                </Button>
-              </>
-            ) : (
-              <>
-                <Skeleton className="h-8 w-full" />
-                <Skeleton className="h-8 w-full" />
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-    </ThemeWrapper>
-  )
-}
-
-function CopyCodeButton() {
-  const [config] = useConfig()
-  const activeTheme = themes.find((theme) => theme.name === config.theme)
-  const [hasCopied, setHasCopied] = React.useState(false)
-
-  React.useEffect(() => {
-    setTimeout(() => {
-      setHasCopied(false)
-    }, 2000)
-  }, [hasCopied])
+export function CopyCodeButton({
+  className,
+  ...props
+}: React.ComponentProps<typeof Button>) {
+  let { activeTheme: activeThemeName = "zen" } = useThemeConfig()
+  activeThemeName = activeThemeName === "default" ? "zen" : activeThemeName
 
   return (
     <>
-      {activeTheme && (
-        <Button
-          onClick={() => {
-            copyToClipboardWithMeta(getThemeCode(activeTheme, config.radius), {
-              name: "copy_theme_code",
-              properties: {
-                theme: activeTheme.name,
-                radius: config.radius,
-              },
-            })
-            setHasCopied(true)
-          }}
-          className="md:hidden"
-        >
-          {hasCopied ? (
-            <CheckIcon className="mr-2 h-4 w-4" />
-          ) : (
-            <CopyIcon className="mr-2 h-4 w-4" />
-          )}
-          Copy
-        </Button>
-      )}
+      <Drawer>
+        <DrawerTrigger asChild>
+          <Button className={cn("sm:hidden", className)} {...props}>
+            Copy Code
+          </Button>
+        </DrawerTrigger>
+        <DrawerContent className="h-auto">
+          <DrawerHeader>
+            <DrawerTitle className="capitalize">{activeThemeName}</DrawerTitle>
+            <DrawerDescription>
+              Copy and paste the following code into your CSS file.
+            </DrawerDescription>
+          </DrawerHeader>
+          <CustomizerCode themeName={activeThemeName} />
+        </DrawerContent>
+      </Drawer>
       <Dialog>
         <DialogTrigger asChild>
-          <Button className="hidden md:flex">Copy code</Button>
+          <Button
+            data-size={props.size}
+            className={cn("group/button hidden sm:flex", className)}
+            {...props}
+          >
+            <IconCopy />
+            <span className="group-data-[size=icon-sm]/button:sr-only">
+              Copy Code
+            </span>
+          </Button>
         </DialogTrigger>
-        <DialogContent className="max-w-2xl outline-none">
+        <DialogContent className="rounded-xl border-none bg-clip-padding shadow-2xl ring-4 ring-neutral-200/80 outline-none md:max-w-2xl dark:bg-neutral-800 dark:ring-neutral-900">
           <DialogHeader>
-            <DialogTitle>Theme</DialogTitle>
+            <DialogTitle className="capitalize">{activeThemeName}</DialogTitle>
             <DialogDescription>
               Copy and paste the following code into your CSS file.
             </DialogDescription>
           </DialogHeader>
-          <ThemeWrapper defaultTheme="zinc" className="relative">
-            <CustomizerCode />
-            {activeTheme && (
-              <Button
-                size="sm"
-                onClick={() => {
-                  copyToClipboardWithMeta(
-                    getThemeCode(activeTheme, config.radius),
-                    {
-                      name: "copy_theme_code",
-                      properties: {
-                        theme: activeTheme.name,
-                        radius: config.radius,
-                      },
-                    }
-                  )
-                  setHasCopied(true)
-                }}
-                className="absolute right-4 top-4 bg-muted text-muted-foreground hover:bg-muted hover:text-muted-foreground"
-              >
-                {hasCopied ? (
-                  <CheckIcon className="mr-2 h-4 w-4" />
-                ) : (
-                  <CopyIcon className="mr-2 h-4 w-4" />
-                )}
-                Copy
-              </Button>
-            )}
-          </ThemeWrapper>
+          <CustomizerCode themeName={activeThemeName} />
         </DialogContent>
       </Dialog>
     </>
   )
 }
 
-function CustomizerCode() {
-  const [config] = useConfig()
-  const activeTheme = themes.find((theme) => theme.name === config.theme)
+function CustomizerCode({ themeName }: { themeName: string }) {
+  const [hasCopied, setHasCopied] = React.useState(false)
+  const [tailwindVersion, setTailwindVersion] = React.useState("v4-oklch")
+  const activeTheme = React.useMemo(
+    () => baseColors.find((theme) => theme.name === themeName),
+    [themeName]
+  )
+  const activeThemeOKLCH = React.useMemo(
+    () => baseColorsOKLCH[themeName as keyof typeof baseColorsOKLCH],
+    [themeName]
+  )
+
+  React.useEffect(() => {
+    if (hasCopied) {
+      setTimeout(() => {
+        setHasCopied(false)
+      }, 2000)
+    }
+  }, [hasCopied])
 
   return (
-    <ThemeWrapper defaultTheme="zinc" className="relative space-y-4">
-      <div data-rehype-pretty-code-fragment="">
-        <pre className="max-h-[450px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900">
-          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
-            <span className="line text-white">@layer base &#123;</span>
-            <span className="line text-white">&nbsp;&nbsp;:root &#123;</span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-              {activeTheme?.cssVars.light["background"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-              {activeTheme?.cssVars.light["foreground"]};
-            </span>
-            {[
-              "card",
-              "popover",
-              "primary",
-              "secondary",
-              "muted",
-              "accent",
-              "destructive",
-            ].map((prefix) => (
-              <>
-                <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
-                  {
-                    activeTheme?.cssVars.light[
-                      prefix as keyof typeof activeTheme.cssVars.light
-                    ]
-                  }
-                  ;
+    <>
+      <Tabs
+        value={tailwindVersion}
+        onValueChange={setTailwindVersion}
+        className="min-w-0 px-4 pb-4 md:p-0"
+      >
+        <TabsList>
+          <TabsTrigger value="v4-oklch">OKLCH</TabsTrigger>
+          <TabsTrigger value="v4-hsl">HSL</TabsTrigger>
+          <TabsTrigger value="v3">Tailwind v3</TabsTrigger>
+        </TabsList>
+        <TabsContent value="v4-oklch">
+          <figure
+            data-rehype-pretty-code-figure
+            className="!mx-0 mt-0 rounded-lg"
+          >
+            <figcaption
+              className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+              data-rehype-pretty-code-title=""
+              data-language="css"
+              data-theme="github-dark github-light-default"
+            >
+              <Icons.css className="fill-foreground" />
+              app/globals.css
+            </figcaption>
+            <pre className="no-scrollbar max-h-[300px] min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0 md:max-h-[450px]">
+              <Button
+                data-slot="copy-button"
+                size="icon"
+                variant="ghost"
+                className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
+                onClick={() => {
+                  copyToClipboardWithMeta(
+                    getThemeCodeOKLCH(activeThemeOKLCH, 0.65),
+                    {
+                      name: "copy_theme_code",
+                      properties: {
+                        theme: themeName,
+                        radius: 0.65,
+                      },
+                    }
+                  )
+                  setHasCopied(true)
+                }}
+              >
+                <span className="sr-only">Copy</span>
+                {hasCopied ? <IconCheck /> : <IconCopy />}
+              </Button>
+              <code data-line-numbers data-language="css">
+                <span data-line className="line text-code-foreground">
+                  &nbsp;:root &#123;
                 </span>
-                <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
-                  {
-                    activeTheme?.cssVars.light[
-                      `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
-                    ]
-                  }
-                  ;
+                <span data-line className="line text-code-foreground">
+                  &nbsp;&nbsp;&nbsp;--radius: 0.65rem;
                 </span>
-              </>
-            ))}
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
-              {activeTheme?.cssVars.light["border"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
-              {activeTheme?.cssVars.light["input"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
-              {activeTheme?.cssVars.light["ring"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--radius: {config.radius}rem;
-            </span>
-            <span className="line text-white">&nbsp;&nbsp;&#125;</span>
-            <span className="line text-white">&nbsp;</span>
-            <span className="line text-white">&nbsp;&nbsp;.dark &#123;</span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
-              {activeTheme?.cssVars.dark["background"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
-              {activeTheme?.cssVars.dark["foreground"]};
-            </span>
-            {[
-              "card",
-              "popover",
-              "primary",
-              "secondary",
-              "muted",
-              "accent",
-              "destructive",
-            ].map((prefix) => (
-              <>
-                <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
-                  {
-                    activeTheme?.cssVars.dark[
-                      prefix as keyof typeof activeTheme.cssVars.dark
-                    ]
-                  }
-                  ;
+                {Object.entries(activeThemeOKLCH?.light).map(([key, value]) => (
+                  <span
+                    data-line
+                    className="line text-code-foreground"
+                    key={key}
+                  >
+                    &nbsp;&nbsp;&nbsp;--{key}: <ColorIndicator color={value} />{" "}
+                    {value};
+                  </span>
+                ))}
+                <span data-line className="line text-code-foreground">
+                  &nbsp;&#125;
                 </span>
-                <span className="line text-white">
-                  &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
-                  {
-                    activeTheme?.cssVars.dark[
-                      `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
-                    ]
-                  }
-                  ;
+                <span data-line className="line text-code-foreground">
+                  &nbsp;
                 </span>
-              </>
-            ))}
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
-              {activeTheme?.cssVars.dark["border"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
-              {activeTheme?.cssVars.dark["input"]};
-            </span>
-            <span className="line text-white">
-              &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
-              {activeTheme?.cssVars.dark["ring"]};
-            </span>
-            <span className="line text-white">&nbsp;&nbsp;&#125;</span>
-            <span className="line text-white">&#125;</span>
-          </code>
-        </pre>
-      </div>
-    </ThemeWrapper>
+                <span data-line className="line text-code-foreground">
+                  &nbsp;.dark &#123;
+                </span>
+                {Object.entries(activeThemeOKLCH?.dark).map(([key, value]) => (
+                  <span
+                    data-line
+                    className="line text-code-foreground"
+                    key={key}
+                  >
+                    &nbsp;&nbsp;&nbsp;--{key}: <ColorIndicator color={value} />{" "}
+                    {value};
+                  </span>
+                ))}
+                <span data-line className="line text-code-foreground">
+                  &nbsp;&#125;
+                </span>
+              </code>
+            </pre>
+          </figure>
+        </TabsContent>
+        <TabsContent value="v4-hsl">
+          <figure
+            data-rehype-pretty-code-figure
+            className="!mx-0 mt-0 rounded-lg"
+          >
+            <figcaption
+              className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+              data-rehype-pretty-code-title=""
+              data-language="css"
+              data-theme="github-dark github-light-default"
+            >
+              <Icons.css className="fill-foreground" />
+              app/globals.css
+            </figcaption>
+            <pre className="no-scrollbar max-h-[300px] min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0 md:max-h-[450px]">
+              <Button
+                data-slot="copy-button"
+                size="icon"
+                variant="ghost"
+                className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
+                onClick={() => {
+                  copyToClipboardWithMeta(
+                    getThemeCodeHSLV4(activeTheme, 0.65),
+                    {
+                      name: "copy_theme_code",
+                      properties: {
+                        theme: themeName,
+                        radius: 0.65,
+                      },
+                    }
+                  )
+                  setHasCopied(true)
+                }}
+              >
+                <span className="sr-only">Copy</span>
+                {hasCopied ? <IconCheck /> : <IconCopy />}
+              </Button>
+              <code data-line-numbers data-language="css">
+                <span data-line className="line text-code-foreground">
+                  &nbsp;:root &#123;
+                </span>
+                <span data-line className="line text-code-foreground">
+                  &nbsp;&nbsp;&nbsp;--radius: 0.65rem;
+                </span>
+                {Object.entries(activeTheme?.cssVars.light || {}).map(
+                  ([key, value]) => (
+                    <span
+                      data-line
+                      className="line text-code-foreground"
+                      key={key}
+                    >
+                      &nbsp;&nbsp;&nbsp;--{key}:{" "}
+                      <ColorIndicator color={`hsl(${value})`} /> hsl({value});
+                    </span>
+                  )
+                )}
+                <span data-line className="line text-code-foreground">
+                  &nbsp;&#125;
+                </span>
+                <span data-line className="line text-code-foreground">
+                  &nbsp;
+                </span>
+                <span data-line className="line text-code-foreground">
+                  &nbsp;.dark &#123;
+                </span>
+                {Object.entries(activeTheme?.cssVars.dark || {}).map(
+                  ([key, value]) => (
+                    <span
+                      data-line
+                      className="line text-code-foreground"
+                      key={key}
+                    >
+                      &nbsp;&nbsp;&nbsp;--{key}:{" "}
+                      <ColorIndicator color={`hsl(${value})`} /> hsl({value});
+                    </span>
+                  )
+                )}
+                <span data-line className="line text-code-foreground">
+                  &nbsp;&#125;
+                </span>
+              </code>
+            </pre>
+          </figure>
+        </TabsContent>
+        <TabsContent value="v3">
+          <figure
+            data-rehype-pretty-code-figure
+            className="!mx-0 mt-0 rounded-lg"
+          >
+            <figcaption
+              className="text-code-foreground [&_svg]:text-code-foreground flex items-center gap-2 [&_svg]:size-4 [&_svg]:opacity-70"
+              data-rehype-pretty-code-title=""
+              data-language="css"
+              data-theme="github-dark github-light-default"
+            >
+              <Icons.css className="fill-foreground" />
+              app/globals.css
+            </figcaption>
+            <pre className="no-scrollbar max-h-[300px] min-w-0 overflow-x-auto px-4 py-3.5 outline-none has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0 has-[[data-slot=tabs]]:p-0 md:max-h-[450px]">
+              <Button
+                data-slot="copy-button"
+                size="icon"
+                variant="ghost"
+                className="bg-code text-code-foreground absolute top-3 right-2 z-10 size-7 shadow-none hover:opacity-100 focus-visible:opacity-100"
+                onClick={() => {
+                  copyToClipboardWithMeta(getThemeCode(activeTheme, 0.5), {
+                    name: "copy_theme_code",
+                    properties: {
+                      theme: themeName,
+                      radius: 0.5,
+                    },
+                  })
+                  setHasCopied(true)
+                }}
+              >
+                <span className="sr-only">Copy</span>
+                {hasCopied ? <IconCheck /> : <IconCopy />}
+              </Button>
+              <code data-line-numbers data-language="css">
+                <span data-line className="line">
+                  @layer base &#123;
+                </span>
+                <span data-line className="line">
+                  &nbsp;&nbsp;:root &#123;
+                </span>
+                <span data-line className="line">
+                  &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.light["background"]})`}
+                  />{" "}
+                  {activeTheme?.cssVars.light["background"]};
+                </span>
+                <span data-line className="line">
+                  &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.light["foreground"]})`}
+                  />{" "}
+                  {activeTheme?.cssVars.light["foreground"]};
+                </span>
+                {[
+                  "card",
+                  "popover",
+                  "primary",
+                  "secondary",
+                  "muted",
+                  "accent",
+                  "destructive",
+                ].map((prefix) => (
+                  <React.Fragment key={prefix}>
+                    <span data-line className="line">
+                      &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                      <ColorIndicator
+                        color={`hsl(${
+                          activeTheme?.cssVars.light[
+                            prefix as keyof typeof activeTheme.cssVars.light
+                          ]
+                        })`}
+                      />{" "}
+                      {
+                        activeTheme?.cssVars.light[
+                          prefix as keyof typeof activeTheme.cssVars.light
+                        ]
+                      }
+                      ;
+                    </span>
+                    <span data-line className="line">
+                      &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
+                      <ColorIndicator
+                        color={`hsl(${
+                          activeTheme?.cssVars.light[
+                            `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
+                          ]
+                        })`}
+                      />{" "}
+                      {
+                        activeTheme?.cssVars.light[
+                          `${prefix}-foreground` as keyof typeof activeTheme.cssVars.light
+                        ]
+                      }
+                      ;
+                    </span>
+                  </React.Fragment>
+                ))}
+                <span data-line className="line">
+                  &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.light["border"]})`}
+                  />{" "}
+                  {activeTheme?.cssVars.light["border"]};
+                </span>
+                <span data-line className="line">
+                  &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.light["input"]})`}
+                  />{" "}
+                  {activeTheme?.cssVars.light["input"]};
+                </span>
+                <span data-line className="line">
+                  &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.light["ring"]})`}
+                  />{" "}
+                  {activeTheme?.cssVars.light["ring"]};
+                </span>
+                <span data-line className="line">
+                  &nbsp;&nbsp;&nbsp;&nbsp;--radius: 0.5rem;
+                </span>
+                {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+                  (prefix) => (
+                    <React.Fragment key={prefix}>
+                      <span data-line className="line">
+                        &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                        <ColorIndicator
+                          color={`hsl(${
+                            activeTheme?.cssVars.light[
+                              prefix as keyof typeof activeTheme.cssVars.light
+                            ]
+                          })`}
+                        />{" "}
+                        {
+                          activeTheme?.cssVars.light[
+                            prefix as keyof typeof activeTheme.cssVars.light
+                          ]
+                        }
+                        ;
+                      </span>
+                    </React.Fragment>
+                  )
+                )}
+                <span data-line className="line">
+                  &nbsp;&nbsp;&#125;
+                </span>
+                <span data-line className="line">
+                  &nbsp;
+                </span>
+                <span data-line className="line">
+                  &nbsp;&nbsp;.dark &#123;
+                </span>
+                <span data-line className="line">
+                  &nbsp;&nbsp;&nbsp;&nbsp;--background:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.dark["background"]})`}
+                  />{" "}
+                  {activeTheme?.cssVars.dark["background"]};
+                </span>
+                <span data-line className="line">
+                  &nbsp;&nbsp;&nbsp;&nbsp;--foreground:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.dark["foreground"]})`}
+                  />{" "}
+                  {activeTheme?.cssVars.dark["foreground"]};
+                </span>
+                {[
+                  "card",
+                  "popover",
+                  "primary",
+                  "secondary",
+                  "muted",
+                  "accent",
+                  "destructive",
+                ].map((prefix) => (
+                  <React.Fragment key={prefix}>
+                    <span data-line className="line">
+                      &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                      <ColorIndicator
+                        color={`hsl(${
+                          activeTheme?.cssVars.dark[
+                            prefix as keyof typeof activeTheme.cssVars.dark
+                          ]
+                        })`}
+                      />{" "}
+                      {
+                        activeTheme?.cssVars.dark[
+                          prefix as keyof typeof activeTheme.cssVars.dark
+                        ]
+                      }
+                      ;
+                    </span>
+                    <span data-line className="line">
+                      &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}-foreground:{" "}
+                      <ColorIndicator
+                        color={`hsl(${
+                          activeTheme?.cssVars.dark[
+                            `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
+                          ]
+                        })`}
+                      />{" "}
+                      {
+                        activeTheme?.cssVars.dark[
+                          `${prefix}-foreground` as keyof typeof activeTheme.cssVars.dark
+                        ]
+                      }
+                      ;
+                    </span>
+                  </React.Fragment>
+                ))}
+                <span data-line className="line">
+                  &nbsp;&nbsp;&nbsp;&nbsp;--border:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.dark["border"]})`}
+                  />{" "}
+                  {activeTheme?.cssVars.dark["border"]};
+                </span>
+                <span data-line className="line">
+                  &nbsp;&nbsp;&nbsp;&nbsp;--input:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.dark["input"]})`}
+                  />{" "}
+                  {activeTheme?.cssVars.dark["input"]};
+                </span>
+                <span data-line className="line">
+                  &nbsp;&nbsp;&nbsp;&nbsp;--ring:{" "}
+                  <ColorIndicator
+                    color={`hsl(${activeTheme?.cssVars.dark["ring"]})`}
+                  />{" "}
+                  {activeTheme?.cssVars.dark["ring"]};
+                </span>
+                {["chart-1", "chart-2", "chart-3", "chart-4", "chart-5"].map(
+                  (prefix) => (
+                    <React.Fragment key={prefix}>
+                      <span data-line className="line">
+                        &nbsp;&nbsp;&nbsp;&nbsp;--{prefix}:{" "}
+                        <ColorIndicator
+                          color={`hsl(${
+                            activeTheme?.cssVars.dark[
+                              prefix as keyof typeof activeTheme.cssVars.dark
+                            ]
+                          })`}
+                        />{" "}
+                        {
+                          activeTheme?.cssVars.dark[
+                            prefix as keyof typeof activeTheme.cssVars.dark
+                          ]
+                        }
+                        ;
+                      </span>
+                    </React.Fragment>
+                  )
+                )}
+                <span data-line className="line">
+                  &nbsp;&nbsp;&#125;
+                </span>
+                <span data-line className="line">
+                  &#125;
+                </span>
+              </code>
+            </pre>
+          </figure>
+        </TabsContent>
+      </Tabs>
+    </>
   )
 }
 
-function getThemeCode(theme: Theme, radius: number) {
+function ColorIndicator({ color }: { color: string }) {
+  return (
+    <span
+      className="border-border/50 inline-block size-3 border"
+      style={{ backgroundColor: color }}
+    />
+  )
+}
+
+function getThemeCodeOKLCH(theme: BaseColorOKLCH | undefined, radius: number) {
   if (!theme) {
     return ""
   }
 
-  return template(BASE_STYLES_WITH_VARIABLES)({
-    colors: theme.cssVars,
-    radius,
-  })
+  const rootSection =
+    ":root {\n  --radius: " +
+    radius +
+    "rem;\n" +
+    Object.entries(theme.light)
+      .map((entry) => "  --" + entry[0] + ": " + entry[1] + ";")
+      .join("\n") +
+    "\n}\n\n.dark {\n" +
+    Object.entries(theme.dark)
+      .map((entry) => "  --" + entry[0] + ": " + entry[1] + ";")
+      .join("\n") +
+    "\n}\n"
+
+  return rootSection
 }
 
-const BASE_STYLES_WITH_VARIABLES = `
-@layer base {
+function getThemeCode(theme: BaseColor | undefined, radius: number) {
+  if (!theme) {
+    return ""
+  }
+
+  // Generate Tailwind v3 theme code with string templates
+  const light = theme.cssVars.light
+  const dark = theme.cssVars.dark
+
+  return `@layer base {
   :root {
-    --background: <%- colors.light["background"] %>;
-    --foreground: <%- colors.light["foreground"] %>;
-    --card: <%- colors.light["card"] %>;
-    --card-foreground: <%- colors.light["card-foreground"] %>;
-    --popover: <%- colors.light["popover"] %>;
-    --popover-foreground: <%- colors.light["popover-foreground"] %>;
-    --primary: <%- colors.light["primary"] %>;
-    --primary-foreground: <%- colors.light["primary-foreground"] %>;
-    --secondary: <%- colors.light["secondary"] %>;
-    --secondary-foreground: <%- colors.light["secondary-foreground"] %>;
-    --muted: <%- colors.light["muted"] %>;
-    --muted-foreground: <%- colors.light["muted-foreground"] %>;
-    --accent: <%- colors.light["accent"] %>;
-    --accent-foreground: <%- colors.light["accent-foreground"] %>;
-    --destructive: <%- colors.light["destructive"] %>;
-    --destructive-foreground: <%- colors.light["destructive-foreground"] %>;
-    --border: <%- colors.light["border"] %>;
-    --input: <%- colors.light["input"] %>;
-    --ring: <%- colors.light["ring"] %>;
-    --radius: <%- radius %>rem;
+    --background: ${light["background"]};
+    --foreground: ${light["foreground"]};
+    --card: ${light["card"]};
+    --card-foreground: ${light["card-foreground"]};
+    --popover: ${light["popover"]};
+    --popover-foreground: ${light["popover-foreground"]};
+    --primary: ${light["primary"]};
+    --primary-foreground: ${light["primary-foreground"]};
+    --secondary: ${light["secondary"]};
+    --secondary-foreground: ${light["secondary-foreground"]};
+    --muted: ${light["muted"]};
+    --muted-foreground: ${light["muted-foreground"]};
+    --accent: ${light["accent"]};
+    --accent-foreground: ${light["accent-foreground"]};
+    --destructive: ${light["destructive"]};
+    --destructive-foreground: ${light["destructive-foreground"]};
+    --border: ${light["border"]};
+    --input: ${light["input"]};
+    --ring: ${light["ring"]};
+    --radius: ${radius}rem;
+    --chart-1: ${light["chart-1"]};
+    --chart-2: ${light["chart-2"]};
+    --chart-3: ${light["chart-3"]};
+    --chart-4: ${light["chart-4"]};
+    --chart-5: ${light["chart-5"]};
   }
 
   .dark {
-    --background: <%- colors.dark["background"] %>;
-    --foreground: <%- colors.dark["foreground"] %>;
-    --card: <%- colors.dark["card"] %>;
-    --card-foreground: <%- colors.dark["card-foreground"] %>;
-    --popover: <%- colors.dark["popover"] %>;
-    --popover-foreground: <%- colors.dark["popover-foreground"] %>;
-    --primary: <%- colors.dark["primary"] %>;
-    --primary-foreground: <%- colors.dark["primary-foreground"] %>;
-    --secondary: <%- colors.dark["secondary"] %>;
-    --secondary-foreground: <%- colors.dark["secondary-foreground"] %>;
-    --muted: <%- colors.dark["muted"] %>;
-    --muted-foreground: <%- colors.dark["muted-foreground"] %>;
-    --accent: <%- colors.dark["accent"] %>;
-    --accent-foreground: <%- colors.dark["accent-foreground"] %>;
-    --destructive: <%- colors.dark["destructive"] %>;
-    --destructive-foreground: <%- colors.dark["destructive-foreground"] %>;
-    --border: <%- colors.dark["border"] %>;
-    --input: <%- colors.dark["input"] %>;
-    --ring: <%- colors.dark["ring"] %>;
+    --background: ${dark["background"]};
+    --foreground: ${dark["foreground"]};
+    --card: ${dark["card"]};
+    --card-foreground: ${dark["card-foreground"]};
+    --popover: ${dark["popover"]};
+    --popover-foreground: ${dark["popover-foreground"]};
+    --primary: ${dark["primary"]};
+    --primary-foreground: ${dark["primary-foreground"]};
+    --secondary: ${dark["secondary"]};
+    --secondary-foreground: ${dark["secondary-foreground"]};
+    --muted: ${dark["muted"]};
+    --muted-foreground: ${dark["muted-foreground"]};
+    --accent: ${dark["accent"]};
+    --accent-foreground: ${dark["accent-foreground"]};
+    --destructive: ${dark["destructive"]};
+    --destructive-foreground: ${dark["destructive-foreground"]};
+    --border: ${dark["border"]};
+    --input: ${dark["input"]};
+    --ring: ${dark["ring"]};
+    --chart-1: ${dark["chart-1"]};
+    --chart-2: ${dark["chart-2"]};
+    --chart-3: ${dark["chart-3"]};
+    --chart-4: ${dark["chart-4"]};
+    --chart-5: ${dark["chart-5"]};
   }
+}`
 }
-`
+
+function getThemeCodeHSLV4(theme: BaseColor | undefined, radius: number) {
+  if (!theme) {
+    return ""
+  }
+
+  const rootSection =
+    ":root {\n  --radius: " +
+    radius +
+    "rem;\n" +
+    Object.entries(theme.cssVars.light)
+      .map((entry) => "  --" + entry[0] + ": hsl(" + entry[1] + ");")
+      .join("\n") +
+    "\n}\n\n.dark {\n" +
+    Object.entries(theme.cssVars.dark)
+      .map((entry) => "  --" + entry[0] + ": hsl(" + entry[1] + ");")
+      .join("\n") +
+    "\n}\n"
+
+  return rootSection
+}

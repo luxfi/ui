@@ -2,12 +2,24 @@ import {
   defineConfig,
   defineDocs,
   frontmatterSchema,
-} from "fumadocs-mdx/config"
+} from "@hanzo/docs-mdx/config"
+import rehypePrettyCode from "rehype-pretty-code"
 import { z } from "zod"
 
 export default defineConfig({
   mdxOptions: {
-    rehypePlugins: [],
+    rehypePlugins: [
+      [
+        rehypePrettyCode,
+        {
+          theme: {
+            dark: "github-dark",
+            light: "github-light-default",
+          },
+          keepBackground: false,
+        },
+      ],
+    ],
   },
 })
 

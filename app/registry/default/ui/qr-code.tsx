@@ -5,6 +5,15 @@ import { QRCodeSVG } from "qrcode.react"
 
 import { cn } from "@/lib/utils"
 
+interface QRCodeImageSettings {
+  src: string
+  height: number
+  width: number
+  excavate?: boolean
+  x?: number
+  y?: number
+}
+
 interface QRCodeProps extends React.HTMLAttributes<HTMLDivElement> {
   value: string
   size?: number
@@ -12,12 +21,7 @@ interface QRCodeProps extends React.HTMLAttributes<HTMLDivElement> {
   bgColor?: string
   fgColor?: string
   includeMargin?: boolean
-  imageSettings?: {
-    src: string
-    height: number
-    width: number
-    excavate?: boolean
-  }
+  imageSettings?: QRCodeImageSettings
 }
 
 const QRCode = React.forwardRef<HTMLDivElement, QRCodeProps>(
@@ -48,7 +52,7 @@ const QRCode = React.forwardRef<HTMLDivElement, QRCodeProps>(
           bgColor={bgColor}
           fgColor={fgColor}
           includeMargin={includeMargin}
-          imageSettings={imageSettings}
+          imageSettings={imageSettings as any}
         />
       </div>
     )

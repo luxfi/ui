@@ -8,22 +8,22 @@ import { trackEvent } from "@/lib/events"
 import { cn } from "@/lib/utils"
 import { useLiftMode } from "@/hooks/use-lift-mode"
 import { BlockCopyButton } from "@/components/block-copy-button"
+import { HanzoButton } from "@/components/hanzo-button"
 import { StyleSwitcher } from "@/components/style-switcher"
-import { V0Button } from "@/components/v0-button"
-import { Badge } from "@/registry/new-york/ui/badge"
-import { Label } from "@/registry/new-york/ui/label"
+import { Badge } from "@/registry/default/ui/badge"
+import { Label } from "@/registry/default/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/new-york/ui/popover"
-import { Separator } from "@/registry/new-york/ui/separator"
-import { Switch } from "@/registry/new-york/ui/switch"
-import { TabsList, TabsTrigger } from "@/registry/new-york/ui/tabs"
+} from "@/registry/default/ui/popover"
+import { Separator } from "@/registry/default/ui/separator"
+import { Switch } from "@/registry/default/ui/switch"
+import { TabsList, TabsTrigger } from "@/registry/default/ui/tabs"
 import {
   ToggleGroup,
   ToggleGroupItem,
-} from "@/registry/new-york/ui/toggle-group"
+} from "@/registry/default/ui/toggle-group"
 import { Block } from "@/registry/schema"
 
 export function BlockToolbar({
@@ -63,8 +63,9 @@ export function BlockToolbar({
           <PopoverTrigger
             disabled={isLiftMode}
             className="hidden text-muted-foreground hover:text-foreground disabled:opacity-50 sm:flex"
+            title="Style information"
           >
-            <CircleHelp className="h-3.5 w-3.5" />
+            <CircleHelp className="h-4 w-4" />
             <span className="sr-only">Block description</span>
           </PopoverTrigger>
           <PopoverContent
@@ -153,21 +154,24 @@ export function BlockToolbar({
             >
               <ToggleGroupItem
                 value="100"
-                className="h-[22px] w-[22px] rounded-sm p-0"
+                className="h-[22px] w-[22px] rounded-sm p-0 flex items-center justify-center"
+                title="Desktop view"
               >
-                <Monitor className="h-3.5 w-3.5" />
+                <Monitor className="h-4 w-4" />
               </ToggleGroupItem>
               <ToggleGroupItem
                 value="60"
-                className="h-[22px] w-[22px] rounded-sm p-0"
+                className="h-[22px] w-[22px] rounded-sm p-0 flex items-center justify-center"
+                title="Tablet view"
               >
-                <Tablet className="h-3.5 w-3.5" />
+                <Tablet className="h-4 w-4" />
               </ToggleGroupItem>
               <ToggleGroupItem
                 value="30"
-                className="h-[22px] w-[22px] rounded-sm p-0"
+                className="h-[22px] w-[22px] rounded-sm p-0 flex items-center justify-center"
+                title="Mobile view"
               >
-                <Smartphone className="h-3.5 w-3.5" />
+                <Smartphone className="h-4 w-4" />
               </ToggleGroupItem>
             </ToggleGroup>
           </div>
@@ -181,8 +185,8 @@ export function BlockToolbar({
             code={block.code}
             disabled={isLiftMode}
           />
-          <V0Button
-            id={`v0-button-${block.name}`}
+          <HanzoButton
+            id={`hanzo-button-${block.name}`}
             disabled={isLiftMode}
             block={{
               name: block.name,
