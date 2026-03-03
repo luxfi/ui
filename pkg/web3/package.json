@@ -1,0 +1,22 @@
+{
+  "name": "@luxfi/web3",
+  "version": "0.1.0",
+  "description": "Shared Web3 components for Lux ecosystem apps",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "dependencies": {
+    "wagmi": "^2.15.5",
+    "viem": "^2.43.3",
+    "@tanstack/react-query": "^5.77.2",
+    "lucide-react": "^0.511.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next": "^15.0.0"
+  }
+}
