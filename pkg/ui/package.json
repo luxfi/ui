@@ -1,6 +1,6 @@
 {
   "name": "@luxfi/ui",
-  "version": "5.3.34",
+  "version": "5.3.37",
   "description": "Multi-framework UI library with React, Vue, Svelte, and React Native support. Based on shadcn/ui with comprehensive framework coverage.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -54,7 +54,7 @@
     "lat": "npm show @luxfi/ui version",
     "pub": "npm publish",
     "tc": "tsc --project tsconfig.build.json",
-    "build": "npm run clean && npm run build:minimal",
+    "build": "npm run clean && npm run build:minimal && npm run tc",
     "build:minimal": "tsup --config tsup.config.minimal.ts",
     "build:namespaces": "tsup --config tsup.config.namespaces.ts",
     "build:full": "tsup --config tsup.config.production.ts",
@@ -94,9 +94,9 @@
       "require": "./dist/system/*.js"
     },
     "./registry": {
-      "types": "./dist/registry/index.d.ts",
-      "import": "./dist/registry/index.mjs",
-      "require": "./dist/registry/index.js"
+      "types": "./dist/src/registry/index.d.ts",
+      "import": "./dist/src/registry/index.mjs",
+      "require": "./dist/src/registry/index.js"
     },
     "./registry/*": {
       "types": "./dist/registry/*.d.ts",
@@ -354,9 +354,9 @@
       "require": "./dist/components/*.js"
     },
     "./primitives": {
-      "types": "./dist/primitives-export.d.ts",
-      "import": "./dist/primitives-export.mjs",
-      "require": "./dist/primitives-export.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
     "./primitives/*": {
       "types": "./dist/primitives/*.d.ts",
@@ -367,11 +367,6 @@
       "types": "./dist/primitives/index-common.d.ts",
       "import": "./dist/primitives/index-common.mjs",
       "require": "./dist/primitives/index-common.js"
-    },
-    "./registry": {
-      "types": "./dist/src/registry/index.d.ts",
-      "import": "./dist/src/registry/index.mjs",
-      "require": "./dist/src/registry/index.js"
     },
     "./style/*": "./style/*",
     "./tailwind": {
@@ -423,6 +418,11 @@
       "types": "./dist/src/mcp/index.d.ts",
       "import": "./dist/src/mcp/index.mjs",
       "require": "./dist/src/mcp/index.js"
+    },
+    "./models": {
+      "types": "./dist/src/models/index.d.ts",
+      "import": "./dist/models/index.mjs",
+      "require": "./dist/models/index.js"
     },
     "./react": {
       "types": "./dist/frameworks/react/index.d.ts",
