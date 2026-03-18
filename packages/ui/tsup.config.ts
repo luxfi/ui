@@ -49,7 +49,6 @@ export default defineConfig({
   external: [
     /^react/,
     /^@radix-ui/,
-    /^next/,
     '@uidotdev/usehooks',
     'class-variance-authority',
     'clsx',
@@ -57,7 +56,6 @@ export default defineConfig({
     'react-icons/lu',
     'tailwind-merge',
     'sonner',
-    'next-themes',
   ],
   splitting: false,
   clean: true,

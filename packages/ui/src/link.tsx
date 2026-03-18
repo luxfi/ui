@@ -1,5 +1,3 @@
-import NextLink from 'next/link';
-import type { LinkProps as NextLinkProps } from 'next/link';
 import React from 'react';
 
 import { cn } from './utils';
@@ -29,8 +27,7 @@ import { Skeleton } from './skeleton';
 type LinkVariant = 'primary' | 'secondary' | 'subtle' | 'underlaid' | 'menu' | 'navigation' | 'plain';
 
 export interface LinkProps
-  extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>,
-  Partial<Pick<NextLinkProps, 'shallow' | 'prefetch' | 'scroll'>> {
+  extends Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
   readonly href?: string;
   readonly loading?: boolean;
   readonly external?: boolean;
@@ -39,6 +36,10 @@ export interface LinkProps
   readonly disabled?: boolean;
   readonly variant?: LinkVariant;
   readonly asChild?: boolean;
+  // Next.js-specific props accepted for compatibility (ignored by base <a>)
+  readonly shallow?: boolean;
+  readonly prefetch?: boolean;
+  readonly scroll?: boolean;
   // Legacy Chakra style-prop shims
   readonly fontWeight?: string | number;
   readonly whiteSpace?: string;
@@ -108,23 +109,6 @@ export const LinkExternalIcon = ({ color }: { color?: string }) => (
   />
 );
 
-const splitProps = (props: LinkProps): {
-  own: Omit<LinkProps, 'scroll' | 'shallow' | 'prefetch'>;
-  next: Pick<NextLinkProps, 'href' | 'scroll' | 'shallow' | 'prefetch'>;
-} => {
-  const { scroll = true, shallow = false, prefetch = false, ...rest } = props;
-
-  return {
-    own: rest,
-    next: {
-      href: (rest.href ?? '') as NextLinkProps['href'],
-      scroll,
-      shallow,
-      prefetch,
-    },
-  };
-};
-
 const SPACING = 4;
 
 function resolveSpacing(v: number | string | Record<string, string | number> | undefined): string | undefined {
@@ -143,7 +127,6 @@ function resolveSpacing(v: number | string | Record<string, string | number> | u
 
 export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
   function Link(props, ref) {
-    const { own, next } = splitProps(props);
     const {
       external,
       loading,
@@ -155,6 +138,10 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
       variant = 'primary',
       className,
       asChild: _asChild,
+      // Strip Next.js-specific props (accepted for compat, not used)
+      shallow: _shallow,
+      prefetch: _prefetch,
+      scroll: _scroll,
       // Strip Chakra style props
       fontWeight: _fontWeight,
       whiteSpace: _whiteSpace,
@@ -169,7 +156,7 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
       justifyContent: _justifyContent,
       position: _position,
       ...rest
-    } = own;
+    } = props;
 
     // Build inline style from Chakra style props
     const shimStyle: React.CSSProperties = {};
@@ -209,27 +196,33 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
       );
     }
 
-    return (
-      <Skeleton loading={ loading } ref={ ref as React.ForwardedRef<HTMLDivElement> } asChild>
-        { next.href ? (
-          <NextLink
-            { ...next }
+    // Internal link: render a plain <a> tag. Framework-specific routing
+    // (e.g. Next.js Link) should be provided by the consuming app's wrapper.
+    if (href) {
+      return (
+        <Skeleton loading={ loading } ref={ ref as React.ForwardedRef<HTMLDivElement> } asChild>
+          <a
+            href={ href }
             className={ linkClasses }
             style={ linkStyle }
             { ...(disabled ? { 'data-disabled': true } : {}) }
             { ...rest }
           >
             { children }
-          </NextLink>
-        ) : (
-          <span
-            className={ linkClasses }
-            { ...(disabled ? { 'data-disabled': true } : {}) }
-            { ...rest as React.HTMLAttributes<HTMLSpanElement> }
-          >
-            { children }
-          </span>
-        ) }
+          </a>
+        </Skeleton>
+      );
+    }
+
+    return (
+      <Skeleton loading={ loading } ref={ ref as React.ForwardedRef<HTMLDivElement> } asChild>
+        <span
+          className={ linkClasses }
+          { ...(disabled ? { 'data-disabled': true } : {}) }
+          { ...rest as React.HTMLAttributes<HTMLSpanElement> }
+        >
+          { children }
+        </span>
       </Skeleton>
     );
   },
@@ -250,7 +243,6 @@ export const LinkBox = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTM
 
 export const LinkOverlay = React.forwardRef<HTMLAnchorElement, LinkProps>(
   function LinkOverlay(props, ref) {
-    const { own, next } = splitProps(props);
     const {
       children,
       external,
@@ -262,11 +254,14 @@ export const LinkOverlay = React.forwardRef<HTMLAnchorElement, LinkProps>(
       className,
       disabled,
       asChild: _asChild2,
+      shallow: _shallow2,
+      prefetch: _prefetch2,
+      scroll: _scroll2,
       fontWeight: _fw2, whiteSpace: _ws2, wordBreak: _wb2, textStyle: _ts2,
       ml: _ml2, mr: _mr2, display: _d2, alignItems: _ai2, flexShrink: _fs2,
       minW: _mw2, justifyContent: _jc2, position: _p2,
       ...rest
-    } = own;
+    } = props;
 
     const overlayClasses = cn(
       BASE_CLASSES,
@@ -305,18 +300,16 @@ export const LinkOverlay = React.forwardRef<HTMLAnchorElement, LinkProps>(
       </Skeleton>
     ) : null;
 
-    if (next.href) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const anchorRest = rest as any;
+    if (href) {
       return (
-        <NextLink
+        <a
           ref={ ref }
-          { ...next }
+          href={ href }
           className={ overlayClasses }
-          { ...anchorRest }
+          { ...rest }
         >
           { content }
-        </NextLink>
+        </a>
       );
     }
 
