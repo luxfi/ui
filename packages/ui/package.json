@@ -1,6 +1,6 @@
 {
-  "name": "@luxfi/ui-primitives",
-  "version": "0.1.0",
+  "name": "@luxfi/ui",
+  "version": "5.6.0",
   "description": "Radix + Tailwind UI primitives for Lux apps. Drop-in replacements for Chakra compound components.",
   "type": "module",
   "license": "MIT",
@@ -230,6 +230,16 @@
       "types": "./dist/utils.d.ts",
       "import": "./dist/utils.js",
       "require": "./dist/utils.cjs"
+    },
+    "./explore": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./explore/*": {
+      "import": "./dist/*.js",
+      "require": "./dist/*.cjs",
+      "types": "./dist/*.d.ts"
     }
   },
   "scripts": {
@@ -264,18 +274,8 @@
     "tailwind-merge": "^3.0.0"
   },
   "peerDependencies": {
-    "next": "^14.0.0 || ^15.0.0",
-    "next-themes": "^0.2.1 || ^0.3.0 || ^0.4.0",
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"
-  },
-  "peerDependenciesMeta": {
-    "next": {
-      "optional": true
-    },
-    "next-themes": {
-      "optional": true
-    }
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
