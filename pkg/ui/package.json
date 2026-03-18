@@ -1,14 +1,14 @@
 {
-  "name": "@luxfi/ui",
-  "version": "5.3.37",
+  "name": "@hanzo/ui",
+  "version": "5.3.42",
   "description": "Multi-framework UI library with React, Vue, Svelte, and React Native support. Based on shadcn/ui with comprehensive framework coverage.",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public",
-    "scope": "@luxfi"
+    "scope": "@hanzo"
   },
-  "author": "Lux Partners",
-  "license": "MIT",
+  "author": "Hanzo AI, Inc.",
+  "license": "BSD-3-Clause",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -25,13 +25,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/luxfi/ui.git",
+    "url": "git+https://github.com/hanzoai/ui.git",
     "directory": "pkg/ui"
   },
-  "homepage": "https://ui.lux.finance",
   "keywords": [
-    "lux",
-    "tamagui",
     "components",
     "ecommerce",
     "analytics",
@@ -45,13 +42,11 @@
     "hanzoai",
     "radix-ui",
     "react",
-    "react-native",
-    "mobile",
-    "web",
+    "sdk",
     "ui"
   ],
   "scripts": {
-    "lat": "npm show @luxfi/ui version",
+    "lat": "npm show @hanzo/ui version",
     "pub": "npm publish",
     "tc": "tsc --project tsconfig.build.json",
     "build": "npm run clean && npm run build:minimal && npm run tc",
@@ -284,8 +279,9 @@
       "require": "./dist/drawer.js"
     },
     "./billing": {
-      "types": "./src/billing/index.ts",
-      "import": "./src/billing/index.ts"
+      "types": "./dist/billing/index.d.ts",
+      "import": "./dist/billing/index.mjs",
+      "require": "./dist/billing/index.js"
     },
     "./finance": {
       "types": "./dist/finance/index.d.ts",
@@ -518,6 +514,16 @@
       "types": "./dist/pattern/*.d.ts",
       "import": "./dist/pattern/*.mjs",
       "require": "./dist/pattern/*.js"
+    },
+    "./auth": {
+      "types": "./dist/auth/index.d.ts",
+      "import": "./dist/auth/index.mjs",
+      "require": "./dist/auth/index.js"
+    },
+    "./auth/*": {
+      "types": "./dist/auth/*.d.ts",
+      "import": "./dist/auth/*.mjs",
+      "require": "./dist/auth/*.js"
     },
     "./navigation": {
       "types": "./dist/navigation/index.d.ts",
