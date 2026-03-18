@@ -2,6 +2,8 @@
 
 import React, { useState, useRef, useEffect } from 'react'
 import type { HanzoUser, HanzoOrg } from './types'
+import { ORG_DOMAINS } from './types'
+import { UserAvatar } from './UserAvatar'
 
 interface UserOrgDropdownProps {
   user?: HanzoUser
@@ -9,22 +11,6 @@ interface UserOrgDropdownProps {
   currentOrgId?: string
   onOrgSwitch?: (orgId: string) => void
   onSignOut?: () => void
-}
-
-function Initials({ name, email }: { name?: string; email?: string }) {
-  const seed = name || email || 'U'
-  const initials = seed
-    .split(/[\s@._-]/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((w) => w[0].toUpperCase())
-    .join('')
-
-  return (
-    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-neutral-800 text-[11px] font-semibold text-white/70">
-      {initials}
-    </span>
-  )
 }
 
 export function UserOrgDropdown({
@@ -48,6 +34,8 @@ export function UserOrgDropdown({
   if (!user) return null
 
   const currentOrg = organizations.find((o) => o.id === currentOrgId)
+  const orgSlug = currentOrg?.slug || 'hanzo'
+  const domains = ORG_DOMAINS[orgSlug] || ORG_DOMAINS.hanzo
 
   return (
     <div ref={ref} className="relative">
@@ -56,15 +44,12 @@ export function UserOrgDropdown({
         onClick={() => setOpen((v) => !v)}
         className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-white/[0.06] transition-colors"
       >
-        {user.avatar ? (
-          <img
-            src={user.avatar}
-            alt={user.name || user.email}
-            className="h-7 w-7 rounded-full object-cover"
-          />
-        ) : (
-          <Initials name={user.name} email={user.email} />
-        )}
+        <UserAvatar
+          src={user.avatar}
+          email={user.email}
+          name={user.name}
+          size={28}
+        />
         <div className="hidden flex-col items-start sm:flex">
           {user.name && (
             <span className="text-[12px] font-medium text-white/70 leading-none">{user.name}</span>
@@ -92,6 +77,9 @@ export function UserOrgDropdown({
           <div className="border-b border-white/[0.06] px-4 py-3">
             <p className="text-[13px] font-medium text-white/80">{user.name || 'User'}</p>
             <p className="text-[11px] text-white/40">{user.email}</p>
+            {currentOrg && (
+              <p className="mt-0.5 text-[10px] font-medium text-white/25 uppercase tracking-wider">{currentOrg.name}</p>
+            )}
           </div>
 
           {/* Org switcher */}
@@ -110,7 +98,12 @@ export function UserOrgDropdown({
                   }}
                   className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left hover:bg-white/[0.06] transition-colors"
                 >
-                  <span className="text-[13px] text-white/70">{org.name}</span>
+                  <div className="flex flex-col">
+                    <span className="text-[13px] text-white/70">{org.name}</span>
+                    {org.role && (
+                      <span className="text-[10px] text-white/25 capitalize">{org.role}</span>
+                    )}
+                  </div>
                   {org.id === currentOrgId && (
                     <svg
                       width="14"
@@ -131,17 +124,17 @@ export function UserOrgDropdown({
             </div>
           )}
 
-          {/* Links */}
+          {/* Links — org-aware */}
           <div className="p-2">
             <a
-              href="https://hanzo.id/account"
+              href={`${domains.iam}/account`}
               className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-[13px] text-white/60 hover:bg-white/[0.06] hover:text-white/80 transition-colors"
               onClick={() => setOpen(false)}
             >
               Account settings
             </a>
             <a
-              href="https://billing.hanzo.ai"
+              href={domains.billing}
               className="flex items-center gap-2.5 rounded-lg px-3 py-2 text-[13px] text-white/60 hover:bg-white/[0.06] hover:text-white/80 transition-colors"
               onClick={() => setOpen(false)}
             >
