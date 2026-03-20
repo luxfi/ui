@@ -42,13 +42,15 @@ export default defineConfig({
     'toaster': 'src/toaster.tsx',
     'tooltip': 'src/tooltip.tsx',
     'provider': 'src/provider.tsx',
+    'bank': 'src/bank.tsx',
   },
   format: ['cjs', 'esm'],
-  dts: false, // Requires pnpm install to complete; generate with tsc separately
+  dts: true, // Requires pnpm install to complete; generate with tsc separately
   sourcemap: false,
   external: [
     /^react/,
     /^@radix-ui/,
+    /^@tamagui/,
     '@uidotdev/usehooks',
     'class-variance-authority',
     'clsx',

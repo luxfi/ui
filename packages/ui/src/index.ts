@@ -190,3 +190,29 @@ export { Tooltip } from './tooltip';
 export type { TooltipProps } from './tooltip';
 
 export { Provider } from './provider';
+
+export {
+  bankColors,
+  BankCard,
+  BankInput,
+  BankButton,
+  BankButtonText,
+  BankHeading,
+  BankText,
+  BankField,
+  BankAlert,
+  BankAlertText,
+  BankPinBox,
+  BankDivider,
+  BankPage,
+} from './bank';
+export type {
+  BankCardProps,
+  BankInputProps,
+  BankButtonProps,
+  BankHeadingProps,
+  BankTextProps,
+  BankAlertProps,
+  BankPinBoxProps,
+  BankPageProps,
+} from './bank';
