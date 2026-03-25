@@ -16,7 +16,7 @@
   "keywords": [
     "lux",
     "ui",
-    "tamagui",
+    "@hanzo/gui",
     "react",
     "react-native",
     "design-system",

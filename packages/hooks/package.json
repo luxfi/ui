@@ -1,0 +1,65 @@
+{
+  "name": "@luxfi/hooks",
+  "version": "0.1.0",
+  "description": "React hooks for Lux blockchain data (chain context, NFT queries)",
+  "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "Lux Partners",
+    "url": "https://lux.network"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luxfi/ui.git",
+    "directory": "packages/hooks"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./use-chain": {
+      "types": "./dist/use-chain.d.ts",
+      "import": "./dist/use-chain.js",
+      "require": "./dist/use-chain.cjs"
+    },
+    "./use-nft-data": {
+      "types": "./dist/use-nft-data.d.ts",
+      "import": "./dist/use-nft-data.js",
+      "require": "./dist/use-nft-data.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "build:check": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "dev": "tsup --watch"
+  },
+  "dependencies": {
+    "@luxfi/chains": "workspace:*"
+  },
+  "peerDependencies": {
+    "@tanstack/react-query": "^5.0.0",
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@tanstack/react-query": "^5.0.0",
+    "@types/react": "^19.0.0",
+    "react": "^19.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}
