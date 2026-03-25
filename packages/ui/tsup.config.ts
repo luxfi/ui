@@ -50,7 +50,7 @@ export default defineConfig({
   external: [
     /^react/,
     /^@radix-ui/,
-    /^@tamagui/,
+    /^@hanzogui/,
     '@uidotdev/usehooks',
     'class-variance-authority',
     'clsx',

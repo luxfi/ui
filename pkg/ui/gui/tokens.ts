@@ -3,7 +3,7 @@
  *
  * Monochrome design system inspired by shadcn/ui and Vercel
  */
-import { createTokens } from '@tamagui/core'
+import { createTokens } from '@hanzogui/core'
 import { colors } from './colors'
 
 // Spacing scale

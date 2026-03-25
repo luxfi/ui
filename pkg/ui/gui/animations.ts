@@ -3,7 +3,7 @@
  *
  * Smooth, subtle animations for professional feel
  */
-import { createAnimations } from '@tamagui/animations-css'
+import { createAnimations } from '@hanzogui/animations-css'
 
 // CSS-based animations for web
 export const animations = createAnimations({

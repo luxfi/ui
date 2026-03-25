@@ -19,7 +19,18 @@ export default defineConfig({
     options.jsx = 'automatic'
     options.platform = 'neutral'
   },
-  banner: {
-    js: '"use client";',
+  async onSuccess() {
+    const { readdirSync, readFileSync, writeFileSync } = await import('fs')
+    const { join } = await import('path')
+    const dir = './dist'
+    for (const file of readdirSync(dir)) {
+      if (file.endsWith('.js') || file.endsWith('.cjs')) {
+        const filePath = join(dir, file)
+        const content = readFileSync(filePath, 'utf-8')
+        if (!content.startsWith('"use client"')) {
+          writeFileSync(filePath, `"use client";\n${content}`)
+        }
+      }
+    }
   },
 })

@@ -32,7 +32,7 @@ export * from '@hanzo/ui/types'
 export {
   luxTokens,
   luxTailwindTheme,
-  luxTamaguiConfig,
+  luxGuiConfig,
   luxCSSVars,
   createLuxDesignSystem,
 } from './system'

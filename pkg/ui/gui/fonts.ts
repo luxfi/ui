@@ -3,7 +3,7 @@
  *
  * Uses Inter as the primary font family
  */
-import { createFont } from '@tamagui/core'
+import { createFont } from '@hanzogui/core'
 
 const interFace = {
   normal: { normal: 'Inter' },
@@ -118,7 +118,7 @@ export const fontSizes = {
   monospace,
 }
 
-// Create Tamagui fonts
+// Create Gui fonts
 const interFont = createFont({
   family: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
   size: {
