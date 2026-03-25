@@ -56,9 +56,9 @@ export const luxConfig: DesignSystemConfig = {
  * import { luxTokens } from '@luxfi/ui/system'
  * export default { theme: luxTokens.tailwind }
  *
- * // tamagui.config.ts
+ * // gui.config.ts
  * import { luxTokens } from '@luxfi/ui/system'
- * export default createTamagui(luxTokens.tamagui)
+ * export default createGui(luxTokens.gui)
  *
  * // globals.css
  * import { luxTokens } from '@luxfi/ui/system'
@@ -68,7 +68,7 @@ export const luxTokens = createDesignSystem(luxConfig)
 
 // Convenience exports
 export const luxTailwindTheme = luxTokens.tailwind
-export const luxTamaguiConfig = luxTokens.tamagui
+export const luxGuiConfig = luxTokens.gui
 export const luxCSSVars = luxTokens.cssVars
 
 /**

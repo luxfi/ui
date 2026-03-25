@@ -84,8 +84,9 @@ async function fetchApi<T>(chainId: number, path: string, params?: Record<string
   }
   const res = await fetch(url.toString(), {
     headers: { Accept: 'application/json' },
-    next: { revalidate: 30 },
-  })
+    // Next.js extends RequestInit with `next` — cast to avoid type errors in non-Next consumers
+    ...({ next: { revalidate: 30 } } as Record<string, unknown>),
+  } as RequestInit)
   if (!res.ok) throw new Error(`Explorer API error: ${res.status} ${res.statusText}`)
   return res.json()
 }
