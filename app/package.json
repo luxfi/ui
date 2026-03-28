@@ -23,6 +23,7 @@
     "postinstall": "docs-mdx source.config.ts .source"
   },
   "dependencies": {
+    "@ai-sdk/openai-compatible": "^2.0.37",
     "@ctrl/tinycolor": "^4.2.0",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/modifiers": "^9.0.0",
@@ -80,6 +81,7 @@
     "@vercel/analytics": "^1.5.0",
     "@vercel/og": "^0.8.5",
     "@xyflow/react": "^12.8.6",
+    "ai": "^6.0.141",
     "chrono-node": "^2.9.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
