@@ -180,6 +180,18 @@ export default defineConfig({
     'project/kanban': 'src/project/kanban.tsx',
     'project/list': 'src/project/list.tsx',
 
+    // Dash components (shared dashboard UI)
+    'dash/index': 'src/dash/index.ts',
+    'dash/layout': 'src/dash/layout.tsx',
+    'dash/sidebar': 'src/dash/sidebar.tsx',
+    'dash/header': 'src/dash/header.tsx',
+    'dash/table': 'src/dash/table.tsx',
+    'dash/form': 'src/dash/form.tsx',
+    'dash/crud': 'src/dash/crud.tsx',
+
+    // Auth components (IAMLoginButton, AuthGuard)
+    'auth/index': 'src/auth/index.ts',
+
     // Billing components
     'billing/index': 'src/billing/index.ts',
 
