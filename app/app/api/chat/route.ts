@@ -6,6 +6,8 @@
  * Compatible with Vercel AI SDK useChat hook.
  */
 
+export const dynamic = "force-static"
+
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible'
 import { streamText } from 'ai'
 

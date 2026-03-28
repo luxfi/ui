@@ -5,8 +5,10 @@ const nextConfig = {
   // Transpile packages that might have issues with pnpm symlinks
   transpilePackages: ["chrono-node", "@hanzo/ui"],
 
-  // Enable static export for GitHub Pages deployment (but not for E2E tests)
-  output: process.env.GITHUB_ACTIONS && !process.env.E2E_TEST ? "export" : undefined,
+  // Enable static export for CF Pages / GitHub Pages (skip for local dev and E2E tests)
+  output: process.env.NEXT_PUBLIC_EXPORT || process.env.GITHUB_ACTIONS
+    ? (process.env.E2E_TEST ? undefined : "export")
+    : undefined,
 
   // Use trailing slashes for GitHub Pages compatibility
   trailingSlash: true,

@@ -5,6 +5,8 @@
  * Client-side code hits this route instead of Cloud directly.
  */
 
+export const dynamic = "force-static"
+
 import { NextRequest, NextResponse } from 'next/server'
 import { searchEndpoint, searchIndex, publishableKey } from '@/lib/search'
 
