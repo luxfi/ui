@@ -1,0 +1,11 @@
+# Cloudflare Pages redirects (replaces next.config.mjs redirects for static export)
+/components /docs/components/accordion/ 301
+/docs/components /docs/components/accordion/ 301
+/docs/primitives/* /docs/components/:splat 301
+/figma /docs/figma/ 301
+/docs/forms /docs/components/form/ 302
+/docs/forms/react-hook-form /docs/components/form/ 302
+/sidebar /docs/components/sidebar/ 301
+/react-19 /docs/react-19/ 301
+/view/styles/:style/:name /view/:name 301
+/mcp /docs/mcp/ 302
