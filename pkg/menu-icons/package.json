@@ -26,12 +26,12 @@
     "react-social-icons": "^6.4.0"
   },
   "peerDependencies": {
-    "@hanzo/ui": "catalog:",
-    "lucide-react": "catalog:",
-    "react": "catalog:"
+    "@hanzo/ui": ">=5.0.0",
+    "lucide-react": ">=0.400.0",
+    "react": "^19.2.0"
   },
   "devDependencies": {
-    "@types/react": "catalog:",
-    "typescript": "catalog:"
+    "@types/react": "^19.2.2",
+    "typescript": "^5.9.3"
   }
 }
