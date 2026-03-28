@@ -8,6 +8,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { getComponent, getComponentMap } from "../../lib"
 
 export const dynamic = "force-static"
+export const dynamicParams = false
 
 export function generateStaticParams() {
   const map = getComponentMap()

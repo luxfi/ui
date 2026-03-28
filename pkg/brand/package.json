@@ -1,6 +1,6 @@
 {
   "name": "@luxfi/brand",
-  "version": "0.1.0",
+  "version": "1.2.0",
   "description": "Brand assets and configuration for Lux UI",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -23,8 +23,8 @@
   "author": "Lux Partners",
   "license": "MIT",
   "devDependencies": {
-    "tsup": "^8.0.0",
-    "typescript": "^5.0.0"
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
   },
   "publishConfig": {
     "access": "public"

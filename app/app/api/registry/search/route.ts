@@ -8,7 +8,7 @@ import { getIndex } from "../lib"
 export const dynamic = "force-static"
 
 export async function GET() {
-  // Static export: return full index for client-side filtering
+  // Static export: return full index (client-side filtering)
   const items = getIndex()
 
   return NextResponse.json(
