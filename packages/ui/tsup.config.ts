@@ -43,6 +43,12 @@ export default defineConfig({
     'tooltip': 'src/tooltip.tsx',
     'provider': 'src/provider.tsx',
     'bank': 'src/bank.tsx',
+    'option-chain': 'src/option-chain.tsx',
+    'greeks-display': 'src/greeks-display.tsx',
+    'strategy-builder': 'src/strategy-builder.tsx',
+    'pnl-diagram': 'src/pnl-diagram.tsx',
+    'option-position': 'src/option-position.tsx',
+    'expiration-selector': 'src/expiration-selector.tsx',
   },
   format: ['cjs', 'esm'],
   dts: true, // Requires pnpm install to complete; generate with tsc separately
