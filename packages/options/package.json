@@ -1,0 +1,90 @@
+{
+  "name": "@luxfi/options",
+  "version": "0.1.0",
+  "description": "Options trading UI components for Lux apps",
+  "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "Lux Partners",
+    "url": "https://lux.network"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luxfi/ui.git",
+    "directory": "packages/options"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/types.js",
+      "require": "./dist/types.cjs"
+    },
+    "./symbol-search": {
+      "types": "./dist/symbol-search.d.ts",
+      "import": "./dist/symbol-search.js",
+      "require": "./dist/symbol-search.cjs"
+    },
+    "./expiration-bar": {
+      "types": "./dist/expiration-bar.d.ts",
+      "import": "./dist/expiration-bar.js",
+      "require": "./dist/expiration-bar.cjs"
+    },
+    "./options-chain": {
+      "types": "./dist/options-chain.d.ts",
+      "import": "./dist/options-chain.js",
+      "require": "./dist/options-chain.cjs"
+    },
+    "./options-order-form": {
+      "types": "./dist/options-order-form.d.ts",
+      "import": "./dist/options-order-form.js",
+      "require": "./dist/options-order-form.cjs"
+    },
+    "./positions-table": {
+      "types": "./dist/positions-table.d.ts",
+      "import": "./dist/positions-table.js",
+      "require": "./dist/positions-table.cjs"
+    },
+    "./strategy-panel": {
+      "types": "./dist/strategy-panel.d.ts",
+      "import": "./dist/strategy-panel.js",
+      "require": "./dist/strategy-panel.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "build:check": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "dev": "tsup --watch"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}
