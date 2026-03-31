@@ -37,6 +37,12 @@ const examples = [
     code: "https://github.com/shadcn/ui/tree/main/apps/v4/app/(app)/examples/rtl",
     hidden: false,
   },
+  {
+    name: "Options",
+    href: "/examples/options",
+    code: "https://github.com/luxfi/ui/tree/main/apps/v4/app/(app)/examples/options",
+    hidden: false,
+  },
 ]
 
 export function ExamplesNav({
