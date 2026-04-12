@@ -1,11 +1,11 @@
-import * as RadixPopover from '@radix-ui/react-popover';
+import { Popover as GuiPopover } from '@hanzogui/popover';
 import * as React from 'react';
 
 import { cn } from './utils';
 
 import { CloseButton } from './close-button';
 
-// --- Utility: map Chakra-style placement string to Radix side + align ---
+// --- Utility: map Chakra-style placement string to @hanzogui placement ---
 
 type Side = 'top' | 'right' | 'bottom' | 'left';
 type Align = 'start' | 'center' | 'end';
@@ -61,7 +61,7 @@ export interface PopoverRootProps {
 }
 
 // Stash positioning info in context so PopoverContent can read it.
-interface PopoverPositioning {
+interface PopoverPositioningCtx {
   readonly side: Side;
   readonly align: Align;
   readonly sideOffset: number;
@@ -71,7 +71,7 @@ interface PopoverPositioning {
   readonly closeOnInteractOutside: boolean;
 }
 
-const PositioningContext = React.createContext<PopoverPositioning>({
+const PositioningContext = React.createContext<PopoverPositioningCtx>({
   side: 'bottom',
   align: 'start',
   sideOffset: 4,
@@ -90,8 +90,7 @@ export const PopoverRoot = (props: PopoverRootProps): React.ReactElement => {
     positioning,
     autoFocus = false,
     closeOnInteractOutside = true,
-    modal = false,
-    // lazyMount and unmountOnExit are handled via forceMount on Portal/Content
+    // lazyMount and unmountOnExit are handled via keepChildrenMounted
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     lazyMount: _lazyMount,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -111,7 +110,7 @@ export const PopoverRoot = (props: PopoverRootProps): React.ReactElement => {
 
   const { side, align } = parsePlacement(mergedPositioning.placement);
 
-  const positioningValue = React.useMemo<PopoverPositioning>(() => ({
+  const positioningValue = React.useMemo<PopoverPositioningCtx>(() => ({
     side,
     align,
     sideOffset: mergedPositioning.offset?.mainAxis ?? 4,
@@ -125,21 +124,26 @@ export const PopoverRoot = (props: PopoverRootProps): React.ReactElement => {
     mergedPositioning.overflowPadding, autoFocus, closeOnInteractOutside,
   ]);
 
-  // Bridge Chakra-style onOpenChange ({ open }) to Radix (open)
+  // Bridge Chakra-style onOpenChange ({ open }) to @hanzogui (open)
   const handleOpenChange = React.useCallback((isOpen: boolean) => {
     onOpenChange?.({ open: isOpen });
   }, [ onOpenChange ]);
 
+  const placement = mergedPositioning.placement ?? 'bottom-start';
+  const offset = mergedPositioning.offset?.mainAxis ?? 4;
+
   return (
     <PositioningContext.Provider value={ positioningValue }>
-      <RadixPopover.Root
+      <GuiPopover
         open={ open }
         defaultOpen={ defaultOpen }
         onOpenChange={ handleOpenChange }
-        modal={ modal }
+        placement={ placement as any }
+        offset={ offset }
+        disableFocus={ !autoFocus }
       >
         { children }
-      </RadixPopover.Root>
+      </GuiPopover>
     </PositioningContext.Provider>
   );
 };
@@ -155,7 +159,7 @@ export const PopoverTrigger = React.forwardRef<
   PopoverTriggerProps
 >(function PopoverTrigger(props, ref) {
   const { asChild = true, ...rest } = props;
-  return <RadixPopover.Trigger asChild={ asChild } ref={ ref } { ...rest }/>;
+  return <GuiPopover.Trigger asChild={ asChild ? 'except-style' : undefined } ref={ ref } { ...rest as any }/>;
 });
 
 // --- PopoverContent ---
@@ -174,7 +178,7 @@ export const PopoverContent = React.forwardRef<
   HTMLDivElement,
   PopoverContentProps
 >(function PopoverContent(props, ref) {
-  const { portalled = true, portalRef, className, w, minW, maxW, paddingTop, style: styleProp, ...rest } = props;
+  const { portalled = true, portalRef: _portalRef, className, w, minW, maxW, paddingTop, style: styleProp, ...rest } = props;
   const resolvedW = typeof w === 'object' ? (w as Record<string, string>).base ?? (w as Record<string, string>).lg : w;
   const contentStyle: React.CSSProperties = {
     ...styleProp,
@@ -183,21 +187,11 @@ export const PopoverContent = React.forwardRef<
     ...(maxW ? { maxWidth: maxW } : {}),
     ...(paddingTop !== undefined ? { paddingTop: typeof paddingTop === 'number' ? `${ paddingTop * 4 }px` : paddingTop } : {}),
   };
-  const positioning = React.useContext(PositioningContext);
 
-  const preventFocus = React.useCallback((e: Event) => e.preventDefault(), []);
-  const preventInteract = React.useCallback((e: Event) => e.preventDefault(), []);
-
-  const content = (
-    <RadixPopover.Content
+  return (
+    <GuiPopover.Content
       ref={ ref }
-      side={ positioning.side }
-      align={ positioning.align }
-      sideOffset={ positioning.sideOffset }
-      alignOffset={ positioning.alignOffset }
-      collisionPadding={ positioning.collisionPadding }
-      onOpenAutoFocus={ positioning.autoFocus ? undefined : preventFocus }
-      onInteractOutside={ positioning.closeOnInteractOutside ? undefined : preventInteract }
+      unstyled
       className={ cn(
         'z-50 rounded-lg border border-[var(--color-popover-border,var(--color-border-divider))]',
         'bg-[var(--color-popover-bg,var(--color-dialog-bg))]',
@@ -210,18 +204,8 @@ export const PopoverContent = React.forwardRef<
         className,
       ) }
       style={ Object.keys(contentStyle).length > 0 ? contentStyle : undefined }
-      { ...rest }
+      { ...rest as any }
     />
-  );
-
-  if (!portalled) {
-    return content;
-  }
-
-  return (
-    <RadixPopover.Portal container={ portalRef?.current ?? undefined }>
-      { content }
-    </RadixPopover.Portal>
   );
 });
 
@@ -235,10 +219,11 @@ export const PopoverArrow = React.forwardRef<
 >(function PopoverArrow(props, ref) {
   const { className, ...rest } = props;
   return (
-    <RadixPopover.Arrow
+    <GuiPopover.Arrow
       ref={ ref }
+      unstyled
       className={ cn('fill-[var(--color-popover-bg,var(--color-dialog-bg))]', className) }
-      { ...rest }
+      { ...rest as any }
     />
   );
 });
@@ -253,14 +238,15 @@ export const PopoverCloseTrigger = React.forwardRef<
 >(function PopoverCloseTrigger(props, ref) {
   const { className, ...rest } = props;
   return (
-    <RadixPopover.Close
+    <GuiPopover.Close
+      unstyled
       className={ cn('absolute top-1 right-1', className) }
-      { ...rest }
+      { ...rest as any }
       asChild
       ref={ ref }
     >
       <CloseButton/>
-    </RadixPopover.Close>
+    </GuiPopover.Close>
   );
 });
 
@@ -281,9 +267,9 @@ export const PopoverCloseTriggerWrapper = React.forwardRef<
   }
 
   return (
-    <RadixPopover.Close ref={ ref } { ...rest } asChild>
+    <GuiPopover.Close ref={ ref } { ...rest as any } asChild>
       { children }
-    </RadixPopover.Close>
+    </GuiPopover.Close>
   );
 });
 

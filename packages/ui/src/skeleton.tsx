@@ -12,7 +12,7 @@ export interface SkeletonProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   /** When true, the Skeleton wraps its single child element instead of adding a wrapper div. */
   readonly asChild?: boolean;
 
-  // Legacy Chakra style-prop shims — converted to className / inline style.
+  // Legacy Chakra style-prop shims — converted to inline style.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   readonly w?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -59,166 +59,124 @@ export interface SkeletonProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   readonly background?: string;
 }
 
-const SPACING_SCALE = 4;
+// Style-prop shim names that must NOT leak into the DOM.
+const SHIM_PROPS = [
+  'w', 'h', 'minW', 'maxW', 'display', 'flexGrow', 'flexShrink', 'flexBasis',
+  'fontWeight', 'textStyle', 'borderRadius', 'alignSelf', 'alignItems',
+  'justifyContent', 'color', 'mt', 'mb', 'ml', 'mr', 'height', 'overflow',
+  'whiteSpace', 'textOverflow', 'textTransform', 'gap', 'gridTemplateColumns',
+  'minWidth', 'boxSize', 'py', 'px', 'p', 'hideBelow', 'fontSize', 'flexWrap',
+  'wordBreak', 'lineHeight', 'marginRight', 'position', 'background',
+] as const;
 
-function toStylePx(value: number | string | undefined): string | undefined {
-  if (value === undefined) return undefined;
-  if (typeof value === 'string') return value;
-  return `${ value * SPACING_SCALE }px`;
+const S = 4; // Chakra spacing scale
+
+/** Resolve a dimension value (number → px via spacing scale, responsive object → first value). */
+function dim(v: unknown): string | undefined {
+  if (v == null) return undefined;
+  if (typeof v === 'number') return `${ v * S }px`;
+  if (typeof v === 'string') return v;
+  if (typeof v === 'object') {
+    const o = v as Record<string, string>;
+    return o.base ?? o.lg ?? o.xl ?? Object.values(o)[0];
+  }
+  return undefined;
 }
 
-function extractSkeletonStyleProps(props: Record<string, unknown>): {
-  style: React.CSSProperties;
-  rest: Record<string, unknown>;
-} {
-  const style: React.CSSProperties = {};
-  const rest: Record<string, unknown> = {};
-
-  function resolveDimension(value: unknown): string | undefined {
-    if (value === undefined || value === null) return undefined;
-    if (typeof value === 'number') return `${ value * SPACING_SCALE }px`;
-    if (typeof value === 'string') return value;
-    if (typeof value === 'object') {
-      const obj = value as Record<string, string>;
-      return obj.base ?? obj.lg ?? obj.xl ?? Object.values(obj)[0];
-    }
-    return undefined;
-  }
-
-  for (const [ key, value ] of Object.entries(props)) {
-    if (value === undefined) continue;
-    switch (key) {
-      case 'w': {
-        const v = resolveDimension(value); if (v) style.width = v; break;
-      }
-      case 'h': {
-        const v = resolveDimension(value); if (v) style.height = v; break;
-      }
-      case 'minW': {
-        const v = resolveDimension(value); if (v) style.minWidth = v; break;
-      }
-      case 'maxW': {
-        const v = resolveDimension(value); if (v) style.maxWidth = v; break;
-      }
-      case 'height': style.height = value as string; break;
-      case 'display': style.display = value as string; break;
-      case 'flexGrow': style.flexGrow = value as number; break;
-      case 'flexShrink': style.flexShrink = value as number; break;
-      case 'flexBasis': style.flexBasis = value as string; break;
-      case 'fontWeight': style.fontWeight = value as number | string; break;
-      case 'borderRadius': style.borderRadius = value as string; break;
-      case 'alignSelf': style.alignSelf = value as string; break;
-      case 'alignItems': style.alignItems = value as string; break;
-      case 'justifyContent': style.justifyContent = value as string; break;
-      case 'color': style.color = value as string; break;
-      case 'mt': style.marginTop = toStylePx(value as number | string); break;
-      case 'mb': style.marginBottom = toStylePx(value as number | string); break;
-      case 'ml': style.marginLeft = toStylePx(value as number | string); break;
-      case 'mr': style.marginRight = toStylePx(value as number | string); break;
-      case 'overflow': style.overflow = value as string; break;
-      case 'whiteSpace': style.whiteSpace = value as string; break;
-      case 'textOverflow': style.textOverflow = value as string; break;
-      case 'textTransform': style.textTransform = value as string; break;
-      case 'gap': style.gap = typeof value === 'number' ? `${ value * SPACING_SCALE }px` : value as string; break;
-      case 'gridTemplateColumns': style.gridTemplateColumns = value as string; break;
-      case 'minWidth': style.minWidth = value as string; break;
-      case 'boxSize': {
-        const s = typeof value === 'number' ? `${ value * SPACING_SCALE }px` : value as string; style.width = s; style.height = s; break;
-      }
-      case 'py': {
-        const v = toStylePx(value as number | string); style.paddingTop = v; style.paddingBottom = v; break;
-      }
-      case 'px': {
-        const v = toStylePx(value as number | string); style.paddingLeft = v; style.paddingRight = v; break;
-      }
-      case 'p': {
-        const v = toStylePx(value as number | string); style.padding = v; break;
-      }
-      case 'hideBelow': break; // handled via className
-      case 'textStyle': break; // drop textStyle, not directly applicable
-      case 'fontSize': style.fontSize = value as string; break;
-      case 'flexWrap': style.flexWrap = value as React.CSSProperties['flexWrap']; break;
-      case 'wordBreak': style.wordBreak = value as React.CSSProperties['wordBreak']; break;
-      case 'lineHeight': style.lineHeight = value as string; break;
-      case 'marginRight': style.marginRight = value as string; break;
-      case 'position': style.position = value as React.CSSProperties['position']; break;
-      case 'background': style.background = value as string; break;
-      default: rest[key] = value; break;
-    }
-  }
-
-  return { style, rest };
+/** Convert a spacing number|string via the 4px scale. */
+function sp(v: number | string | undefined): string | undefined {
+  if (v === undefined) return undefined;
+  return typeof v === 'number' ? `${ v * S }px` : v;
 }
+
+/** Build a CSSProperties object from legacy Chakra style-prop shims. */
+function shimToStyle(props: SkeletonProps): React.CSSProperties {
+  const s: React.CSSProperties = {};
+  if (props.w !== undefined) s.width = dim(props.w);
+  if (props.h !== undefined) s.height = dim(props.h);
+  if (props.minW !== undefined) s.minWidth = dim(props.minW);
+  if (props.maxW !== undefined) s.maxWidth = dim(props.maxW);
+  if (props.display !== undefined) s.display = props.display;
+  if (props.flexGrow !== undefined) s.flexGrow = props.flexGrow;
+  if (props.flexShrink !== undefined) s.flexShrink = props.flexShrink;
+  if (props.flexBasis !== undefined) s.flexBasis = props.flexBasis;
+  if (props.fontWeight !== undefined) s.fontWeight = props.fontWeight;
+  if (props.borderRadius !== undefined) s.borderRadius = props.borderRadius;
+  if (props.alignSelf !== undefined) s.alignSelf = props.alignSelf;
+  if (props.alignItems !== undefined) s.alignItems = props.alignItems;
+  if (props.justifyContent !== undefined) s.justifyContent = props.justifyContent;
+  if (props.color !== undefined) s.color = props.color;
+  if (props.mt !== undefined) s.marginTop = sp(props.mt);
+  if (props.mb !== undefined) s.marginBottom = sp(props.mb);
+  if (props.ml !== undefined) s.marginLeft = sp(props.ml);
+  if (props.mr !== undefined) s.marginRight = sp(props.mr);
+  if (props.height !== undefined) s.height = props.height;
+  if (props.overflow !== undefined) s.overflow = props.overflow;
+  if (props.whiteSpace !== undefined) s.whiteSpace = props.whiteSpace;
+  if (props.textOverflow !== undefined) s.textOverflow = props.textOverflow;
+  if (props.textTransform !== undefined) s.textTransform = props.textTransform;
+  if (props.gap !== undefined) s.gap = sp(props.gap);
+  if (props.gridTemplateColumns !== undefined) s.gridTemplateColumns = props.gridTemplateColumns;
+  if (props.minWidth !== undefined) s.minWidth = props.minWidth;
+  if (props.boxSize !== undefined) {
+    const v = typeof props.boxSize === 'number' ? `${ props.boxSize * S }px` : props.boxSize;
+    s.width = v; s.height = v;
+  }
+  if (props.py !== undefined) { const v = sp(props.py); s.paddingTop = v; s.paddingBottom = v; }
+  if (props.px !== undefined) { const v = sp(props.px); s.paddingLeft = v; s.paddingRight = v; }
+  if (props.p !== undefined) s.padding = sp(props.p);
+  if (props.fontSize !== undefined) s.fontSize = props.fontSize;
+  if (props.flexWrap !== undefined) s.flexWrap = props.flexWrap;
+  if (props.wordBreak !== undefined) s.wordBreak = props.wordBreak;
+  if (props.lineHeight !== undefined) s.lineHeight = props.lineHeight;
+  if (props.marginRight !== undefined) s.marginRight = props.marginRight;
+  if (props.position !== undefined) s.position = props.position;
+  if (props.background !== undefined) s.background = props.background;
+  return s;
+}
+
+/** Strip shim keys from props so they don't leak into the DOM. */
+function stripShims<T extends Record<string, unknown>>(props: T): Omit<T, (typeof SHIM_PROPS)[number]> {
+  const out = { ...props };
+  for (const k of SHIM_PROPS) delete out[k];
+  return out as Omit<T, (typeof SHIM_PROPS)[number]>;
+}
+
+const SKELETON_CLASSES = [
+  'animate-skeleton-shimmer rounded-sm',
+  'bg-[linear-gradient(90deg,var(--color-skeleton-start)_0%,var(--color-skeleton-end)_50%,var(--color-skeleton-start)_100%)]',
+  'bg-[length:200%_100%]',
+].join(' ');
+
+const HIDE_BELOW_MAP: Record<string, string> = { lg: 'lg:hidden', md: 'md:hidden', sm: 'sm:hidden' };
 
 export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
   function Skeleton(props, ref) {
-    const {
-      loading = false,
-      asChild,
-      className,
-      children,
-      style: styleProp,
-      // Destructure style-prop shims so they don't leak into DOM
-      w: _w, h: _h, minW: _minW, maxW: _maxW, display: _display,
-      flexGrow: _flexGrow, flexShrink: _flexShrink, flexBasis: _flexBasis,
-      fontWeight: _fontWeight, textStyle: _textStyle, borderRadius: _borderRadius,
-      alignSelf: _alignSelf, alignItems: _alignItems, justifyContent: _justifyContent,
-      color: _color, mt: _mt, mb: _mb, ml: _ml, mr: _mr, height: _height,
-      overflow: _overflow, whiteSpace: _whiteSpace, textOverflow: _textOverflow,
-      textTransform: _textTransform, gap: _gap, gridTemplateColumns: _gridTemplateColumns,
-      minWidth: _minWidth, boxSize: _boxSize, py: _py, px: _px, p: _p,
-      hideBelow: _hideBelow, fontSize: _fontSize, flexWrap: _flexWrap, wordBreak: _wordBreak, lineHeight: _lineHeight,
-      marginRight: _marginRight, position: _position, background: _background,
-      as: Component = 'div',
-      ...htmlRest
-    } = props;
+    const { loading = false, asChild, className, children, style: styleProp, as: Component = 'div', ...allRest } = props;
 
-    // Collect legacy style props into a CSSProperties object
-    const { style: shimStyle } = extractSkeletonStyleProps({
-      w: _w, h: _h, minW: _minW, maxW: _maxW, display: _display,
-      flexGrow: _flexGrow, flexShrink: _flexShrink, flexBasis: _flexBasis,
-      fontWeight: _fontWeight, textStyle: _textStyle, borderRadius: _borderRadius,
-      alignSelf: _alignSelf, alignItems: _alignItems, justifyContent: _justifyContent,
-      color: _color, mt: _mt, mb: _mb, ml: _ml, mr: _mr, height: _height,
-      overflow: _overflow, whiteSpace: _whiteSpace, textOverflow: _textOverflow,
-      textTransform: _textTransform, gap: _gap, gridTemplateColumns: _gridTemplateColumns,
-      minWidth: _minWidth, boxSize: _boxSize, py: _py, px: _px, p: _p,
-      hideBelow: _hideBelow, fontSize: _fontSize, flexWrap: _flexWrap, wordBreak: _wordBreak, lineHeight: _lineHeight,
-      marginRight: _marginRight, position: _position, background: _background,
-    });
-    const mergedStyle = Object.keys(shimStyle).length > 0 || styleProp ?
-      { ...shimStyle, ...styleProp } :
-      undefined;
+    const shimStyle = shimToStyle(props);
+    const mergedStyle = Object.keys(shimStyle).length > 0 || styleProp ? { ...shimStyle, ...styleProp } : undefined;
+    const hideBelowClass = props.hideBelow ? HIDE_BELOW_MAP[props.hideBelow] : undefined;
+    const cls = hideBelowClass ? cn(className, hideBelowClass) : className;
 
-    const HIDE_BELOW_MAP: Record<string, string> = { lg: 'lg:hidden', md: 'md:hidden', sm: 'sm:hidden' };
-    const hideBelowClass = _hideBelow ? HIDE_BELOW_MAP[_hideBelow] : undefined;
-    const finalClassName = hideBelowClass ? cn(className, hideBelowClass) : className;
+    // Strip shim props from what reaches the DOM.
+    const htmlRest = stripShims(allRest);
 
     if (!loading) {
-      // When asChild is true, render children directly without a wrapper div
-      if (asChild && React.isValidElement(children)) {
-        return children;
-      }
+      if (asChild && React.isValidElement(children)) return children;
       return (
-        <Component ref={ ref } className={ finalClassName } style={ mergedStyle } { ...htmlRest }>
+        <Component ref={ ref } className={ cls } style={ mergedStyle } { ...htmlRest }>
           { children }
         </Component>
       );
     }
 
-    // When asChild is true and loading, wrap the child in skeleton styles
     if (asChild && React.isValidElement(children)) {
       return (
         <Component
           ref={ ref }
           data-loading
-          className={ cn(
-            'animate-skeleton-shimmer rounded-sm',
-            'bg-[linear-gradient(90deg,var(--color-skeleton-start)_0%,var(--color-skeleton-end)_50%,var(--color-skeleton-start)_100%)]',
-            'bg-[length:200%_100%]',
-            'text-transparent [&_*]:invisible',
-            finalClassName,
-          ) }
+          className={ cn(SKELETON_CLASSES, 'text-transparent [&_*]:invisible', cls) }
           style={ mergedStyle }
           { ...htmlRest }
         >
@@ -231,13 +189,7 @@ export const Skeleton = React.forwardRef<HTMLDivElement, SkeletonProps>(
       <Component
         ref={ ref }
         data-loading
-        className={ cn(
-          'animate-skeleton-shimmer rounded-sm',
-          'bg-[linear-gradient(90deg,var(--color-skeleton-start)_0%,var(--color-skeleton-end)_50%,var(--color-skeleton-start)_100%)]',
-          'bg-[length:200%_100%]',
-          children ? 'text-transparent [&_*]:invisible' : 'min-h-5',
-          finalClassName,
-        ) }
+        className={ cn(SKELETON_CLASSES, children ? 'text-transparent [&_*]:invisible' : 'min-h-5', cls) }
         style={ mergedStyle }
         { ...htmlRest }
       >

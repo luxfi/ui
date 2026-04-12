@@ -1,5 +1,3 @@
-import { cva } from 'class-variance-authority';
-import type { VariantProps } from 'class-variance-authority';
 import React from 'react';
 
 import { cn } from './utils';
@@ -23,26 +21,13 @@ type ColorPalette =
   'bright_yellow' | 'bright_teal' | 'bright_cyan' | 'bright_orange' |
   'bright_purple' | 'bright_pink';
 
-const badgeVariants = cva(
-  'inline-flex items-center rounded-sm gap-1 font-medium w-fit max-w-full whitespace-nowrap select-text',
-  {
-    variants: {
-      variant: {
-        subtle: '',
-        solid: '',
-      },
-      size: {
-        sm: 'text-xs p-1 h-[18px] min-h-[18px]',
-        md: 'text-sm px-1 py-0.5 min-h-6',
-        lg: 'text-sm px-2 py-1 min-h-7 font-semibold',
-      },
-    },
-    defaultVariants: {
-      variant: 'subtle',
-      size: 'md',
-    },
-  },
-);
+const BASE_CLASSES = 'inline-flex items-center rounded-sm gap-1 font-medium w-fit max-w-full whitespace-nowrap select-text';
+
+const SIZE_CLASSES = {
+  sm: 'text-xs p-1 h-[18px] min-h-[18px]',
+  md: 'text-sm px-1 py-0.5 min-h-6',
+  lg: 'text-sm px-2 py-1 min-h-7 font-semibold',
+} as const;
 
 const COLOR_PALETTE_CLASSES: Record<ColorPalette, string> = {
   gray: 'bg-badge-gray-bg text-badge-gray-fg',
@@ -70,19 +55,22 @@ const COLOR_PALETTE_CLASSES: Record<ColorPalette, string> = {
 };
 
 export interface BadgeProps
-  extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'color'>,
-  VariantProps<typeof badgeVariants> {
+  extends Omit<React.HTMLAttributes<HTMLSpanElement>, 'color'> {
   readonly loading?: boolean;
   readonly startElement?: React.ReactNode;
   readonly endElement?: React.ReactNode;
   readonly truncated?: boolean;
   readonly colorPalette?: ColorPalette;
+  readonly variant?: 'subtle' | 'solid';
+  readonly size?: 'sm' | 'md' | 'lg';
   // Legacy Chakra style-prop shims
   readonly flexShrink?: number;
   readonly gap?: number | string;
   readonly ml?: number | string | Record<string, number>;
   readonly mr?: number | string;
 }
+
+const S = 4; // Chakra spacing scale
 
 export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
   function Badge(props, ref) {
@@ -92,8 +80,8 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
       children,
       truncated = false,
       endElement,
-      variant,
-      size,
+      variant: _variant,
+      size = 'md',
       colorPalette = 'gray',
       className,
       flexShrink: _flexShrink,
@@ -106,16 +94,16 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
 
     const shimStyle: React.CSSProperties = { ...styleProp };
     if (_flexShrink !== undefined) shimStyle.flexShrink = _flexShrink;
-    if (_gap !== undefined) shimStyle.gap = typeof _gap === 'number' ? `${ _gap * 4 }px` : _gap;
+    if (_gap !== undefined) shimStyle.gap = typeof _gap === 'number' ? `${ _gap * S }px` : _gap;
     if (_ml !== undefined) {
       if (typeof _ml === 'object') {
         const obj = _ml as Record<string, number>;
-        shimStyle.marginLeft = `${ (obj.base ?? obj.lg ?? 0) * 4 }px`;
+        shimStyle.marginLeft = `${ (obj.base ?? obj.lg ?? 0) * S }px`;
       } else {
-        shimStyle.marginLeft = typeof _ml === 'number' ? `${ _ml * 4 }px` : _ml;
+        shimStyle.marginLeft = typeof _ml === 'number' ? `${ _ml * S }px` : _ml;
       }
     }
-    if (_mr !== undefined) shimStyle.marginRight = typeof _mr === 'number' ? `${ _mr * 4 }px` : _mr;
+    if (_mr !== undefined) shimStyle.marginRight = typeof _mr === 'number' ? `${ _mr * S }px` : _mr;
     const badgeStyle = Object.keys(shimStyle).length > 0 ? shimStyle : undefined;
 
     const child = children ? (
@@ -132,7 +120,8 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
       <span
         ref={ ref as React.Ref<HTMLSpanElement> }
         className={ cn(
-          badgeVariants({ variant, size }),
+          BASE_CLASSES,
+          SIZE_CLASSES[size],
           COLOR_PALETTE_CLASSES[colorPalette],
           className,
         ) }

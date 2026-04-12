@@ -1,4 +1,4 @@
-import * as RadixDialog from '@radix-ui/react-dialog';
+import { Dialog as GuiDialog } from '@hanzogui/dialog';
 import * as React from 'react';
 
 import { cn } from './utils';
@@ -35,14 +35,14 @@ type DialogSize = 'sm' | 'md' | 'full' | 'cover';
  */
 type ResponsiveSize = DialogSize | { base?: DialogSize; lgDown?: DialogSize; lg?: DialogSize };
 
-interface DialogContextValue {
+interface DialogSizeContextValue {
   size: ResponsiveSize;
 }
 
-const DialogContext = React.createContext<DialogContextValue>({ size: 'md' });
+const DialogSizeContext = React.createContext<DialogSizeContextValue>({ size: 'md' });
 
-function useDialogContext(): DialogContextValue {
-  return React.useContext(DialogContext);
+function useDialogSizeContext(): DialogSizeContextValue {
+  return React.useContext(DialogSizeContext);
 }
 
 // ---------------------------------------------------------------------------
@@ -61,7 +61,7 @@ const CONTENT_SIZE_MAP: Record<DialogSize, string> = {
  *
  * For a plain value we return the matching static class.  For a breakpoint
  * object we compose mobile-first responsive classes.  The Tailwind config in
- * this project defines `lg: 1000px` as breakpoint — that aligns with Chakra's
+ * this project defines `lg: 1000px` as breakpoint -- that aligns with Chakra's
  * `lgDown` / `lg` pattern.
  */
 function sizeClasses(size: ResponsiveSize): string {
@@ -100,7 +100,7 @@ export interface DialogRootProps {
   onOpenChange?: (details: { open: boolean }) => void;
   size?: ResponsiveSize;
 
-  /** Accepted for API compat but not implemented — animations are CSS-only. */
+  /** Accepted for API compat but not implemented -- animations are CSS-only. */
   motionPreset?: string;
   modal?: boolean;
 }
@@ -112,7 +112,7 @@ export const DialogRoot: React.FC<DialogRootProps> = ({
   onOpenChange,
   size = 'md',
   modal = true,
-  // motionPreset is intentionally unused — kept for API compat
+  // motionPreset is intentionally unused -- kept for API compat
 }) => {
   const handleOpenChange = React.useCallback(
     (nextOpen: boolean) => {
@@ -121,19 +121,19 @@ export const DialogRoot: React.FC<DialogRootProps> = ({
     [ onOpenChange ],
   );
 
-  const ctx = React.useMemo<DialogContextValue>(() => ({ size }), [ size ]);
+  const ctx = React.useMemo<DialogSizeContextValue>(() => ({ size }), [ size ]);
 
   return (
-    <DialogContext.Provider value={ ctx }>
-      <RadixDialog.Root
+    <DialogSizeContext.Provider value={ ctx }>
+      <GuiDialog
         open={ open }
         defaultOpen={ defaultOpen }
         onOpenChange={ handleOpenChange }
         modal={ modal }
       >
         { children }
-      </RadixDialog.Root>
-    </DialogContext.Provider>
+      </GuiDialog>
+    </DialogSizeContext.Provider>
   );
 };
 
@@ -155,8 +155,8 @@ export const DialogContent = React.forwardRef<
 >(function DialogContent(props, ref) {
   const {
     children,
-    portalled = true,
-    portalRef,
+    portalled: _portalled = true,
+    portalRef: _portalRef,
     backdrop = true,
     className,
     paddingTop: _paddingTop,
@@ -169,29 +169,17 @@ export const DialogContent = React.forwardRef<
     ...(_paddingTop !== undefined ? { paddingTop: typeof _paddingTop === 'number' ? `${ _paddingTop * 4 }px` : _paddingTop } : {}),
   };
 
-  const { size } = useDialogContext();
-
-  let portalProps: RadixDialog.DialogPortalProps;
-  if (!portalled) {
-    portalProps = { container: undefined };
-  } else if (portalRef) {
-    portalProps = { container: portalRef.current };
-  } else {
-    portalProps = {};
-  }
-
-  // When portalled=false we skip the Radix Portal wrapper entirely
-  const Wrapper = portalled ? RadixDialog.Portal : React.Fragment;
-  const wrapperProps = portalled ? portalProps : {};
+  const { size } = useDialogSizeContext();
 
   return (
-    <Wrapper { ...wrapperProps }>
+    <GuiDialog.Portal>
       { backdrop && (
-        <RadixDialog.Overlay
+        <GuiDialog.Overlay
+          unstyled
           className="fixed inset-0 z-[1400] bg-black/80"
         />
       ) }
-      { /* Positioner — centers the content panel */ }
+      { /* Positioner -- centers the content panel */ }
       <div
         className={ cn(
           'fixed inset-0 z-[1400] flex w-screen h-dvh',
@@ -199,8 +187,9 @@ export const DialogContent = React.forwardRef<
           'overflow-hidden',
         ) }
       >
-        <RadixDialog.Content
+        <GuiDialog.Content
           ref={ ref }
+          unstyled
           className={ cn(
             // Base content styles
             'relative flex flex-col w-full p-6 outline-none text-base',
@@ -213,12 +202,12 @@ export const DialogContent = React.forwardRef<
             className,
           ) }
           style={ Object.keys(contentInlineStyle).length > 0 ? contentInlineStyle : undefined }
-          { ...rest }
+          { ...rest as any }
         >
           { children }
-        </RadixDialog.Content>
+        </GuiDialog.Content>
       </div>
-    </Wrapper>
+    </GuiDialog.Portal>
   );
 });
 
@@ -235,11 +224,11 @@ export const DialogCloseTrigger = React.forwardRef<
   const { className, ...rest } = props;
 
   return (
-    <RadixDialog.Close asChild>
+    <GuiDialog.Close asChild>
       <CloseButton ref={ ref } className={ className } { ...rest }>
         { props.children }
       </CloseButton>
-    </RadixDialog.Close>
+    </GuiDialog.Close>
   );
 });
 
@@ -271,14 +260,15 @@ export const DialogHeader = React.forwardRef<
       { ...rest }
     >
       { startElement }
-      <RadixDialog.Title
+      <GuiDialog.Title
+        unstyled
         className={ cn(
           'text-base lg:text-lg font-medium',
           'whitespace-nowrap overflow-hidden text-ellipsis',
         ) }
       >
         { children }
-      </RadixDialog.Title>
+      </GuiDialog.Title>
       <DialogCloseTrigger className="ml-auto"/>
     </div>
   );
@@ -335,22 +325,22 @@ export const DialogFooter = React.forwardRef<
 });
 
 // ---------------------------------------------------------------------------
-// Simple wrappers that re-export Radix primitives under the old names
+// Simple wrappers that re-export @hanzogui primitives under the old names
 // ---------------------------------------------------------------------------
 
-export const DialogBackdrop = RadixDialog.Overlay;
+export const DialogBackdrop = GuiDialog.Overlay;
 
-export const DialogTitle = RadixDialog.Title;
+export const DialogTitle = GuiDialog.Title;
 
-export const DialogDescription = RadixDialog.Description;
+export const DialogDescription = GuiDialog.Description;
 
-export interface DialogTriggerProps extends React.ComponentPropsWithoutRef<typeof RadixDialog.Trigger> {}
+export interface DialogTriggerProps extends React.ComponentPropsWithoutRef<'button'> {}
 
-export const DialogTrigger = RadixDialog.Trigger;
+export const DialogTrigger = GuiDialog.Trigger;
 
 /**
  * `DialogActionTrigger` renders its child and closes the dialog on click.
  * This mirrors the Chakra `Dialog.ActionTrigger` behavior which wraps
  * children in a close action.
  */
-export const DialogActionTrigger = RadixDialog.Close;
+export const DialogActionTrigger = GuiDialog.Close;

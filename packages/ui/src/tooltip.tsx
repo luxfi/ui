@@ -1,4 +1,7 @@
-import * as RadixTooltip from '@radix-ui/react-tooltip';
+import {
+  Tooltip as GuiTooltip,
+  TooltipGroup as GuiTooltipGroup,
+} from '@hanzogui/tooltip';
 import { useClickAway } from '@uidotdev/usehooks';
 import * as React from 'react';
 
@@ -24,14 +27,21 @@ function useIsMobile(): boolean {
   return isMobile;
 }
 
+/** Map placement string to @hanzogui Popper placement prop. */
+function mapPlacement(p: string | undefined): string | undefined {
+  if (!p) return undefined;
+  // @hanzogui/popper uses same placement strings as floating-ui
+  return p;
+}
+
 export interface TooltipProps {
   selected?: boolean;
   showArrow?: boolean;
   portalled?: boolean;
   portalRef?: React.RefObject<HTMLElement>;
   content: React.ReactNode;
-  contentProps?: React.ComponentPropsWithoutRef<typeof RadixTooltip.Content>;
-  triggerProps?: React.ComponentPropsWithoutRef<typeof RadixTooltip.Trigger>;
+  contentProps?: React.HTMLAttributes<HTMLDivElement>;
+  triggerProps?: React.HTMLAttributes<HTMLButtonElement>;
   disabled?: boolean;
   disableOnMobile?: boolean;
   children?: React.ReactNode;
@@ -63,10 +73,8 @@ export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
       children,
       disabled,
       disableOnMobile,
-      portalled = true,
       content,
       contentProps,
-      portalRef,
       defaultOpen = false,
       triggerProps,
       closeDelay = 100,
@@ -127,58 +135,57 @@ export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(
     const defaultShowArrow = variant === 'popover' ? false : true;
     const showArrow = showArrowProp !== undefined ? showArrowProp : defaultShowArrow;
 
-    const placement = positioning?.placement ?? 'top';
-    const side = placement.split('-')[0] as 'top' | 'bottom' | 'left' | 'right';
-    const align = placement.includes('-') ? (placement.split('-')[1] as 'start' | 'end') : undefined;
-    const sideOffset = positioning?.offset?.mainAxis ?? 4;
-
     const isPopover = variant === 'popover';
 
+    const placement = mapPlacement(positioning?.placement) ?? 'top';
+    const offset = positioning?.offset?.mainAxis ?? 4;
+
     return (
-      <RadixTooltip.Provider delayDuration={ openDelay } skipDelayDuration={ 0 }>
-        <RadixTooltip.Root
+      <GuiTooltipGroup delay={ openDelay }>
+        <GuiTooltip
           open={ open }
           onOpenChange={ handleOpenChange }
-          delayDuration={ openDelay }
+          delay={{ open: openDelay, close: closeDelay }}
+          placement={ placement as any }
+          offset={ offset }
+          unstyled
         >
-          <RadixTooltip.Trigger
+          <GuiTooltip.Trigger
             ref={ open ? triggerRef : undefined }
             asChild
-            onClick={ isMobile ? handleTriggerClick : undefined }
-            { ...triggerProps }
+            {...(isMobile ? { onPress: handleTriggerClick } : {})}
+            { ...triggerProps as any }
           >
             { children }
-          </RadixTooltip.Trigger>
-          <RadixTooltip.Portal container={ portalled ? (portalRef?.current ?? undefined) : undefined }>
-            <RadixTooltip.Content
-              ref={ ref }
-              side={ side }
-              align={ align }
-              sideOffset={ sideOffset }
-              onClick={ interactive ? handleContentClick : undefined }
-              className={ cn(
-                'z-[9999] overflow-hidden rounded-lg px-3 py-2 text-sm',
-                'animate-in fade-in-0 zoom-in-95',
-                isPopover && 'bg-[var(--color-popover-bg)] text-[var(--color-text-primary)]',
-                isPopover && 'shadow-[var(--shadow-popover)] border border-[var(--color-border-divider)] max-w-sm',
-                !isPopover && 'bg-[var(--color-tooltip-bg)] text-[var(--color-tooltip-fg)] max-w-xs',
-                contentProps?.className,
-              ) }
-              { ...(selected ? { 'data-selected': true } : {}) }
-              { ...contentProps }
-            >
-              { showArrow && (
-                <RadixTooltip.Arrow
-                  className={ cn(
-                    isPopover ? 'fill-[var(--color-popover-bg)]' : 'fill-[var(--color-tooltip-bg)]',
-                  ) }
-                />
-              ) }
-              { content }
-            </RadixTooltip.Content>
-          </RadixTooltip.Portal>
-        </RadixTooltip.Root>
-      </RadixTooltip.Provider>
+          </GuiTooltip.Trigger>
+
+          <GuiTooltip.Content
+            ref={ ref }
+            unstyled
+            className={ cn(
+              'z-[9999] overflow-hidden rounded-lg px-3 py-2 text-sm',
+              'animate-in fade-in-0 zoom-in-95',
+              isPopover && 'bg-[var(--color-popover-bg)] text-[var(--color-text-primary)]',
+              isPopover && 'shadow-[var(--shadow-popover)] border border-[var(--color-border-divider)] max-w-sm',
+              !isPopover && 'bg-[var(--color-tooltip-bg)] text-[var(--color-tooltip-fg)] max-w-xs',
+              contentProps?.className,
+            ) }
+            onClick={ interactive ? handleContentClick : undefined }
+            { ...(selected ? { 'data-selected': true } : {}) }
+            { ...contentProps as any }
+          >
+            { showArrow && (
+              <GuiTooltip.Arrow
+                unstyled
+                className={ cn(
+                  isPopover ? 'fill-[var(--color-popover-bg)]' : 'fill-[var(--color-tooltip-bg)]',
+                ) }
+              />
+            ) }
+            { content }
+          </GuiTooltip.Content>
+        </GuiTooltip>
+      </GuiTooltipGroup>
     );
   },
 );
