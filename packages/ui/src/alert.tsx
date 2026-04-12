@@ -1,4 +1,3 @@
-import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
 import { cn } from './utils';
@@ -20,58 +19,28 @@ import { Skeleton } from './skeleton';
 type AlertStatus = 'info' | 'warning' | 'warning_table' | 'success' | 'error';
 
 /* ------------------------------------------------------------------ */
-/*  CVA variants                                                       */
+/*  Class maps (replaced CVA)                                          */
 /* ------------------------------------------------------------------ */
 
-const alertRoot = cva(
-  // base
-  'w-full flex items-start relative rounded text-[var(--color-alert-fg)]',
-  {
-    variants: {
-      status: {
-        info: 'bg-[var(--color-alert-bg-info)]',
-        warning: 'bg-[var(--color-alert-bg-warning)]',
-        warning_table: 'bg-[var(--color-alert-bg-warning-table)]',
-        success: 'bg-[var(--color-alert-bg-success)]',
-        error: 'bg-[var(--color-alert-bg-error)]',
-      },
-      size: {
-        sm: 'gap-2 px-2 py-2 text-xs',
-        md: 'gap-2 px-3 py-2 text-base',
-      },
-    },
-    defaultVariants: {
-      status: 'info',
-      size: 'md',
-    },
-  },
-);
+const ALERT_BASE = 'w-full flex items-start relative rounded text-[var(--color-alert-fg)]';
 
-const alertContent = cva('flex flex-1', {
-  variants: {
-    inline: {
-      'true': 'inline-flex flex-row items-center',
-      'false': 'flex flex-col',
-    },
-  },
-  defaultVariants: {
-    inline: true,
-  },
-});
+const STATUS_CLASSES: Record<AlertStatus, string> = {
+  info: 'bg-[var(--color-alert-bg-info)]',
+  warning: 'bg-[var(--color-alert-bg-warning)]',
+  warning_table: 'bg-[var(--color-alert-bg-warning-table)]',
+  success: 'bg-[var(--color-alert-bg-success)]',
+  error: 'bg-[var(--color-alert-bg-error)]',
+};
 
-const INDICATOR_BASE = 'inline-flex items-center justify-center shrink-0 w-5 h-5 text-[var(--color-alert-fg)] [&>svg]:w-full [&>svg]:h-full';
+const SIZE_CLASSES: Record<string, string> = {
+  sm: 'gap-2 px-2 py-2 text-xs',
+  md: 'gap-2 px-3 py-2 text-base',
+};
 
-const indicatorVariants = cva(INDICATOR_BASE, {
-  variants: {
-    size: {
-      sm: 'w-5 h-5 my-0',
-      md: 'w-5 h-5 my-[2px]',
-    },
-  },
-  defaultVariants: {
-    size: 'md',
-  },
-});
+const INDICATOR_SIZE_CLASSES: Record<string, string> = {
+  sm: 'w-5 h-5 my-0',
+  md: 'w-5 h-5 my-[2px]',
+};
 
 /* ------------------------------------------------------------------ */
 /*  Props                                                              */
@@ -153,7 +122,10 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
       }
 
       return (
-        <span className={ indicatorVariants({ size: resolvedSize }) }>
+        <span className={ cn(
+          'inline-flex items-center justify-center shrink-0 text-[var(--color-alert-fg)] [&>svg]:w-full [&>svg]:h-full',
+          INDICATOR_SIZE_CLASSES[resolvedSize],
+        ) }>
           { icon || defaultIcon }
         </span>
       );
@@ -188,13 +160,13 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
       <Skeleton loading={ loading }>
         <div
           ref={ ref }
-          className={ cn(alertRoot({ status, size: resolvedSize }), className) }
+          className={ cn(ALERT_BASE, STATUS_CLASSES[status], SIZE_CLASSES[resolvedSize], className) }
           style={ alertStyle }
           { ...alertRest }
         >
           { iconElement }
           { children ? (
-            <div className={ alertContent({ inline }) }>
+            <div className={ cn('flex flex-1', inline ? 'inline-flex flex-row items-center' : 'flex flex-col') }>
               { title && <div className="font-semibold">{ title }</div> }
               <div
                 className={ cn('inline-flex flex-wrap', descClassName) }

@@ -1,4 +1,3 @@
-import { cva } from 'class-variance-authority';
 import * as React from 'react';
 
 import { cn } from './utils';
@@ -22,39 +21,20 @@ function TruncatedTextTooltip({ label, children }: { readonly label: React.React
 type TagVariant = 'subtle' | 'clickable' | 'filter' | 'select';
 type TagSize = 'sm' | 'md' | 'lg';
 
-const tagVariants = cva(
-  [
-    'inline-flex items-center align-top max-w-full select-text rounded-sm',
-    'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-500',
-  ].join(' '),
-  {
-    variants: {
-      variant: {
-        subtle: 'bg-[var(--color-tag-subtle-bg)] text-[var(--color-tag-subtle-fg)]',
-        clickable: [
-          'cursor-pointer',
-          'bg-[var(--color-tag-clickable-bg)] text-[var(--color-tag-clickable-fg)]',
-          'hover:opacity-76',
-        ].join(' '),
-        filter: 'bg-[var(--color-tag-filter-bg)]',
-        select: [
-          'cursor-pointer',
-          'bg-[var(--color-tag-select-bg)] text-[var(--color-tag-select-fg)]',
-          'hover:text-[var(--color-hover)] hover:opacity-76',
-        ].join(' '),
-      },
-      size: {
-        sm: 'px-1 py-0.5 min-h-5 gap-1 text-xs',
-        md: 'px-1 py-0.5 min-h-6 gap-1 text-sm',
-        lg: 'px-1.5 py-1.5 min-h-8 min-w-8 gap-1 text-sm',
-      },
-    },
-    defaultVariants: {
-      variant: 'subtle',
-      size: 'md',
-    },
-  },
-);
+const TAG_BASE = 'inline-flex items-center align-top max-w-full select-text rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-500';
+
+const TAG_VARIANT_CLASSES: Record<TagVariant, string> = {
+  subtle: 'bg-[var(--color-tag-subtle-bg)] text-[var(--color-tag-subtle-fg)]',
+  clickable: 'cursor-pointer bg-[var(--color-tag-clickable-bg)] text-[var(--color-tag-clickable-fg)] hover:opacity-76',
+  filter: 'bg-[var(--color-tag-filter-bg)]',
+  select: 'cursor-pointer bg-[var(--color-tag-select-bg)] text-[var(--color-tag-select-fg)] hover:text-[var(--color-hover)] hover:opacity-76',
+};
+
+const TAG_SIZE_CLASSES: Record<TagSize, string> = {
+  sm: 'px-1 py-0.5 min-h-5 gap-1 text-xs',
+  md: 'px-1 py-0.5 min-h-6 gap-1 text-sm',
+  lg: 'px-1.5 py-1.5 min-h-8 min-w-8 gap-1 text-sm',
+};
 
 const TAG_SELECTED_CLASSES = [
   'bg-[var(--color-tag-select-selected-bg)]',
@@ -121,7 +101,9 @@ export const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
         <span
           ref={ ref }
           className={ cn(
-            tagVariants({ variant, size }),
+            TAG_BASE,
+            TAG_VARIANT_CLASSES[variant ?? 'subtle'],
+            TAG_SIZE_CLASSES[size ?? 'md'],
             selected && !loading && TAG_SELECTED_CLASSES,
             disabled && TAG_DISABLED_CLASSES,
             className,

@@ -58,7 +58,6 @@ export default defineConfig({
     /^@radix-ui/,
     /^@hanzogui/,
     '@uidotdev/usehooks',
-    'class-variance-authority',
     'clsx',
     'es-toolkit',
     'react-icons/lu',
