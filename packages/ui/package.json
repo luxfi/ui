@@ -253,11 +253,11 @@
     "dev": "tsup --watch"
   },
   "dependencies": {
-    "@hanzogui/core": "^3.0.6",
-    "@hanzogui/dialog": "^3.0.2",
-    "@hanzogui/popover": "^3.0.2",
-    "@hanzogui/text": "^3.0.2",
-    "@hanzogui/tooltip": "^3.0.2",
+    "@hanzogui/core": "4.4.0",
+    "@hanzogui/dialog": "3.0.2",
+    "@hanzogui/popover": "3.0.2",
+    "@hanzogui/text": "3.0.2",
+    "@hanzogui/tooltip": "3.0.2",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-checkbox": "^1.3.3",
@@ -285,7 +285,7 @@
     "react-dom": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
-    "@hanzogui/core": "^3.0.6",
+    "@hanzogui/core": "4.4.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "tsup": "^8.5.0",
