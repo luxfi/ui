@@ -1,3 +1,4 @@
+export { AppProvider } from './provider';
 export { cn } from './utils';
 
 export {
