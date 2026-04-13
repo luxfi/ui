@@ -4,13 +4,11 @@ import { createGui } from '@hanzogui/core';
 import { QueryClient, QueryClientProvider, useQueryClient, useQuery, useMutation, useInfiniteQuery } from '@tanstack/react-query';
 import React from 'react';
 
-// Initialize @hanzogui once — lazy, not at module load (would crash Node/SSR).
-let _guiInitialized = false;
-function ensureGui() {
-  if (_guiInitialized) return;
-  if (typeof window === 'undefined') return;
+// Initialize @hanzogui once at module scope — guarded for SSR (no window).
+// Must be synchronous: child components need config during first render,
+// before useEffect fires. 7.3.1 used useEffect which was too late (Err0).
+if (typeof window !== 'undefined') {
   createGui({ settings: { autocompleteSpecificTokens: 'except-special' } });
-  _guiInitialized = true;
 }
 
 const defaultQueryClient = new QueryClient({
@@ -23,7 +21,6 @@ interface AppProviderProps {
 }
 
 export const AppProvider = ({ children, queryClient }: AppProviderProps) => {
-  React.useEffect(() => { ensureGui(); }, []);
   return (
     <QueryClientProvider client={ queryClient ?? defaultQueryClient }>
       { children }

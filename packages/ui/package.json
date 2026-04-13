@@ -1,7 +1,7 @@
 {
   "name": "@luxfi/ui",
-  "version": "7.3.1",
-  "description": "Radix + Tailwind UI primitives for Lux apps. Drop-in replacements for Chakra compound components.",
+  "version": "7.3.2",
+  "description": "Cross-platform DeFi UI components built on @hanzo/gui (Tamagui). Native mobile + web.",
   "type": "module",
   "license": "MIT",
   "author": {
