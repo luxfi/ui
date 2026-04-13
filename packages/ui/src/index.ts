@@ -190,8 +190,6 @@ export { Toaster, toaster } from './toaster';
 export { Tooltip } from './tooltip';
 export type { TooltipProps } from './tooltip';
 
-export { Provider } from './provider';
-
 export {
   OptionChain,
 } from './option-chain';

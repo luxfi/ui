@@ -130,6 +130,9 @@ importers:
       '@tailwindcss/oxide':
         specifier: ^4.2.2
         version: 4.2.2
+      '@tanstack/react-query':
+        specifier: ^5.99.0
+        version: 5.99.0(react@19.2.4)
       '@testing-library/jest-dom':
         specifier: ^6.9.1
         version: 6.9.1
@@ -912,7 +915,7 @@ importers:
         version: 5.9.3
       wagmi:
         specifier: ^2.0.0
-        version: 2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.95.2(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6)
+        version: 2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.99.0(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6)
 
   packages/contracts:
     dependencies:
@@ -1152,6 +1155,21 @@ importers:
 
   packages/ui:
     dependencies:
+      '@hanzogui/core':
+        specifier: ^3.0.6
+        version: 3.0.6(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
+      '@hanzogui/dialog':
+        specifier: ^3.0.2
+        version: link:../../pkg/gui/dialog
+      '@hanzogui/popover':
+        specifier: ^3.0.2
+        version: link:../../pkg/gui/popover
+      '@hanzogui/text':
+        specifier: ^3.0.2
+        version: link:../../pkg/gui/text
+      '@hanzogui/tooltip':
+        specifier: ^3.0.2
+        version: link:../../pkg/gui/tooltip
       '@radix-ui/react-accordion':
         specifier: ^1.2.12
         version: 1.2.12(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1173,9 +1191,6 @@ importers:
       '@radix-ui/react-label':
         specifier: ^2.1.7
         version: 2.1.8(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      '@radix-ui/react-popover':
-        specifier: ^1.1.15
-        version: 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@radix-ui/react-progress':
         specifier: ^1.1.7
         version: 1.1.8(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1188,24 +1203,18 @@ importers:
       '@radix-ui/react-slider':
         specifier: ^1.3.6
         version: 1.3.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      '@radix-ui/react-slot':
-        specifier: ^1.2.3
-        version: 1.2.4(@types/react@19.2.14)(react@19.2.4)
       '@radix-ui/react-switch':
         specifier: ^1.2.6
         version: 1.2.6(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       '@radix-ui/react-tabs':
         specifier: ^1.1.13
         version: 1.1.13(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      '@radix-ui/react-tooltip':
-        specifier: ^1.2.8
-        version: 1.2.8(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+      '@tanstack/react-query':
+        specifier: ^5.76.0
+        version: 5.95.2(react@19.2.4)
       '@uidotdev/usehooks':
         specifier: ^2.4.1
         version: 2.4.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
-      class-variance-authority:
-        specifier: ^0.7.1
-        version: 0.7.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -1228,9 +1237,6 @@ importers:
         specifier: ^3.0.0
         version: 3.4.0
     devDependencies:
-      '@hanzogui/core':
-        specifier: ^3.0.2
-        version: 3.0.2(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
       '@types/react':
         specifier: 19.2.14
         version: 19.2.14
@@ -5759,6 +5765,11 @@ packages:
     peerDependencies:
       react: 19.2.4
 
+  '@hanzogui/compose-refs@3.0.6':
+    resolution: {integrity: sha512-oIjOW0Kf62zGXRmLeru9xhincHuhKtH9DA10+jDS9cph3uDU4kmrM9Vyq4wT8lhltrhU3SRsld+rKiYaZPYdIA==}
+    peerDependencies:
+      react: 19.2.4
+
   '@hanzogui/config-default@3.0.1':
     resolution: {integrity: sha512-q0+R2ra1dRoa6oISqHN8kHV2mk8eFsD6ds4MV21+Hwa7RVWWP/Q1THImghQPEFmr1IhEyIvKHvDt7lhmOb+gGQ==}
 
@@ -5770,6 +5781,12 @@ packages:
 
   '@hanzogui/constants@3.0.1':
     resolution: {integrity: sha512-+4bSwhyHW1XI4cNAciH+6GODOvREpIt2APFzYalpjJzybULhmmss6kUAJJuLDTnNZIrrBpqRzLs6ly+5I+QEOQ==}
+    peerDependencies:
+      react: 19.2.4
+      react-native: '*'
+
+  '@hanzogui/constants@3.0.6':
+    resolution: {integrity: sha512-TaqWo61DmKtfxvq5hDwpiWe6H+EIHp/ihlmBGOHJrmPjC86W+a6kxBLMPgeIoBhJyvjgjQPqq/lSEaDR3k1+6Q==}
     peerDependencies:
       react: 19.2.4
       react-native: '*'
@@ -5786,8 +5803,8 @@ packages:
       react: 19.2.4
       react-native: '*'
 
-  '@hanzogui/core@3.0.2':
-    resolution: {integrity: sha512-crizAr7nuwZCyyHFOX8aekZjCpYjGmtWsVlnp342sfN5TMY+t9U3vDcPtnXQCDhYppVmwVYS7Ek1Z4oEODSCIg==}
+  '@hanzogui/core@3.0.6':
+    resolution: {integrity: sha512-ItsDpLN4dQ2OYF89sXbcdaM+8N4TmzaZKWk4YtHuns7/1/IX1DnQzj62R4KCr4YB19oLYhdZPV9drbdWnkmkQg==}
     peerDependencies:
       react: 19.2.4
       react-native: '*'
@@ -5933,6 +5950,11 @@ packages:
     peerDependencies:
       react: 19.2.4
 
+  '@hanzogui/helpers@3.0.6':
+    resolution: {integrity: sha512-rkazI3R2qdPn6wUpjk5w0mxHBrjetbntu5Pn/jtOLRFx1iq3uYfLfAyI7gYZfTef48XwsDWK6d7bxvj3kM4WNw==}
+    peerDependencies:
+      react: 19.2.4
+
   '@hanzogui/image@3.0.0':
     resolution: {integrity: sha512-liQyeuG6AUY+mcCx9vi/aiNV/iFFYCAtcCORxUMFmI3rpWk7/fvvg04hBEtKv9R6cUDj0bJPgNmqMRiUT0zeKw==}
     peerDependencies:
@@ -5947,6 +5969,11 @@ packages:
 
   '@hanzogui/is-equal-shallow@3.0.0':
     resolution: {integrity: sha512-M0tkcFUiBjcFkX76FhZknIyGuGgP87wRxTMSIgaUYhjb63qr0Ffj69UqaudrYtQXZc1hC8/Og5psKWXXKVNFRA==}
+    peerDependencies:
+      react: 19.2.4
+
+  '@hanzogui/is-equal-shallow@3.0.6':
+    resolution: {integrity: sha512-4cUvZTCC2rZCbDQilNX75nu0hAV/RNw+HenY/uEjerHd1m5rIzQm7e9HCtvtJaTXsYXoYv3alRDOsUIvJmzbhg==}
     peerDependencies:
       react: 19.2.4
 
@@ -6047,8 +6074,51 @@ packages:
       zeego:
         optional: true
 
+  '@hanzogui/native@3.0.6':
+    resolution: {integrity: sha512-HT2ya3ENubWheBhFsLOVo13rCycF7YYirG35Wx8cQ+qY2PzPp+XuKUoc5eb198yqyr3TRUHC9W8bs7sOv88HBg==}
+    peerDependencies:
+      '@react-native-menu/menu': '>=2.0.0'
+      burnt: '>=0.12.0'
+      react: 19.2.4
+      react-native: '*'
+      react-native-gesture-handler: '>=2.0.0'
+      react-native-ios-context-menu: '>=3.0.0'
+      react-native-ios-utilities: '>=5.0.0'
+      react-native-keyboard-controller: '>=1.0.0'
+      react-native-safe-area-context: '>=4.0.0'
+      react-native-teleport: '>=0.5.0'
+      react-native-worklets-core: '>=1.0.0'
+      sf-symbols-typescript: '*'
+      zeego: '>=3.0.0'
+    peerDependenciesMeta:
+      '@react-native-menu/menu':
+        optional: true
+      burnt:
+        optional: true
+      react-native-gesture-handler:
+        optional: true
+      react-native-ios-context-menu:
+        optional: true
+      react-native-ios-utilities:
+        optional: true
+      react-native-keyboard-controller:
+        optional: true
+      react-native-safe-area-context:
+        optional: true
+      react-native-teleport:
+        optional: true
+      react-native-worklets-core:
+        optional: true
+      sf-symbols-typescript:
+        optional: true
+      zeego:
+        optional: true
+
   '@hanzogui/normalize-css-color@3.0.0':
     resolution: {integrity: sha512-PLU5+kEdU7109B8ItbSKFknicrj6475O3gX64CV4EQouGXJ9LrnWlet2A4i9fQcMw4OFJH+LCgG6ZOTr/611Mg==}
+
+  '@hanzogui/normalize-css-color@3.0.6':
+    resolution: {integrity: sha512-Nu+BYmIHEthnz8cqaybv959sSWq21jXvtzx7enUuBTzRRzyl0CyCOl4aMBM5mvf7TPACIuioXhOxLmdZVwKJSw==}
 
   '@hanzogui/polyfill-dev@3.0.0':
     resolution: {integrity: sha512-opa8TrUTwzTPWCpKlxs5zN1vG8cQSVMhd/TW6/3lfo3n30HnNyCnN6PcrqiB5oovRrv/GVqbe+6cArDAzSZCFg==}
@@ -6105,8 +6175,8 @@ packages:
     peerDependencies:
       react-native: '*'
 
-  '@hanzogui/react-native-media-driver@3.0.1':
-    resolution: {integrity: sha512-HXhIePBm/CZlXTdqOCncQqwhsxwT5iZ/JF4f9B1NmTUXwhpiyDAeij+RBvmXHpWnR7qLFk3miXbHKfvD5NQxeA==}
+  '@hanzogui/react-native-media-driver@3.0.6':
+    resolution: {integrity: sha512-qJ+0Cz11t3Ar7K6J+GOzMdarrtegLcwCT47hEiRPZMzoJhFsp7QvTYWj3MvWp5SIbBgKZvY4Gr1QArKu3AccEw==}
     peerDependencies:
       react-native: '*'
 
@@ -6117,6 +6187,11 @@ packages:
 
   '@hanzogui/react-native-use-pressable@3.0.1':
     resolution: {integrity: sha512-mDkY+spbdmsuObvnpfjjzV87F1RdI91jn56rK0LLIs6KcdPjHk4q5ryl7+qdDe10t9YYMFQGXGxQITe5yAOuWQ==}
+    peerDependencies:
+      react: 19.2.4
+
+  '@hanzogui/react-native-use-pressable@3.0.6':
+    resolution: {integrity: sha512-w1XVVDkE3yoh39gUDtFoolu2p88zw7hplDh0ksBaAOhAbLV9MAS3++MYaGGaH1lkbvhJbhNvS+Cw9ZfHBf9m0Q==}
     peerDependencies:
       react: 19.2.4
 
@@ -6193,6 +6268,9 @@ packages:
   '@hanzogui/simple-hash@3.0.0':
     resolution: {integrity: sha512-+6sbmtiL+C6MAkzHMRYJJMuXDrNp/3LpM1aatB4qL+vN9U1JBaL0aes8m1E7nju5g6WWDk3DKU3IP00MS3ANtA==}
 
+  '@hanzogui/simple-hash@3.0.6':
+    resolution: {integrity: sha512-CagMMuWyPrDnqYGk8BMh1F9WJwcMkSFUgBSncjDYuOZQBkgPZH2lm9pf3VOzcE9D4017pVklO/yzHMX+aAVlKQ==}
+
   '@hanzogui/sizable-context@3.0.1':
     resolution: {integrity: sha512-04pNb/aH/cvkTEVKUh34w1sEd8cGKKo+78AeoEUe24l33+DSUbbSKWxw5REEEfvnrrfqEu7L8QrmGCQrby3hsQ==}
     peerDependencies:
@@ -6249,8 +6327,14 @@ packages:
   '@hanzogui/timer@3.0.0':
     resolution: {integrity: sha512-4J15nfU1ufwMbqNDzDyIu+CEc49BIs/BHz5iLycswtOVK/O/Adi/JBFQqHsD1gdWyasTF1dnBWnNF5qTKX8A3Q==}
 
+  '@hanzogui/timer@3.0.6':
+    resolution: {integrity: sha512-IAJ23AMVG3cRT/Zmv3DY6TqXyZjp3HqNx7W0FxHgYQWCWUVRbQCFFJ4gNDCZoQCYtr4fYy3oIlTMZVFVLtH4pw==}
+
   '@hanzogui/types@3.0.0':
     resolution: {integrity: sha512-Ekhug4WbtytdFLulJfjF0dFCt8Z/t/HUt4Y9goIN/kzBWXUI3D3Pc5lrWZ3L3EQDaiDlPhv/H3Yc42BmBHj0TQ==}
+
+  '@hanzogui/types@3.0.6':
+    resolution: {integrity: sha512-8fimpoiRBTmlg/hfnjCQvH/Z2Dm/9Z/oEjEaOSUQHyiVZXfsM4ZLldba7Vex3HvHTIN2j7ZOMw9A2A4UJps2ow==}
 
   '@hanzogui/use-async@3.0.0':
     resolution: {integrity: sha512-xPjW4C2dxBuko5MDflzgO/L+Ao/q7GH7JSFJyTwBcPHJNTHMcniTJBINA8FGPR6y/4nJs6M2WNCXrgzNVsg3/w==}
@@ -6307,6 +6391,11 @@ packages:
     peerDependencies:
       react: 19.2.4
 
+  '@hanzogui/use-did-finish-ssr@3.0.6':
+    resolution: {integrity: sha512-K6Lf575UOoYMUycUdyUdlbtukxawRIf7EVI3V3Ew1UkVnS6aoBqzEwfRu1QbejA0mtX1xiM1Bi71E5m2J3fPxw==}
+    peerDependencies:
+      react: 19.2.4
+
   '@hanzogui/use-direction@3.0.0':
     resolution: {integrity: sha512-n7oD9K6Xpk3oj81YRgKbLcMN880OcR6pRfoKU8Xzlvjs9BcBclRH+LrZTt4fRnvTZURJLA3NvxJS7+wQpOFHhw==}
     peerDependencies:
@@ -6322,8 +6411,8 @@ packages:
     peerDependencies:
       react: 19.2.4
 
-  '@hanzogui/use-element-layout@3.0.1':
-    resolution: {integrity: sha512-ECfx5V3OfYRBQ/ZOM0z2dXg8qL6ihUJvOHWz/ja6ryqSI0ZDKPRJVTz+SFmbb+BN7KokWcn0WCOSNuUV4gk3Vw==}
+  '@hanzogui/use-element-layout@3.0.6':
+    resolution: {integrity: sha512-Bhqd0z2MHYrbOC7jO/G+fJXPgnM9m3nLLH+XKcAb5XsuKWCvE9eWV81SV0UydU1A15KdkT2zoN5HyRtIWY7oNg==}
     peerDependencies:
       react: 19.2.4
 
@@ -6347,6 +6436,11 @@ packages:
     peerDependencies:
       react: 19.2.4
 
+  '@hanzogui/use-event@3.0.6':
+    resolution: {integrity: sha512-NVx1JpgGPRHfOFVgTODWWxfOP3u0/WgPcoQRarJYb+p9lA9ETtCqYFt6XS6WwfscKKpYjBcivzDMochZOyQ7TQ==}
+    peerDependencies:
+      react: 19.2.4
+
   '@hanzogui/use-force-update@3.0.0':
     resolution: {integrity: sha512-yIwp2byfvhW6wnHNuVYW0amc9KvbOydUzD4TBHbH2lZ+jRAAAloEgBitGNEyUcEtWbLTLfTPDy1SHRO2Shp45Q==}
     peerDependencies:
@@ -6354,6 +6448,11 @@ packages:
 
   '@hanzogui/use-force-update@3.0.1':
     resolution: {integrity: sha512-LUs1LOVcbavP4B8vxJELPXs6/MdPA+FJc7YqVkz0d5S/wxIDydhBMObiuIyTZljJ15pwSECYJSV6l634L8Errw==}
+    peerDependencies:
+      react: 19.2.4
+
+  '@hanzogui/use-force-update@3.0.6':
+    resolution: {integrity: sha512-IdszOClbq3JuIGpKK00HxTObr1bVTw4UTeHWvUS38GdSC3EmlKMw6jyu8gKCZp2nve88eycXowpWDgUGfApt5w==}
     peerDependencies:
       react: 19.2.4
 
@@ -6403,6 +6502,13 @@ packages:
 
   '@hanzogui/web@3.0.1':
     resolution: {integrity: sha512-j90WDtcVsoZRYtsISjhHUJ/BSS98udO3Zuo7/foDXLC/3ct1Ed7Qwrs/af+a38E5JhjYOZOz5gO5PkpaNtZdFg==}
+    peerDependencies:
+      react: 19.2.4
+      react-dom: 19.2.4
+      react-native: '*'
+
+  '@hanzogui/web@3.0.6':
+    resolution: {integrity: sha512-xNLX+9+/M//P2I8P7uI/BlLDS+ded1/kR9VY6KEgXHkneEN938fklhX/Ys4OIYuQ3YybJuLcgGFlZg7fcETwFA==}
     peerDependencies:
       react: 19.2.4
       react-dom: 19.2.4
@@ -9672,6 +9778,9 @@ packages:
   '@tanstack/query-core@5.95.2':
     resolution: {integrity: sha512-o4T8vZHZET4Bib3jZ/tCW9/7080urD4c+0/AUaYVpIqOsr7y0reBc1oX3ttNaSW5mYyvZHctiQ/UOP2PfdmFEQ==}
 
+  '@tanstack/query-core@5.99.0':
+    resolution: {integrity: sha512-3Jv3WQG0BCcH7G+7lf/bP8QyBfJOXeY+T08Rin3GZ1bshvwlbPt7NrDHMEzGdKIOmOzvIQmxjk28YEQX60k7pQ==}
+
   '@tanstack/react-form@1.20.0':
     resolution: {integrity: sha512-1UfWqEYRnHr4cooGbHiTQqoqus8soNUH+RLD6UyhIQEvomOSQMX0JgX+zGSl08tIugrnWcAnh50n5T9IIs/Evw==}
     peerDependencies:
@@ -9688,6 +9797,11 @@ packages:
 
   '@tanstack/react-query@5.95.2':
     resolution: {integrity: sha512-/wGkvLj/st5Ud1Q76KF1uFxScV7WeqN1slQx5280ycwAyYkIPGaRZAEgHxe3bjirSd5Zpwkj6zNcR4cqYni/ZA==}
+    peerDependencies:
+      react: 19.2.4
+
+  '@tanstack/react-query@5.99.0':
+    resolution: {integrity: sha512-OY2bCqPemT1LlqJ8Y2CUau4KELnIhhG9Ol3ZndPbdnB095pRbPo1cHuXTndg8iIwtoHTgwZjyaDnQ0xD0mYwAw==}
     peerDependencies:
       react: 19.2.4
 
@@ -21741,6 +21855,10 @@ snapshots:
     dependencies:
       react: 19.2.4
 
+  '@hanzogui/compose-refs@3.0.6(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
+
   '@hanzogui/config-default@3.0.1(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
     dependencies:
       '@hanzogui/animations-css': 3.0.0(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
@@ -21780,6 +21898,11 @@ snapshots:
       react-native: 0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10)
 
   '@hanzogui/constants@3.0.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
+      react-native: 0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10)
+
+  '@hanzogui/constants@3.0.6(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
     dependencies:
       react: 19.2.4
       react-native: 0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10)
@@ -21880,14 +22003,14 @@ snapshots:
       - sf-symbols-typescript
       - zeego
 
-  '@hanzogui/core@3.0.2(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
+  '@hanzogui/core@3.0.6(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
     dependencies:
-      '@hanzogui/helpers': 3.0.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
-      '@hanzogui/react-native-media-driver': 3.0.1(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
-      '@hanzogui/react-native-use-pressable': 3.0.1(react@19.2.4)
-      '@hanzogui/use-element-layout': 3.0.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
-      '@hanzogui/use-event': 3.0.1(react@19.2.4)
-      '@hanzogui/web': 3.0.1(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
+      '@hanzogui/helpers': 3.0.6(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
+      '@hanzogui/react-native-media-driver': 3.0.6(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
+      '@hanzogui/react-native-use-pressable': 3.0.6(react@19.2.4)
+      '@hanzogui/use-element-layout': 3.0.6(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
+      '@hanzogui/use-event': 3.0.6(react@19.2.4)
+      '@hanzogui/web': 3.0.6(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
       react: 19.2.4
       react-native: 0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10)
     transitivePeerDependencies:
@@ -22569,6 +22692,14 @@ snapshots:
     transitivePeerDependencies:
       - react-native
 
+  '@hanzogui/helpers@3.0.6(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
+    dependencies:
+      '@hanzogui/constants': 3.0.6(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
+      '@hanzogui/simple-hash': 3.0.6
+      react: 19.2.4
+    transitivePeerDependencies:
+      - react-native
+
   '@hanzogui/image@3.0.0(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
     dependencies:
       '@hanzogui/constants': 3.0.0(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
@@ -22612,6 +22743,10 @@ snapshots:
       - zeego
 
   '@hanzogui/is-equal-shallow@3.0.0(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
+
+  '@hanzogui/is-equal-shallow@3.0.6(react@19.2.4)':
     dependencies:
       react: 19.2.4
 
@@ -22765,7 +22900,18 @@ snapshots:
     optionalDependencies:
       react-native-gesture-handler: 2.30.1(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
 
+  '@hanzogui/native@3.0.6(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
+      react-native: 0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10)
+    optionalDependencies:
+      react-native-gesture-handler: 2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
+
   '@hanzogui/normalize-css-color@3.0.0':
+    dependencies:
+      '@react-native/normalize-color': 2.1.0
+
+  '@hanzogui/normalize-css-color@3.0.6':
     dependencies:
       '@react-native/normalize-color': 2.1.0
 
@@ -23156,9 +23302,9 @@ snapshots:
       - sf-symbols-typescript
       - zeego
 
-  '@hanzogui/react-native-media-driver@3.0.1(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
+  '@hanzogui/react-native-media-driver@3.0.6(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
     dependencies:
-      '@hanzogui/web': 3.0.0(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
+      '@hanzogui/web': 3.0.6(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
       react-native: 0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10)
     transitivePeerDependencies:
       - '@react-native-menu/menu'
@@ -23180,6 +23326,10 @@ snapshots:
       react: 19.2.4
 
   '@hanzogui/react-native-use-pressable@3.0.1(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
+
+  '@hanzogui/react-native-use-pressable@3.0.6(react@19.2.4)':
     dependencies:
       react: 19.2.4
 
@@ -23508,6 +23658,8 @@ snapshots:
 
   '@hanzogui/simple-hash@3.0.0': {}
 
+  '@hanzogui/simple-hash@3.0.6': {}
+
   '@hanzogui/sizable-context@3.0.1(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
     dependencies:
       '@hanzogui/core': 3.0.0(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
@@ -23804,7 +23956,11 @@ snapshots:
 
   '@hanzogui/timer@3.0.0': {}
 
+  '@hanzogui/timer@3.0.6': {}
+
   '@hanzogui/types@3.0.0': {}
+
+  '@hanzogui/types@3.0.6': {}
 
   '@hanzogui/use-async@3.0.0(react@19.2.4)':
     dependencies:
@@ -23854,6 +24010,10 @@ snapshots:
     dependencies:
       react: 19.2.4
 
+  '@hanzogui/use-did-finish-ssr@3.0.6(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
+
   '@hanzogui/use-direction@3.0.0(react@19.2.4)':
     dependencies:
       react: 19.2.4
@@ -23878,10 +24038,10 @@ snapshots:
     transitivePeerDependencies:
       - react-native
 
-  '@hanzogui/use-element-layout@3.0.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
+  '@hanzogui/use-element-layout@3.0.6(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
     dependencies:
-      '@hanzogui/constants': 3.0.0(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
-      '@hanzogui/is-equal-shallow': 3.0.0(react@19.2.4)
+      '@hanzogui/constants': 3.0.6(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
+      '@hanzogui/is-equal-shallow': 3.0.6(react@19.2.4)
       react: 19.2.4
     transitivePeerDependencies:
       - react-native
@@ -23904,11 +24064,19 @@ snapshots:
     dependencies:
       react: 19.2.4
 
+  '@hanzogui/use-event@3.0.6(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
+
   '@hanzogui/use-force-update@3.0.0(react@19.2.4)':
     dependencies:
       react: 19.2.4
 
   '@hanzogui/use-force-update@3.0.1(react@19.2.4)':
+    dependencies:
+      react: 19.2.4
+
+  '@hanzogui/use-force-update@3.0.6(react@19.2.4)':
     dependencies:
       react: 19.2.4
 
@@ -24111,6 +24279,35 @@ snapshots:
       '@hanzogui/use-did-finish-ssr': 3.0.0(react@19.2.4)
       '@hanzogui/use-event': 3.0.0(react@19.2.4)
       '@hanzogui/use-force-update': 3.0.0(react@19.2.4)
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+      react-native: 0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10)
+    transitivePeerDependencies:
+      - '@react-native-menu/menu'
+      - burnt
+      - react-native-gesture-handler
+      - react-native-ios-context-menu
+      - react-native-ios-utilities
+      - react-native-keyboard-controller
+      - react-native-safe-area-context
+      - react-native-teleport
+      - react-native-worklets-core
+      - sf-symbols-typescript
+      - zeego
+
+  '@hanzogui/web@3.0.6(react-dom@19.2.4(react@19.2.4))(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)':
+    dependencies:
+      '@hanzogui/compose-refs': 3.0.6(react@19.2.4)
+      '@hanzogui/constants': 3.0.6(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
+      '@hanzogui/helpers': 3.0.6(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
+      '@hanzogui/is-equal-shallow': 3.0.6(react@19.2.4)
+      '@hanzogui/native': 3.0.6(react-native-gesture-handler@2.30.1(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4))(react-native@0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)
+      '@hanzogui/normalize-css-color': 3.0.6
+      '@hanzogui/timer': 3.0.6
+      '@hanzogui/types': 3.0.6
+      '@hanzogui/use-did-finish-ssr': 3.0.6(react@19.2.4)
+      '@hanzogui/use-event': 3.0.6(react@19.2.4)
+      '@hanzogui/use-force-update': 3.0.6(react@19.2.4)
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
       react-native: 0.84.1(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10)
@@ -28139,6 +28336,8 @@ snapshots:
 
   '@tanstack/query-core@5.95.2': {}
 
+  '@tanstack/query-core@5.99.0': {}
+
   '@tanstack/react-form@1.20.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
     dependencies:
       '@tanstack/form-core': 1.20.0
@@ -28157,6 +28356,11 @@ snapshots:
   '@tanstack/react-query@5.95.2(react@19.2.4)':
     dependencies:
       '@tanstack/query-core': 5.95.2
+      react: 19.2.4
+
+  '@tanstack/react-query@5.99.0(react@19.2.4)':
+    dependencies:
+      '@tanstack/query-core': 5.99.0
       react: 19.2.4
 
   '@tanstack/react-store@0.7.5(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
@@ -29319,7 +29523,7 @@ snapshots:
       - wagmi
       - zod
 
-  ? '@wagmi/connectors@6.2.0(@tanstack/react-query@5.95.2(react@19.2.4))(@types/react@19.2.14)(@wagmi/core@2.22.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)))(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(wagmi@2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.95.2(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6))(zod@4.3.6)'
+  ? '@wagmi/connectors@6.2.0(@tanstack/react-query@5.99.0(react@19.2.4))(@types/react@19.2.14)(@wagmi/core@2.22.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)))(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(wagmi@2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.99.0(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6))(zod@4.3.6)'
   : dependencies:
       '@base-org/account': 2.4.0(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(utf-8-validate@5.0.10)(zod@4.3.6)
       '@coinbase/wallet-sdk': 4.3.6(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(utf-8-validate@5.0.10)(zod@4.3.6)
@@ -29330,7 +29534,7 @@ snapshots:
       '@wagmi/core': 2.22.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))
       '@walletconnect/ethereum-provider': 2.21.1(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
       cbw-sdk: '@coinbase/wallet-sdk@3.9.3'
-      porto: 0.2.35(@tanstack/react-query@5.95.2(react@19.2.4))(@types/react@19.2.14)(@wagmi/core@2.22.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)))(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(wagmi@2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.95.2(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6))
+      porto: 0.2.35(@tanstack/react-query@5.99.0(react@19.2.4))(@types/react@19.2.14)(@wagmi/core@2.22.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)))(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(wagmi@2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.99.0(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6))
       viem: 2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
     optionalDependencies:
       typescript: 5.9.3
@@ -37187,27 +37391,6 @@ snapshots:
       - immer
       - use-sync-external-store
 
-  porto@0.2.35(@tanstack/react-query@5.95.2(react@19.2.4))(@types/react@19.2.14)(@wagmi/core@2.22.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)))(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(wagmi@2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.95.2(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6)):
-    dependencies:
-      '@wagmi/core': 2.22.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))
-      hono: 4.11.7
-      idb-keyval: 6.2.2
-      mipd: 0.0.7(typescript@5.9.3)
-      ox: 0.9.17(typescript@5.9.3)(zod@4.3.6)
-      viem: 2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
-      zod: 4.3.6
-      zustand: 5.0.12(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(use-sync-external-store@1.4.0(react@19.2.4))
-    optionalDependencies:
-      '@tanstack/react-query': 5.95.2(react@19.2.4)
-      react: 19.2.4
-      react-native: 0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10)
-      typescript: 5.9.3
-      wagmi: 2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.95.2(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6)
-    transitivePeerDependencies:
-      - '@types/react'
-      - immer
-      - use-sync-external-store
-
   porto@0.2.35(@tanstack/react-query@5.95.2(react@19.2.4))(@types/react@19.2.14)(@wagmi/core@3.4.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(ox@0.14.7(typescript@5.9.3)(zod@4.3.6))(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.47.6(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)))(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.47.6(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(wagmi@3.6.0):
     dependencies:
       '@wagmi/core': 3.4.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(ox@0.14.7(typescript@5.9.3)(zod@4.3.6))(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.47.6(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))
@@ -37229,6 +37412,27 @@ snapshots:
       - immer
       - use-sync-external-store
     optional: true
+
+  porto@0.2.35(@tanstack/react-query@5.99.0(react@19.2.4))(@types/react@19.2.14)(@wagmi/core@2.22.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)))(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(wagmi@2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.99.0(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6)):
+    dependencies:
+      '@wagmi/core': 2.22.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))
+      hono: 4.11.7
+      idb-keyval: 6.2.2
+      mipd: 0.0.7(typescript@5.9.3)
+      ox: 0.9.17(typescript@5.9.3)(zod@4.3.6)
+      viem: 2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)
+      zod: 4.3.6
+      zustand: 5.0.12(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(use-sync-external-store@1.4.0(react@19.2.4))
+    optionalDependencies:
+      '@tanstack/react-query': 5.99.0(react@19.2.4)
+      react: 19.2.4
+      react-native: 0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10)
+      typescript: 5.9.3
+      wagmi: 2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.99.0(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6)
+    transitivePeerDependencies:
+      - '@types/react'
+      - immer
+      - use-sync-external-store
 
   possible-typed-array-names@1.1.0: {}
 
@@ -40368,10 +40572,10 @@ snapshots:
       - utf-8-validate
       - zod
 
-  wagmi@2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.95.2(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6):
+  wagmi@2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.99.0(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6):
     dependencies:
-      '@tanstack/react-query': 5.95.2(react@19.2.4)
-      '@wagmi/connectors': 6.2.0(@tanstack/react-query@5.95.2(react@19.2.4))(@types/react@19.2.14)(@wagmi/core@2.22.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)))(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(wagmi@2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.95.2(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6))(zod@4.3.6)
+      '@tanstack/react-query': 5.99.0(react@19.2.4)
+      '@wagmi/connectors': 6.2.0(@tanstack/react-query@5.99.0(react@19.2.4))(@types/react@19.2.14)(@wagmi/core@2.22.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6)))(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(wagmi@2.19.5(@tanstack/query-core@5.95.2)(@tanstack/react-query@5.99.0(react@19.2.4))(@types/react@19.2.14)(bufferutil@4.1.0)(immer@11.1.3)(react-native@0.83.2(@babel/core@7.29.0)(@types/react@19.2.14)(bufferutil@4.1.0)(react@19.2.4)(utf-8-validate@5.0.10))(react@19.2.4)(typescript@5.9.3)(utf-8-validate@5.0.10)(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))(zod@4.3.6))(zod@4.3.6)
       '@wagmi/core': 2.22.1(@tanstack/query-core@5.95.2)(@types/react@19.2.14)(immer@11.1.3)(react@19.2.4)(typescript@5.9.3)(use-sync-external-store@1.4.0(react@19.2.4))(viem@2.45.2(bufferutil@4.1.0)(typescript@5.9.3)(utf-8-validate@5.0.10)(zod@4.3.6))
       react: 19.2.4
       use-sync-external-store: 1.4.0(react@19.2.4)
