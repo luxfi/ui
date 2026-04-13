@@ -1,7 +1,7 @@
 'use client';
 
 import { createGui } from '@hanzogui/core';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider, useQueryClient, useQuery, useMutation, useInfiniteQuery } from '@tanstack/react-query';
 import React from 'react';
 
 // Initialize @hanzogui once at module load
@@ -29,3 +29,6 @@ export const AppProvider = ({ children, queryClient }: AppProviderProps) => {
     </QueryClientProvider>
   );
 };
+
+// Re-export tanstack hooks so consumers never import @tanstack/react-query directly
+export { QueryClient, useQueryClient, useQuery, useMutation, useInfiniteQuery };
