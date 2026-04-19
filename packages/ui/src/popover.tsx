@@ -1,4 +1,4 @@
-import { Popover as GuiPopover } from '@hanzogui/popover';
+import { Popover as GuiPopover } from '@hanzo/gui';
 import * as React from 'react';
 
 import { cn } from './utils';

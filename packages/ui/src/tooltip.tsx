@@ -1,7 +1,7 @@
 import {
   Tooltip as GuiTooltip,
   TooltipGroup as GuiTooltipGroup,
-} from '@hanzogui/tooltip';
+} from '@hanzo/gui';
 import { useClickAway } from '@uidotdev/usehooks';
 import * as React from 'react';
 
@@ -30,7 +30,7 @@ function useIsMobile(): boolean {
 /** Map placement string to @hanzogui Popper placement prop. */
 function mapPlacement(p: string | undefined): string | undefined {
   if (!p) return undefined;
-  // @hanzogui/popper uses same placement strings as floating-ui
+  // @hanzo/gui uses same placement strings as floating-ui
   return p;
 }
 

@@ -1,5 +1,5 @@
-import type { ColorTokens, ThemeTokens } from '@gui/core';
-import type { YStackProps } from '@gui/stacks';
+import type { ColorTokens, ThemeTokens } from '@hanzogui/core';
+import type { YStackProps } from '@hanzogui/stacks';
 import type * as React from 'react';
 export type SpinnerProps = Omit<YStackProps, 'children'> & {
     size?: 'small' | 'large';

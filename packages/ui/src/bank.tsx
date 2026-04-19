@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import type { GetProps } from '@hanzogui/core'
-import { View, Text, styled } from '@hanzogui/core'
+import type { GetProps } from '@hanzo/gui'
+import { View, Text, styled } from '@hanzo/gui'
 
 // ── Bank Theme Tokens ─────────────────────────────────────────────
 export const bankColors = {

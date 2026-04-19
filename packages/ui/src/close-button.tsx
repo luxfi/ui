@@ -1,4 +1,4 @@
-import { styled, View } from '@hanzogui/core';
+import { styled, View } from '@hanzo/gui';
 import * as React from 'react';
 
 // eslint-disable-next-line max-len

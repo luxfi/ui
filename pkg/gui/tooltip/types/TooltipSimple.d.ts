@@ -1,4 +1,4 @@
-import type { SizableStackProps } from '@gui/stacks';
+import type { SizableStackProps } from '@hanzogui/stacks';
 import * as React from 'react';
 import type { TooltipProps } from './Tooltip';
 export type TooltipSimpleProps = TooltipProps & {

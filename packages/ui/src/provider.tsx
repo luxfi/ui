@@ -1,6 +1,6 @@
 'use client';
 
-import { createGui } from '@hanzogui/core';
+import { createGui } from '@hanzo/gui';
 import { QueryClient, QueryClientProvider, useQueryClient, useQuery, useMutation, useInfiniteQuery } from '@tanstack/react-query';
 import React from 'react';
 

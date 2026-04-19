@@ -1,4 +1,4 @@
-import { Dialog as GuiDialog } from '@hanzogui/dialog';
+import { Dialog as GuiDialog } from '@hanzo/gui';
 import * as React from 'react';
 
 import { cn } from './utils';

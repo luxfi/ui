@@ -1,4 +1,4 @@
-import { styled, View } from '@hanzogui/core';
+import { styled, View } from '@hanzo/gui';
 import * as React from 'react';
 
 import { Skeleton } from './skeleton';
